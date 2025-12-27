@@ -55,6 +55,32 @@ Por defecto corre en: [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
 ---
 
+## 📦 Carpetas en Laravel
+
+- App:
+  - Http/Controllers: Controladores
+  - Models: Modelos
+  - Providers: Proveedores de servicios de laravel
+
+- Bootstrap: Archivo necesario para la inicializacion del proyecto
+
+- Config: Configuracion del proyecto (Autenticacion, BD, Cache, etc.)
+
+- Database: Manejo de BD con migraciones
+
+- Public: Raiz publica de la aplicacion, tiene el index.php
+
+- Resources: Vistas
+
+- Routes: Rutas, como navegamos la aplicacion
+
+- Storage: Logs, cache, sesiones, archivos internos, etc.
+
+- Test: Pruebas automatizadas
+
+- Vendor: Carpeta que genera composer y almacena todas las dependencias
+
+
 ## ⚙️ Configuración inicial
 
 ### Copiar archivo de entorno
