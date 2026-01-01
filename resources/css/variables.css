@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400..700&family=Handlee&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Share+Tech+Mono&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Staatliches&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root{
+
+    /* ======================================================
+       COLORES
+    ====================================================== */
+
+    /* Base */
+    --color-blanco: #ffffff;
+    --color-negro: #000000;
+    --color-header: #ECF7FF;
+
+    /* Letras */
+    --color-letras-primario: #000000;
+    --color-letras-secundario: #ffffff;
+
+    /* Marca */
+    --color-primario: #59ACDA;
+    --color-secundario: #aaaaaa;
+    --color-tercerario: #aaaaaa;
+    --color-cuaternario: #aaaaaa;
+
+    /* Estados */
+    --color-success: #16a34a;
+    --color-warning: #f59e0b;
+    --color-error: #dc2626;
+
+    /* Fondos */
+    --color-bg-body: #ffffff;
+    --color-bg-muted: #f4f4f5;
+
+    /* ======================================================
+       TIPOGRAFÍA
+    ====================================================== */
+
+    /* Fuentes */
+    --fuente-primaria: "Poppins", sans-serif;
+    --fuente-secundaria: "Roboto", sans-serif;
+    font-size: 16px;
+}

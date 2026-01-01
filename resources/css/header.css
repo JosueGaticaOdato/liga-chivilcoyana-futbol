@@ -1,0 +1,74 @@
+.header{
+    background-color: var(--color-header);
+    height: 7rem;
+    font-family: var(--fuente-primaria);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ===== LOGO ===== */
+
+.header-titulo{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-titulo a{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.header-logo{
+    height: 5rem;
+    width: auto;
+    transition: all 0.35s ease;
+}
+
+.header-logo:hover{
+    transform: scale(1.1);
+}
+
+/* ===== NAVEGACION ===== */
+
+.header-navegacion{
+    width: 30%;
+}
+
+.header-navegacion ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header-navegacion ul li{
+    font-weight: bold;
+    transition: all 0.35s ease;
+}
+
+.header-navegacion ul li:hover{
+    transform: scale(1.2);
+    border-bottom: 2px solid var(--color-negro)
+}
+
+/* ===== LOGIN ===== */
+
+.header-login{
+    margin-right: 3rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-weight: bolder;
+    color: var(--color-letras-secundario);
+    background-color: var(--color-primario);
+}
+
+.header-login:hover{
+    background-color: var(--color-letras-secundario);
+    color: var(--color-primario);
+    border: 1px solid var(--color-primario);
+    transition: all 0.35s ease-in-out;
+}
