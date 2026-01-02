@@ -47,12 +47,15 @@
 
 .header-navegacion ul li{
     font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.1rem;
     transition: all 0.35s ease;
 }
 
 .header-navegacion ul li:hover{
     transform: scale(1.2);
-    border-bottom: 2px solid var(--color-negro)
+    color: var(--color-primario);
+    border-bottom: 3px solid var(--color-primario);
 }
 
 /* ===== LOGIN ===== */

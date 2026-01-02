@@ -21,3 +21,7 @@ Route::get('/equipos', function () {
 Route::get('/noticias', function () {
     return view('noticias');
 })->name('noticias');
+
+Route::get('/reglamento', function () {
+    return view('reglamento');
+})->name('reglamento');
