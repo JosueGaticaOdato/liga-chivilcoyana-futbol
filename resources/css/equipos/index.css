@@ -1,0 +1,88 @@
+.equipos-page {
+    background-color: var(--color-bg-muted);
+    font-family: var(--fuente-primaria);
+}
+
+/* ===== HEADER ===== */
+
+.equipos-header {
+    background: linear-gradient(90deg, var(--color-degradado-1),var( --color-degradado-2));
+    padding: 4rem;
+    margin-bottom: 2rem;
+}
+
+.equipos-header h1 {
+    color: var(--color-letras-secundario);
+    font-weight: bold;
+    letter-spacing: 0.15rem;
+    font-size: 2.5rem;
+}
+
+/* ===== CONTENEDOR ===== */
+
+.equipos-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 1.5rem;
+    padding: 0 1rem;
+    padding-bottom: 1rem;
+}
+
+/* ===== CARD EQUIPO ===== */
+
+.equipo-card {
+    display: flex;
+    align-items: center;
+    height: 7rem;
+    gap: 1rem;
+    overflow: hidden;
+
+    background-color: var(--color-blanco);
+    border: 1.5px solid var(--color-primario);
+    border-radius: 0.5rem;
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Escudo */
+.equipo-escudo {
+    width: 10rem;
+    height: 6.5rem;
+}
+
+.equipo-escudo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Nombre */
+.equipo-nombre {
+    font-family: var(--fuente-tercearia);
+    font-size: 2rem;
+    color: var(--color-letras-primario);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (min-width: 900px) {
+    .equipo-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--sombra-suave);
+    }
+}
+
+@media (max-width: 900px) {
+    .equipos-header{
+        text-align: center;
+    }
+    .equipos-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px){
+    .equipo-nombre{
+        font-size: 1.3rem;
+    }
+}

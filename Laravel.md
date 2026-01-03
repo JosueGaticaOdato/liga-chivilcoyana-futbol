@@ -138,7 +138,7 @@ php artisan migrate --seed
 
 ---
 
-## 🌱 Seeders y Factories
+## 🌱 Seeders (Semilla) y Factories
 
 ### Crear seeder
 

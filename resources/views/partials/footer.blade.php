@@ -19,7 +19,7 @@
         <ul>
             <li><a href="{{ route('partido') }}">Partidos</a></li>
             <li><a href="{{ route('tablas') }}">Tablas</a></li>
-            <li><a href="{{ route('equipos') }}">Equipos</a></li>
+            <li><a href="{{ route('equipos.index') }}">Equipos</a></li>
             <li><a href="{{ route('noticias') }}">Noticias</a></li>
             <li><a href="{{ route('reglamento') }}">Reglamento</a></li>
         </ul>

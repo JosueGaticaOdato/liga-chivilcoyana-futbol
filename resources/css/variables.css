@@ -49,6 +49,13 @@
     --color-bg-body: #ffffff;
     --color-bg-muted: #f4f4f5;
 
+    /* Degradado */
+    --color-degradado-1: rgb(59,124,164);
+    --color-degradado-2: rgb(110,176,210);
+
+    /* Sombras */
+    --sombra-suave: 0 6px 15px rgba(0,0,0,0.1);
+
     /* ======================================================
        TIPOGRAFÍA
     ====================================================== */

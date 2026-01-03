@@ -6,6 +6,9 @@
     <link rel="icon" href="{{ asset('images/icono.ico') }}" type="image/x-icon">
     <title>@yield('title', 'Mi Sitio')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    {{-- CSS especifico por vista --}}
+    @stack('styles')
 </head>
 
 <body>
