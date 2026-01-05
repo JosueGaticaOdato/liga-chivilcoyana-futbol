@@ -30,7 +30,7 @@
     border-radius: 0.75rem;
     border-left: 8px solid var(--color-primario);
     border-bottom: 5px solid transparent;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: var(--sombra-ultra-suave);
 
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
