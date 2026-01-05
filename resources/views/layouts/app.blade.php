@@ -9,13 +9,17 @@
 
     {{-- CSS especifico por vista --}}
     @stack('styles')
+
+    {{-- Ionicons --}}
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body>
 
     @include('partials.header')
 
-    <main>
+    <main class="main">
         @yield('content')
     </main>
 

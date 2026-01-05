@@ -3,32 +3,42 @@
 @section('title', 'Torneos')
 
 @push('styles')
-    @vite('resources/css/torneos/torneo.css')
+    @vite('resources/css/torneos/index.css')
 @endpush
 
 @section('content')
 
-    <section class="equipos-page">
+    <header class="header-main">
+        <h1>Torneos</h1>
+    </header>
 
-        <header class="equipos-header">
-            <h1>Torneos</h1>
-        </header>
 
-        <main class="equipos-container">
+    <section class="torneos-section">
 
+        {{-- <h2>Competiciones disponibles</h2>
+        <p>Explora todas las divisiones y copas de la temporada</p> --}}
+
+        <!-- TO-DO Filtro por categoria -->
+
+        <ul class="torneos-container">
             @foreach ($torneos as $torneo)
-                <a href="{{ route('torneos.tabla', $torneo->slug) }}" class="equipo-link">
+                <li><a href="{{ route('torneos.tabla', $torneo->slug) }}" class="torneo-card">
+                        <article class="card-contenedor">
+                            <figure class="card-icon">
+                                <ion-icon name="trophy-outline" class="material-icons"></ion-icon>
+                            </figure>
 
-                    <h2 class="equipo-nombre">{{ $torneo->nombre }}</h2>
-
-                </a>
+                            <section class="card-details">
+                                <span class="barra-status status-{{ $torneo->estado }}">{{ $torneo->estado == 'activo' ? 'En Curso' : 'Finalizado' }}</span>
+                                <h3 class="card-title">{{ $torneo->nombre }} {{ $torneo->temporada }}</h3>
+                                <p class="card-subtitle">Categoria: {{ $torneo->categoria }}</p>
+                            </section>
+                        </article>
+                    </a>
+                </li>
             @endforeach
-
-        </main>
+        </ul>
 
     </section>
-
-
-
 
 @endsection

@@ -8,30 +8,26 @@
 
 @section('content')
 
-    <section class="equipos-page">
+    <header class="header-main">
+        <h1>Equipos</h1>
+    </header>
 
-        <header class="equipos-header">
-            <h1>Equipos</h1>
-        </header>
+    <section class="equipos-container">
 
-        <main class="equipos-container">
+        @foreach ($equipos as $equipo)
+            <a href="{{ route('equipos.show', $equipo->slug) }}" class="equipo-link">
 
-            @foreach ($equipos as $equipo)
-                <a href="{{ route('equipos.show', $equipo->slug) }}" class="equipo-link">
+                <article class="equipo-card">
+                    <figure class="equipo-escudo">
+                        <img src="{{ asset('storage/' . $equipo->escudo) }}" alt="Escudo {{ $equipo->nombre }}">
+                    </figure>
 
-                    <article class="equipo-card">
-                        <figure class="equipo-escudo">
-                            <img src="{{ asset('storage/' . $equipo->escudo) }}" alt="Escudo {{ $equipo->nombre }}">
-                        </figure>
+                    <h2 class="equipo-nombre">{{ $equipo->nombre_pila }}</h2>
 
-                        <h2 class="equipo-nombre">{{ $equipo->nombre_pila }}</h2>
+                </article>
 
-                    </article>
-
-                </a>
-            @endforeach
-
-        </main>
+            </a>
+        @endforeach
 
     </section>
 

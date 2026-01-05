@@ -26,6 +26,18 @@ class TorneoSeeder extends Seeder
             ]
         );
 
+        $torneo2 = Torneo::firstOrCreate(
+            ['slug' => 'segunda-division-2025'],
+            [
+                'nombre' => 'Segunda División',
+                'categoria' => 'Segunda',
+                'temporada' => '2025',
+                'descripcion' => 'Torneo oficial de la Liga Chivilcoyana de Fútbol',
+                'estado' => 'activo',
+                'fecha_inicio' => '2025-02-02',
+            ]
+        );
+
         // Obtener todos los equipos
         $equipos = Equipo::all();
 
@@ -40,6 +52,18 @@ class TorneoSeeder extends Seeder
                     'goles_contra' => 0,
                     'diferencia_goles' => 0,
                     'puntos' => 0,
+                ]
+            ]);
+            $torneo2->equipos()->syncWithoutDetaching([
+                $equipo->id => [
+                    'partidos_jugados' => 1,
+                    'ganados' => 1,
+                    'empatados' => 1,
+                    'perdidos' => 1,
+                    'goles_favor' => 1,
+                    'goles_contra' => 1,
+                    'diferencia_goles' => 1,
+                    'puntos' => 1,
                 ]
             ]);
         }

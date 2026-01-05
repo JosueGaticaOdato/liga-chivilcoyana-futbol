@@ -1,0 +1,110 @@
+.torneos-section{
+    padding: 0rem 2rem;
+}
+
+.torneos-section h2{
+    font-size: 1.8rem;
+    padding-bottom: 0.3rem;
+}
+
+.torneos-section p{
+    font-size: 1.1rem;
+}
+
+.torneos-container{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-bottom: 2rem;
+}
+
+/* ===== CONTENEDOR PRINCIPAL CARD ===== */
+.torneo-card{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+
+    position: relative;
+    background-color: var(--color-blanco);
+    border-radius: 0.75rem;
+    border-left: 8px solid var(--color-primario);
+    border-bottom: 5px solid transparent;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card-contenedor{
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+}
+
+/* Icono */
+.card-icon{
+    height: 4rem;
+    width: 4rem;
+    color: var(--color-primario);
+    background-color: var(--color-fondo-iconos);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.card-icon .material-icons {
+    font-size: 2rem;
+}
+
+/* Textos */
+.card-details{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.barra-status {
+    display: inline-flex;
+    padding: 0.125rem 0.625rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.status-activo {
+    background-color: var(--color-success);
+    color: var(--color-blanco);
+}
+
+.status-finalizado {
+    background-color: var(--color-error);
+    color: var(--color-blanco);
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-letras-primario);
+    padding-bottom: 0.3rem;
+    line-height: 1.5rem;
+}
+
+.card-subtitle {
+    font-size: 0.875rem;
+    color: var(--color-letras-primario);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (min-width: 900px) {
+    .torneo-card:hover {
+        box-shadow: var(--sombra-suave);
+        border-bottom-color: var(--color-primario);
+        transform: translateY(-5px);
+    }
+}

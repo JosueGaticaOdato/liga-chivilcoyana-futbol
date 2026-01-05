@@ -30,10 +30,12 @@ Route::get('/equipos', [EquipoController::class, 'index'])->name('equipos.index'
 Route::get('/equipos/{equipo:slug}', [EquipoController::class, 'show'])
     ->name('equipos.show');
 
-//Torneo
+//Tablas
 Route::get('/torneos', [TorneoController::class, 'index'])
     ->name('torneos.index');
-Route::get('/torneos/{torneo:slug}/tabla', [TorneoController::class, 'tabla'])
+
+Route::get('/torneos/{torneo:slug}', [TorneoController::class, 'tabla'])
     ->name('torneos.tabla');
+
 Route::get('/torneos/{torneo:slug}/partidos', [TorneoController::class, 'partidos'])
 ->name('torneos.partidos');

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('categoria');
             $table->string('temporada');
             $table->text('descripcion')->nullable();
-            $table->enum('estado', ['activo', 'finalizado'])->default('activo');
+            $table->enum('estado', ['activo', 'finalizado'])->default('activo'); 
             $table->date('fecha_inicio');
             $table->date('fecha_fin')->nullable();
             $table->timestamps();

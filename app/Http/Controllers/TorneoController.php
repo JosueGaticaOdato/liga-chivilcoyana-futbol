@@ -10,7 +10,9 @@ class TorneoController extends Controller
 
     public function index()
     {
-        $torneos = Torneo::orderBy('nombre')->get();
+        $torneos = Torneo::orderBy('estado', 'asc')
+                        ->orderBy('nombre', 'asc')
+                        ->get();
         return view('torneos.index', compact('torneos'));
     }
 
