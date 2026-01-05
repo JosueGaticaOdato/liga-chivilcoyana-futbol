@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             EquipoSeeder::class,
+            TorneoSeeder::class, // Borrar despues
+            PartidoSeeder::class, // Borrar despues
         ]);
     }
 }

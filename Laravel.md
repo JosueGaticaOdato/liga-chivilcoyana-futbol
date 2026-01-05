@@ -180,6 +180,15 @@ php artisan make:model Post -m
 php artisan make:model Post -a
 ```
 
+#### En Laravel, las funciones del modelo NO son lógica de negocio, son definiciones de relaciones entre tablas
+
+Sirven para que después puedas escribir cosas como
+```
+$equipo->torneos
+$torneo->equipos
+$partido->local->nombre_pila
+```
+
 ---
 
 ## 🎮 Controllers

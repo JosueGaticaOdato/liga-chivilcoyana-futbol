@@ -153,6 +153,7 @@ php artisan migrate
 6. Levantar el servidor
 
 ```bash
+npm run dev
 php artisan serve
 ```
 
