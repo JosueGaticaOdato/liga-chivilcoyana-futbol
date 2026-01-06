@@ -1,8 +1,9 @@
-.table-responsive {
+.tabla-responsive {
     width: 100%;
     overflow-x: auto; /* Habilita scroll horizontal */
     -webkit-overflow-scrolling: touch;
     margin-bottom: 1rem;
+    padding-bottom: 2rem;
 }
 
 /* ===== TABLA DE POSICIONES ===== */
@@ -83,4 +84,34 @@
     .tabla-posiciones tbody tr:hover {
         background-color: var(--color-hover);
     }
+}
+
+@media (max-width: 900px) {
+    .tabla-posiciones td.equipo {
+        font-size: 0.9rem;
+
+    }
+    .tabla-posiciones td {
+        padding: 0.75rem 1rem;
+    }
+}
+
+/* Fijar segunda columna para scroll en movil (Equipo) */
+.tabla-posiciones th:nth-child(2),
+.tabla-posiciones td.equipo {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+}
+
+.tabla-posiciones th:nth-child(2) {
+    background-color: var(--color-primario);
+}
+
+.tabla-posiciones tbody tr:nth-child(odd) td.equipo {
+    background-color: var(--color-blanco);
+}
+
+.tabla-posiciones tbody tr:nth-child(even) td.equipo {
+    background-color: var(--color-impares);
 }

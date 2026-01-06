@@ -15,4 +15,10 @@ export default defineConfig({
             ignored: ['**/storage/framework/views/**'],
         },
     },
+    server: {
+        host: '0.0.0.0', // Escuchar en todas las interfaces
+        hmr: {
+            host: '192.168.0.100'
+        },
+    },
 });

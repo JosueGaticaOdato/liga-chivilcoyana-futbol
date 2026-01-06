@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <link rel="icon" href="{{ asset('images/icono.ico') }}" type="image/x-icon">
     <title>@yield('title', 'Mi Sitio')</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     {{-- CSS especifico por vista --}}
