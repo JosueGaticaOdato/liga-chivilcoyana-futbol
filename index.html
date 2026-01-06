@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Fútbol Local - Tablas de Posiciones</title>
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <!-- Google Fonts: Roboto for a clean sans-serif look -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap"
+            rel="stylesheet"
+        />
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            sans: ["Roboto", "sans-serif"],
+                        },
+                        colors: {
+                            "brand-blue-light": "#EAF6FB", // Very light blue for header bg hint
+                            "brand-blue-medium": "#5da2d5", // Table header blue
+                            "brand-blue-dark": "#3b82f6", // Standard blue for buttons/links
+                            "table-row-even": "#f3f4f6", // Light gray for rows
+                        },
+                        backgroundImage: {
+                            "hero-gradient":
+                                "linear-gradient(90deg, #4facfe 0%, #00f2fe 100%)", // Approximate blue gradient
+                        },
+                    },
+                },
+            };
+        </script>
+        <style data-purpose="custom-overrides">
+            /* Custom style for the hero gradient to match the image better */
+            .custom-hero-bg {
+                background: linear-gradient(to right, #5da2d5, #2c7bb6);
+            }
+
+            /* Ensure table text alignment matches the visual (mostly centered, names left) */
+            .table-cell-center {
+                text-align: center;
+            }
+            .table-cell-left {
+                text-align: left;
+            }
+
+            /* Nav active state indicator */
+            .nav-link.active {
+                font-weight: 700;
+                position: relative;
+            }
+            .nav-link.active::after {
+                content: "";
+                position: absolute;
+                bottom: -24px; /* Adjust based on header height */
+                left: 0;
+                width: 100%;
+                height: 4px;
+                background-color: #5da2d5;
+            }
+
+            /* Hero Image Blending */
+            .hero-image-mask {
+                mask-image: linear-gradient(to right, transparent, black 15%);
+                -webkit-mask-image: linear-gradient(
+                    to right,
+                    transparent,
+                    black 15%
+                );
+            }
+
+            /* Table Vertical Alignment */
+            table th,
+            table td {
+                vertical-align: middle !important;
+            }
+        </style>
+    </head>
+    <body class="bg-white font-sans text-gray-800">
+        <!-- BEGIN: Header -->
+        <header
+            class="w-full bg-brand-blue-light border-b border-blue-100 py-4 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4"
+        >
+            <!-- Logo and Site Name -->
+            <div class="flex items-center gap-3" data-purpose="logo-container">
+                <div
+                    class="w-10 h-10 rounded-full overflow-hidden bg-gray-200 flex-shrink-0"
+                >
+                    <img
+                        alt="Fútbol Local Logo"
+                        class="w-full h-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOPapTG_9eZYLhKLG9AYek6S83b-AzHZG356EeUINukHCf8eNj_0OFJXeosI7SZuKQxu7LIMovicfdskeU8qJ_bdmROHI8rK0dE2TCBs4ggbZzIyOwrkstcEj7jC6yonqzaGvlCt14GD_5j7ieh-H-qeXA7NO-vWd-IfkSOOb_wqDL07Chdosv5BR_qNqFxw1tnFUpnWKySc2VzQlwNN-oPA1QqyzVJQCGRKELQ1ndUKkNKO5iV4EUBQLIvrwH_T72OMFrvssJPR0n"
+                    />
+                </div>
+                <h1 class="text-xl font-bold text-gray-800 tracking-tight">
+                    Fútbol Local - [City Name]
+                </h1>
+            </div>
+            <!-- Navigation -->
+            <nav class="flex-1 overflow-x-auto w-full md:w-auto">
+                <ul
+                    class="flex items-center justify-center gap-6 min-w-max px-2"
+                >
+                    <li>
+                        <a
+                            class="nav-link text-gray-600 hover:text-blue-600 text-sm font-medium"
+                            href="#"
+                            >Inicio</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            class="nav-link text-gray-600 hover:text-blue-600 text-sm font-medium"
+                            href="#"
+                            >Partidos</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            class="nav-link text-gray-600 hover:text-blue-600 text-sm font-medium"
+                            href="#"
+                            >Torneos</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            class="nav-link text-gray-600 hover:text-blue-600 text-sm font-medium"
+                            href="#"
+                            >Reglamento</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            class="nav-link active text-gray-900 text-sm font-medium"
+                            href="#"
+                            >Tablas</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            class="nav-link text-gray-600 hover:text-blue-600 text-sm font-medium"
+                            href="#"
+                            >Noticias</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            class="nav-link text-gray-600 hover:text-blue-600 text-sm font-medium"
+                            href="#"
+                            >Contacto</a
+                        >
+                    </li>
+                </ul>
+            </nav>
+            <!-- Login Button -->
+            <div class="flex-shrink-0">
+                <button
+                    class="bg-brand-blue-medium hover:bg-blue-500 text-white text-sm font-medium py-2 px-6 rounded-md shadow-sm transition-colors duration-200"
+                >
+                    Iniciar Sesión
+                </button>
+            </div>
+        </header>
+        <!-- END: Header -->
+        <!-- BEGIN: Hero Section -->
+        <section
+            class="relative w-full h-64 md:h-80 overflow-hidden custom-hero-bg flex items-center"
+            data-purpose="hero-banner"
+        >
+            <div
+                class="container mx-auto px-6 md:px-12 relative z-10 flex justify-between items-center h-full"
+            >
+                <!-- Hero Title -->
+                <div class="w-full md:w-1/2">
+                    <h2
+                        class="text-4xl md:text-5xl font-bold text-white drop-shadow-md"
+                    >
+                        Tablas de Posiciones
+                    </h2>
+                </div>
+                <!-- Hero Image (Player) -->
+                <!-- Positioned absolutely on mobile/tablet to mimic the cutout look, or flexed on desktop -->
+                <div
+                    class="absolute right-0 bottom-0 md:relative md:w-1/2 h-full flex items-end justify-end pointer-events-none"
+                >
+                    <img
+                        alt="Soccer Player"
+                        class="hero-image-mask h-full w-full object-cover object-center"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-60N_13IM0dtEIVLWn1-Nk30VfMDCwdfRYdZCQB68_cYudl8F67MdNshJtkECYXqJx8mnmvcsIrmklH9rtC4OvAYNUmdG_tZ4f2I6tM-AkKilgfIMAMz46EBugj45ckgVW6pyNN08ZA8Ho2A3E_rgIxTl1sR5DYXmoKh7o3Ks2TgLEuPcgk4hj2uX1kFTHpbN9i6DrurgQs-lGckfjeoa_AYHe15GXmXvXXAWIN1iL_muQpSSPYWzrq6ZibHFZuVfoowGKKzit0K2"
+                    />
+                </div>
+            </div>
+        </section>
+        <!-- END: Hero Section -->
+        <!-- BEGIN: Main Content -->
+        <main class="container mx-auto px-4 md:px-12 py-8 md:py-12">
+            <!-- Filter Section -->
+            <div class="mb-6 max-w-sm">
+                <label class="block text-gray-700 text-sm font-bold mb-2 pl-1">
+                    División
+                </label>
+                <div class="relative">
+                    <select
+                        class="block appearance-none w-full bg-brand-blue-medium text-white font-medium py-3 px-4 pr-8 rounded-lg leading-tight focus:outline-none focus:shadow-outline border-none cursor-pointer shadow-md"
+                    >
+                        <option>Primera División</option>
+                        <option>Segunda División</option>
+                        <option>Reserva</option>
+                    </select>
+                    <div
+                        class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white"
+                    >
+                        <svg
+                            class="fill-current h-4 w-4"
+                            viewbox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                            ></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <!-- Standings Table -->
+            <div
+                class="w-full overflow-x-auto rounded-lg shadow-lg border border-gray-200"
+            >
+                <table
+                    class="w-full min-w-[800px] border-collapse bg-white text-sm md:text-base"
+                >
+                    <!-- Table Header -->
+                    <thead>
+                        <tr
+                            class="bg-brand-blue-medium text-white uppercase text-xs md:text-sm font-bold tracking-wider"
+                        >
+                            <th class="py-4 px-2 text-center w-12">Pos</th>
+                            <th class="py-4 px-4 text-left">Equipo</th>
+                            <th class="py-4 px-2 text-center w-16">PTS</th>
+                            <th class="py-4 px-2 text-center w-12">PJ</th>
+                            <th class="py-4 px-2 text-center w-12">PG</th>
+                            <th class="py-4 px-2 text-center w-12">PE</th>
+                            <th class="py-4 px-2 text-center w-12">PP</th>
+                            <th class="py-4 px-2 text-center w-12">GF</th>
+                            <th class="py-4 px-2 text-center w-12">GC</th>
+                            <th class="py-4 px-2 text-center w-12">DG</th>
+                        </tr>
+                    </thead>
+                    <!-- Table Body -->
+                    <tbody class="text-gray-700">
+                        <!-- Row 1 -->
+                        <tr
+                            class="border-b bg-white hover:bg-blue-50 transition-colors"
+                        >
+                            <td class="py-3 px-2 text-center font-medium">1</td>
+                            <td class="py-3 px-4 flex items-center gap-3">
+                                <img
+                                    alt="Team Icon"
+                                    class="w-6 h-6 rounded-full"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVJxCPkifZadi-a-QXEirCZgpR653PE0OfWNsuLiSZ7BTRcaGFaWBkqGmrqsCRarjgcagkpaZUx95n2qPcwuqe8iXT4t1uQhcPzuc3gAhbtbEg4mWqhcVW9ZwAw86_F5Wr9Jvj8DnEDBlJZVI6H1sIEbmwoi6fQpwGuSgOeM8ntNWFn2HJm4GYZmtevV1BLGA7PsmJ_nli0XtZW6KxnmAr--MaRvg9vbw0BgdmXF4-X_Fw4Ydl_X3-8U5-_2CWNRMp8FN9ZIk9DdV3"
+                                />
+                                <span class="font-medium text-gray-900"
+                                    >Equipo A</span
+                                >
+                            </td>
+                            <td
+                                class="py-3 px-2 text-center font-bold text-black"
+                            >
+                                10
+                            </td>
+                            <td class="py-3 px-2 text-center">4</td>
+                            <td class="py-3 px-2 text-center">3</td>
+                            <td class="py-3 px-2 text-center">1</td>
+                            <td class="py-3 px-2 text-center">0</td>
+                            <td class="py-3 px-2 text-center">8</td>
+                            <td class="py-3 px-2 text-center">2</td>
+                            <td class="py-3 px-2 text-center font-medium">
+                                +6
+                            </td>
+                        </tr>
+                        <!-- Row 2 -->
+                        <tr
+                            class="border-b bg-table-row-even hover:bg-blue-50 transition-colors"
+                        >
+                            <td class="py-3 px-2 text-center font-medium">2</td>
+                            <td class="py-3 px-4 flex items-center gap-3">
+                                <img
+                                    alt="Team Icon"
+                                    class="w-6 h-6 rounded-full"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVJxCPkifZadi-a-QXEirCZgpR653PE0OfWNsuLiSZ7BTRcaGFaWBkqGmrqsCRarjgcagkpaZUx95n2qPcwuqe8iXT4t1uQhcPzuc3gAhbtbEg4mWqhcVW9ZwAw86_F5Wr9Jvj8DnEDBlJZVI6H1sIEbmwoi6fQpwGuSgOeM8ntNWFn2HJm4GYZmtevV1BLGA7PsmJ_nli0XtZW6KxnmAr--MaRvg9vbw0BgdmXF4-X_Fw4Ydl_X3-8U5-_2CWNRMp8FN9ZIk9DdV3"
+                                />
+                                <span class="font-medium text-gray-900"
+                                    >Equipo C</span
+                                >
+                            </td>
+                            <td
+                                class="py-3 px-2 text-center font-bold text-black"
+                            >
+                                9
+                            </td>
+                            <td class="py-3 px-2 text-center">4</td>
+                            <td class="py-3 px-2 text-center">3</td>
+                            <td class="py-3 px-2 text-center">0</td>
+                            <td class="py-3 px-2 text-center">1</td>
+                            <td class="py-3 px-2 text-center">7</td>
+                            <td class="py-3 px-2 text-center">3</td>
+                            <td class="py-3 px-2 text-center font-medium">
+                                +4
+                            </td>
+                        </tr>
+                        <!-- Row 3 -->
+                        <tr
+                            class="border-b bg-white hover:bg-blue-50 transition-colors"
+                        >
+                            <td class="py-3 px-2 text-center font-medium">3</td>
+                            <td class="py-3 px-4 flex items-center gap-3">
+                                <img
+                                    alt="Team Icon"
+                                    class="w-6 h-6 rounded-full"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVJxCPkifZadi-a-QXEirCZgpR653PE0OfWNsuLiSZ7BTRcaGFaWBkqGmrqsCRarjgcagkpaZUx95n2qPcwuqe8iXT4t1uQhcPzuc3gAhbtbEg4mWqhcVW9ZwAw86_F5Wr9Jvj8DnEDBlJZVI6H1sIEbmwoi6fQpwGuSgOeM8ntNWFn2HJm4GYZmtevV1BLGA7PsmJ_nli0XtZW6KxnmAr--MaRvg9vbw0BgdmXF4-X_Fw4Ydl_X3-8U5-_2CWNRMp8FN9ZIk9DdV3"
+                                />
+                                <span class="font-medium text-gray-900"
+                                    >Equipo D</span
+                                >
+                            </td>
+                            <td
+                                class="py-3 px-2 text-center font-bold text-black"
+                            >
+                                8
+                            </td>
+                            <td class="py-3 px-2 text-center">4</td>
+                            <td class="py-3 px-2 text-center">3</td>
+                            <td class="py-3 px-2 text-center">0</td>
+                            <td class="py-3 px-2 text-center">1</td>
+                            <td class="py-3 px-2 text-center">7</td>
+                            <td class="py-3 px-2 text-center">3</td>
+                            <td class="py-3 px-2 text-center font-medium">
+                                +4
+                            </td>
+                        </tr>
+                        <!-- Row 4 -->
+                        <tr
+                            class="border-b bg-table-row-even hover:bg-blue-50 transition-colors"
+                        >
+                            <td class="py-3 px-2 text-center font-medium">4</td>
+                            <td class="py-3 px-4 flex items-center gap-3">
+                                <img
+                                    alt="Team Icon"
+                                    class="w-6 h-6 rounded-full"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVJxCPkifZadi-a-QXEirCZgpR653PE0OfWNsuLiSZ7BTRcaGFaWBkqGmrqsCRarjgcagkpaZUx95n2qPcwuqe8iXT4t1uQhcPzuc3gAhbtbEg4mWqhcVW9ZwAw86_F5Wr9Jvj8DnEDBlJZVI6H1sIEbmwoi6fQpwGuSgOeM8ntNWFn2HJm4GYZmtevV1BLGA7PsmJ_nli0XtZW6KxnmAr--MaRvg9vbw0BgdmXF4-X_Fw4Ydl_X3-8U5-_2CWNRMp8FN9ZIk9DdV3"
+                                />
+                                <span class="font-medium text-gray-900"
+                                    >Equipo E</span
+                                >
+                            </td>
+                            <td
+                                class="py-3 px-2 text-center font-bold text-black"
+                            >
+                                7
+                            </td>
+                            <td class="py-3 px-2 text-center">4</td>
+                            <td class="py-3 px-2 text-center">3</td>
+                            <td class="py-3 px-2 text-center">0</td>
+                            <td class="py-3 px-2 text-center">1</td>
+                            <td class="py-3 px-2 text-center">6</td>
+                            <td class="py-3 px-2 text-center">8</td>
+                            <td class="py-3 px-2 text-center font-medium">
+                                +3
+                            </td>
+                        </tr>
+                        <!-- Row 5 -->
+                        <tr
+                            class="border-b bg-white hover:bg-blue-50 transition-colors"
+                        >
+                            <td class="py-3 px-2 text-center font-medium">5</td>
+                            <td class="py-3 px-4 flex items-center gap-3">
+                                <img
+                                    alt="Team Icon"
+                                    class="w-6 h-6 rounded-full"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVJxCPkifZadi-a-QXEirCZgpR653PE0OfWNsuLiSZ7BTRcaGFaWBkqGmrqsCRarjgcagkpaZUx95n2qPcwuqe8iXT4t1uQhcPzuc3gAhbtbEg4mWqhcVW9ZwAw86_F5Wr9Jvj8DnEDBlJZVI6H1sIEbmwoi6fQpwGuSgOeM8ntNWFn2HJm4GYZmtevV1BLGA7PsmJ_nli0XtZW6KxnmAr--MaRvg9vbw0BgdmXF4-X_Fw4Ydl_X3-8U5-_2CWNRMp8FN9ZIk9DdV3"
+                                />
+                                <span class="font-medium text-gray-900"
+                                    >Equipo F</span
+                                >
+                            </td>
+                            <td
+                                class="py-3 px-2 text-center font-bold text-black"
+                            >
+                                6
+                            </td>
+                            <td class="py-3 px-2 text-center">4</td>
+                            <td class="py-3 px-2 text-center">2</td>
+                            <td class="py-3 px-2 text-center">0</td>
+                            <td class="py-3 px-2 text-center">1</td>
+                            <td class="py-3 px-2 text-center">7</td>
+                            <td class="py-3 px-2 text-center">6</td>
+                            <td class="py-3 px-2 text-center font-medium">
+                                +2
+                            </td>
+                        </tr>
+                        <!-- Row 7 (Skipped 6 in original data, following image verbatim) -->
+                        <tr
+                            class="border-b bg-table-row-even hover:bg-blue-50 transition-colors"
+                        >
+                            <td class="py-3 px-2 text-center font-medium">7</td>
+                            <td class="py-3 px-4 flex items-center gap-3">
+                                <img
+                                    alt="Team Icon"
+                                    class="w-6 h-6 rounded-full"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVJxCPkifZadi-a-QXEirCZgpR653PE0OfWNsuLiSZ7BTRcaGFaWBkqGmrqsCRarjgcagkpaZUx95n2qPcwuqe8iXT4t1uQhcPzuc3gAhbtbEg4mWqhcVW9ZwAw86_F5Wr9Jvj8DnEDBlJZVI6H1sIEbmwoi6fQpwGuSgOeM8ntNWFn2HJm4GYZmtevV1BLGA7PsmJ_nli0XtZW6KxnmAr--MaRvg9vbw0BgdmXF4-X_Fw4Ydl_X3-8U5-_2CWNRMp8FN9ZIk9DdV3"
+                                />
+                                <span class="font-medium text-gray-900"
+                                    >Equipo F</span
+                                >
+                            </td>
+                            <td
+                                class="py-3 px-2 text-center font-bold text-black"
+                            >
+                                5
+                            </td>
+                            <td class="py-3 px-2 text-center">4</td>
+                            <td class="py-3 px-2 text-center">3</td>
+                            <td class="py-3 px-2 text-center">0</td>
+                            <td class="py-3 px-2 text-center">1</td>
+                            <td class="py-3 px-2 text-center">6</td>
+                            <td class="py-3 px-2 text-center">7</td>
+                            <td class="py-3 px-2 text-center font-medium">
+                                +1
+                            </td>
+                        </tr>
+                        <!-- Row 8 -->
+                        <tr
+                            class="border-b bg-white hover:bg-blue-50 transition-colors"
+                        >
+                            <td class="py-3 px-2 text-center font-medium">8</td>
+                            <td class="py-3 px-4 flex items-center gap-3">
+                                <img
+                                    alt="Team Icon"
+                                    class="w-6 h-6 rounded-full"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVJxCPkifZadi-a-QXEirCZgpR653PE0OfWNsuLiSZ7BTRcaGFaWBkqGmrqsCRarjgcagkpaZUx95n2qPcwuqe8iXT4t1uQhcPzuc3gAhbtbEg4mWqhcVW9ZwAw86_F5Wr9Jvj8DnEDBlJZVI6H1sIEbmwoi6fQpwGuSgOeM8ntNWFn2HJm4GYZmtevV1BLGA7PsmJ_nli0XtZW6KxnmAr--MaRvg9vbw0BgdmXF4-X_Fw4Ydl_X3-8U5-_2CWNRMp8FN9ZIk9DdV3"
+                                />
+                                <span class="font-medium text-gray-900"
+                                    >Equipo G</span
+                                >
+                            </td>
+                            <td
+                                class="py-3 px-2 text-center font-bold text-black"
+                            >
+                                5
+                            </td>
+                            <td class="py-3 px-2 text-center">4</td>
+                            <td class="py-3 px-2 text-center">2</td>
+                            <td class="py-3 px-2 text-center">0</td>
+                            <td class="py-3 px-2 text-center">2</td>
+                            <td class="py-3 px-2 text-center">5</td>
+                            <td class="py-3 px-2 text-center">9</td>
+                            <td class="py-3 px-2 text-center font-medium">
+                                +1
+                            </td>
+                        </tr>
+                        <!-- Row 9 -->
+                        <tr
+                            class="border-b bg-table-row-even hover:bg-blue-50 transition-colors"
+                        >
+                            <td class="py-3 px-2 text-center font-medium">9</td>
+                            <td class="py-3 px-4 flex items-center gap-3">
+                                <img
+                                    alt="Team Icon"
+                                    class="w-6 h-6 rounded-full"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVJxCPkifZadi-a-QXEirCZgpR653PE0OfWNsuLiSZ7BTRcaGFaWBkqGmrqsCRarjgcagkpaZUx95n2qPcwuqe8iXT4t1uQhcPzuc3gAhbtbEg4mWqhcVW9ZwAw86_F5Wr9Jvj8DnEDBlJZVI6H1sIEbmwoi6fQpwGuSgOeM8ntNWFn2HJm4GYZmtevV1BLGA7PsmJ_nli0XtZW6KxnmAr--MaRvg9vbw0BgdmXF4-X_Fw4Ydl_X3-8U5-_2CWNRMp8FN9ZIk9DdV3"
+                                />
+                                <span class="font-medium text-gray-900"
+                                    >Equipo H</span
+                                >
+                            </td>
+                            <td
+                                class="py-3 px-2 text-center font-bold text-black"
+                            >
+                                5
+                            </td>
+                            <td class="py-3 px-2 text-center">4</td>
+                            <td class="py-3 px-2 text-center">2</td>
+                            <td class="py-3 px-2 text-center">1</td>
+                            <td class="py-3 px-2 text-center">2</td>
+                            <td class="py-3 px-2 text-center">5</td>
+                            <td class="py-3 px-2 text-center">11</td>
+                            <td class="py-3 px-2 text-center font-medium">
+                                -0
+                            </td>
+                        </tr>
+                        <!-- Row 10 -->
+                        <tr
+                            class="border-b bg-white hover:bg-blue-50 transition-colors"
+                        >
+                            <td class="py-3 px-2 text-center font-medium">
+                                10
+                            </td>
+                            <td class="py-3 px-4 flex items-center gap-3">
+                                <img
+                                    alt="Team Icon"
+                                    class="w-6 h-6 rounded-full"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVJxCPkifZadi-a-QXEirCZgpR653PE0OfWNsuLiSZ7BTRcaGFaWBkqGmrqsCRarjgcagkpaZUx95n2qPcwuqe8iXT4t1uQhcPzuc3gAhbtbEg4mWqhcVW9ZwAw86_F5Wr9Jvj8DnEDBlJZVI6H1sIEbmwoi6fQpwGuSgOeM8ntNWFn2HJm4GYZmtevV1BLGA7PsmJ_nli0XtZW6KxnmAr--MaRvg9vbw0BgdmXF4-X_Fw4Ydl_X3-8U5-_2CWNRMp8FN9ZIk9DdV3"
+                                />
+                                <span class="font-medium text-gray-900"
+                                    >Equipo J</span
+                                >
+                            </td>
+                            <td
+                                class="py-3 px-2 text-center font-bold text-black"
+                            >
+                                4
+                            </td>
+                            <td class="py-3 px-2 text-center">4</td>
+                            <td class="py-3 px-2 text-center">2</td>
+                            <td class="py-3 px-2 text-center">1</td>
+                            <td class="py-3 px-2 text-center">0</td>
+                            <td class="py-3 px-2 text-center">6</td>
+                            <td class="py-3 px-2 text-center">12</td>
+                            <td class="py-3 px-2 text-center font-medium">
+                                -1
+                            </td>
+                        </tr>
+                        <!-- Row 11 -->
+                        <tr
+                            class="border-b bg-table-row-even hover:bg-blue-50 transition-colors"
+                        >
+                            <td class="py-3 px-2 text-center font-medium">
+                                11
+                            </td>
+                            <td class="py-3 px-4 flex items-center gap-3">
+                                <img
+                                    alt="Team Icon"
+                                    class="w-6 h-6 rounded-full"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVJxCPkifZadi-a-QXEirCZgpR653PE0OfWNsuLiSZ7BTRcaGFaWBkqGmrqsCRarjgcagkpaZUx95n2qPcwuqe8iXT4t1uQhcPzuc3gAhbtbEg4mWqhcVW9ZwAw86_F5Wr9Jvj8DnEDBlJZVI6H1sIEbmwoi6fQpwGuSgOeM8ntNWFn2HJm4GYZmtevV1BLGA7PsmJ_nli0XtZW6KxnmAr--MaRvg9vbw0BgdmXF4-X_Fw4Ydl_X3-8U5-_2CWNRMp8FN9ZIk9DdV3"
+                                />
+                                <span class="font-medium text-gray-900"
+                                    >Equipo B</span
+                                >
+                            </td>
+                            <td
+                                class="py-3 px-2 text-center font-bold text-black"
+                            >
+                                4
+                            </td>
+                            <td class="py-3 px-2 text-center">4</td>
+                            <td class="py-3 px-2 text-center">2</td>
+                            <td class="py-3 px-2 text-center">1</td>
+                            <td class="py-3 px-2 text-center">0</td>
+                            <td class="py-3 px-2 text-center">7</td>
+                            <td class="py-3 px-2 text-center">15</td>
+                            <td class="py-3 px-2 text-center font-medium">
+                                -2
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <!-- END: Main Content -->
+    </body>
+</html>

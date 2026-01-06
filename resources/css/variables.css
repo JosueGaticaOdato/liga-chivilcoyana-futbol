@@ -61,6 +61,11 @@
     --sombra-suave: 0 6px 15px rgba(0,0,0,0.1);
     --sombra-header: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.25));
 
+    /* Tabla de posiciones */
+    --color-body: #e5e7eb;
+    --color-impares:#f9fafb;
+    --color-hover: #eff6ff;
+
     /* ======================================================
        TIPOGRAFÍA
     ====================================================== */

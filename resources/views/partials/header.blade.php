@@ -4,10 +4,18 @@
 
     <nav class="header-navegacion">
         <ul>
-            <li><a href="{{ route('partido') }}">Partidos</a></li>
-            <li><a href="{{ route('torneos.index') }}">Torneos</a></li>
-            <li><a href="{{ route('equipos.index') }}">Equipos</a></li>
-            <li><a href="{{ route('noticias') }}">Noticias</a></li>
+            <li>
+                <a href="{{ route('partido') }}" class="{{ request()->routeIs('partido') ? 'active' : '' }}">Partidos</a>
+            </li>
+            <li>
+                <a href="{{ route('torneos.index') }}" class="{{ request()->routeIs('torneos.*') ? 'active' : '' }}">Torneos</a>
+            </li>
+            <li>
+                <a href="{{ route('equipos.index') }}" class="{{ request()->routeIs('equipos.*') ? 'active' : '' }}">Equipos</a>
+            </li>
+            <li>
+                <a href="{{ route('noticias') }}" class="{{ request()->routeIs('noticias') ? 'active' : '' }}">Noticias</a>
+            </li>
         </ul>
     </nav>
 

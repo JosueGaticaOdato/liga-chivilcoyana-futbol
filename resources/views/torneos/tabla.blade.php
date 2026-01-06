@@ -8,21 +8,21 @@
 
 @section('content')
 
-
     <header class="header-main">
         <h1>{{ $torneo->nombre }} {{ $torneo->temporada }}</h1>
     </header>
 
-    <table class="tabla-posiciones">
-        <thead>
-            <tr>
-                <th>#</th>
+    <section class="tabla-responsive">
+        <table class="tabla-posiciones">
+            <thead>
+                <tr>
+                    <th>Pos</th>
                 <th>Equipo</th>
                 <th>Pts</th>
                 <th>PJ</th>
-                <th>G</th>
-                <th>E</th>
-                <th>P</th>
+                <th>PG</th>
+                <th>PE</th>
+                <th>PP</th>
                 <th>GF</th>
                 <th>GC</th>
                 <th>DG</th>
@@ -46,9 +46,10 @@
                     <td>{{ $equipo->pivot->goles_contra }}</td>
                     <td>{{ $equipo->pivot->diferencia_goles }}</td>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+                @endforeach
+            </tbody>
+        </table>
+    </section>
 
 
 @endsection

@@ -29,10 +29,6 @@
     transition: all 0.35s ease;
 }
 
-.header-logo:hover{
-    transform: scale(1.1);
-}
-
 /* ===== NAVEGACION ===== */
 
 .header-navegacion{
@@ -52,8 +48,7 @@
     transition: all 0.35s ease;
 }
 
-.header-navegacion ul li:hover{
-    transform: scale(1.2);
+.header-navegacion a.active{
     color: var(--color-primario);
     border-bottom: 3px solid var(--color-primario);
 }
@@ -69,9 +64,24 @@
     background-color: var(--color-primario);
 }
 
-.header-login:hover{
-    background-color: var(--color-letras-secundario);
-    color: var(--color-primario);
-    border: 1px solid var(--color-primario);
-    transition: all 0.35s ease-in-out;
+/* ===== RESPONSIVE ===== */
+
+@media (min-width: 900px) {
+    .header-logo:hover{
+        transform: scale(1.1);
+    }
+
+    .header-navegacion ul li:hover{
+        transform: scale(1.2);
+        color: var(--color-primario);
+        border-bottom: 3px solid var(--color-primario);
+    }
+
+    .header-login:hover{
+        background-color: var(--color-letras-secundario);
+        color: var(--color-primario);
+        border: 1px solid var(--color-primario);
+        transition: all 0.35s ease-in-out;
+    }
+
 }
