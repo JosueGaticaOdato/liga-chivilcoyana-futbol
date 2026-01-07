@@ -12,13 +12,16 @@ class TablaPosiciones extends Component
     public Collection $equipos;
     public ?int $limit;
 
-    public function __construct(Collection $equipos, int $limit = null)
+    public ?string $variant;
+
+    public function __construct(Collection $equipos, int $limit = null, string $variant = 'full')
     {
         $this->equipos = $limit
             ? $equipos->take($limit)
             : $equipos;
 
         $this->limit = $limit;
+        $this->variant = $variant;
     }
 
     public function render()

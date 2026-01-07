@@ -34,6 +34,13 @@
     position: relative;
     margin-bottom: 2rem;
     overflow: hidden;
+
+    height: 16rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+
 }
 
 .header-main::before {
@@ -67,7 +74,7 @@
 .header-main h1 {
     color: var(--color-letras-secundario);
     font-weight: bold;
-    font-size: 2.5rem;
+    font-size: 3.5rem;
 
     filter: var(--sombra-header);
     letter-spacing: -0.025em;
