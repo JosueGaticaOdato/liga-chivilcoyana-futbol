@@ -3,4 +3,58 @@
     overflow-x: auto; /* Habilita scroll horizontal */
     -webkit-overflow-scrolling: touch;
     padding-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.informacion-torneo-tabla{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.informacion-torneo-tabla article {
+    background: var(--color-blanco);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+}
+
+.informacion-torneo-tabla article h3{
+    font-size: 1.2rem;
+    font-weight: bolder;
+    padding: 1rem;
+    text-align: left;
+}
+
+.informacion-torneo-tabla article ul{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.informacion-torneo-tabla article ul li{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    color: var(--color-letras-primario);
+}
+
+.check-icon{
+    font-size: 1rem;
+    color: var(--color-blanco);
+    background-color: var(--color-primario);
+    border-radius: 50%;
+}
+
+.clasificado::before{
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--color-success);
+    border-radius: 50%;
 }

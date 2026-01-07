@@ -71,6 +71,16 @@
 
     filter: var(--sombra-header);
     letter-spacing: -0.025em;
+    padding-bottom: 0.5rem;
+}
+
+.header-main p {
+    color: var(--color-letras-secundario);
+    font-weight: bold;
+    font-size: 2rem;
+
+    filter: var(--sombra-header);
+    letter-spacing: -0.025em;
 }
 
 /* ===== ICONOS ===== */

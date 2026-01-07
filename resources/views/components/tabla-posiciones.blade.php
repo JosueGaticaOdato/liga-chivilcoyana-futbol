@@ -3,7 +3,7 @@
         <tr>
             <th>Pos</th>
             <th>Equipo</th>
-            <th>Pts</th>
+            <th>PTS</th>
             <th>PJ</th>
             <th>PG</th>
             <th>PE</th>
