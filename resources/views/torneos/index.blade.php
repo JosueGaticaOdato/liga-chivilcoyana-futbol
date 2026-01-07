@@ -24,9 +24,9 @@
             @foreach ($torneos as $torneo)
                 <li><a href="{{ route('torneos.torneo', $torneo->slug) }}" class="torneo-card">
                         <article class="card-contenedor">
-                            <figure class="card-icon">
+                            <span class="card-icon">
                                 <ion-icon name="trophy-outline" class="material-icons"></ion-icon>
-                            </figure>
+                            </span>
 
                             <section class="card-details">
                                 <span class="barra-status status-{{ $torneo->estado }}">{{ $torneo->estado == 'activo' ? 'En Curso' : 'Finalizado' }}</span>

@@ -43,23 +43,6 @@
     width: 100%;
 }
 
-/* Icono */
-.card-icon{
-    height: 4rem;
-    width: 4rem;
-    color: var(--color-primario);
-    background-color: var(--color-fondo-iconos);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-.card-icon .material-icons {
-    font-size: 2rem;
-}
-
 /* Textos */
 .card-details{
     display: flex;

@@ -73,6 +73,25 @@
     letter-spacing: -0.025em;
 }
 
+/* ===== ICONOS ===== */
+
+/* Icono */
+.card-icon{
+    height: 4rem;
+    width: 4rem;
+    color: var(--color-primario);
+    background-color: var(--color-fondo-iconos);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.card-icon .material-icons {
+    font-size: 2rem;
+}
+
 /* ===== RESPONSIVE ===== */
 
 @media (max-width: 900px) {
