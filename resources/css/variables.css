@@ -33,6 +33,8 @@
     /* Letras */
     --color-letras-primario: #000000;
     --color-letras-secundario: #ffffff;
+    --color-letras-terceario: #64748b; /* Gris azulado */
+    --color-letras-cuaternario: #94a3b8; /* Gris claro */
 
     /* Marca */
     --color-primario: #59ACDA;
@@ -44,6 +46,7 @@
     --color-success: #16a34a;
     --color-warning: #f59e0b;
     --color-error: #dc2626;
+    --color-stay: #aaaaaa;
 
     /* Fondos */
     --color-bg-body: #ffffff;

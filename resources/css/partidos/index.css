@@ -1,0 +1,169 @@
+/* ===== FILTRO ===== */
+
+.filtros-partidos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 0.5fr;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    padding: 0 4rem;
+    border-radius: 1rem;
+}
+
+.filtros-partidos label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.filtros-partidos select,
+.filtros-partidos input,
+.filtros-partidos button {
+    width: 100%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    border-radius: 0.5rem;
+    font-weight: normal;
+    background-color: var(--color-blanco);
+    border: 1px solid var(--color-cuaternario);
+}
+
+.filtros-partidos button{
+    background-color: var(--color-primario);
+    color: var(--color-letras-secundario);
+    font-size: 1.1rem;
+    font-weight: bolder;
+    width: 50%;
+    margin: 0 auto;
+    border: none;
+}
+
+/* ===== LISTA DE PARTIDOS ===== */
+
+.lista-partidos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    gap: 1.2rem;
+    padding: 2rem;
+}
+
+/* ===== PARTIDOS ===== */
+
+.partido-card{
+    padding: 1.5rem;
+    width: 100%;
+    background-color: var(--color-blanco);
+    border-radius: 1rem;
+    max-width: 30rem; /* Maximo */
+    font-family: var(--fuente-primaria);
+    box-shadow: var(--sombra-suave);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.partido-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.partido-header time {
+    font-size: 0.85rem;
+    font-weight: bolder;
+    color: var(--color-letras-terceario);
+    text-transform: uppercase;
+    letter-spacing: 0.02rem;
+}
+
+.barra-estado{
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    color: var(--color-letras-secundario);
+}
+
+.barra-estado.en_juego{
+    background-color: var(--color-error);
+    box-shadow: 0 0 5px rgba(239, 68, 68, 0.5);
+}
+
+.barra-estado.programado{
+    background-color: var(--color-stay);
+}
+
+.barra-estado.finalizado{
+    background-color: var(--color-primario);
+}
+
+.partido-main{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.equipo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+}
+
+.equipo-nombre{
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-letras-primario);
+    text-align: center;
+}
+
+.logo-equipo {
+    width: 60px;
+    height: 70px;
+}
+
+.vs {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-letras-cuaternario);
+    margin: 0 1rem;
+}
+
+.partido-footer{
+    text-align: center;
+    border-top: 1px solid transparent;
+}
+
+.partido-footer{
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-letras-cuaternario);
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+}
+
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 1024px) {
+    .lista-partidos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .lista-partidos {
+        grid-template-columns: 1fr; /* 1 columna en celular */
+    }
+    .filtros-partidos {
+        grid-template-columns: 1fr;
+    }
+}

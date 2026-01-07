@@ -94,24 +94,24 @@
     .tabla-posiciones td {
         padding: 0.75rem 1rem;
     }
-}
 
-/* Fijar segunda columna para scroll en movil (Equipo) */
-.tabla-posiciones th:nth-child(2),
-.tabla-posiciones td.equipo {
-    position: sticky;
-    left: 0;
-    z-index: 2;
-}
+    /* Fijar segunda columna para scroll en movil (Equipo) */
+    .tabla-posiciones th:nth-child(2),
+    .tabla-posiciones td.equipo {
+        position: sticky;
+        left: 0;
+        z-index: 2;
+    }
 
-.tabla-posiciones th:nth-child(2) {
-    background-color: var(--color-primario);
-}
+    .tabla-posiciones th:nth-child(2) {
+        background-color: var(--color-primario);
+    }
 
-.tabla-posiciones tbody tr:nth-child(odd) td.equipo {
-    background-color: var(--color-blanco);
-}
+    .tabla-posiciones tbody tr:nth-child(odd) td.equipo {
+        background-color: var(--color-blanco);
+    }
 
-.tabla-posiciones tbody tr:nth-child(even) td.equipo {
-    background-color: var(--color-impares);
+    .tabla-posiciones tbody tr:nth-child(even) td.equipo {
+        background-color: var(--color-impares);
+    }
 }

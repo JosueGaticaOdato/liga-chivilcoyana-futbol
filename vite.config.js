@@ -18,7 +18,7 @@ export default defineConfig({
     server: {
         host: '0.0.0.0', // Escuchar en todas las interfaces
         hmr: {
-            host: '192.168.0.100'
+            host: '192.168.0.108'
         },
     },
 });

@@ -5,7 +5,7 @@
     <nav class="header-navegacion">
         <ul>
             <li>
-                <a href="{{ route('partido') }}" class="{{ request()->routeIs('partido') ? 'active' : '' }}">Partidos</a>
+                <a href="{{ route('partidos.index') }}" class="{{ request()->routeIs('partidos') ? 'active' : '' }}">Partidos</a>
             </li>
             <li>
                 <a href="{{ route('torneos.index') }}" class="{{ request()->routeIs('torneos.*') ? 'active' : '' }}">Torneos</a>

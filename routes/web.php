@@ -1,20 +1,13 @@
 <?php
 
 use App\Http\Controllers\EquipoController;
+use App\Http\Controllers\PartidoController;
 use App\Http\Controllers\TorneoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('inicio');
-})->name('inicio');;
-
-Route::get('/partido', function () {
-    return view('partido');
-})->name('partido');
-
-// Route::get('/equipos', function () {
-//     return view('equipos');
-// })->name('equipos');
+})->name('inicio');
 
 Route::get('/noticias', function () {
     return view('noticias');
@@ -39,3 +32,7 @@ Route::get('/torneos/{torneo:slug}', [TorneoController::class, 'tabla'])
 
 Route::get('/torneos/{torneo:slug}/partidos', [TorneoController::class, 'partidos'])
 ->name('torneos.partidos');
+
+//Partidos
+Route::get('/partidos', [PartidoController::class, 'index'])
+    ->name('partidos.index');
