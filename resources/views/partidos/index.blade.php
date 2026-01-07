@@ -59,7 +59,10 @@
             <article class="partido-card">
 
                 <header class="partido-header">
-                    <time datetime="2024-05-25 15:00">SAB 25 MAY | 15:00</time>
+                    <time datetime="{{ $partido->fecha_hora->format('Y-m-d H:i') }}">
+                        {{ $partido->fecha_hora_formateada }}
+                    </time>
+
                     <span class="barra-estado {{ $partido->estado }}">
                         {{ ucfirst(str_replace('_', ' ', $partido->estado)) }}</span>
                 </header>
@@ -74,7 +77,7 @@
                     </article>
 
                     <span class="vs">
-                        @if($partido->estado === 'programado')
+                        @if ($partido->estado === 'programado')
                             <span class="vs-text">VS</span>
                         @else
                             {{ $partido->goles_local ?? 0 }}
@@ -93,7 +96,7 @@
                 </main>
 
                 <footer class="partido-footer">
-                    <p>{{ $partido->cancha ?? "Estadio: A definir" }}</p>
+                    <p>{{ $partido->cancha ?? 'Estadio: A definir' }}</p>
                 </footer>
 
             </article>
