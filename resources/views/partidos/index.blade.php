@@ -101,54 +101,6 @@
 
             </article>
 
-            {{-- <article class="match-card">
-                <header class="card-header">
-                    <time datetime="2024-05-25 15:00">SAB 25 MAY | 15:00</time>
-                    <span class="status-badge live">En Vivo</span>
-                </header>
-
-                <div class="match-content">
-                    <div class="team home">
-                        <div class="logo-placeholder"></div> <h3 class="team-name">Equipo A</h3>
-                    </div>
-
-                    <div class="vs-divider">
-                        <span>VS</span>
-                    </div>
-
-                    <div class="team away">
-                        <div class="logo-placeholder"></div> <h3 class="team-name">Equipo B</h3>
-                    </div>
-                </div>
-
-                <footer class="card-footer">
-                    <p>Estadio Municipal</p>
-                </footer>
-            </article> --}}
-
-
-            {{-- <article class="partido-card {{ $partido->estado }}">
-                <div class="fecha">
-                    {{ \Carbon\Carbon::parse($partido->fecha)->format('d/m/Y') }}
-                </div>
-
-                <div class="equipos">
-                    <span>{{ $partido->local->nombre_pila }}</span>
-                    <strong>
-                        {{ $partido->goles_local ?? '-' }}
-                        :
-                        {{ $partido->goles_visitante ?? '-' }}
-                    </strong>
-                    <span>{{ $partido->visitante->nombre_pila }}</span>
-                </div>
-
-                <div class="info">
-                    <span>{{ ucfirst(str_replace('_', ' ', $partido->estado)) }}</span>
-                    <span>{{ $partido->torneo->categoria }}</span>
-                </div>
-
-            </article> --}}
-
         @empty
             <p>No hay partidos para los filtros seleccionados.</p>
         @endforelse

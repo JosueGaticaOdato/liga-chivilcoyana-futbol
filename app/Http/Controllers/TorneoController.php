@@ -16,6 +16,30 @@ class TorneoController extends Controller
         return view('torneos.index', compact('torneos'));
     }
 
+    public function torneo(Torneo $torneo)
+    {
+        // Tabla de posiciones (Top 5)
+        $tabla = $torneo->equipos()
+            ->orderByDesc('pivot_puntos')
+            ->orderByDesc('pivot_diferencia_goles')
+            ->orderByDesc('pivot_goles_favor')
+            ->limit(5)
+            ->get();
+
+        $proximosPartidos = $torneo->partidos()
+            ->with(['local', 'visitante'])
+            ->orderBy('fecha') //Orden cronologico
+            ->orderBy('hora')
+            ->limit(3)
+            ->get();
+
+        return view('torneos.torneo', compact(
+            'torneo',
+            'tabla',
+            'proximosPartidos'
+        ));
+    }
+
     public function tabla(Torneo $torneo)
     {
         $equipos = $torneo->equipos()

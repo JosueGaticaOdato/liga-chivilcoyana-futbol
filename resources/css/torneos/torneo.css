@@ -1,117 +1,133 @@
-.tabla-responsive {
-    width: 100%;
-    overflow-x: auto; /* Habilita scroll horizontal */
-    -webkit-overflow-scrolling: touch;
-    margin-bottom: 1rem;
-    padding-bottom: 2rem;
+/* ===== TORNEO MAIN ===== */
+.torneo-main{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin: 0 10rem;
+    gap: 2rem;
+}
+
+/* ===== INFORMACION TORNEO ===== */
+.informacion-torneo{
+    grid-column: span 5 / span 5;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1.5rem;
+
+    position: relative;
+    background-color: var(--color-blanco);
+    border-radius: 0.75rem;
+    border-left: 8px solid var(--color-primario);
+    border-bottom: 5px solid transparent;
+    box-shadow: var(--sombra-ultra-suave);
+}
+
+.informacion-torneo article{
 }
 
 /* ===== TABLA DE POSICIONES ===== */
-.tabla-posiciones {
-    background-color: var(--color-bg-body);
-    border-collapse: collapse;
-    min-width: 80%;
-    white-space: nowrap;
-    margin: 0 auto;
-    padding: 2rem;
-    font-family: var(--fuente-primaria);
+.tabla-posiciones-torneo{
+    grid-column: span 4 / span 4;
+    grid-row: span 2 / span 2;
+    grid-row-start: 2;
 }
 
-/* --- HEADER --- */
-.tabla-posiciones thead tr {
-    background-color: var(--color-primario);
-    color: var(--color-letras-secundario);
-    font-size: 1rem;
-    font-weight: 700;
+.tabla-posiciones-torneo .data{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
 }
 
-.tabla-posiciones th {
-    padding: 1rem 0.5rem;
-    text-align: center;
-}
-
-.tabla-posiciones th:nth-child(2) {
-    text-align: left;
-    padding-left: 1rem;
-}
-
-/* --- CUERPO --- */
-.tabla-posiciones tbody tr {
-    border-bottom: 1px solid var(--color-body);
-    transition: background-color 0.2s ease;
-}
-
-.tabla-posiciones tbody tr:nth-child(even) {
-    background-color: var(--color-impares);
-}
-
-/* --- CELDAS --- */
-.tabla-posiciones td {
-    padding: 0.75rem 0.5rem;
-    text-align: center;
-    vertical-align: middle;
-}
-
-/* --- COLUMNA # (POSICIÓN) --- */
-.tabla-posiciones td:first-child {
-    font-weight: 700;
-}
-
-/* --- COLUMNA EQUIPO --- */
-.tabla-posiciones td.equipo {
+.tabla-posiciones-torneo h2{
+    font-size: 1.8rem;
+    padding-bottom: 0.3rem;
+    font-weight: bolder;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1rem;
+}
+
+.icon {
+    font-size: 1.8rem;
+    color: var(--color-primario)
+}
+
+.tabla-posiciones-torneo .tabla-completa{
+    font-size: 1.2rem;
+    color: var(--color-links);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tabla-posiciones{
+    width: 100%;
+}
+
+
+/* ===== SOBRE TORNEO ===== */
+.sobre-torneo{
+    grid-column-start: 5;
+    grid-row-start: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+    background-color: var(--color-blanco);
+    height: auto;
+    border-radius: 1rem;
+}
+
+.sobre-torneo h3{
+    font-size: 1.6rem;
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-secundario);
     text-align: left;
-    padding-left: 1rem;
-    font-size: 1.1rem;
 }
 
-.tabla-posiciones td.equipo img {
-    width: 1.8rem;
-    height: 1.8rem;
-    object-fit: contain;
+.sobre-torneo p{
+    font-size: 1rem;
+    text-align: left;
+    line-height: 1.3rem;
+    color: var(--color-letras-terceario);
 }
 
-/* --- COLUMNA PUNTOS --- */
-.tabla-posiciones .pts {
-    font-weight: 900;
+/* ===== PARTIDOS TORNEO ===== */
+.partidos-torneo{
+    grid-column: span 4 / span 4;
+    grid-row: span 2 / span 2;
+    grid-row-start: 4;
 }
 
-/* ===== RESPONSIVE ===== */
-
-@media (min-width: 900px) {
-    .tabla-posiciones tbody tr:hover {
-        background-color: var(--color-hover);
-    }
+.partidos-torneo .data{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
 }
 
-@media (max-width: 900px) {
-    .tabla-posiciones td.equipo {
-        font-size: 0.9rem;
+.partidos-torneo h2{
+    font-size: 1.8rem;
+    padding-bottom: 0.3rem;
+    font-weight: bolder;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
 
-    }
-    .tabla-posiciones td {
-        padding: 0.75rem 1rem;
-    }
+.partidos-torneo .fixture-completo{
+    font-size: 1.2rem;
+    color: var(--color-links);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
 
-    /* Fijar segunda columna para scroll en movil (Equipo) */
-    .tabla-posiciones th:nth-child(2),
-    .tabla-posiciones td.equipo {
-        position: sticky;
-        left: 0;
-        z-index: 2;
-    }
-
-    .tabla-posiciones th:nth-child(2) {
-        background-color: var(--color-primario);
-    }
-
-    .tabla-posiciones tbody tr:nth-child(odd) td.equipo {
-        background-color: var(--color-blanco);
-    }
-
-    .tabla-posiciones tbody tr:nth-child(even) td.equipo {
-        background-color: var(--color-impares);
-    }
+.lista-partidos-torneo{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    gap: 1.2rem;
+    padding-bottom: 2rem;
 }

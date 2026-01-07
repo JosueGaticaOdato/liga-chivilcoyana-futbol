@@ -27,8 +27,11 @@ Route::get('/equipos/{equipo:slug}', [EquipoController::class, 'show'])
 Route::get('/torneos', [TorneoController::class, 'index'])
     ->name('torneos.index');
 
-Route::get('/torneos/{torneo:slug}', [TorneoController::class, 'tabla'])
-    ->name('torneos.tabla');
+Route::get('/torneos/{torneo:slug}', [TorneoController::class, 'torneo'])
+    ->name('torneos.torneo');
+
+Route::get('/torneos/{torneo:slug}/tabla', [TorneoController::class, 'tabla'])
+->name('torneos.tabla');
 
 Route::get('/torneos/{torneo:slug}/partidos', [TorneoController::class, 'partidos'])
 ->name('torneos.partidos');

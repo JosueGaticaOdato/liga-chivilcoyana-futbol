@@ -1,0 +1,2 @@
+- Wrapper
+- Arreglar header como esta en el diseño

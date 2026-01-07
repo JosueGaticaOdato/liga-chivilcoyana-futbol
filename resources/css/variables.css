@@ -69,6 +69,9 @@
     --color-impares:#f9fafb;
     --color-hover: #eff6ff;
 
+    /* Color links*/
+    --color-links: rgb(97,174,218);
+
     /* ======================================================
        TIPOGRAFÍA
     ====================================================== */
@@ -82,4 +85,20 @@
     font-size: 16px;
 }
 
-@custom-media --tablet (max-width: 900px);
+/* Media queries (Como trabaja tailwind)
+
+(Sin prefijo)	Estilos base (fuera de media query)	Aplica a todos, empezando por el móvil.
+
+@media (min-width: 640px) { ... }
+Aplica de tablets pequeñas hacia arriba.
+
+@media (min-width: 768px) { ... }
+Aplica de tablets/laptops hacia arriba.
+
+@media (min-width: 1024px) { ... }
+Aplica de monitores de escritorio hacia arriba.
+
+@media (min-width: 1280px) { ... }
+Aplica de monitores grandes hacia arriba.
+
+*/
