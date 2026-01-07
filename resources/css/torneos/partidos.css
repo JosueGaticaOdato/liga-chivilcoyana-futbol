@@ -1,7 +1,8 @@
 .partidos-container {
-    max-width: 900px;
+    max-width: 4141240px;
     margin: 2rem auto;
-    padding: 0 1rem;
+    padding: 0 213rem;
+    background-color: red;
 }
 
 .partidos-header {
