@@ -4,8 +4,6 @@
 
 @push('styles')
     @vite('resources/css/torneos/torneo.css')
-    @vite('resources/css/torneos/tabla.css')
-    @vite('resources/css/partidos/index.css')
 @endpush
 
 @section('content')
@@ -22,7 +20,7 @@
                 </span>
                 <div>
                     <h4>Estado</h4>
-                    <p>{{ $torneo->estado }}</p>
+                    <p class="barra-status status-{{ $torneo->estado }}">{{ $torneo->estado == 'activo' ? 'En Curso' : 'Finalizado' }}</p>
                 </div>
             </article>
             <article>
@@ -30,9 +28,8 @@
                     <ion-icon name="people-outline" class="material-icons"></ion-icon>
                 </span>
                 <div>
-
                     <h4>Equipos</h4>
-                    <p>200 equipos</p>
+                    <p>{{ $cantidadEquipos }} equipos</p>
                 </div>
             </article>
             <article>
@@ -41,9 +38,20 @@
                 </span>
                 <div>
                     <h4>Inicio</h4>
-                    <p>{{ $torneo->fecha_inicio }}</p>
+                    <p>{{ $torneo->fecha_inicio->translatedFormat('d \\d\\e F \\d\\e Y') }}</p>
                 </div>
             </article>
+            @isset($torneo->fecha_fin)
+            <article>
+                <span class="card-icon">
+                    <ion-icon name="calendar-outline" class="material-icons"></ion-icon>
+                </span>
+                <div>
+                    <h4>Final</h4>
+                    <p>{{ $torneo->fecha_fin->translatedFormat('d \\d\\e F \\d\\e Y') }}</p>
+                </div>
+            </article>
+            @endisset
         </section>
 
         <section class="tabla-posiciones-torneo">

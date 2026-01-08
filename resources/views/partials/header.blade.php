@@ -1,5 +1,5 @@
 <header class="header">
-    <h1 class="header-titulo"><a href="{{ route('inicio') }}"><img class="header-logo" src="{{ asset('images/logo.png') }}"
+    <h1 class="header-titulo"><a href="{{ route('home') }}"><img class="header-logo" src="{{ asset('images/logo.png') }}"
                 alt="Logo Liga Chivilcoyana de Futbol"></a></h1>
 
     <nav class="header-navegacion">
@@ -19,5 +19,5 @@
         </ul>
     </nav>
 
-    <a class="header-login" href="{{ route('inicio') }}">Iniciar sesion</a>
+    <a class="header-login" href="{{ route('home') }}">Iniciar sesion</a>
 </header>

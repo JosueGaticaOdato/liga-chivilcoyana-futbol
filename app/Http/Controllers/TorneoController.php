@@ -33,10 +33,13 @@ class TorneoController extends Controller
             ->limit(3)
             ->get();
 
+        $cantidadEquipos = $torneo->equipos()->count();
+
         return view('torneos.torneo', compact(
             'torneo',
             'tabla',
-            'proximosPartidos'
+            'proximosPartidos',
+            'cantidadEquipos'
         ));
     }
 

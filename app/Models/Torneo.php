@@ -17,6 +17,11 @@ class Torneo extends Model
         'fecha_fin',
     ];
 
+    protected $casts = [
+        'fecha_inicio' => 'date',
+        'fecha_fin' => 'date',
+    ];
+
     public function equipos()
     {
         return $this->belongsToMany(Equipo::class)

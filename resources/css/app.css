@@ -116,3 +116,21 @@
         text-align: center;
     }
 }
+
+
+/* Estructura First Mobile:
+
+    base = mobile
+.card { ... }
+
+    tablet
+@media (min-width: 768px) {
+  .card { ... }
+}
+
+    desktop
+@media (min-width: 1024px) {
+  .card { ... }
+}
+
+*/

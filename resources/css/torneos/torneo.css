@@ -41,6 +41,30 @@
     font-weight: bolder;
 }
 
+.barra-status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.status-activo::before {
+    background-color: var(--color-success);
+    color: var(--color-blanco);
+    content:"";
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 9999px;
+}
+
+.status-finalizado::before {
+    background-color: var(--color-error);
+    color: var(--color-blanco);
+    content:"";
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 9999px;
+}
 
 /* ===== TABLA DE POSICIONES ===== */
 .tabla-posiciones-torneo{
