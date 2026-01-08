@@ -38,9 +38,10 @@
     height: 16rem;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
+    align-items: center;
 
+    text-align: center;
+    flex-direction: column;
 }
 
 .header-main::before {
@@ -74,7 +75,7 @@
 .header-main h1 {
     color: var(--color-letras-secundario);
     font-weight: bold;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
 
     filter: var(--sombra-header);
     letter-spacing: -0.025em;
@@ -111,12 +112,14 @@
 
 /* ===== RESPONSIVE ===== */
 
-@media (max-width: 900px) {
+@media (min-width: 1024px) {
     .header-main{
-        text-align: center;
+        align-items: flex-start;
+    }
+    .header-main h1{
+        font-size: 3.5rem;
     }
 }
-
 
 /* Estructura First Mobile:
 

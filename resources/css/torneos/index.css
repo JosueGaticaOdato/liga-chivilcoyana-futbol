@@ -1,14 +1,5 @@
 .torneos-section{
-    margin: 0 10rem;
-}
-
-.torneos-section h2{
-    font-size: 1.8rem;
-    padding-bottom: 0.3rem;
-}
-
-.torneos-section p{
-    font-size: 1.1rem;
+    margin: 0 1rem;
 }
 
 .torneos-container{
@@ -78,13 +69,20 @@
 }
 
 .card-subtitle {
-    font-size: 0.875rem;
+    font-size: 1.1rem;
     color: var(--color-letras-primario);
 }
 
 /* ===== RESPONSIVE ===== */
 
-@media (min-width: 900px) {
+/* Desktop */
+@media (min-width: 1024px) {
+
+    .torneos-section{
+        margin: 0 10rem;
+    }
+
+
     .torneo-card:hover {
         box-shadow: var(--sombra-suave);
         border-bottom-color: var(--color-primario);
