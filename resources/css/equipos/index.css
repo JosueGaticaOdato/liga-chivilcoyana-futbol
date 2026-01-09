@@ -2,10 +2,9 @@
 
 .equipos-container {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0,1fr));
-    gap: 1.5rem;
-    padding: 0 1rem;
-    padding-bottom: 1rem;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    padding: 0 1rem 1rem;
 }
 
 /* ===== CARD EQUIPO ===== */
@@ -13,25 +12,24 @@
 .equipo-card {
     display: flex;
     align-items: center;
-    height: 7rem;
+    height: 6rem;
     gap: 1rem;
     overflow: hidden;
 
     background-color: var(--color-blanco);
-    /* border: 1.5px solid var(--color-primario); */
     border-radius: 0.5rem;
 
-    border-left: 8px solid var(--color-primario);
+    border-left: 6px solid var(--color-primario);
     border-bottom: 5px solid transparent;
     box-shadow: var(--sombra-ultra-suave);
 
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 /* Escudo */
 .equipo-escudo {
-    width: 10rem;
-    height: 6.5rem;
+    width: 5.5rem;
+    height: 4.5rem;
 }
 
 .equipo-escudo img {
@@ -43,37 +41,65 @@
 /* Nombre */
 .equipo-nombre {
     font-family: var(--fuente-tercearia);
-    font-size: 2rem;
+    font-size: 1.3rem;
     color: var(--color-letras-primario);
 }
 
-/* ===== RESPONSIVE ===== */
+/* ===================================================
+   RESPONSIVE
+======================================================
+*/
 
-@media (min-width: 900px) {
+/* ===================================================
+   TABLET (>= 768px)
+====================================================== */
+
+@media (min-width: 768px) {
+
+    .equipos-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+    }
+
+    .equipo-card {
+        height: 7rem;
+        border-left-width: 8px;
+    }
+
+    .equipo-escudo {
+        width: 8rem;
+        height: 6rem;
+    }
+
+    .equipo-nombre {
+        font-size: 1.6rem;
+    }
+}
+
+/* ===================================================
+   DESKTOP (>= 1024px)
+====================================================== */
+
+@media (min-width: 1024px) {
+
+    .equipos-container {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .equipo-card {
+        transition: transform 0.3s ease,
+                    box-shadow 0.3s ease,
+                    border-color 0.3s ease;
+    }
+
     .equipo-card:hover {
-        transform: translateY(-3px);
+        transform: translateY(-5px);
         box-shadow: var(--sombra-suave);
         border-bottom-color: var(--color-primario);
-        transform: translateY(-5px);
     }
 
-    .equipo-card:hover .equipo-escudo{
+    .equipo-card:hover .equipo-escudo {
         transform: scale(1.2);
         transition: transform 0.35s ease-in-out;
-    }
-}
-
-@media (max-width: 900px) {
-    .equipos-header{
-        text-align: center;
-    }
-    .equipos-container {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px){
-    .equipo-nombre{
-        font-size: 1.3rem;
     }
 }

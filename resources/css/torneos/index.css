@@ -1,8 +1,8 @@
-.torneos-section{
+.torneos-section {
     margin: 0 1rem;
 }
 
-.torneos-container{
+.torneos-container {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -10,7 +10,8 @@
 }
 
 /* ===== CONTENEDOR PRINCIPAL CARD ===== */
-.torneo-card{
+
+.torneo-card {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -24,10 +25,10 @@
     box-shadow: var(--sombra-ultra-suave);
 
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.card-contenedor{
+.card-contenedor {
     display: flex;
     align-items: flex-start;
     gap: 1rem;
@@ -35,7 +36,8 @@
 }
 
 /* Textos */
-.card-details{
+
+.card-details {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -61,27 +63,54 @@
 }
 
 .card-title {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: 700;
     color: var(--color-letras-primario);
     padding-bottom: 0.3rem;
-    line-height: 1.5rem;
+    line-height: 1.4rem;
 }
 
 .card-subtitle {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--color-letras-primario);
 }
 
-/* ===== RESPONSIVE ===== */
+/* ===================================================
+   RESPONSIVE
+======================================================
+*/
 
-/* Desktop */
+/* ===================================================
+   TABLET (>= 768px)
+====================================================== */
+
+@media (min-width: 768px) {
+
+    .card-title {
+        font-size: 1.25rem;
+    }
+
+    .card-subtitle {
+        font-size: 1.1rem;
+    }
+}
+
+
+/* ===================================================
+   DESKTOP (>= 1024px)
+====================================================== */
+
 @media (min-width: 1024px) {
 
-    .torneos-section{
+    .torneos-section {
         margin: 0 10rem;
     }
 
+    .torneo-card {
+        transition: transform 0.3s ease,
+                    box-shadow 0.3s ease,
+                    border-color 0.3s ease;
+    }
 
     .torneo-card:hover {
         box-shadow: var(--sombra-suave);

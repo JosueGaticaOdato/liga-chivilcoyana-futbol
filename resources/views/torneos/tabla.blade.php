@@ -13,9 +13,12 @@
         <p>Tabla de posiciones</p>
     </header>
 
-    <section class="tabla-responsive">
+    <section class="tabla-section">
         {{-- <h2>Tabla de Posiciones</h2> --}}
-        <x-tabla-posiciones :equipos="$equipos" />
+        <div class="tabla-scroll">
+            <x-tabla-posiciones :equipos="$equipos" />
+        </div>
+
         <div class="informacion-torneo-tabla">
             <article class="criterio">
                 <h3>Criterio de clasificacion</h3>

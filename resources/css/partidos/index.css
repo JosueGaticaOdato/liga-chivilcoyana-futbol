@@ -2,11 +2,11 @@
 
 .filtros-partidos {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 0.5fr;
+    grid-template-columns: 1fr;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
     width: 100%;
-    padding: 0 4rem;
+    padding: 1rem;
     border-radius: 1rem;
 }
 
@@ -15,7 +15,7 @@
     flex-direction: column;
     gap: 0.5rem;
     width: 100%;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
 }
 
@@ -31,13 +31,12 @@
     border: 1px solid var(--color-cuaternario);
 }
 
-.filtros-partidos button{
+.filtros-partidos button {
     background-color: var(--color-primario);
     color: var(--color-letras-secundario);
     font-size: 1.1rem;
     font-weight: bolder;
-    width: 50%;
-    margin: 0 auto;
+    width: 100%;
     border: none;
 }
 
@@ -45,25 +44,51 @@
 
 .lista-partidos {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     justify-items: center;
     gap: 1.2rem;
     padding: 2rem;
 }
 
-/* ===== RESPONSIVE ===== */
+/* ===================================================
+   RESPONSIVE
+======================================================
+*/
 
-@media (max-width: 1024px) {
+/* ===================================================
+   TABLET (>= 768px)
+====================================================== */
+
+@media (min-width: 768px) {
+
+    .filtros-partidos {
+        padding: 0 2rem;
+        gap: 2rem;
+    }
+
     .lista-partidos {
         grid-template-columns: repeat(2, 1fr);
+        padding: 2rem;
     }
 }
 
-@media (max-width: 900px) {
-    .lista-partidos {
-        grid-template-columns: 1fr; /* 1 columna en celular */
-    }
+/* ===================================================
+   DESKTOP (>= 1024px)
+====================================================== */
+
+@media (min-width: 1024px) {
+
     .filtros-partidos {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr 1fr 0.5fr;
+        padding: 0 4rem;
+    }
+
+    .filtros-partidos button {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    .lista-partidos {
+        grid-template-columns: repeat(3, 1fr);
     }
 }

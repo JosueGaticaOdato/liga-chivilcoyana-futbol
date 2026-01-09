@@ -20,7 +20,8 @@
                 </span>
                 <div>
                     <h4>Estado</h4>
-                    <p class="barra-status status-{{ $torneo->estado }}">{{ $torneo->estado == 'activo' ? 'En Curso' : 'Finalizado' }}</p>
+                    <p class="barra-status status-{{ $torneo->estado }}">
+                        {{ $torneo->estado == 'activo' ? 'En Curso' : 'Finalizado' }}</p>
                 </div>
             </article>
             <article>
@@ -42,15 +43,15 @@
                 </div>
             </article>
             @isset($torneo->fecha_fin)
-            <article>
-                <span class="card-icon">
-                    <ion-icon name="calendar-outline" class="material-icons"></ion-icon>
-                </span>
-                <div>
-                    <h4>Final</h4>
-                    <p>{{ $torneo->fecha_fin->translatedFormat('d \\d\\e F \\d\\e Y') }}</p>
-                </div>
-            </article>
+                <article>
+                    <span class="card-icon">
+                        <ion-icon name="calendar-outline" class="material-icons"></ion-icon>
+                    </span>
+                    <div>
+                        <h4>Final</h4>
+                        <p>{{ $torneo->fecha_fin->translatedFormat('d \\d\\e F \\d\\e Y') }}</p>
+                    </div>
+                </article>
             @endisset
         </section>
 
@@ -62,7 +63,7 @@
                 <a href="{{ route('torneos.tabla', $torneo) }}" class="tabla-completa">Ver tabla completa <ion-icon
                         name="arrow-forward-outline"></ion-icon></a>
             </div>
-            <x-tabla-posiciones :equipos="$tabla" limit="5" />
+            <x-tabla-posiciones :equipos="$tabla" limit="5" variant="simple" />
         </section>
 
         <section class="sobre-torneo">

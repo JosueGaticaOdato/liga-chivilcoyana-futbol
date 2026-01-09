@@ -13,12 +13,12 @@
 .tabla-posiciones thead tr {
     background-color: var(--color-primario);
     color: var(--color-letras-secundario);
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 700;
 }
 
 .tabla-posiciones th {
-    padding: 1rem 0.5rem;
+    padding: 0.75rem 0.5rem;
     text-align: center;
 }
 
@@ -31,15 +31,9 @@
     padding-left: 1rem;
 }
 
-.tabla-posiciones th:nth-child(3) {
-    font-size: 1.1rem;
-    font-weight: bolder;
-}
-
 /* --- CUERPO --- */
 .tabla-posiciones tbody tr {
     border-bottom: 1px solid var(--color-body);
-    transition: background-color 0.2s ease;
 }
 
 .tabla-posiciones tbody tr:nth-child(even) {
@@ -47,22 +41,23 @@
 }
 
 /* --- CELDAS --- */
-.tabla-posiciones tbody tr:nth-child(-n+8) td:nth-child(1) {
-    border-left: 4px solid var(--color-success);
-}
-
 .tabla-posiciones td {
-    padding: 0.75rem 0.5rem;
+    padding: 0.75rem 1rem;
     text-align: center;
     vertical-align: middle;
 }
 
-/* --- COLUMNA # (POSICIÓN) --- */
+/* Top posiciones */
+.tabla-posiciones tbody tr:nth-child(-n+8) td:nth-child(1) {
+    border-left: 4px solid var(--color-success);
+}
+
+/* Posición */
 .tabla-posiciones td:first-child {
     font-weight: 700;
 }
 
-/* --- COLUMNA EQUIPO --- */
+/* Equipo (sticky) */
 .tabla-posiciones td.equipo {
     display: flex;
     flex-direction: row;
@@ -70,54 +65,86 @@
     gap: 0.75rem;
     text-align: left;
     padding-left: 1rem;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
+
+    position: sticky;
+    left: 0;
+    z-index: 2;
 }
 
 .tabla-posiciones td.equipo img {
-    width: 1.8rem;
-    height: 1.8rem;
+    width: 1.6rem;
+    height: 1.6rem;
     object-fit: contain;
 }
 
-/* --- COLUMNA PUNTOS --- */
+/* Sticky header equipo */
+.tabla-posiciones th:nth-child(2) {
+    position: sticky;
+    left: 0;
+    z-index: 3;
+    background-color: var(--color-primario);
+}
+
+/* Colores segun fila */
+.tabla-posiciones tbody tr:nth-child(odd) td.equipo {
+    background-color: var(--color-blanco);
+}
+
+.tabla-posiciones tbody tr:nth-child(even) td.equipo {
+    background-color: var(--color-impares);
+}
+
+/* Puntos */
 .tabla-posiciones .pts {
     font-weight: 900;
 }
 
-/* ===== RESPONSIVE ===== */
+/* ===================================================
+   RESPONSIVE
+======================================================
+*/
 
-@media (min-width: 900px) {
-    .tabla-posiciones tbody tr:hover {
-        background-color: var(--color-hover);
+/* ===================================================
+   TABLET (>= 768px)
+====================================================== */
+
+@media (min-width: 768px) {
+
+    .tabla-posiciones thead tr {
+        font-size: 1rem;
+    }
+
+    .tabla-posiciones td.equipo {
+        font-size: 1rem;
     }
 }
 
-@media (max-width: 900px) {
+/* ===================================================
+   DESKTOP (>= 1024px)
+====================================================== */
+
+@media (min-width: 1024px) {
+
+    .tabla-posiciones thead tr {
+        font-size: 1.1rem;
+    }
+
     .tabla-posiciones td.equipo {
-        font-size: 0.9rem;
-
-    }
-    .tabla-posiciones td {
-        padding: 0.75rem 1rem;
+        font-size: 1.1rem;
     }
 
-    /* Fijar segunda columna para scroll en movil (Equipo) */
-    .tabla-posiciones th:nth-child(2),
-    .tabla-posiciones td.equipo {
-        position: sticky;
-        left: 0;
-        z-index: 2;
+    .tabla-posiciones td.equipo img {
+        width: 1.8rem;
+        height: 1.8rem;
     }
 
+    /* .tabla-posiciones tbody tr:hover {
+        background-color: var(--color-hover);
+    } */
+
+    .tabla-posiciones td.equipo,
     .tabla-posiciones th:nth-child(2) {
-        background-color: var(--color-primario);
-    }
-
-    .tabla-posiciones tbody tr:nth-child(odd) td.equipo {
-        background-color: var(--color-blanco);
-    }
-
-    .tabla-posiciones tbody tr:nth-child(even) td.equipo {
-        background-color: var(--color-impares);
+        position: static;
     }
 }

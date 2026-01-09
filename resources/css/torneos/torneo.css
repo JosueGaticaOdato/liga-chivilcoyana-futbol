@@ -1,20 +1,18 @@
 /* ===== TORNEO MAIN ===== */
-.torneo-main{
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    margin: 0 10rem;
+.torneo-main {
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
+    margin: 0 1rem;
 }
 
 /* ===== INFORMACION TORNEO ===== */
-.informacion-torneo{
-    grid-column: span 5 / span 5;
+.informacion-torneo {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
     padding: 1.5rem;
 
-    position: relative;
     background-color: var(--color-blanco);
     border-radius: 0.75rem;
     border-left: 8px solid var(--color-primario);
@@ -22,7 +20,7 @@
     box-shadow: var(--sombra-ultra-suave);
 }
 
-.informacion-torneo article{
+.informacion-torneo article {
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -30,145 +28,203 @@
 
 .informacion-torneo article h4 {
     text-transform: uppercase;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: bold;
     color: var(--color-letras-cuaternario);
     padding-bottom: 0.3rem;
 }
 
-.informacion-torneo article p{
-    font-size: 1.1rem;
+.informacion-torneo article p {
+    font-size: 1rem;
     font-weight: bolder;
 }
 
+/* Estado */
 .barra-status {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 0.2rem;
+    gap: 0.4rem;
+}
+
+.status-activo::before,
+.status-finalizado::before {
+    content: "";
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 9999px;
 }
 
 .status-activo::before {
     background-color: var(--color-success);
-    color: var(--color-blanco);
-    content:"";
-    width: 0.8rem;
-    height: 0.8rem;
-    border-radius: 9999px;
 }
 
 .status-finalizado::before {
     background-color: var(--color-error);
-    color: var(--color-blanco);
-    content:"";
-    width: 0.8rem;
-    height: 0.8rem;
-    border-radius: 9999px;
 }
 
 /* ===== TABLA DE POSICIONES ===== */
-.tabla-posiciones-torneo{
-    grid-column: span 4 / span 4;
-    grid-row: span 2 / span 2;
-    grid-row-start: 2;
+
+.tabla-posiciones-torneo {
+    width: 100%;
 }
 
-.tabla-posiciones-torneo .data{
+.tabla-posiciones-torneo .data {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
 }
 
-.tabla-posiciones-torneo h2{
-    font-size: 1.8rem;
-    padding-bottom: 0.3rem;
+.tabla-posiciones-torneo h2 {
+    font-size: 1.4rem;
     font-weight: bolder;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.8rem;
 }
 
 .icon {
-    font-size: 1.8rem;
-    color: var(--color-primario)
+    font-size: 1.5rem;
+    color: var(--color-primario);
 }
 
-.tabla-posiciones-torneo .tabla-completa{
-    font-size: 1.2rem;
+.tabla-posiciones-torneo .tabla-completa {
+    font-size: 1rem;
     color: var(--color-links);
     display: flex;
-    align-items: center;
     gap: 0.5rem;
 }
 
-.tabla-posiciones{
+.tabla-posiciones {
     width: 100%;
 }
 
-
 /* ===== SOBRE TORNEO ===== */
-.sobre-torneo{
-    grid-column-start: 5;
-    grid-row-start: 2;
+
+.sobre-torneo {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
     padding: 1rem;
+
     background-color: var(--color-blanco);
-    height: auto;
     border-radius: 1rem;
 }
 
-.sobre-torneo h3{
-    font-size: 1.6rem;
-    padding: 1rem;
+.sobre-torneo h3 {
+    font-size: 1.4rem;
+    padding-bottom: 0.8rem;
     border-bottom: 1px solid var(--color-secundario);
     text-align: left;
 }
 
-.sobre-torneo p{
-    font-size: 1rem;
-    text-align: left;
+.sobre-torneo p {
+    font-size: 0.95rem;
     line-height: 1.3rem;
     color: var(--color-letras-terceario);
 }
 
 /* ===== PARTIDOS TORNEO ===== */
-.partidos-torneo{
-    grid-column: span 4 / span 4;
-    grid-row: span 2 / span 2;
-    grid-row-start: 4;
+
+.partidos-torneo {
+    width: 100%;
 }
 
-.partidos-torneo .data{
+.partidos-torneo .data {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
 }
 
-.partidos-torneo h2{
-    font-size: 1.8rem;
-    padding-bottom: 0.3rem;
+.partidos-torneo h2 {
+    font-size: 1.4rem;
     font-weight: bolder;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.8rem;
 }
 
-.partidos-torneo .fixture-completo{
-    font-size: 1.2rem;
+.partidos-torneo .fixture-completo {
+    font-size: 1rem;
     color: var(--color-links);
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
-.lista-partidos-torneo{
+.lista-partidos-torneo {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr; /* Mobile: 1 columna */
     justify-items: center;
     gap: 1.2rem;
     padding-bottom: 2rem;
+}
+
+/* ===================================================
+   RESPONSIVE
+======================================================
+*/
+
+/* ===================================================
+   TABLET (>= 768px)
+====================================================== */
+
+@media (min-width: 768px) {
+
+    .lista-partidos-torneo {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .informacion-torneo {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .tabla-posiciones-torneo h2,
+    .partidos-torneo h2 {
+        font-size: 1.6rem;
+    }
+}
+
+
+/* ===================================================
+   DESKTOP (>= 1024px)
+====================================================== */
+
+@media (min-width: 1024px) {
+
+    .torneo-main {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 2rem;
+        margin: 0 10rem;
+    }
+
+    .informacion-torneo {
+        grid-column: span 5;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .tabla-posiciones-torneo {
+        grid-column: span 4;
+        grid-row: span 2;
+        grid-row-start: 2;
+    }
+
+    .sobre-torneo {
+        grid-column-start: 5;
+        grid-row-start: 2;
+    }
+
+    .partidos-torneo {
+        grid-column: span 4;
+        grid-row: span 2;
+        grid-row-start: 4;
+    }
+
+    .lista-partidos-torneo {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
