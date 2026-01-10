@@ -9,10 +9,11 @@ class Partido extends Model
 {
     protected $fillable = [
         'torneo_id',
-        'fecha',
-        'hora',
+        'fecha_id',
         'equipo_local_id',
         'equipo_visitante_id',
+        'fecha',
+        'hora',
         'goles_local',
         'goles_visitante',
         'estado',
@@ -59,5 +60,10 @@ class Partido extends Model
         return strtoupper(
             $this->fecha_hora->translatedFormat('D d M | H:i')
         );
+    }
+
+    public function fecha()
+    {
+        return $this->belongsTo(Fecha::class);
     }
 }

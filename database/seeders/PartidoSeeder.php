@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Fecha;
 use App\Services\TablaPosicionesService;
 use Illuminate\Database\Seeder;
 use App\Models\Partido;
@@ -23,7 +24,9 @@ class PartidoSeeder extends Seeder
         $equipos = Equipo::pluck('id')->toArray();
 
         $partidos = [
+            // FECHA 1
             [
+                'fecha_numero' => 1,
                 'local' => 'Independiente',
                 'visitante' => 'Gimnasia',
                 'fecha' => '2024-03-10',
@@ -33,6 +36,7 @@ class PartidoSeeder extends Seeder
                 'estado' => 'finalizado',
             ],
             [
+                'fecha_numero' => 1,
                 'local' => 'Alsina',
                 'visitante' => '22 de Octubre',
                 'fecha' => '2024-03-10',
@@ -41,7 +45,10 @@ class PartidoSeeder extends Seeder
                 'goles_visitante' => 0,
                 'estado' => 'finalizado',
             ],
+
+            // FECHA 2
             [
+                'fecha_numero' => 2,
                 'local' => 'Gimnasia',
                 'visitante' => 'Alsina',
                 'fecha' => '2024-03-17',
@@ -51,6 +58,7 @@ class PartidoSeeder extends Seeder
                 'estado' => 'programado',
             ],
             [
+                'fecha_numero' => 2,
                 'local' => '22 de Octubre',
                 'visitante' => 'Independiente',
                 'fecha' => '2024-03-17',
@@ -63,15 +71,20 @@ class PartidoSeeder extends Seeder
 
         foreach ($partidos as $data) {
 
+            $fecha = Fecha::where('torneo_id', $torneo->id)
+                ->where('numero', $data['fecha_numero'])
+                ->first();
+
             $equipoLocal = Equipo::where('nombre_pila', $data['local'])->first();
             $equipoVisitante = Equipo::where('nombre_pila', $data['visitante'])->first();
 
-            if (!$equipoLocal || !$equipoVisitante) {
+            if (!$fecha || !$equipoLocal || !$equipoVisitante) {
                 continue;
             }
 
             Partido::create([
                 'torneo_id' => $torneo->id,
+                'fecha_id' => $fecha->id,
                 'equipo_local_id' => $equipoLocal->id,
                 'equipo_visitante_id' => $equipoVisitante->id,
                 'fecha' => $data['fecha'],

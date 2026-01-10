@@ -73,6 +73,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .tabla-posiciones-torneo h2 {
@@ -93,6 +95,7 @@
     color: var(--color-links);
     display: flex;
     gap: 0.5rem;
+    align-items: center;
 }
 
 .tabla-posiciones {
@@ -135,6 +138,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .partidos-torneo h2 {
@@ -184,6 +189,11 @@
     .tabla-posiciones-torneo h2,
     .partidos-torneo h2 {
         font-size: 1.6rem;
+    }
+
+    .tabla-posiciones-torneo .data, .partidos-torneo .data {
+        flex-direction: row;
+        gap: 0;
     }
 }
 

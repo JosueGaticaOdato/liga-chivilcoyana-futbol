@@ -74,7 +74,7 @@
         <section class="partidos-torneo">
             <div class="data">
                 <h2> <ion-icon name="football-outline" class="icon"></ion-icon> Partidos</h2>
-                <a href="#" class="fixture-completo">Ver fixture completo <ion-icon
+                <a href="{{ route('torneos.fixture', $torneo->slug) }}" class="fixture-completo">Ver fixture completo <ion-icon
                         name="arrow-forward-outline"></ion-icon></a>
             </div>
 

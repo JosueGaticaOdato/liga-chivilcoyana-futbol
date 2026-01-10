@@ -85,7 +85,7 @@
 .header-main p {
     color: var(--color-letras-secundario);
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 1.5rem;
 
     filter: var(--sombra-header);
     letter-spacing: -0.025em;
@@ -118,6 +118,9 @@
 @media (min-width: 768px) {
     .header-main h1{
         font-size: 3.5rem;
+    }
+    .header-main p {
+        font-size: 2.5rem;
     }
 }
 

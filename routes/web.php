@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 
 /* ===== HOME ===== */
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 /* ===== EQUIPOS ===== */
@@ -25,10 +26,15 @@ Route::get('/torneos/{torneo:slug}', [TorneoController::class, 'torneo'])
     ->name('torneos.torneo');
 
 Route::get('/torneos/{torneo:slug}/tabla', [TorneoController::class, 'tabla'])
-->name('torneos.tabla');
+    ->name('torneos.tabla');
 
 Route::get('/torneos/{torneo:slug}/partidos', [TorneoController::class, 'partidos'])
-->name('torneos.partidos');
+    ->name('torneos.partidos');
+
+Route::get(
+    '/torneos/{torneo:slug}/fixture/{fecha?}',
+    [TorneoController::class, 'fixture']
+)->name('torneos.fixture');
 
 /* ===== PARTIDOS ===== */
 

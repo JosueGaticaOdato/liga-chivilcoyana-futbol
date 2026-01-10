@@ -14,8 +14,9 @@
                 <th>GC</th>
                 <th>DG</th>
             @else
-                <th>PJ</th>
                 <th>PTS</th>
+                <th>PJ</th>
+                <th>DG</th>
             @endif
         </tr>
     </thead>
@@ -40,8 +41,9 @@
                     <td>{{ $equipo->pivot->goles_contra }}</td>
                     <td>{{ $equipo->pivot->diferencia_goles }}</td>
                 @else
-                    <td>{{ $equipo->pivot->partidos_jugados }}</td>
                     <td class="pts">{{ $equipo->pivot->puntos }}</td>
+                    <td>{{ $equipo->pivot->partidos_jugados }}</td>
+                    <td>{{ $equipo->pivot->diferencia_goles }}</td>
                 @endif
             </tr>
         @endforeach

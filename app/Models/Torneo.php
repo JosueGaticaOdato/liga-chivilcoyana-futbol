@@ -43,4 +43,9 @@ class Torneo extends Model
     {
         return $this->hasMany(Partido::class);
     }
+
+    public function fechas()
+    {
+        return $this->hasMany(Fecha::class);
+    }
 }

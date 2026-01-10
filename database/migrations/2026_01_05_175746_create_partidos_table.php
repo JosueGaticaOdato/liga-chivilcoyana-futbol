@@ -18,6 +18,10 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnDelete();
 
+            $table->foreignId('fecha_id')
+                ->constrained('fechas')
+                ->cascadeOnDelete();
+
             $table->date('fecha');
             $table->time('hora')->nullable();
 

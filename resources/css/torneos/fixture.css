@@ -1,0 +1,101 @@
+.fixture-fechas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    width: 100%;
+
+    background-color: var(--color-blanco);
+    border-radius: 0.75rem;
+    border-bottom: 5px solid transparent;
+    box-shadow: var(--sombra-suave);
+}
+
+.fixture-fechas h2{
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.fechas{
+    display: flex;
+    gap: 1rem;
+}
+
+.fechas a{
+    padding: 0.8rem 1.2rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-letras-terceario);
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--color-letras-primario);
+    box-shadow: var(--sombra-ultra-suave);
+}
+
+.fechas a.activa{
+    color: var(--color-letras-secundario);
+    background-color: var(--color-primario);
+}
+
+.fixture-partidos{
+    padding: 2rem 0;
+}
+
+.fixture-partidos>h3{
+    font-size: 1.4rem;
+    font-weight: bolder;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.lista-fixture-partidos{
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 1.2rem;
+    padding: 2rem;
+}
+
+/* ===================================================
+   RESPONSIVE
+======================================================
+*/
+
+/* ===================================================
+   TABLET (>= 768px)
+====================================================== */
+
+@media (min-width: 768px) {
+    .fixture-partidos>h3{
+        font-size: 1.6rem;
+    }
+    .lista-fixture-partidos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ===================================================
+   DESKTOP (>= 1024px)
+====================================================== */
+
+@media (min-width: 1024px) {
+
+    .fixture-partidos>h3{
+        text-align: left;
+    }
+
+    .lista-fixture-partidos {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .fechas a{
+        transition: color 0.3s ease,
+                    background 0.3s ease;
+    }
+
+    .fechas a:hover{
+        color: var(--color-letras-secundario);
+        background-color: var(--color-primario);
+    }
+}
