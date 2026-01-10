@@ -2,22 +2,24 @@
 
 @section('title', 'Liga Chivilcoyana de Futbol')
 
-@section('content')
-    <h1>PAGINA DE INICIO</h1>
+@push('styles')
+    @vite('resources/css/home/index.css')
+@endpush
 
-    <section>
-        <h2>Carrousel</h2>
+@section('content')
+    <section class="carrusel">
+        <h1>PAGINA DE INICIO</h1>
     </section>
 
-    <section>
+    <section class="tabla-posiciones">
         <h2>Tabla de posiciones</h2>
     </section>
 
-    <section>
+    <section class="proximos-partidos">
         <h2>Proximos Partidos</h2>
     </section>
 
-    <section>
+    <section class="noticias-recientes">
         <h2>Noticias recientes</h2>
     </section>
 @endsection

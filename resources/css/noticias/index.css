@@ -1,0 +1,109 @@
+.noticias{
+    display: flex;
+    gap: 1rem;
+}
+
+/* ===============================
+   CONTENEDOR PRINCIPAL
+================================ */
+.noticia-card {
+    background-color: var(--surface-light, #ffffff);
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+    min-width: 20rem;
+}
+
+.noticia-card:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* ===============================
+   LINK GENERAL
+================================ */
+.noticia-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===============================
+   IMAGEN
+================================ */
+.noticia-imagen {
+    height: 192px; /* h-48 */
+    overflow: hidden;
+}
+
+.noticia-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.noticia-card:hover .noticia-imagen img {
+    transform: scale(1.05);
+}
+
+/* ===============================
+   BODY
+================================ */
+.noticia-body {
+    padding: 20px;
+}
+
+/* ===============================
+   TITULO
+================================ */
+.noticia-titulo {
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 8px;
+    color: #111827;
+    transition: color 0.3s ease;
+}
+
+.noticia-card:hover .noticia-titulo {
+    color: var(--primary, #f97316); /* color primario */
+}
+
+/* ===============================
+   DESCRIPCION
+================================ */
+.noticia-descripcion {
+    font-size: 0.75rem; /* text-xs */
+    color: #4b5563;
+    line-height: 1.5;
+    margin-bottom: 16px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ===============================
+   FOOTER
+================================ */
+.noticia-footer {
+    padding: 0 20px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.625rem; /* text-[10px] */
+    color: #9ca3af;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+/* ===============================
+   AUTOR
+================================ */
+.noticia-footer .autor {
+    font-weight: 700;
+    color: #6b7280;
+}

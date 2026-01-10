@@ -14,7 +14,7 @@
                 <a href="{{ route('equipos.index') }}" class="{{ request()->routeIs('equipos.*') ? 'active' : '' }}">Equipos</a>
             </li>
             <li>
-                <a href="{{ route('noticias') }}" class="{{ request()->routeIs('noticias') ? 'active' : '' }}">Noticias</a>
+                <a href="{{ route('noticias.index') }}" class="{{ request()->routeIs('noticias.*') ? 'active' : '' }}">Noticias</a>
             </li>
         </ul>
     </nav>

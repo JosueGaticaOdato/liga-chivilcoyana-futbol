@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             TorneoSeeder::class,
             FechaSeeder::class,
             PartidoSeeder::class,
+            NoticiaSeeder::class
         ]);
     }
 }

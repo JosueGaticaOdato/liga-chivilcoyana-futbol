@@ -20,7 +20,7 @@
             <li><a href="{{ route('partidos.index') }}">Partidos</a></li>
             <li><a href="{{ route('torneos.index') }}">Torneos</a></li>
             <li><a href="{{ route('equipos.index') }}">Equipos</a></li>
-            <li><a href="{{ route('noticias') }}">Noticias</a></li>
+            <li><a href="{{ route('noticias.index') }}">Noticias</a></li>
             <li><a href="{{ route('reglamento') }}">Reglamento</a></li>
         </ul>
     </nav>
