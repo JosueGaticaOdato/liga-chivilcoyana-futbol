@@ -21,7 +21,7 @@
                 @endif
 
                 @if ($noticia->autor)
-                    <span class="autor">Por {{ $noticia->autor }}</span>
+                    <span class="autor">Por: {{ $noticia->autor }}</span>
                 @endif
 
                 <span class="visitas">

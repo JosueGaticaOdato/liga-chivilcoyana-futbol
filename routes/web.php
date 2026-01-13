@@ -4,7 +4,10 @@ use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NoticiaController;
 use App\Http\Controllers\PartidoController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TorneoController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -53,3 +56,25 @@ Route::get('/noticias/{noticia:slug}', [NoticiaController::class, 'show'])
 Route::get('/reglamento', function () {
     return view('reglamento');
 })->name('reglamento');
+
+/* ===== LOGIN ===== */
+
+Route::get('/login', [AuthController::class, 'showLogin'])
+    ->name('login');
+
+Route::post('/login', [AuthController::class, 'login'])
+    ->name('login.submit');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/perfil', [ProfileController::class, 'index'])
+        ->name('perfil');
+});
+
+Route::post('/logout', [AuthController::class, 'logout'])
+    ->name('logout');
+
+Route::get('/register', [RegisterController::class, 'show'])
+    ->name('register');
+
+Route::post('/register', [RegisterController::class, 'store'])
+    ->name('register.store');

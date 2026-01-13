@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-        <title>Noticias de la Liga - Fútbol Local</title>
+        <title>Iniciar Sesión - Liga Oficial de Fútbol</title>
         <link href="https://fonts.googleapis.com" rel="preconnect" />
         <link
             crossorigin=""
@@ -15,10 +15,10 @@
             rel="stylesheet"
         />
         <link
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
             rel="stylesheet"
         />
-        <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
         <script>
             tailwind.config = {
                 darkMode: "class",
@@ -26,7 +26,7 @@
                     extend: {
                         colors: {
                             primary: "rgb(97, 174, 218)", // #61AEDA
-                            primaryDark: "rgb(70, 140, 180)",
+                            primaryDark: "rgb(70, 140, 180)", // Darker shade for hover
                             "background-light": "#f0f4f8",
                             "background-dark": "#0f172a",
                             "surface-light": "#ffffff",
@@ -38,16 +38,13 @@
                             display: ["Roboto", "sans-serif"],
                             body: ["Roboto", "sans-serif"],
                         },
+                        borderRadius: {
+                            DEFAULT: "0.5rem",
+                        },
                     },
                 },
             };
         </script>
-        <style type="text/tailwindcss">
-            .material-symbols-outlined {
-                font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0,
-                    "opsz" 24;
-            }
-        </style>
     </head>
     <body
         class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark font-body min-h-screen flex flex-col transition-colors duration-300"
@@ -58,7 +55,10 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16 items-center">
                     <div class="flex items-center">
-                        <div class="flex-shrink-0 flex items-center gap-2">
+                        <a
+                            class="flex-shrink-0 flex items-center gap-2"
+                            href="#"
+                        >
                             <div
                                 class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white"
                             >
@@ -68,559 +68,182 @@
                             </div>
                             <span
                                 class="font-bold text-xl tracking-tight text-gray-900 dark:text-white"
-                                >Fútbol Local - [City Name]</span
+                                >Fútbol Local</span
                             >
-                        </div>
+                        </a>
                     </div>
-                    <div class="hidden md:flex space-x-8">
-                        <a
-                            class="text-gray-500 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 text-sm font-medium transition"
-                            href="#"
-                            >Inicio</a
-                        >
-                        <a
-                            class="text-gray-500 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 text-sm font-medium transition"
-                            href="#"
-                            >Partidos</a
-                        >
-                        <a
-                            class="text-gray-500 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 text-sm font-medium transition"
-                            href="#"
-                            >Torneos</a
-                        >
-                        <a
-                            class="text-gray-500 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 text-sm font-medium transition"
-                            href="#"
-                            >Reglamento</a
-                        >
-                        <a
-                            class="text-gray-500 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 text-sm font-medium transition"
-                            href="#"
-                            >Tablas</a
-                        >
-                        <a
-                            class="text-primary font-bold border-b-2 border-primary px-3 py-2 text-sm transition"
-                            href="#"
-                            >Noticias</a
-                        >
-                        <a
-                            class="text-gray-500 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 text-sm font-medium transition"
-                            href="#"
-                            >Contacto</a
-                        >
-                    </div>
-                    <div class="hidden md:flex items-center">
+                    <div class="flex items-center gap-4">
                         <button
-                            class="bg-primary hover:bg-opacity-90 text-white px-5 py-2 rounded-lg text-sm font-medium shadow-md transition transform hover:scale-105"
-                        >
-                            Iniciar Sesión
-                        </button>
-                        <button
-                            class="ml-4 p-2 rounded-full text-gray-500 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 transition"
+                            class="p-2 rounded-full text-gray-500 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 transition"
                             onclick="document.documentElement.classList.toggle('dark')"
                         >
-                            <span class="material-symbols-outlined"
+                            <span class="material-symbols-outlined text-sm"
                                 >brightness_medium</span
                             >
                         </button>
+                        <a
+                            class="text-sm font-medium text-gray-500 hover:text-primary dark:text-gray-400"
+                            href="#"
+                            >Volver al inicio</a
+                        >
                     </div>
                 </div>
             </div>
         </nav>
-        <header
-            class="relative bg-gradient-to-r from-primary to-blue-600 h-64 md:h-80 overflow-hidden"
+        <main
+            class="flex-grow flex items-center justify-center py-12 px-4 relative overflow-hidden"
         >
             <div class="absolute inset-0 z-0">
                 <img
-                    alt="Jugador de fútbol pateando un balón en acción"
-                    class="w-full h-full object-cover object-center opacity-40 mix-blend-overlay"
+                    alt="Fondo de campo de fútbol"
+                    class="w-full h-full object-cover object-center opacity-10 dark:opacity-5 mix-blend-overlay grayscale"
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV1WEpAh59XZ7oI67KMqHb7DNyzkHwrRNs--KfgV2t83ntC04Bamw4PZ1BmkVrnbPegKFWtB1BF5u8WAjeEsImk_QFRs1PZnv9D0S1L8pnWs7PXXOe9aoBMlIk6Z2k3eaZbD4nuYxEJbEMMirsgxoFoyVvTtRWgT3_zP2mP4eGNkgPHu58ov2QBtcMEfQ22EHeBJJ4j8EpIzbyeIeLMfG8LMrcfuj7wrZpNf2ONJFrTx-C6vZ84Doo9MQQDlRGN9fj7HjVzc9dnYfw"
                 />
-            </div>
-            <div
-                class="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/60 to-transparent z-10"
-            ></div>
-            <div
-                class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center"
-            >
-                <h1
-                    class="text-4xl md:text-6xl font-black text-white drop-shadow-md tracking-tight"
-                >
-                    Noticias de la Liga
-                </h1>
                 <div
-                    class="flex items-center gap-4 mt-4 text-white/90 font-medium"
-                >
-                    <span class="flex items-center gap-1"
-                        ><span class="material-symbols-outlined text-sm"
-                            >calendar_today</span
-                        >
-                        Actualizado: 25 May 2025</span
-                    >
-                    <span class="flex items-center gap-1"
-                        ><span class="material-symbols-outlined text-sm"
-                            >rss_feed</span
-                        >
-                        Sigue toda la actualidad</span
-                    >
-                </div>
+                    class="absolute inset-0 bg-gradient-to-b from-background-light/50 via-background-light to-background-light dark:from-background-dark/50 dark:via-background-dark dark:to-background-dark"
+                ></div>
             </div>
-        </header>
-        <main
-            class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full"
-        >
-            <div class="flex flex-col lg:flex-row gap-8">
-                <aside class="w-full lg:w-1/4 space-y-6">
+            <div class="relative z-10 w-full max-w-md">
+                <div
+                    class="bg-surface-light dark:bg-surface-dark rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 overflow-hidden"
+                >
                     <div
-                        class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden"
+                        class="pt-10 pb-6 px-8 text-center bg-gradient-to-b from-primary/5 to-transparent"
                     >
                         <div
-                            class="p-4 bg-gray-50 dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700"
+                            class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary text-white shadow-lg shadow-primary/30 mb-4"
                         >
-                            <h3
-                                class="font-bold text-gray-900 dark:text-white flex items-center gap-2"
+                            <span class="material-symbols-outlined text-3xl"
+                                >lock</span
                             >
-                                <span
-                                    class="material-symbols-outlined text-primary"
-                                    >filter_alt</span
-                                >
-                                Filtrar Noticias
-                            </h3>
                         </div>
-                        <div class="p-4 space-y-6">
-                            <div>
-                                <h4
-                                    class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3"
-                                >
-                                    Divisiones
-                                </h4>
-                                <div class="space-y-2">
-                                    <label
-                                        class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary cursor-pointer transition"
-                                    >
-                                        <input
-                                            checked=""
-                                            class="rounded text-primary focus:ring-primary"
-                                            type="checkbox"
-                                        />
-                                        Todas las divisiones
-                                    </label>
-                                    <label
-                                        class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary cursor-pointer transition"
-                                    >
-                                        <input
-                                            class="rounded text-primary focus:ring-primary"
-                                            type="checkbox"
-                                        />
-                                        Primera División
-                                    </label>
-                                    <label
-                                        class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary cursor-pointer transition"
-                                    >
-                                        <input
-                                            class="rounded text-primary focus:ring-primary"
-                                            type="checkbox"
-                                        />
-                                        Ascenso (B y C)
-                                    </label>
-                                    <label
-                                        class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary cursor-pointer transition"
-                                    >
-                                        <input
-                                            class="rounded text-primary focus:ring-primary"
-                                            type="checkbox"
-                                        />
-                                        Inferiores (4ta a 10ma)
-                                    </label>
-                                    <label
-                                        class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary cursor-pointer transition"
-                                    >
-                                        <input
-                                            class="rounded text-primary focus:ring-primary"
-                                            type="checkbox"
-                                        />
-                                        Fútbol Femenino
-                                    </label>
-                                </div>
-                            </div>
-                            <div>
-                                <h4
-                                    class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3"
-                                >
-                                    Categorías
-                                </h4>
-                                <div class="flex flex-wrap gap-2">
-                                    <button
-                                        class="px-3 py-1 bg-primary text-white text-xs font-bold rounded-full"
-                                    >
-                                        Todo
-                                    </button>
-                                    <button
-                                        class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs font-bold rounded-full hover:bg-primary hover:text-white transition"
-                                    >
-                                        Entrevistas
-                                    </button>
-                                    <button
-                                        class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs font-bold rounded-full hover:bg-primary hover:text-white transition"
-                                    >
-                                        Resultados
-                                    </button>
-                                    <button
-                                        class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs font-bold rounded-full hover:bg-primary hover:text-white transition"
-                                    >
-                                        Comunicados
-                                    </button>
-                                    <button
-                                        class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs font-bold rounded-full hover:bg-primary hover:text-white transition"
-                                    >
-                                        Institucional
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="pt-4">
-                                <button
-                                    class="w-full bg-primary/10 hover:bg-primary text-primary hover:text-white font-bold py-2 rounded-lg text-sm transition-all flex items-center justify-center gap-2"
-                                >
-                                    <span
-                                        class="material-symbols-outlined text-sm"
-                                        >restart_alt</span
-                                    >
-                                    Limpiar Filtros
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="bg-primary rounded-xl p-6 text-white shadow-lg overflow-hidden relative"
-                    >
-                        <span
-                            class="material-symbols-outlined absolute -right-4 -bottom-4 text-8xl opacity-10"
-                            >mail</span
+                        <h2
+                            class="text-2xl font-black text-gray-900 dark:text-white tracking-tight"
                         >
-                        <h3 class="font-bold text-xl mb-2">Suscríbete</h3>
-                        <p class="text-white/80 text-sm mb-4">
-                            Recibe las últimas noticias y resultados
-                            directamente en tu correo.
+                            Iniciar Sesión
+                        </h2>
+                        <p
+                            class="text-gray-500 dark:text-gray-400 mt-2 font-light"
+                        >
+                            Accede a tu cuenta de la Liga Local
                         </p>
-                        <div class="space-y-2">
-                            <input
-                                class="w-full rounded-lg border-none text-gray-900 text-sm focus:ring-2 focus:ring-blue-300"
-                                placeholder="tu@email.com"
-                                type="email"
-                            />
-                            <button
-                                class="w-full bg-white text-primary font-bold py-2 rounded-lg text-sm hover:bg-gray-100 transition shadow-sm"
+                    </div>
+                    <form action="#" class="px-8 pb-10 space-y-6" method="POST">
+                        <div>
+                            <label
+                                class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+                                for="user"
                             >
-                                Unirse
-                            </button>
+                                Correo electrónico o Usuario
+                            </label>
+                            <div class="relative">
+                                <span
+                                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-lg"
+                                    >person</span
+                                >
+                                <input
+                                    class="block w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-xl text-sm focus:ring-primary focus:border-primary transition dark:text-white"
+                                    id="user"
+                                    placeholder="ejemplo@correo.com"
+                                    required=""
+                                    type="text"
+                                />
+                            </div>
                         </div>
+                        <div>
+                            <label
+                                class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+                                for="password"
+                            >
+                                Contraseña
+                            </label>
+                            <div class="relative">
+                                <span
+                                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-lg"
+                                    >key</span
+                                >
+                                <input
+                                    class="block w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-xl text-sm focus:ring-primary focus:border-primary transition dark:text-white"
+                                    id="password"
+                                    placeholder="••••••••"
+                                    required=""
+                                    type="password"
+                                />
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <input
+                                    class="h-4 w-4 text-primary focus:ring-primary border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-800"
+                                    id="remember-me"
+                                    name="remember-me"
+                                    type="checkbox"
+                                />
+                                <label
+                                    class="ml-2 block text-sm text-gray-600 dark:text-gray-400"
+                                    for="remember-me"
+                                >
+                                    Recordarme
+                                </label>
+                            </div>
+                            <div class="text-sm">
+                                <a
+                                    class="font-medium text-primary hover:text-primaryDark transition"
+                                    href="#"
+                                >
+                                    ¿Olvidaste tu contraseña?
+                                </a>
+                            </div>
+                        </div>
+                        <button
+                            class="w-full flex justify-center items-center gap-2 py-3 px-4 border border-transparent rounded-xl shadow-md text-sm font-bold text-white bg-primary hover:bg-primaryDark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all transform hover:scale-[1.02]"
+                            type="submit"
+                        >
+                            <span class="material-symbols-outlined text-lg"
+                                >login</span
+                            >
+                            Entrar al Sistema
+                        </button>
+                    </form>
+                    <div
+                        class="px-8 py-6 bg-gray-50 dark:bg-gray-800/50 border-t border-gray-100 dark:border-gray-700 text-center"
+                    >
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                            ¿Aún no tienes una cuenta?
+                            <a
+                                class="font-bold text-primary hover:text-primaryDark transition ml-1"
+                                href="#"
+                            >
+                                Regístrate aquí
+                            </a>
+                        </p>
                     </div>
-                </aside>
-                <div class="w-full lg:w-3/4">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <article
-                            class="md:col-span-2 group relative bg-surface-light dark:bg-surface-dark rounded-2xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 transition hover:shadow-xl"
-                        >
-                            <div class="flex flex-col md:flex-row h-full">
-                                <div
-                                    class="md:w-1/2 h-64 md:h-auto overflow-hidden"
-                                >
-                                    <img
-                                        alt="Gran Final Local"
-                                        class="w-full h-full object-cover transition duration-500 group-hover:scale-110"
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAapT6R-NGqR5Up1vtDcpy3g-GABaw_QBKvHLraFMw88bze7r6Wq24n_0Z8b1Vo-bWV4z4WYhEhA48VgUH5cEOQvGR6Xze_4GejBbbKZJ21gzODu8A-1iaLvlznQ1snl3Ua8ad_Rhaw7sK9CUbQ5PJBMI88mjgeExGK_XkbMeCGjaDwYKjnVXuk9YcmUYAT9mCgrJibOpi6jtAw4uZVmk1XMsLZiT65jTB_RcWS9MHCHaoKiL4UVV_5xegE7aveAExxqbEJkg38PGr"
-                                    />
-                                </div>
-                                <div
-                                    class="md:w-1/2 p-6 md:p-8 flex flex-col justify-center"
-                                >
-                                    <div class="flex items-center gap-3 mb-4">
-                                        <span
-                                            class="bg-primary/10 text-primary text-xs font-black px-2.5 py-1 rounded uppercase tracking-wide"
-                                            >Destacado</span
-                                        >
-                                        <span
-                                            class="text-gray-400 text-xs font-medium flex items-center gap-1"
-                                        >
-                                            <span
-                                                class="material-symbols-outlined text-sm"
-                                                >schedule</span
-                                            >
-                                            hace 2 horas
-                                        </span>
-                                    </div>
-                                    <h2
-                                        class="text-2xl md:text-3xl font-black text-gray-900 dark:text-white mb-4 leading-tight group-hover:text-primary transition"
-                                    >
-                                        Atlético Central se corona campeón del
-                                        Torneo Apertura en una final de infarto
-                                    </h2>
-                                    <p
-                                        class="text-gray-600 dark:text-gray-400 text-sm md:text-base mb-6 line-clamp-3"
-                                    >
-                                        En un estadio colmado de hinchas, el
-                                        conjunto azul logró imponerse por 2-1
-                                        con un gol agónico en el minuto 94.
-                                        Repasamos las mejores jugadas y la
-                                        palabra de los protagonistas.
-                                    </p>
-                                    <div
-                                        class="flex items-center justify-between mt-auto"
-                                    >
-                                        <div class="flex items-center gap-2">
-                                            <div
-                                                class="w-8 h-8 rounded-full bg-gray-200"
-                                            ></div>
-                                            <span
-                                                class="text-xs font-bold text-gray-700 dark:text-gray-300"
-                                                >Juan Pérez</span
-                                            >
-                                        </div>
-                                        <a
-                                            class="inline-flex items-center text-primary font-bold text-sm group/btn"
-                                            href="#"
-                                        >
-                                            Leer más
-                                            <span
-                                                class="material-symbols-outlined ml-1 group-hover/btn:translate-x-1 transition"
-                                                >arrow_forward</span
-                                            >
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                        <article
-                            class="group bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-md transition"
-                        >
-                            <div class="h-48 overflow-hidden">
-                                <img
-                                    alt="Entrevista DT"
-                                    class="w-full h-full object-cover transition duration-500 group-hover:scale-105"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmPjd2yG715rFULZ6Z1laXWyXIa-c2izciXwLb1QW4MBiPU70I_6IkIkuUd1Gr0bxMoKMd53bzmWUDtziaw_27E4tZJMx6jUMu53aiz-8mvN0_qvf2esKhLMtyKhV9lA7YN-GNoMzOauaIBR8d--SUozUbO6x5XPNhvli2rT0qryA5SSd29160SttqbOdn4Wl01WdCbvvZs08aIU67twmwbz_FQF6ImZTP4bRYCWno34HuL-dMNaO_M4IJr07xpRXGsLkii410QmCW"
-                                />
-                            </div>
-                            <div class="p-5">
-                                <div class="flex items-center gap-3 mb-3">
-                                    <span
-                                        class="bg-orange-100 text-orange-600 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide"
-                                        >Entrevista</span
-                                    >
-                                    <span
-                                        class="text-gray-400 text-[10px] font-medium"
-                                        >24 MAY 2025</span
-                                    >
-                                </div>
-                                <h3
-                                    class="text-lg font-bold text-gray-900 dark:text-white mb-2 leading-snug group-hover:text-primary transition"
-                                >
-                                    "El proceso es más importante que el
-                                    resultado inmediato"
-                                </h3>
-                                <p
-                                    class="text-gray-600 dark:text-gray-400 text-xs line-clamp-2 mb-4"
-                                >
-                                    El director técnico de la Sub-15 nos cuenta
-                                    los planes de formación para las nuevas
-                                    promesas del club.
-                                </p>
-                                <a
-                                    class="text-primary font-bold text-xs flex items-center gap-1"
-                                    href="#"
-                                >
-                                    Leer noticia
-                                    <span
-                                        class="material-symbols-outlined text-sm"
-                                        >chevron_right</span
-                                    >
-                                </a>
-                            </div>
-                        </article>
-                        <article
-                            class="group bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-md transition"
-                        >
-                            <div class="h-48 overflow-hidden">
-                                <img
-                                    alt="Comunicado Oficial"
-                                    class="w-full h-full object-cover transition duration-500 group-hover:scale-105"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyIgwZYgesV8GXhbdGodJDdu08ECk-Ann6HY0jYRnaOa7LVExuN_iJX0uZq8a2PlG-iyI4kkuba94cDr_9qIDshVMlRQMEFDVbBHaQUBN98aPZ5Ds9IEgVojSRYQUQKAFis9CzYaFzjOWvHF7a_lbju0TNFL8wuZfehay_xJtmrpvblniCPMkFsJyj-V3Ctc8_ANaaXgokbKfqwPZqmoJqeljWK2mPeQXYocFICficbs23Dqu9SSkA5_3OhG02Q1ul4NhghigUMSP4"
-                                />
-                            </div>
-                            <div class="p-5">
-                                <div class="flex items-center gap-3 mb-3">
-                                    <span
-                                        class="bg-blue-100 text-blue-600 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide"
-                                        >Comunicado</span
-                                    >
-                                    <span
-                                        class="text-gray-400 text-[10px] font-medium"
-                                        >23 MAY 2025</span
-                                    >
-                                </div>
-                                <h3
-                                    class="text-lg font-bold text-gray-900 dark:text-white mb-2 leading-snug group-hover:text-primary transition"
-                                >
-                                    Nuevos horarios para la 10ma fecha del
-                                    torneo de ascenso
-                                </h3>
-                                <p
-                                    class="text-gray-600 dark:text-gray-400 text-xs line-clamp-2 mb-4"
-                                >
-                                    La liga informa cambios en el cronograma por
-                                    mantenimiento de campos de juego el próximo
-                                    fin de semana.
-                                </p>
-                                <a
-                                    class="text-primary font-bold text-xs flex items-center gap-1"
-                                    href="#"
-                                >
-                                    Leer noticia
-                                    <span
-                                        class="material-symbols-outlined text-sm"
-                                        >chevron_right</span
-                                    >
-                                </a>
-                            </div>
-                        </article>
-                        <article
-                            class="group bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-md transition"
-                        >
-                            <div class="h-48 overflow-hidden">
-                                <img
-                                    alt="Fútbol Femenino"
-                                    class="w-full h-full object-cover transition duration-500 group-hover:scale-105"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHJX6xrH3PSW8UOGqJVBoT4psnkAs4peUlI5bJOb1H8bcNlvt2Nw63GFI2zP9UyU3oy1r659c8hCdtbwbcB3V28c0jq5w2v5Ich9BMVYPcwJjc35mWaYTr25oJn6mBQM3D9wJgD3u9zWkXDWILw_Gf8SXs4cq2baHpCjnSxW1f_77fRSdAmdRJJ65m5_13RZiyGmu6TuMpe99J0SeKhMrBsuK8LM2GUpzb3ghAhfjCgoo8ugcelGyZnlH4OhR7290XfG1FKyCJCyJ7"
-                                />
-                            </div>
-                            <div class="p-5">
-                                <div class="flex items-center gap-3 mb-3">
-                                    <span
-                                        class="bg-green-100 text-green-600 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide"
-                                        >Resultados</span
-                                    >
-                                    <span
-                                        class="text-gray-400 text-[10px] font-medium"
-                                        >22 MAY 2025</span
-                                    >
-                                </div>
-                                <h3
-                                    class="text-lg font-bold text-gray-900 dark:text-white mb-2 leading-snug group-hover:text-primary transition"
-                                >
-                                    Jornada histórica en el fútbol femenino
-                                    local
-                                </h3>
-                                <p
-                                    class="text-gray-600 dark:text-gray-400 text-xs line-clamp-2 mb-4"
-                                >
-                                    Se rompió el récord de asistencia en el
-                                    clásico regional. Resumen completo de la
-                                    jornada 8.
-                                </p>
-                                <a
-                                    class="text-primary font-bold text-xs flex items-center gap-1"
-                                    href="#"
-                                >
-                                    Leer noticia
-                                    <span
-                                        class="material-symbols-outlined text-sm"
-                                        >chevron_right</span
-                                    >
-                                </a>
-                            </div>
-                        </article>
-                        <article
-                            class="group bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-md transition"
-                        >
-                            <div class="h-48 overflow-hidden">
-                                <img
-                                    alt="Infraestructura"
-                                    class="w-full h-full object-cover transition duration-500 group-hover:scale-105"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwHmO7ptxvKirJ-JhOO953QW_ixq-zwHTua1Q2Ly9bf6ydDRE9aPJ0jvcLeYWNhOvgqyUa9_UZj3T6YoFqfPQgoK_8hMIW1ldEEAaKO2dr8Gkk820CY8YlZeRO8mu2LNkHkYoa_Kke7ra1WHjIT6B-XBCMDpqcGf9dfTrWZAxI3OA2BY2Xr0BrbrUkQEwIPSqTvy0GLIt0EY7HqaThQEfgtVcCNL8fckECTeGMLXz__k6yoL4afHEzYuINoF_HvHUERaMgJwjSS-pe"
-                                />
-                            </div>
-                            <div class="p-5">
-                                <div class="flex items-center gap-3 mb-3">
-                                    <span
-                                        class="bg-purple-100 text-purple-600 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide"
-                                        >Institucional</span
-                                    >
-                                    <span
-                                        class="text-gray-400 text-[10px] font-medium"
-                                        >21 MAY 2025</span
-                                    >
-                                </div>
-                                <h3
-                                    class="text-lg font-bold text-gray-900 dark:text-white mb-2 leading-snug group-hover:text-primary transition"
-                                >
-                                    Inauguración de nuevas luminarias LED en el
-                                    estadio
-                                </h3>
-                                <p
-                                    class="text-gray-600 dark:text-gray-400 text-xs line-clamp-2 mb-4"
-                                >
-                                    Gracias al aporte de los socios, se completó
-                                    la modernización del sistema de iluminación
-                                    nocturna.
-                                </p>
-                                <a
-                                    class="text-primary font-bold text-xs flex items-center gap-1"
-                                    href="#"
-                                >
-                                    Leer noticia
-                                    <span
-                                        class="material-symbols-outlined text-sm"
-                                        >chevron_right</span
-                                    >
-                                </a>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="mt-12 flex justify-center">
-                        <nav class="flex items-center gap-2">
-                            <button
-                                class="w-10 h-10 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-400 hover:text-primary transition"
-                            >
-                                <span class="material-symbols-outlined"
-                                    >chevron_left</span
-                                >
-                            </button>
-                            <button
-                                class="w-10 h-10 rounded-lg bg-primary text-white font-bold text-sm shadow-md"
-                            >
-                                1
-                            </button>
-                            <button
-                                class="w-10 h-10 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 font-bold text-sm hover:border-primary hover:text-primary transition"
-                            >
-                                2
-                            </button>
-                            <button
-                                class="w-10 h-10 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 font-bold text-sm hover:border-primary hover:text-primary transition"
-                            >
-                                3
-                            </button>
-                            <span class="text-gray-400 px-2">...</span>
-                            <button
-                                class="w-10 h-10 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 font-bold text-sm hover:border-primary hover:text-primary transition"
-                            >
-                                12
-                            </button>
-                            <button
-                                class="w-10 h-10 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-400 hover:text-primary transition"
-                            >
-                                <span class="material-symbols-outlined"
-                                    >chevron_right</span
-                                >
-                            </button>
-                        </nav>
-                    </div>
+                </div>
+                <div class="mt-8 flex justify-center gap-6">
+                    <a
+                        class="text-xs text-gray-400 hover:text-primary dark:text-gray-500 transition uppercase tracking-widest font-bold"
+                        href="#"
+                        >Términos</a
+                    >
+                    <a
+                        class="text-xs text-gray-400 hover:text-primary dark:text-gray-500 transition uppercase tracking-widest font-bold"
+                        href="#"
+                        >Privacidad</a
+                    >
+                    <a
+                        class="text-xs text-gray-400 hover:text-primary dark:text-gray-500 transition uppercase tracking-widest font-bold"
+                        href="#"
+                        >Ayuda</a
+                    >
                 </div>
             </div>
         </main>
         <footer
             class="bg-surface-light dark:bg-surface-dark border-t border-gray-200 dark:border-gray-700 mt-auto"
         >
-            <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+            <div
+                class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center md:text-left"
+            >
                 <div
                     class="flex flex-col md:flex-row justify-between items-center"
                 >
@@ -633,13 +256,13 @@
                             >
                         </div>
                         <span class="text-sm text-gray-500 dark:text-gray-400"
-                            >© 2025 Fútbol Local. Todos los derechos
-                            reservados.</span
+                            >© 2024 Fútbol Local - Ciudad [Name]. Todos los
+                            derechos reservados.</span
                         >
                     </div>
                     <div class="flex space-x-6">
                         <a
-                            class="text-gray-400 hover:text-primary transition"
+                            class="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300"
                             href="#"
                         >
                             <span class="sr-only">Facebook</span>
@@ -656,7 +279,7 @@
                             </svg>
                         </a>
                         <a
-                            class="text-gray-400 hover:text-primary transition"
+                            class="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300"
                             href="#"
                         >
                             <span class="sr-only">Instagram</span>
@@ -667,7 +290,7 @@
                             >
                                 <path
                                     clip-rule="evenodd"
-                                    d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772 4.902 4.902 0 011.772-1.153c.636-.247 1.363-.416 2.427-.465C9.673 2.013 10.03 2 12.48 2h.165zM12 7a5 5 0 110 10 5 5 0 010-10zm0 8a3 3 0 100-6 3 3 0 000 6z"
+                                    d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772c.247-.636.416-1.363.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772c.247-.636.416-1.363.465-2.427a4.902 4.902 0 011.772-1.153c.636-.247 1.363-.416 2.427-.465C9.673 2.013 10.03 2 12.48 2h.165zM12 7a5 5 0 110 10 5 5 0 010-10zm0 8a3 3 0 100-6 3 3 0 000 6z"
                                     fill-rule="evenodd"
                                 ></path>
                             </svg>

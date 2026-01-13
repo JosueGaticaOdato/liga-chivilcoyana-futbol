@@ -19,5 +19,9 @@
         </ul>
     </nav>
 
-    <a class="header-login" href="{{ route('home') }}">Iniciar sesion</a>
+    @auth
+        <a class="header-login" href="{{ route('perfil') }}">Mi Perfil</a>
+    @else
+        <a class="header-login" href="{{ route('login') }}">Iniciar sesion</a>
+    @endauth
 </header>
