@@ -14,6 +14,7 @@
 @import "./footer.css";
 @import "./components/partido-card.css";
 @import "./components/tabla-posiciones.css";
+@import "./components/noticia-card.css";
 
 
 @theme {
