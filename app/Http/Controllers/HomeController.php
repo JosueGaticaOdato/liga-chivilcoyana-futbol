@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Noticia;
 use App\Models\Partido;
 use App\Models\Torneo;
 use Illuminate\Http\Request;
@@ -19,29 +20,33 @@ class HomeController extends Controller
                 ->orderByDesc('pivot_puntos')
                 ->orderByDesc('pivot_diferencia_goles')
                 ->orderByDesc('pivot_goles_favor')
-                ->take(5)
+                ->take(8)
                 ->get()
             : collect();
 
         // Partidos recientes
-        $partidosRecientes = Partido::with(['local', 'visitante'])
-            ->where('estado', 'finalizado')
-            ->orderByDesc('fecha')
-            ->orderByDesc('hora')
-            ->take(5)
-            ->get();
-
-        // // Noticias
-        // $noticias = Noticia::where('destacada', true)
-        //     ->orderByDesc('created_at')
+        // $partidosRecientes = Partido::with(['local', 'visitante'])
+        //     ->orderByDesc('fecha')
+        //     ->orderByDesc('hora')
         //     ->take(3)
         //     ->get();
+
+        $partidosRecientes = $torneo->partidos()
+            ->with(['local', 'visitante'])
+            ->orderBy('fecha') //Orden cronologico
+            ->orderBy('hora')
+            ->limit(3)
+            ->get();
+        // // Noticias
+        $noticias = Noticia::orderByDesc('created_at')
+            ->take(3)
+            ->get();
 
         return view('home.index', compact(
             'torneo',
             'tabla',
             'partidosRecientes',
-            // 'noticias'
+            'noticias'
         ));
     }
 }

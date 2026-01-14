@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminNoticiaController;
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NoticiaController;
@@ -78,3 +79,19 @@ Route::get('/register', [RegisterController::class, 'show'])
 
 Route::post('/register', [RegisterController::class, 'store'])
     ->name('register.store');
+
+/* ===== ADMIN ===== */
+
+Route::middleware(['auth', 'admin'])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+
+        // Route::get('/', [AdminDashboardController::class, 'index'])
+        //     ->name('dashboard');
+
+        Route::resource('noticias', AdminNoticiaController::class);
+        // Route::resource('equipos', AdminEquipoController::class);
+        // Route::resource('torneos', AdminTorneoController::class);
+        // Route::resource('partidos', AdminPartidoController::class);
+});

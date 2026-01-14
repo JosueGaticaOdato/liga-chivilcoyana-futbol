@@ -88,9 +88,6 @@
 ====================================================== */
 
 @media (min-width: 1024px) {
-    .noticia-card{
-        width: 25rem;
-    }
 
     .noticia-imagen img {
         transition: transform 0.5s ease;
@@ -100,5 +97,5 @@
         transform: scale(1.05);
     }
 
-    
+
 }
