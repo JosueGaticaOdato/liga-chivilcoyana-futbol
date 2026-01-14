@@ -1,0 +1,151 @@
+/* ===== CONTENEDOR ===== */
+.auth-container {
+    max-width: 26rem;
+    margin: 3rem auto;
+    padding: 2.5rem 2rem;
+
+    background-color: var(--color-blanco);
+    border-radius: 1.25rem;
+    box-shadow: var(--sombra-suave);
+
+    text-align: center;
+}
+
+/* ===== HEADER ===== */
+.auth-header {
+    margin-bottom: 2rem;
+}
+
+.auth-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 0 auto 1rem;
+    padding: 1rem;
+
+    background-color: var(--color-primario);
+    color: var(--color-letras-secundario);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 0.75rem;
+    font-size: 1.25rem;
+}
+
+.auth-header h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+    color: var(--color-letras-primario);
+}
+
+.auth-header p {
+    font-size: 0.875rem;
+    color: var(--color-letras-terceario);
+}
+
+/* ===== FORM ===== */
+.auth-form {
+    text-align: left;
+    margin-top: 2rem;
+}
+
+.auth-form label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: var(--color-letras-primario);
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 0.75rem 0.875rem;
+    margin-bottom: 1.25rem;
+
+    border-radius: 0.625rem;
+    border: 1px solid var(--color-inputs);
+
+    font-size: 0.875rem;
+}
+
+.auth-form input:focus {
+    outline: none;
+    border-color: var(--color-primario);
+    box-shadow: var(--sombra-suave);
+}
+
+/* ===== ERROR ===== */
+.error {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--color-error);
+    margin-bottom: 1rem;
+}
+
+/* ===== BOTON ===== */
+.auth-form button {
+    width: 100%;
+    padding: 0.75rem;
+
+    border: none;
+    border-radius: 0.75rem;
+
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+
+    font-size: 0.875rem;
+    font-weight: 700;
+    cursor: pointer;
+
+    border: 1px solid transparent;
+
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* ===============================
+   FOOTER
+================================ */
+.auth-footer {
+    margin-top: 2.5rem;
+    font-size: 0.75rem;
+    color: var(--color-letras-terceario);
+}
+
+.auth-footer a {
+    color: var(--color-primario);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+
+/* ===================================================
+   RESPONSIVE
+======================================================
+*/
+
+/* ===================================================
+   TABLET (>= 768px)
+====================================================== */
+
+@media (min-width: 768px) {
+}
+
+/* ===================================================
+   DESKTOP (>= 1024px)
+====================================================== */
+
+@media (min-width: 1024px) {
+    .auth-form button:hover {
+        background-color: var(--color-blanco);
+        color: var(--color-primario);
+        transform: translateY(-1px);
+        border: 1px solid var(--color-primario);
+    }
+
+    .auth-footer a:hover {
+        text-decoration: underline;
+    }
+
+}

@@ -63,6 +63,8 @@
     font-weight: bolder;
     color: var(--color-letras-secundario);
     background-color: var(--color-primario);
+
+    border: 1px solid transparent;
 }
 
 /* ===== RESPONSIVE ===== */

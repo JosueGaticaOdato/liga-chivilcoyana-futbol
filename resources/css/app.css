@@ -24,6 +24,10 @@
 
 /* ===== HEADER GENERAL ===== */
 
+body{
+    background-color: var(--color-bg-muted);
+}
+
 .main{
     background-color: var(--color-bg-muted);
     font-family: var(--fuente-primaria);

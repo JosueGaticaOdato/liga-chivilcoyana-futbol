@@ -42,6 +42,9 @@
     --color-tercerario: #aaaaaa;
     --color-cuaternario: #aaaaaa;
 
+    /* Inputs */
+    --color-inputs: #bbbbbb;
+
     /* Estados */
     --color-success: #16a34a;
     --color-warning: #f59e0b;

@@ -38,6 +38,7 @@
     font-weight: bolder;
     width: 100%;
     border: none;
+    cursor: pointer;
 }
 
 /* ===== LISTA DE PARTIDOS ===== */
@@ -86,6 +87,14 @@
     .filtros-partidos button {
         width: 50%;
         margin: 0 auto;
+        transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+    .filtros-partidos button:hover{
+        background-color: var(--color-letras-secundario);
+        color: var(--color-primario);
+        border: 1px solid var(--color-primario);
+
     }
 
     .lista-partidos {
