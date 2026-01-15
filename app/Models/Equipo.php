@@ -48,7 +48,7 @@ class Equipo extends Model
                 'puntos',
             ])
             ->withTimestamps();
-            //pivot = fila de equipo_torneo
+        //pivot = fila de equipo_torneo
     }
 
     //Un equipo juega muchos partidos como local
@@ -63,5 +63,19 @@ class Equipo extends Model
     public function partidosVisitante()
     {
         return $this->hasMany(Partido::class, 'equipo_visitante_id');
+    }
+
+    public function proximoPartido(Torneo $torneo)
+    {
+        return Partido::where('torneo_id', $torneo->id)
+            ->where('estado', 'programado')
+            ->where(function ($query) {
+                $query->where('equipo_local_id', $this->id)
+                    ->orWhere('equipo_visitante_id', $this->id);
+            })
+            ->whereDate('fecha', '>=', now()->toDateString())
+            ->orderBy('fecha')
+            ->orderBy('hora')
+            ->first();
     }
 }

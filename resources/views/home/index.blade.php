@@ -60,5 +60,9 @@
                 <p>No hay noticias publicadas.</p>
             @endforelse
         </div>
+
+        <a href="{{ route('noticias.index') }}" class="link-mas">
+            Ver toodas las noticias
+        </a>
     </section>
 @endsection
