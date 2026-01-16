@@ -3,863 +3,647 @@
     <head>
         <meta charset="utf-8" />
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-        <title>Detalles del Equipo A - Fútbol Local</title>
+        <title>
+            Detalle de Partido: Atlético Central vs Dep. Norte - Fútbol Local
+        </title>
+        <link href="https://fonts.googleapis.com" rel="preconnect" />
+        <link
+            crossorigin=""
+            href="https://fonts.gstatic.com"
+            rel="preconnect"
+        />
         <link
             href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&amp;display=swap"
             rel="stylesheet"
         />
         <link
-            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
             rel="stylesheet"
         />
-        <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
         <script>
             tailwind.config = {
                 darkMode: "class",
                 theme: {
                     extend: {
                         colors: {
-                            primary: "rgb(97, 174, 218)", // From prompt
-                            "primary-dark": "rgb(70, 140, 180)", // Darker variant for hover/accents
-                            "background-light": "#f4f8fb",
-                            "background-dark": "#1a202c",
+                            primary: "rgb(97, 174, 218)",
+                            primaryDark: "rgb(70, 140, 180)",
+                            "background-light": "#f0f4f8",
+                            "background-dark": "#0f172a",
                             "surface-light": "#ffffff",
-                            "surface-dark": "#2d3748",
+                            "surface-dark": "#1e293b",
+                            "text-light": "#1f2937",
+                            "text-dark": "#f3f4f6",
                         },
                         fontFamily: {
                             display: ["Roboto", "sans-serif"],
-                        },
-                        borderRadius: {
-                            DEFAULT: "0.5rem",
+                            body: ["Roboto", "sans-serif"],
                         },
                     },
                 },
             };
         </script>
-        <style>
-            ::-webkit-scrollbar {
-                width: 8px;
+        <style type="text/tailwindcss">
+            .material-symbols-outlined {
+                font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0,
+                    "opsz" 24;
             }
-            ::-webkit-scrollbar-track {
-                background: #f1f1f1;
+            .soccer-pitch {
+                background-color: #2d5a27;
+                background-image: linear-gradient(
+                        rgba(255, 255, 255, 0.1) 2px,
+                        transparent 2px
+                    ),
+                    linear-gradient(
+                        90deg,
+                        rgba(255, 255, 255, 0.1) 2px,
+                        transparent 2px
+                    );
+                background-size: 50px 50px;
+                position: relative;
+                border: 2px solid white;
             }
-            ::-webkit-scrollbar-thumb {
-                background: #888;
-                border-radius: 4px;
+            .pitch-markings {
+                position: absolute;
+                inset: 0;
+                border: 2px solid rgba(255, 255, 255, 0.8);
+                pointer-events: none;
             }
-            ::-webkit-scrollbar-thumb:hover {
-                background: #555;
+            .center-circle {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 100px;
+                height: 100px;
+                border: 2px solid rgba(255, 255, 255, 0.8);
+                border-radius: 50%;
+            }
+            .center-line {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 50%;
+                width: 2px;
+                background: rgba(255, 255, 255, 0.8);
             }
         </style>
     </head>
     <body
-        class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-display transition-colors duration-300"
+        class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark font-body min-h-screen flex flex-col transition-colors duration-300"
     >
-        <nav class="bg-white dark:bg-gray-900 shadow-md sticky top-0 z-50">
-            <div class="container mx-auto px-4">
-                <div class="flex justify-between items-center h-20">
-                    <div class="flex items-center space-x-3">
-                        <div
-                            class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl shadow-inner"
-                        >
-                            <span class="material-icons">sports_soccer</span>
+        <nav
+            class="bg-surface-light dark:bg-surface-dark shadow-sm sticky top-0 z-50 transition-colors duration-300"
+        >
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16 items-center">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 flex items-center gap-2">
+                            <div
+                                class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white"
+                            >
+                                <span class="material-symbols-outlined"
+                                    >sports_soccer</span
+                                >
+                            </div>
+                            <span
+                                class="font-bold text-xl tracking-tight text-gray-900 dark:text-white"
+                                >Fútbol Local</span
+                            >
                         </div>
-                        <span
-                            class="text-xl font-bold tracking-tight text-gray-900 dark:text-white"
-                            >Fútbol Local -
-                            <span class="text-primary">[City Name]</span></span
-                        >
                     </div>
-                    <div class="hidden md:flex items-center space-x-8">
+                    <div class="hidden md:flex space-x-8">
                         <a
-                            class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary font-medium transition"
+                            class="text-gray-500 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 text-sm font-medium transition"
                             href="#"
                             >Inicio</a
                         >
                         <a
-                            class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary font-medium transition"
+                            class="text-primary font-bold border-b-2 border-primary px-3 py-2 text-sm transition"
                             href="#"
                             >Partidos</a
                         >
                         <a
-                            class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary font-medium transition"
+                            class="text-gray-500 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 text-sm font-medium transition"
                             href="#"
                             >Torneos</a
                         >
                         <a
-                            class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary font-medium transition"
-                            href="#"
-                            >Reglamento</a
-                        >
-                        <a
-                            class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary font-medium transition"
+                            class="text-gray-500 hover:text-primary dark:text-gray-300 dark:hover:text-primary px-3 py-2 text-sm font-medium transition"
                             href="#"
                             >Tablas</a
                         >
-                        <a
-                            class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary font-medium transition"
-                            href="#"
-                            >Noticias</a
-                        >
-                        <a
-                            class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary font-medium transition"
-                            href="#"
-                            >Contacto</a
-                        >
+                    </div>
+                    <div class="flex items-center gap-4">
                         <button
-                            class="bg-primary hover:bg-primary-dark text-white px-5 py-2 rounded-lg font-medium transition shadow-lg shadow-primary/30"
-                        >
-                            Iniciar Sesión
-                        </button>
-                        <button
-                            class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition text-gray-600 dark:text-gray-400"
+                            class="p-2 rounded-full text-gray-500 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 transition"
                             onclick="document.documentElement.classList.toggle('dark')"
                         >
-                            <span class="material-icons">brightness_6</span>
+                            <span class="material-symbols-outlined"
+                                >brightness_medium</span
+                            >
                         </button>
-                    </div>
-                    <div class="md:hidden flex items-center">
                         <button
-                            class="text-gray-600 dark:text-gray-300 hover:text-primary focus:outline-none"
+                            class="bg-primary hover:bg-opacity-90 text-white px-5 py-2 rounded-lg text-sm font-medium shadow-md transition transform hover:scale-105 hidden md:block"
                         >
-                            <span class="material-icons text-3xl">menu</span>
+                            Mi Cuenta
                         </button>
                     </div>
                 </div>
             </div>
         </nav>
-        <header
-            class="relative bg-gray-800 h-[400px] flex items-end overflow-hidden group"
-        >
+        <header class="relative bg-primary h-64 md:h-72 overflow-hidden">
             <div class="absolute inset-0 z-0">
                 <img
-                    alt="Foto del equipo completo celebrando en el campo"
-                    class="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-700 ease-out"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBO0gTes-nLOmcGdugmikgEshIooJWys6B4W5ZZpZjKnIheGIKJ6bmNaUyomgi3kZ2uSyQnE_8hv91Kn0f2Rrvzb_GGraSTxHgzoOdHMPv9r5cmWunE5U2M4u7SJzNYGhb9iHz5PfMmdI-0zm40hAK59F0lEgo1x2LW4yxCtNm3ytEW3Ne6-SB5EWkMNxyxYKJX7Hm52im-1WS596gJMitgIIeaz4-0RwRe4z0F5wHEJ4hdQa-EP9bm0JYmKfiLImwE56Mx_8KFTSUl"
+                    alt="Campo de fútbol fondo"
+                    class="w-full h-full object-cover object-center opacity-30 mix-blend-overlay"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV1WEpAh59XZ7oI67KMqHb7DNyzkHwrRNs--KfgV2t83ntC04Bamw4PZ1BmkVrnbPegKFWtB1BF5u8WAjeEsImk_QFRs1PZnv9D0S1L8pnWs7PXXOe9aoBMlIk6Z2k3eaZbD4nuYxEJbEMMirsgxoFoyVvTtRWgT3_zP2mP4eGNkgPHu58ov2QBtcMEfQ22EHeBJJ4j8EpIzbyeIeLMfG8LMrcfuj7wrZpNf2ONJFrTx-C6vZ84Doo9MQQDlRGN9fj7HjVzc9dnYfw"
                 />
-                <div
-                    class="absolute inset-0 bg-gradient-to-t from-background-light dark:from-background-dark via-gray-900/60 to-gray-900/40"
-                ></div>
-                <div
-                    class="absolute inset-0 bg-primary/20 mix-blend-overlay"
-                ></div>
             </div>
-            <div class="container mx-auto px-4 relative z-10 pb-12">
-                <div
-                    class="flex flex-col md:flex-row items-end md:items-center gap-6"
-                >
-                    <div
-                        class="w-32 h-32 md:w-40 md:h-40 bg-white dark:bg-gray-800 rounded-full p-2 shadow-2xl border-4 border-primary flex-shrink-0 -mb-20 md:mb-0 transform translate-y-8 md:translate-y-16"
+            <div
+                class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/70 to-transparent z-10"
+            ></div>
+            <div
+                class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center"
+            >
+                <div class="mb-4">
+                    <a
+                        class="inline-flex items-center text-white/80 hover:text-white transition-colors text-sm font-medium"
+                        href="#"
                     >
-                        <div
-                            class="w-full h-full bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center overflow-hidden"
+                        <span class="material-symbols-outlined mr-1 text-base"
+                            >arrow_back</span
                         >
-                            <span class="material-icons text-6xl text-primary"
-                                >shield</span
+                        Volver a Partidos
+                    </a>
+                </div>
+                <h1
+                    class="text-3xl md:text-5xl font-black text-white drop-shadow-md tracking-tight"
+                >
+                    Atlético Central vs Dep. Norte
+                </h1>
+                <div
+                    class="flex flex-wrap items-center gap-6 mt-4 text-white/90 font-medium"
+                >
+                    <span class="flex items-center gap-2"
+                        ><span class="material-symbols-outlined text-xl"
+                            >calendar_month</span
+                        >
+                        12 de Mayo, 2025</span
+                    >
+                    <span class="flex items-center gap-2"
+                        ><span class="material-symbols-outlined text-xl"
+                            >stadium</span
+                        >
+                        Estadio Municipal "La Bombonerita"</span
+                    >
+                    <span
+                        class="flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full text-sm"
+                        >Primera División - Jornada 15</span
+                    >
+                    <div
+                        class="flex items-center gap-3 bg-white/10 px-4 py-1.5 rounded-full backdrop-blur-sm border border-white/10"
+                    >
+                        <span
+                            class="material-symbols-outlined text-2xl text-yellow-300"
+                            >wb_sunny</span
+                        >
+                        <div class="flex flex-col leading-none">
+                            <span class="text-lg font-bold">22°C</span>
+                            <span
+                                class="text-[10px] uppercase tracking-wider opacity-80"
+                                >Despejado</span
                             >
-                        </div>
-                    </div>
-                    <div class="mb-4 md:mb-0 text-shadow w-full">
-                        <div
-                            class="flex flex-col md:flex-row justify-between items-end w-full"
-                        >
-                            <div>
-                                <h1
-                                    class="text-5xl md:text-7xl font-black text-white drop-shadow-lg tracking-tight"
-                                >
-                                    Equipo A
-                                </h1>
-                                <div
-                                    class="flex items-center space-x-4 mt-3 text-gray-100 font-medium text-lg drop-shadow-md"
-                                >
-                                    <span
-                                        class="flex items-center bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10"
-                                        ><span
-                                            class="material-icons mr-2 text-primary"
-                                            >emoji_events</span
-                                        >
-                                        1ª División</span
-                                    >
-                                    <span
-                                        class="flex items-center bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10"
-                                        ><span
-                                            class="material-icons mr-2 text-primary"
-                                            >place</span
-                                        >
-                                        Estadio Municipal</span
-                                    >
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </header>
-        <main class="container mx-auto px-4 py-24">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="lg:col-span-2 space-y-8">
-                    <section
-                        class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-6"
-                    >
+        <main
+            class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full"
+        >
+            <div
+                class="bg-surface-light dark:bg-surface-dark rounded-2xl shadow-xl p-8 mb-8 border border-gray-100 dark:border-gray-700"
+            >
+                <div
+                    class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4"
+                >
+                    <div class="flex flex-col items-center text-center flex-1">
                         <div
-                            class="flex items-center mb-4 border-b border-gray-100 dark:border-gray-700 pb-3"
+                            class="w-24 h-24 md:w-32 md:h-32 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mb-4 shadow-inner ring-4 ring-primary/20"
                         >
-                            <span class="material-icons text-primary mr-2"
-                                >info</span
+                            <span class="font-black text-primary text-4xl"
+                                >AC</span
                             >
-                            <h2
-                                class="text-2xl font-bold text-gray-800 dark:text-white"
-                            >
-                                Sobre el Club
-                            </h2>
                         </div>
+                        <h2
+                            class="text-2xl font-black text-gray-900 dark:text-white uppercase tracking-wider"
+                        >
+                            Atlético Central
+                        </h2>
                         <p
-                            class="text-gray-600 dark:text-gray-300 leading-relaxed"
+                            class="text-gray-500 dark:text-gray-400 font-medium mt-1"
                         >
-                            El <strong>Equipo A</strong> es uno de los clubes
-                            fundadores de la liga local. Con una historia rica
-                            en pasión y esfuerzo, el equipo ha sabido mantenerse
-                            en la primera división gracias a su cantera y al
-                            apoyo incondicional de su hinchada. Conocidos por su
-                            juego ofensivo y su tenacidad en el campo, buscan
-                            este año conquistar el campeonato de la ciudad. Sus
-                            colores representan el cielo y la fuerza de la
-                            comunidad.
+                            Local
                         </p>
-                        <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <div
-                                class="text-center p-3 bg-blue-50 dark:bg-gray-700/50 rounded-lg"
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="flex items-center gap-6 mb-2">
+                            <span
+                                class="text-6xl md:text-8xl font-black text-gray-900 dark:text-white tracking-tighter"
+                                >2</span
                             >
-                                <span
-                                    class="block text-sm text-gray-500 dark:text-gray-400 uppercase text-xs font-bold"
-                                    >Fundación</span
-                                >
-                                <span
-                                    class="block text-lg font-bold text-primary"
-                                    >1985</span
-                                >
-                            </div>
-                            <div
-                                class="text-center p-3 bg-blue-50 dark:bg-gray-700/50 rounded-lg"
+                            <span
+                                class="text-4xl font-bold text-gray-300 dark:text-gray-600"
+                                >-</span
                             >
-                                <span
-                                    class="block text-sm text-gray-500 dark:text-gray-400 uppercase text-xs font-bold"
-                                    >DT</span
-                                >
-                                <span
-                                    class="block text-lg font-bold text-primary"
-                                    >Carlos M.</span
-                                >
-                            </div>
-                            <div
-                                class="text-center p-3 bg-blue-50 dark:bg-gray-700/50 rounded-lg"
-                            >
-                                <span
-                                    class="block text-sm text-gray-500 dark:text-gray-400 uppercase text-xs font-bold"
-                                    >Capitán</span
-                                >
-                                <span
-                                    class="block text-lg font-bold text-primary"
-                                    >J. Pérez</span
-                                >
-                            </div>
-                            <div
-                                class="text-center p-3 bg-blue-50 dark:bg-gray-700/50 rounded-lg"
-                            >
-                                <span
-                                    class="block text-sm text-gray-500 dark:text-gray-400 uppercase text-xs font-bold"
-                                    >Socios</span
-                                >
-                                <span
-                                    class="block text-lg font-bold text-primary"
-                                    >1,200</span
-                                >
-                            </div>
-                        </div>
-                    </section>
-                    <section>
-                        <div class="flex items-center justify-between mb-4">
-                            <h2
-                                class="text-2xl font-bold text-gray-800 dark:text-white flex items-center"
-                            >
-                                <span class="material-icons text-primary mr-2"
-                                    >history</span
-                                >
-                                Últimos Resultados
-                            </h2>
-                            <a
-                                class="text-primary hover:text-primary-dark text-sm font-semibold"
-                                href="#"
-                                >Ver todos</a
+                            <span
+                                class="text-6xl md:text-8xl font-black text-gray-900 dark:text-white tracking-tighter"
+                                >1</span
                             >
                         </div>
-                        <div class="space-y-4">
-                            <div
-                                class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-md border-l-4 border-green-500 overflow-hidden hover:shadow-lg transition-shadow"
-                            >
-                                <div
-                                    class="p-4 flex flex-col sm:flex-row items-center justify-between"
-                                >
-                                    <div
-                                        class="text-gray-500 dark:text-gray-400 text-sm mb-2 sm:mb-0"
-                                    >
-                                        12 Oct - Fecha 8
-                                    </div>
-                                    <div
-                                        class="flex-1 flex items-center justify-center space-x-6 w-full sm:w-auto"
-                                    >
-                                        <div
-                                            class="flex items-center space-x-3 w-1/3 justify-end"
-                                        >
-                                            <span
-                                                class="font-bold text-gray-800 dark:text-white text-right"
-                                                >Equipo A</span
-                                            >
-                                            <div
-                                                class="w-8 h-8 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center"
-                                            >
-                                                <span
-                                                    class="material-icons text-primary text-sm"
-                                                    >shield</span
-                                                >
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="bg-gray-100 dark:bg-gray-800 px-4 py-1 rounded text-xl font-bold text-gray-900 dark:text-white tracking-widest border border-gray-200 dark:border-gray-700"
-                                        >
-                                            3 - 1
-                                        </div>
-                                        <div
-                                            class="flex items-center space-x-3 w-1/3 justify-start"
-                                        >
-                                            <div
-                                                class="w-8 h-8 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center"
-                                            >
-                                                <span
-                                                    class="material-icons text-gray-500 text-sm"
-                                                    >shield</span
-                                                >
-                                            </div>
-                                            <span
-                                                class="font-bold text-gray-600 dark:text-gray-400"
-                                                >Dep. Centro</span
-                                            >
-                                        </div>
-                                    </div>
-                                    <div class="mt-2 sm:mt-0">
-                                        <span
-                                            class="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 text-xs font-bold rounded uppercase"
-                                            >Victoria</span
-                                        >
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-md border-l-4 border-yellow-500 overflow-hidden hover:shadow-lg transition-shadow"
-                            >
-                                <div
-                                    class="p-4 flex flex-col sm:flex-row items-center justify-between"
-                                >
-                                    <div
-                                        class="text-gray-500 dark:text-gray-400 text-sm mb-2 sm:mb-0"
-                                    >
-                                        05 Oct - Fecha 7
-                                    </div>
-                                    <div
-                                        class="flex-1 flex items-center justify-center space-x-6 w-full sm:w-auto"
-                                    >
-                                        <div
-                                            class="flex items-center space-x-3 w-1/3 justify-end"
-                                        >
-                                            <span
-                                                class="font-bold text-gray-600 dark:text-gray-400 text-right"
-                                                >San Martín</span
-                                            >
-                                            <div
-                                                class="w-8 h-8 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center"
-                                            >
-                                                <span
-                                                    class="material-icons text-gray-500 text-sm"
-                                                    >shield</span
-                                                >
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="bg-gray-100 dark:bg-gray-800 px-4 py-1 rounded text-xl font-bold text-gray-900 dark:text-white tracking-widest border border-gray-200 dark:border-gray-700"
-                                        >
-                                            1 - 1
-                                        </div>
-                                        <div
-                                            class="flex items-center space-x-3 w-1/3 justify-start"
-                                        >
-                                            <div
-                                                class="w-8 h-8 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center"
-                                            >
-                                                <span
-                                                    class="material-icons text-primary text-sm"
-                                                    >shield</span
-                                                >
-                                            </div>
-                                            <span
-                                                class="font-bold text-gray-800 dark:text-white"
-                                                >Equipo A</span
-                                            >
-                                        </div>
-                                    </div>
-                                    <div class="mt-2 sm:mt-0">
-                                        <span
-                                            class="px-2 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-700 dark:text-yellow-300 text-xs font-bold rounded uppercase"
-                                            >Empate</span
-                                        >
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-md border-l-4 border-red-500 overflow-hidden hover:shadow-lg transition-shadow"
-                            >
-                                <div
-                                    class="p-4 flex flex-col sm:flex-row items-center justify-between"
-                                >
-                                    <div
-                                        class="text-gray-500 dark:text-gray-400 text-sm mb-2 sm:mb-0"
-                                    >
-                                        28 Sep - Fecha 6
-                                    </div>
-                                    <div
-                                        class="flex-1 flex items-center justify-center space-x-6 w-full sm:w-auto"
-                                    >
-                                        <div
-                                            class="flex items-center space-x-3 w-1/3 justify-end"
-                                        >
-                                            <span
-                                                class="font-bold text-gray-800 dark:text-white text-right"
-                                                >Equipo A</span
-                                            >
-                                            <div
-                                                class="w-8 h-8 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center"
-                                            >
-                                                <span
-                                                    class="material-icons text-primary text-sm"
-                                                    >shield</span
-                                                >
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="bg-gray-100 dark:bg-gray-800 px-4 py-1 rounded text-xl font-bold text-gray-900 dark:text-white tracking-widest border border-gray-200 dark:border-gray-700"
-                                        >
-                                            0 - 2
-                                        </div>
-                                        <div
-                                            class="flex items-center space-x-3 w-1/3 justify-start"
-                                        >
-                                            <div
-                                                class="w-8 h-8 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center"
-                                            >
-                                                <span
-                                                    class="material-icons text-gray-500 text-sm"
-                                                    >shield</span
-                                                >
-                                            </div>
-                                            <span
-                                                class="font-bold text-gray-600 dark:text-gray-400"
-                                                >At. Norte</span
-                                            >
-                                        </div>
-                                    </div>
-                                    <div class="mt-2 sm:mt-0">
-                                        <span
-                                            class="px-2 py-1 bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300 text-xs font-bold rounded uppercase"
-                                            >Derrota</span
-                                        >
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section
-                        class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-6"
-                    >
-                        <div
-                            class="flex items-center mb-4 border-b border-gray-100 dark:border-gray-700 pb-3"
+                        <span
+                            class="px-4 py-1.5 bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-400 text-sm font-bold rounded-full uppercase tracking-widest animate-pulse flex items-center gap-2"
                         >
-                            <span class="material-icons text-primary mr-2"
-                                >groups</span
-                            >
-                            <h2
-                                class="text-2xl font-bold text-gray-800 dark:text-white"
-                            >
-                                Plantilla Destacada
-                            </h2>
-                        </div>
+                            <span
+                                class="w-2 h-2 rounded-full bg-red-500"
+                            ></span>
+                            Finalizado
+                        </span>
+                    </div>
+                    <div class="flex flex-col items-center text-center flex-1">
                         <div
-                            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
+                            class="w-24 h-24 md:w-32 md:h-32 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mb-4 shadow-inner ring-4 ring-red-500/20"
                         >
-                            <div class="text-center group cursor-pointer">
-                                <div
-                                    class="w-20 h-20 mx-auto rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden mb-2 border-2 border-transparent group-hover:border-primary transition"
-                                >
-                                    <img
-                                        alt="Jugador"
-                                        class="w-full h-full object-cover"
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXgx1Hfu-G4qUAw1MqXNI6wtYqZaTkv6Dc28OTQG7gSTkeBwBv5724QSmzFdaUM5AuJ6jIhrNgHJ48w4Xjh3xIVWCUI6wbfAogOpnqnoUqj-j7ifBfrutRKt-KlfhuoPlrJbE-SGlhht8po32HnE_KnU14tMTfL5qiOw-R0_Z7Tb1b1Yrg5pG4oCqrDypw-GNgFykbBGRjyoydIQMVhqDvSRRRWvV0RFDJkjffB3cOZyM9c5GxG-MsBJxYFLB7VPjUV5GfmAZL5nSb"
-                                    />
-                                </div>
-                                <h4
-                                    class="font-bold text-sm text-gray-800 dark:text-white"
-                                >
-                                    Juan Pérez
-                                </h4>
-                                <p class="text-xs text-primary font-medium">
-                                    Delantero
-                                </p>
-                            </div>
-                            <div class="text-center group cursor-pointer">
-                                <div
-                                    class="w-20 h-20 mx-auto rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden mb-2 border-2 border-transparent group-hover:border-primary transition"
-                                >
-                                    <img
-                                        alt="Jugador"
-                                        class="w-full h-full object-cover"
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRqDam3wHZVLwIevpNd76m5BBK6OaKQKv_IisH71qa9ohR3OR9DHDG57TbokbuQ-6RWa9hkTqSPyeqkAaBpX4DDORsr26FBncNFWbhaBrNVgfBMazW7pCkfWhOSBtrhmXkpO4b-phRO-tJ0PElwiRn5dKa4bWcteUw5pgubfOSP6Dgg0VIOigtIvl3sfN7Wc0F_FxRd3g1IMShlR4Hl5lgX2G0CjcKwI5mwIKb-DHjyl0XmrJU-CigLaFPyeGSwIG45dcIitl1n_oJ"
-                                    />
-                                </div>
-                                <h4
-                                    class="font-bold text-sm text-gray-800 dark:text-white"
-                                >
-                                    Luis Gomez
-                                </h4>
-                                <p class="text-xs text-primary font-medium">
-                                    Medio
-                                </p>
-                            </div>
-                            <div class="text-center group cursor-pointer">
-                                <div
-                                    class="w-20 h-20 mx-auto rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden mb-2 border-2 border-transparent group-hover:border-primary transition"
-                                >
-                                    <img
-                                        alt="Jugador"
-                                        class="w-full h-full object-cover"
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4fHjhgAMONtOb4MMGVaDTPdFHQm8qVg5rDHbYGyv8DoLq9_a72Y8BVxzEcUCcAAn7xMwro5JWHR5RzgrHjRDG4FNfeaVOrIb3VdB9tcXPaGWva9fYHOb_eEAaHQWDXWdTDjl3LMowk51anuOYLwMfHWCqPomqZme0JFRCVfAN2Zp13EpkV2OF7LeYfbBeH41FEG_zk4vrnn76ONph9kitTcl5fruvun9mHMLY-GTyySmnUJVL_C8sjJgQKVy5eeSLJRRe9qfozI3o"
-                                    />
-                                </div>
-                                <h4
-                                    class="font-bold text-sm text-gray-800 dark:text-white"
-                                >
-                                    Pedro Ruiz
-                                </h4>
-                                <p class="text-xs text-primary font-medium">
-                                    Defensa
-                                </p>
-                            </div>
-                            <div class="text-center group cursor-pointer">
-                                <div
-                                    class="w-20 h-20 mx-auto rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden mb-2 border-2 border-transparent group-hover:border-primary transition"
-                                >
-                                    <img
-                                        alt="Jugador"
-                                        class="w-full h-full object-cover"
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW89DV6Sr3eHwL4aXlu0GPj98MKn1axko03s0lb1kNVGpi1x7kOS5biMkZazwP5UMpMCu1h9NQVyJ29jiNAQxCqk347YcUC61fMzJBG_y9EVesQn-vlRtQ37eQzxoP_PH7i0E-2vtQGuuzQzPoxHxx7w8qSIdMkEr4FA8dahVc3Hoyp0B8hq2ZBGSOHqlIzpk9nqgeEovLvnVP6MDN0hRO585tJTFrs2GBLoO4-xsPRPSA3gOq-xGFCZKW70VM2bTbplqi5hdqt9Pf"
-                                    />
-                                </div>
-                                <h4
-                                    class="font-bold text-sm text-gray-800 dark:text-white"
-                                >
-                                    A. Silva
-                                </h4>
-                                <p class="text-xs text-primary font-medium">
-                                    Arquero
-                                </p>
-                            </div>
+                            <span class="font-black text-red-600 text-4xl"
+                                >DN</span
+                            >
                         </div>
-                    </section>
+                        <h2
+                            class="text-2xl font-black text-gray-900 dark:text-white uppercase tracking-wider"
+                        >
+                            Dep. Norte
+                        </h2>
+                        <p
+                            class="text-gray-500 dark:text-gray-400 font-medium mt-1"
+                        >
+                            Visitante
+                        </p>
+                    </div>
                 </div>
-                <div class="lg:col-span-1 space-y-8">
-                    <div
-                        class="bg-primary rounded-xl shadow-lg p-6 text-white relative overflow-hidden"
+                <div
+                    class="mt-12 border-t border-gray-100 dark:border-gray-700 pt-8"
+                >
+                    <h3
+                        class="text-center text-sm font-bold text-gray-400 uppercase tracking-widest mb-8"
                     >
+                        Línea de Tiempo
+                    </h3>
+                    <div class="relative max-w-4xl mx-auto px-4">
                         <div
-                            class="absolute top-0 right-0 -mr-8 -mt-8 opacity-20"
-                        >
-                            <span
-                                class="material-icons"
-                                style="font-size: 150px"
-                                >leaderboard</span
+                            class="absolute top-0 bottom-0 left-1/2 w-0.5 bg-gray-200 dark:bg-gray-700 -translate-x-1/2"
+                        ></div>
+                        <div class="space-y-10 relative">
+                            <div
+                                class="flex items-center justify-between w-full"
                             >
-                        </div>
-                        <h3 class="text-lg font-medium opacity-90 mb-1">
-                            Posición Actual
-                        </h3>
-                        <div class="flex items-end space-x-2">
-                            <span class="text-6xl font-black">4°</span>
-                            <span class="text-xl mb-2 font-medium opacity-80"
-                                >/ 18 Equipos</span
-                            >
-                        </div>
-                        <div
-                            class="mt-4 pt-4 border-t border-white/20 flex justify-between"
-                        >
-                            <div>
-                                <span class="block text-2xl font-bold">24</span>
-                                <span
-                                    class="text-xs uppercase font-medium opacity-75"
-                                    >Puntos</span
-                                >
-                            </div>
-                            <div>
-                                <span class="block text-2xl font-bold">12</span>
-                                <span
-                                    class="text-xs uppercase font-medium opacity-75"
-                                    >Jugados</span
-                                >
-                            </div>
-                            <div>
-                                <span class="block text-2xl font-bold">+8</span>
-                                <span
-                                    class="text-xs uppercase font-medium opacity-75"
-                                    >DIF. Gol</span
-                                >
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-0 overflow-hidden"
-                    >
-                        <div
-                            class="bg-gray-100 dark:bg-gray-800 px-6 py-3 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center"
-                        >
-                            <span
-                                class="font-bold text-gray-700 dark:text-gray-200"
-                                >Próximo Partido</span
-                            >
-                            <span
-                                class="text-xs bg-primary text-white px-2 py-0.5 rounded"
-                                >Fecha 9</span
-                            >
-                        </div>
-                        <div class="p-6 text-center">
-                            <div class="flex justify-between items-center mb-4">
-                                <div class="flex flex-col items-center w-1/3">
-                                    <div
-                                        class="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center mb-2"
+                                <div class="w-[45%] text-right pr-6">
+                                    <p
+                                        class="font-bold text-gray-900 dark:text-white"
                                     >
-                                        <span
-                                            class="material-icons text-primary"
-                                            >shield</span
-                                        >
-                                    </div>
-                                    <span
-                                        class="font-bold text-gray-800 dark:text-white text-sm"
-                                        >Equipo A</span
-                                    >
+                                        GOL - J. Pérez
+                                    </p>
+                                    <p class="text-xs text-gray-500">
+                                        Cabezazo tras córner
+                                    </p>
                                 </div>
-                                <div class="text-sm font-bold text-gray-400">
-                                    VS
+                                <div
+                                    class="z-10 bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg border-4 border-white dark:border-surface-dark font-bold text-sm"
+                                >
+                                    12'
                                 </div>
-                                <div class="flex flex-col items-center w-1/3">
-                                    <div
-                                        class="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center mb-2"
+                                <div class="w-[45%]"></div>
+                            </div>
+                            <div
+                                class="flex items-center justify-between w-full"
+                            >
+                                <div class="w-[45%]"></div>
+                                <div
+                                    class="z-10 bg-yellow-400 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg border-4 border-white dark:border-surface-dark font-bold text-sm"
+                                >
+                                    34'
+                                </div>
+                                <div class="w-[45%] pl-6">
+                                    <p
+                                        class="font-bold text-gray-900 dark:text-white"
                                     >
-                                        <span
-                                            class="material-icons text-gray-500"
-                                            >shield</span
-                                        >
-                                    </div>
-                                    <span
-                                        class="font-bold text-gray-800 dark:text-white text-sm"
-                                        >Litoral</span
-                                    >
+                                        Tarjeta Amarilla
+                                    </p>
+                                    <p class="text-xs text-gray-500">
+                                        M. Gómez (DN)
+                                    </p>
                                 </div>
                             </div>
                             <div
-                                class="bg-blue-50 dark:bg-gray-800/50 rounded-lg p-3"
+                                class="flex items-center justify-between w-full"
                             >
+                                <div class="w-[45%]"></div>
                                 <div
-                                    class="flex items-center justify-center text-sm text-gray-600 dark:text-gray-300 mb-1"
+                                    class="z-10 bg-green-500 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg border-4 border-white dark:border-surface-dark font-bold text-sm"
                                 >
-                                    <span class="material-icons text-base mr-1"
-                                        >calendar_today</span
+                                    45'
+                                </div>
+                                <div class="w-[45%] pl-6">
+                                    <p
+                                        class="font-bold text-gray-900 dark:text-white"
                                     >
-                                    Sábado, 19 Oct
+                                        GOL - L. Suárez
+                                    </p>
+                                    <p class="text-xs text-gray-500">
+                                        Remate de media distancia
+                                    </p>
                                 </div>
-                                <div
-                                    class="flex items-center justify-center text-sm text-gray-600 dark:text-gray-300"
-                                >
-                                    <span class="material-icons text-base mr-1"
-                                        >schedule</span
+                            </div>
+                            <div
+                                class="flex items-center justify-between w-full"
+                            >
+                                <div class="w-[45%] text-right pr-6">
+                                    <p
+                                        class="font-bold text-gray-900 dark:text-white"
                                     >
-                                    16:30 hrs
+                                        GOL - R. Falcao
+                                    </p>
+                                    <p class="text-xs text-gray-500">Penal</p>
                                 </div>
                                 <div
-                                    class="flex items-center justify-center text-xs text-gray-500 dark:text-gray-400 mt-2 border-t border-gray-200 dark:border-gray-700 pt-2"
+                                    class="z-10 bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg border-4 border-white dark:border-surface-dark font-bold text-sm"
                                 >
-                                    Estadio Principal
+                                    78'
                                 </div>
+                                <div class="w-[45%]"></div>
                             </div>
                         </div>
                     </div>
-                    <div
-                        class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden"
+                </div>
+            </div>
+            <div
+                class="bg-surface-light dark:bg-surface-dark rounded-2xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700"
+            >
+                <div
+                    class="flex border-b border-gray-100 dark:border-gray-700 overflow-x-auto"
+                >
+                    <button
+                        class="flex-1 py-4 px-6 text-sm font-bold text-primary border-b-2 border-primary bg-primary/5 whitespace-nowrap"
                     >
-                        <div
-                            class="px-6 py-3 border-b border-gray-200 dark:border-gray-700"
-                        >
-                            <h3 class="font-bold text-gray-800 dark:text-white">
-                                Tabla de Posiciones
-                            </h3>
-                        </div>
-                        <table class="w-full text-sm text-left">
-                            <thead
-                                class="text-xs text-gray-500 dark:text-gray-400 uppercase bg-gray-50 dark:bg-gray-800"
-                            >
-                                <tr>
-                                    <th class="px-4 py-3 w-4">#</th>
-                                    <th class="px-4 py-3">Equipo</th>
-                                    <th class="px-4 py-3 text-center">PTS</th>
-                                </tr>
-                            </thead>
-                            <tbody
-                                class="divide-y divide-gray-100 dark:divide-gray-700"
-                            >
-                                <tr class="bg-white dark:bg-gray-900">
-                                    <td
-                                        class="px-4 py-3 font-medium text-gray-900 dark:text-white"
-                                    >
-                                        1
-                                    </td>
-                                    <td
-                                        class="px-4 py-3 text-gray-600 dark:text-gray-300"
-                                    >
-                                        Dep. Norte
-                                    </td>
-                                    <td
-                                        class="px-4 py-3 font-bold text-center text-gray-900 dark:text-white"
-                                    >
-                                        29
-                                    </td>
-                                </tr>
-                                <tr class="bg-white dark:bg-gray-900">
-                                    <td
-                                        class="px-4 py-3 font-medium text-gray-900 dark:text-white"
-                                    >
-                                        2
-                                    </td>
-                                    <td
-                                        class="px-4 py-3 text-gray-600 dark:text-gray-300"
-                                    >
-                                        San Luis
-                                    </td>
-                                    <td
-                                        class="px-4 py-3 font-bold text-center text-gray-900 dark:text-white"
-                                    >
-                                        27
-                                    </td>
-                                </tr>
-                                <tr class="bg-white dark:bg-gray-900">
-                                    <td
-                                        class="px-4 py-3 font-medium text-gray-900 dark:text-white"
-                                    >
-                                        3
-                                    </td>
-                                    <td
-                                        class="px-4 py-3 text-gray-600 dark:text-gray-300"
-                                    >
-                                        Central
-                                    </td>
-                                    <td
-                                        class="px-4 py-3 font-bold text-center text-gray-900 dark:text-white"
-                                    >
-                                        25
-                                    </td>
-                                </tr>
-                                <tr
-                                    class="bg-blue-50 dark:bg-primary/10 border-l-4 border-primary"
-                                >
-                                    <td
-                                        class="px-4 py-3 font-bold text-primary"
-                                    >
-                                        4
-                                    </td>
-                                    <td
-                                        class="px-4 py-3 font-bold text-gray-900 dark:text-white"
-                                    >
-                                        Equipo A
-                                    </td>
-                                    <td
-                                        class="px-4 py-3 font-bold text-center text-primary"
-                                    >
-                                        24
-                                    </td>
-                                </tr>
-                                <tr class="bg-white dark:bg-gray-900">
-                                    <td
-                                        class="px-4 py-3 font-medium text-gray-900 dark:text-white"
-                                    >
-                                        5
-                                    </td>
-                                    <td
-                                        class="px-4 py-3 text-gray-600 dark:text-gray-300"
-                                    >
-                                        Huracán
-                                    </td>
-                                    <td
-                                        class="px-4 py-3 font-bold text-center text-gray-900 dark:text-white"
-                                    >
-                                        21
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div
-                            class="p-3 text-center bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700"
-                        >
-                            <a
-                                class="text-xs text-primary font-bold hover:underline"
-                                href="#"
-                                >Ver tabla completa</a
-                            >
-                        </div>
-                    </div>
-                    <div
-                        class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-6"
+                        ALINEACIONES
+                    </button>
+                    <button
+                        class="flex-1 py-4 px-6 text-sm font-bold text-gray-500 dark:text-gray-400 hover:text-primary transition whitespace-nowrap"
                     >
-                        <div class="flex justify-between items-center mb-4">
-                            <h3 class="font-bold text-gray-800 dark:text-white">
-                                Galería
-                            </h3>
-                            <span class="material-icons text-gray-400 text-sm"
-                                >photo_camera</span
+                        ESTADÍSTICAS
+                    </button>
+                    <button
+                        class="flex-1 py-4 px-6 text-sm font-bold text-gray-500 dark:text-gray-400 hover:text-primary transition whitespace-nowrap"
+                    >
+                        RESUMEN
+                    </button>
+                </div>
+                <div class="p-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <div>
+                            <h4
+                                class="text-lg font-bold mb-6 text-gray-800 dark:text-white flex items-center gap-2"
                             >
-                        </div>
-                        <div class="grid grid-cols-3 gap-2">
-                            <img
-                                alt="Gallery 1"
-                                class="rounded aspect-square object-cover hover:opacity-80 transition cursor-pointer"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMJLHjplIH4l2yLCKPXsHOuAHugbdhQdp1-Uavgc7td5eDyKDxsvjylgpSUcXhUdKWwgKn5F6nudIS_FioEMC_putlDAuyJt1kshPiFd8-4ATurzvobkkh4XgeRu435fgwhHhl7rxfwskKke19dF_jIXZZ1P1m5-484zEeR6XIIa7pLYwcXI4ERd0F2IcAP6vJaa_V4YfE03W8gldmDaPp_A6xYeyETpzY2Sgxea9U3SL8NjHhjLZIE5D5X3joaP_zCnRfueuxbMfu"
-                            />
-                            <img
-                                alt="Gallery 2"
-                                class="rounded aspect-square object-cover hover:opacity-80 transition cursor-pointer"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJxJR5VTnk09VuO7lJ2uoeiP8RKXqYnO15fwyu-ovGRZERbItuhCokT0Qm0gx0HfLoZrjOWBxa26gblbJjG8uwVW7KePyLFrCRwMxMLUMDbcvTcsNZTIkDTxBP2vzohWhRqZBeRHpd5nT0NxFNxWZ2iEhM6Af95f_Nnal9aoT3z3nQMYG06OgLPCWBBzPOGrqI1jEDmGMu8E_-6opNLoQ5q_gcNf8g9rR0YnDngI88l6MoHpSwawwVUdGe4oWAImdot7pFsvZou2KA"
-                            />
-                            <img
-                                alt="Gallery 3"
-                                class="rounded aspect-square object-cover hover:opacity-80 transition cursor-pointer"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoR6kdBBn9zGfU0pUu9YLsZJ_up8oqfwchlJLxGwtcSwH60Hj4Bu50P6AhMNZ9ETqYg8EOLygdO8gMtLVTs2gXpo14ne0XC6URKJ-uyI9V7HlaGKdPhXd-N0PBpiMWW-e-GOCYsKIoPK69UV07nF0X82_LBVTcr0P3N0pB9azrDT1oO7h94b4N1mha2rpDgJmgA4OWNhH7o594YpVvIQMZtQdpCwaKCo6NdZNUcTs44Pt_7L1AKKp5uyqRfzwEqHjJ8kH9IHvIHutG"
-                            />
-                            <img
-                                alt="Gallery 4"
-                                class="rounded aspect-square object-cover hover:opacity-80 transition cursor-pointer"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHSHkURm2TdvDdnRM0FO4Vo_4e6U107knvS7K5gJtguOctug_sBRAbW1T7eTrPAxUCw6pH9tigKLX75pvPqrAidcZ8MwYdVef930GMfdHUd0ZPKGbofFp445Tr4kT0u65lnXLr0rYTysYBxGGpgIFVIjKN9gjjYF3MuKTYawXrExJmRYCedxyu4ynh7MKpdgPX2pqzZnWn-iLPnuWLgYP_vbJn4WUFjNcCI30bo_utsVxpslz6uyV_MQMNfwZcYNtcv7Hi8Oi2uvxb"
-                            />
-                            <img
-                                alt="Gallery 5"
-                                class="rounded aspect-square object-cover hover:opacity-80 transition cursor-pointer"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8oCJyADqEwZGxze72NCPEu6iHmdr3_pRy2m9bkUJQvQentHbtzjv6bzqP-2cy0KaFrYL1yNe-XxUhzvctSsMAKuYFMHGhx4YjN4IMEescCXNfzEHPaZOxIiKkBNOi1FEEhTJ5mwNHWXysc2UaHCKMIANSTmizDKUDDHxo14Z0UbbzQpM13Q2CuPoIr5cQK3yuNS7a2BFYAsLDDVNuORSKpli_vC7Oq0R9AQ6CUBnzccxfdEx3jyXE0KcRPwISJ8ArSG7a5v2NccqV"
-                            />
+                                <span
+                                    class="w-3 h-3 bg-primary rounded-full"
+                                ></span>
+                                Atlético Central (4-3-3)
+                            </h4>
                             <div
-                                class="bg-gray-100 dark:bg-gray-800 rounded flex items-center justify-center text-xs text-gray-500 dark:text-gray-400 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 transition"
+                                class="soccer-pitch w-full aspect-[2/3] rounded-xl overflow-hidden shadow-inner p-4"
                             >
-                                +12
+                                <div class="pitch-markings"></div>
+                                <div class="center-line"></div>
+                                <div class="center-circle"></div>
+                                <div
+                                    class="relative h-full flex flex-col justify-between py-4"
+                                >
+                                    <div class="flex justify-around">
+                                        <div class="flex flex-col items-center">
+                                            <div
+                                                class="w-8 h-8 rounded-full bg-blue-600 text-white text-[10px] flex items-center justify-center font-bold border-2 border-white"
+                                            >
+                                                7
+                                            </div>
+                                            <span
+                                                class="text-[10px] text-white font-bold mt-1 bg-black/40 px-1"
+                                                >López</span
+                                            >
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <div
+                                                class="w-8 h-8 rounded-full bg-blue-600 text-white text-[10px] flex items-center justify-center font-bold border-2 border-white"
+                                            >
+                                                9
+                                            </div>
+                                            <span
+                                                class="text-[10px] text-white font-bold mt-1 bg-black/40 px-1"
+                                                >Falcao</span
+                                            >
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <div
+                                                class="w-8 h-8 rounded-full bg-blue-600 text-white text-[10px] flex items-center justify-center font-bold border-2 border-white"
+                                            >
+                                                11
+                                            </div>
+                                            <span
+                                                class="text-[10px] text-white font-bold mt-1 bg-black/40 px-1"
+                                                >Mora</span
+                                            >
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-around">
+                                        <div class="flex flex-col items-center">
+                                            <div
+                                                class="w-8 h-8 rounded-full bg-blue-600 text-white text-[10px] flex items-center justify-center font-bold border-2 border-white"
+                                            >
+                                                8
+                                            </div>
+                                            <span
+                                                class="text-[10px] text-white font-bold mt-1 bg-black/40 px-1"
+                                                >Sosa</span
+                                            >
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <div
+                                                class="w-8 h-8 rounded-full bg-blue-600 text-white text-[10px] flex items-center justify-center font-bold border-2 border-white"
+                                            >
+                                                5
+                                            </div>
+                                            <span
+                                                class="text-[10px] text-white font-bold mt-1 bg-black/40 px-1"
+                                                >Ríos</span
+                                            >
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <div
+                                                class="w-8 h-8 rounded-full bg-blue-600 text-white text-[10px] flex items-center justify-center font-bold border-2 border-white"
+                                            >
+                                                10
+                                            </div>
+                                            <span
+                                                class="text-[10px] text-white font-bold mt-1 bg-black/40 px-1"
+                                                >Pérez</span
+                                            >
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-around">
+                                        <div class="flex flex-col items-center">
+                                            <div
+                                                class="w-8 h-8 rounded-full bg-blue-600 text-white text-[10px] flex items-center justify-center font-bold border-2 border-white"
+                                            >
+                                                4
+                                            </div>
+                                            <span
+                                                class="text-[10px] text-white font-bold mt-1 bg-black/40 px-1"
+                                                >Vila</span
+                                            >
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <div
+                                                class="w-8 h-8 rounded-full bg-blue-600 text-white text-[10px] flex items-center justify-center font-bold border-2 border-white"
+                                            >
+                                                2
+                                            </div>
+                                            <span
+                                                class="text-[10px] text-white font-bold mt-1 bg-black/40 px-1"
+                                                >Díaz</span
+                                            >
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <div
+                                                class="w-8 h-8 rounded-full bg-blue-600 text-white text-[10px] flex items-center justify-center font-bold border-2 border-white"
+                                            >
+                                                6
+                                            </div>
+                                            <span
+                                                class="text-[10px] text-white font-bold mt-1 bg-black/40 px-1"
+                                                >Blanco</span
+                                            >
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <div
+                                                class="w-8 h-8 rounded-full bg-blue-600 text-white text-[10px] flex items-center justify-center font-bold border-2 border-white"
+                                            >
+                                                3
+                                            </div>
+                                            <span
+                                                class="text-[10px] text-white font-bold mt-1 bg-black/40 px-1"
+                                                >Ruiz</span
+                                            >
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <div class="flex flex-col items-center">
+                                            <div
+                                                class="w-8 h-8 rounded-full bg-yellow-500 text-white text-[10px] flex items-center justify-center font-bold border-2 border-white"
+                                            >
+                                                1
+                                            </div>
+                                            <span
+                                                class="text-[10px] text-white font-bold mt-1 bg-black/40 px-1"
+                                                >Gatti</span
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <h4
+                                class="text-lg font-bold mb-8 text-gray-800 dark:text-white uppercase tracking-wider"
+                            >
+                                Resumen Estadístico
+                            </h4>
+                            <div class="space-y-8">
+                                <div>
+                                    <div
+                                        class="flex justify-between text-sm font-bold mb-2"
+                                    >
+                                        <span class="text-primary">54%</span>
+                                        <span
+                                            class="text-gray-500 dark:text-gray-400"
+                                            >Posesión</span
+                                        >
+                                        <span class="text-red-500">46%</span>
+                                    </div>
+                                    <div
+                                        class="flex h-3 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-800"
+                                    >
+                                        <div class="bg-primary w-[54%]"></div>
+                                        <div class="bg-red-500 w-[46%]"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div
+                                        class="flex justify-between text-sm font-bold mb-2"
+                                    >
+                                        <span class="text-primary">8</span>
+                                        <span
+                                            class="text-gray-500 dark:text-gray-400"
+                                            >Tiros al arco</span
+                                        >
+                                        <span class="text-red-500">5</span>
+                                    </div>
+                                    <div
+                                        class="flex h-3 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-800"
+                                    >
+                                        <div class="bg-primary w-[62%]"></div>
+                                        <div class="bg-red-500 w-[38%]"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div
+                                        class="flex justify-between text-sm font-bold mb-2"
+                                    >
+                                        <span class="text-primary">12</span>
+                                        <span
+                                            class="text-gray-500 dark:text-gray-400"
+                                            >Faltas</span
+                                        >
+                                        <span class="text-red-500">15</span>
+                                    </div>
+                                    <div
+                                        class="flex h-3 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-800"
+                                    >
+                                        <div class="bg-primary w-[44%]"></div>
+                                        <div class="bg-red-500 w-[56%]"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="mt-12 p-6 bg-gray-50 dark:bg-gray-800/50 rounded-xl"
+                            >
+                                <h5
+                                    class="text-sm font-black text-gray-900 dark:text-white mb-4 uppercase tracking-tighter"
+                                >
+                                    Resumen Crónica
+                                </h5>
+                                <p
+                                    class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed italic"
+                                >
+                                    "Un encuentro vibrante donde Atlético
+                                    Central supo capitalizar sus momentos de
+                                    dominio. A pesar de un inicio arrollador de
+                                    Deportivo Norte, la contundencia del local y
+                                    un penal decisivo en el segundo tiempo
+                                    marcaron la diferencia. Los visitantes
+                                    presionaron hasta el último minuto, pero la
+                                    defensa de Central se mantuvo sólida para
+                                    asegurar los tres puntos ante su gente."
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -867,105 +651,43 @@
             </div>
         </main>
         <footer
-            class="bg-gray-900 text-white pt-16 pb-8 border-t border-gray-800"
+            class="bg-surface-light dark:bg-surface-dark border-t border-gray-200 dark:border-gray-700 mt-12"
         >
-            <div class="container mx-auto px-4">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                    <div class="col-span-1 md:col-span-1">
-                        <div class="flex items-center space-x-2 mb-4">
-                            <div
-                                class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm"
-                            >
-                                <span class="material-icons text-sm"
-                                    >sports_soccer</span
-                                >
-                            </div>
-                            <span class="text-lg font-bold">Fútbol Local</span>
-                        </div>
-                        <p class="text-gray-400 text-sm">
-                            La comunidad de fútbol más grande de la ciudad.
-                            Resultados, noticias y estadísticas en tiempo real.
-                        </p>
-                    </div>
-                    <div>
-                        <h4 class="text-lg font-bold mb-4 text-primary">
-                            Secciones
-                        </h4>
-                        <ul class="space-y-2 text-gray-400 text-sm">
-                            <li>
-                                <a class="hover:text-white transition" href="#"
-                                    >Partidos</a
-                                >
-                            </li>
-                            <li>
-                                <a class="hover:text-white transition" href="#"
-                                    >Torneos</a
-                                >
-                            </li>
-                            <li>
-                                <a class="hover:text-white transition" href="#"
-                                    >Equipos</a
-                                >
-                            </li>
-                            <li>
-                                <a class="hover:text-white transition" href="#"
-                                    >Noticias</a
-                                >
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-lg font-bold mb-4 text-primary">
-                            Legal
-                        </h4>
-                        <ul class="space-y-2 text-gray-400 text-sm">
-                            <li>
-                                <a class="hover:text-white transition" href="#"
-                                    >Términos y Condiciones</a
-                                >
-                            </li>
-                            <li>
-                                <a class="hover:text-white transition" href="#"
-                                    >Política de Privacidad</a
-                                >
-                            </li>
-                            <li>
-                                <a class="hover:text-white transition" href="#"
-                                    >Reglamento Oficial</a
-                                >
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-lg font-bold mb-4 text-primary">
-                            Síguenos
-                        </h4>
-                        <div class="flex space-x-4">
-                            <a
-                                class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition"
-                                href="#"
-                            >
-                                <span class="font-bold text-lg">f</span>
-                            </a>
-                            <a
-                                class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition"
-                                href="#"
-                            >
-                                <span class="font-bold text-lg">t</span>
-                            </a>
-                            <a
-                                class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition"
-                                href="#"
-                            >
-                                <span class="font-bold text-lg">ig</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
                 <div
-                    class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm"
+                    class="flex flex-col md:flex-row justify-between items-center"
                 >
-                    © 2023 Fútbol Local - Todos los derechos reservados.
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <div
+                            class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white mr-2"
+                        >
+                            <span class="material-symbols-outlined text-sm"
+                                >sports_soccer</span
+                            >
+                        </div>
+                        <span class="text-sm text-gray-500 dark:text-gray-400"
+                            >© 2025 Fútbol Local. Todos los derechos
+                            reservados.</span
+                        >
+                    </div>
+                    <div class="flex space-x-6">
+                        <a
+                            class="text-gray-400 hover:text-primary transition"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined"
+                                >social_leaderboard</span
+                            >
+                        </a>
+                        <a
+                            class="text-gray-400 hover:text-primary transition"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined"
+                                >photo_camera</span
+                            >
+                        </a>
+                    </div>
                 </div>
             </div>
         </footer>

@@ -3,7 +3,7 @@
     height: 7rem;
     font-family: var(--fuente-primaria);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
     position: relative;

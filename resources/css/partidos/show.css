@@ -1,0 +1,49 @@
+.data-game{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--color-letras-secundario);
+}
+
+.data-game li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+}
+
+.partido, .clima{
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-weight: bolder;
+    background-color: color-mix(in srgb, var(--color-body) 50%, transparent);
+}
+
+/* ===================================================
+   RESPONSIVE
+======================================================
+*/
+
+/* ===================================================
+   TABLET (>= 768px)
+====================================================== */
+
+/* ===================================================
+   DESKTOP (>= 1024px)
+====================================================== */
+
+@media (min-width: 1024px) {
+    .data-game{
+        flex-direction: row;
+        gap: 1.5rem;
+    }
+
+
+    .data-game li{
+        font-size: 1.3rem;
+    }
+}

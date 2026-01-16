@@ -62,8 +62,4 @@
         @endforelse
 
     </section>
-
-
-
-
 @endsection

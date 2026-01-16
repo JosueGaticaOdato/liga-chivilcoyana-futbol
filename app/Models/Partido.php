@@ -12,8 +12,8 @@ class Partido extends Model
         'fecha_id',
         'equipo_local_id',
         'equipo_visitante_id',
-        'fecha',
-        'hora',
+        'fecha_partido',
+        'hora_partido',
         'goles_local',
         'goles_visitante',
         'estado',
@@ -40,18 +40,18 @@ class Partido extends Model
 
     // Casteo fecha y hora
     protected $casts = [
-        'fecha' => 'date'
+        'fecha_partido' => 'date'
     ];
 
     public function getFechaHoraAttribute(): Carbon
     {
         if (!$this->hora) {
-            return $this->fecha;
+            return $this->fecha_partido;
         }
 
         return Carbon::createFromFormat(
             'Y-m-d H:i:s',
-            $this->fecha->format('Y-m-d') . ' ' . $this->hora
+            $this->fecha_partido->format('Y-m-d') . ' ' . $this->hora_partido
         );
     }
 

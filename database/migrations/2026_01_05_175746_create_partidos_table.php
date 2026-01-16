@@ -22,8 +22,8 @@ return new class extends Migration
                 ->constrained('fechas')
                 ->cascadeOnDelete();
 
-            $table->date('fecha');
-            $table->time('hora')->nullable();
+            $table->date('fecha_partido');
+            $table->time('hora_partido')->nullable();
 
             $table->foreignId('equipo_local_id')
                 ->constrained('equipos');

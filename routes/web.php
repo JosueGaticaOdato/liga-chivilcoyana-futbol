@@ -46,6 +46,9 @@ Route::get(
 Route::get('/partidos', [PartidoController::class, 'index'])
     ->name('partidos.index');
 
+Route::get('/partidos/{partido}', [PartidoController::class, 'show'])
+    ->name('partidos.show');
+
 /* ===== NOTICIAS ===== */
 
 Route::get('/noticias', [NoticiaController::class, 'index'])

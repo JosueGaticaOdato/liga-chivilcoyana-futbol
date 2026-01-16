@@ -8,6 +8,10 @@
     max-width: 30rem; /* Maximo */
     font-family: var(--fuente-primaria);
     box-shadow: var(--sombra-suave);
+    transition: transform 0.3s ease;
+}
+
+.partido-card a{
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -95,4 +99,23 @@
     color: var(--color-letras-cuaternario);
     text-transform: uppercase;
     letter-spacing: 0.05rem;
+}
+
+/* ===================================================
+   RESPONSIVE
+======================================================
+*/
+
+/* ===================================================
+   TABLET (>= 768px)
+====================================================== */
+
+/* ===================================================
+   DESKTOP (>= 1024px)
+====================================================== */
+
+@media (min-width: 1024px) {
+    .partido-card:hover{
+        transform: translateY(-4px);
+    }
 }

@@ -31,8 +31,8 @@ class PartidoController extends Controller
         }
 
         $partidos = $query
-            ->orderBy('fecha')
-            ->orderBy('hora')
+            ->orderBy('fecha_partido')
+            ->orderBy('hora_partido')
             ->get();
 
         // Para los filtros
@@ -58,5 +58,12 @@ class PartidoController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function show(Partido $partido)
+    {
+        $partido->load(['torneo', 'fecha']);
+
+        return view('partidos.show', compact('partido'));
     }
 }

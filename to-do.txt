@@ -1,3 +1,4 @@
-- Wrapper
-- Arreglar header como esta en el diseño
-- First Mobile
+- Paginacion
+- Partidos en detalle
+- API Clima
+- Admin
