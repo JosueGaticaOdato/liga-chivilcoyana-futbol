@@ -4,6 +4,7 @@
     width: 100%;
     background-color: var(--color-blanco);
     border-radius: 1rem;
+    /* min-width: 18.75rem; */
     max-width: 30rem; /* Maximo */
     font-family: var(--fuente-primaria);
     box-shadow: var(--sombra-suave);

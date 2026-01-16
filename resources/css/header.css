@@ -6,6 +6,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    position: relative;
 }
 
 /* ===== LOGO ===== */
@@ -30,23 +31,45 @@
     transition: all 0.35s ease;
 }
 
+/* ===== HAMBURGUESA ===== */
+
+.header-hamburguesa{
+    font-size: 2.5rem;
+    color: var(--color-negro);
+    cursor: pointer;
+    margin-right: 1.5rem;
+    z-index: 3;
+}
+
+
 /* ===== NAVEGACION ===== */
 
 .header-navegacion{
-    width: 30%;
+    position: absolute;
+    top: 7rem;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-header);
+    display: none;
 }
 
 .header-navegacion ul{
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
     align-items: center;
+    padding: 1.5rem 0;
+    gap: 1.5rem;
 }
 
 .header-navegacion ul li{
     font-weight: bold;
     text-transform: uppercase;
     font-size: 1.1rem;
-    transition: all 0.35s ease;
+}
+
+.header-navegacion.active{
+    display: block;
+    z-index: 5;
 }
 
 .header-navegacion a.active{
@@ -57,19 +80,76 @@
 /* ===== LOGIN ===== */
 
 .header-login{
-    margin-right: 3rem;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    font-weight: bolder;
-    color: var(--color-letras-secundario);
-    background-color: var(--color-primario);
-
-    border: 1px solid transparent;
+    display: none;
 }
 
-/* ===== RESPONSIVE ===== */
+.login{
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    background-color: var(--color-primario);
+    color: var(--color-letras-secundario);
+}
 
-@media (min-width: 900px) {
+/* ===================================================
+   RESPONSIVE
+======================================================
+*/
+
+/* ===================================================
+   TABLET (>= 768px)
+====================================================== */
+
+@media (min-width: 768px) {
+}
+
+/* ===================================================
+   DESKTOP (>= 1024px)
+====================================================== */
+
+@media (min-width: 1024px) {
+
+    .header-hamburguesa{
+        display: none;
+    }
+
+    .header-navegacion{
+        position: static;
+        display: flex;
+        width: 40%;
+        justify-content: center;
+    }
+
+    .header-navegacion ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .header-navegacion ul li{
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 1.1rem;
+        transition: all 0.35s ease;
+    }
+
+    .nav-login{
+        display: none;
+    }
+
+    .header-login{
+        display: block;
+        margin-right: 3rem;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        font-weight: bolder;
+        background-color: var(--color-primario);
+        color: var(--color-letras-secundario);
+
+        border: 1px solid transparent;
+    }
+
     .header-logo:hover{
         transform: scale(1.1);
     }
@@ -86,5 +166,4 @@
         border: 1px solid var(--color-primario);
         transition: all 0.35s ease-in-out;
     }
-
 }
