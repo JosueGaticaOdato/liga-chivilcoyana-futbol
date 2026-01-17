@@ -29,8 +29,8 @@ class TorneoController extends Controller
 
         $proximosPartidos = $torneo->partidos()
             ->with(['local', 'visitante'])
-            ->orderBy('fecha') //Orden cronologico
-            ->orderBy('hora')
+            ->orderBy('fecha_partido') //Orden cronologico
+            ->orderBy('hora_partido')
             ->limit(3)
             ->get();
 

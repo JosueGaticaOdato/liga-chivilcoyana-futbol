@@ -3,7 +3,7 @@
     height: 7rem;
     font-family: var(--fuente-primaria);
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     position: relative;
@@ -108,6 +108,10 @@
 ====================================================== */
 
 @media (min-width: 1024px) {
+
+    .header{
+        justify-content: space-around;
+    }
 
     .header-hamburguesa{
         display: none;

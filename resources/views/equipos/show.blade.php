@@ -71,20 +71,22 @@
                             $rival = $esLocal ? $partido->visitante : $partido->local;
                         @endphp
 
-                        <li class="result {{ $clase }}">
-                            <time datetime="{{ $partido->fecha }}">
-                                {{ \Carbon\Carbon::parse($partido->fecha)->format('d M') }}
-                            </time>
+                        <li>
+                            <a href="{{ route('partidos.show', $partido) }}" class="result {{ $clase }}">
+                                <time datetime="{{ $partido->fecha_partido }}">
+                                    {{ \Carbon\Carbon::parse($partido->fecha_partido)->format('d M') }}
+                                </time>
 
-                            <span class="team local">{{ $equipo->nombre_pila }}</span>
+                                <span class="team local">{{ $equipo->nombre_pila }}</span>
 
-                            <strong class="score">
-                                {{ $golesEquipo }} - {{ $golesRival }}
-                            </strong>
+                                <strong class="score">
+                                    {{ $golesEquipo }} - {{ $golesRival }}
+                                </strong>
 
-                            <span class="team">{{ $rival->nombre_pila }}</span>
+                                <span class="team">{{ $rival->nombre_pila }}</span>
 
-                            <span class="badge">{{ $resultado }}</span>
+                                <span class="badge">{{ $resultado }}</span>
+                            </a>
                         </li>
                     @endforeach
                 </ul>

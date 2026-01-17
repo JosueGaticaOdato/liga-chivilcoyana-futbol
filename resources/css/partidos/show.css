@@ -1,26 +1,96 @@
-.data-game{
+/* ===== INFORMACION PARTIDO ===== */
+.informacion-partido{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+
+    background-color: var(--color-blanco);
+    border-radius: 0.75rem;
+    border-left: 8px solid var(--color-primario);
+    border-bottom: 5px solid transparent;
+    box-shadow: var(--sombra-ultra-suave);
+}
+
+.datos-informacion-partido{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.informacion-partido li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* ===== PARTIDO ===== */
+.partido {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 1rem;
+
+    padding: 1rem;
+    border-radius: 0.75rem;
+    background-color: var(--color-blanco);
+    box-shadow: var(--sombra-suave);
+}
+
+/* ===== EQUIPOS ===== */
+.equipo {
+    flex: 1;
+    text-align: center;
+}
+
+.equipo-header {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 0.8rem;
-    color: var(--color-letras-secundario);
-}
-
-.data-game li{
-    display: flex;
-    justify-content: center;
     align-items: center;
     gap: 0.5rem;
-    font-size: 1rem;
 }
 
-.partido, .clima{
-    padding: 0.5rem 1rem;
-    border-radius: 1rem;
-    font-weight: bolder;
-    background-color: color-mix(in srgb, var(--color-body) 50%, transparent);
+.equipo-escudo {
+    width: 3.75rem;
+    height: 4.375rem;
+    /* width: 3rem;
+    height: 3rem; */
+
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 700;
+}
+
+.equipo-nombre {
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.equipo-condicion {
+    font-size: 0.75rem;
+    color: var(--color-letras-cuaternario);
+}
+
+/* ===== RESULTADO ===== */
+.partido-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.25rem;
+}
+
+.partido-resultado {
+    font-size: 1.75rem;
+    font-weight: 700;
 }
 
 /* ===================================================
@@ -32,18 +102,54 @@
    TABLET (>= 768px)
 ====================================================== */
 
+@media (min-width: 768px) {
+
+    .partido {
+        padding: 1.25rem 1.5rem;
+    }
+
+    .equipo-escudo {
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 1.125rem;
+    }
+
+    .equipo-nombre {
+        font-size: 1rem;
+    }
+
+    .partido-resultado {
+        font-size: 2rem;
+    }
+}
+
 /* ===================================================
    DESKTOP (>= 1024px)
 ====================================================== */
 
 @media (min-width: 1024px) {
-    .data-game{
-        flex-direction: row;
-        gap: 1.5rem;
+    .informacion-partido {
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .partido {
+        padding: 1.5rem 2rem;
     }
 
+    .equipo-escudo {
+        width: 5rem;
+        height: 5rem;
+    }
 
-    .data-game li{
-        font-size: 1.3rem;
+    .equipo-nombre {
+        font-size: 1.2rem;
+    }
+
+    .equipo-header {
+        gap: 0.75rem;
+    }
+
+    .partido-resultado {
+        font-size: 2.25rem;
     }
 }

@@ -290,4 +290,8 @@
         flex-direction: row;
         justify-content: space-evenly;
     }
+
+    .partido-card:hover{
+        transform: none;
+    }
 }

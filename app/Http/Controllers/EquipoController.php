@@ -36,7 +36,7 @@ class EquipoController extends Controller
                 $query->where('equipo_local_id', $equipo->id)
                     ->orWhere('equipo_visitante_id', $equipo->id);
             })
-            ->orderBy('fecha', 'desc')
+            ->orderBy('fecha_partido', 'desc')
             ->take(3)
             ->get();
 
@@ -68,8 +68,8 @@ class EquipoController extends Controller
                     ->orWhere('equipo_visitante_id', $equipo->id);
             })
             // ->whereDate('fecha', '>=', now()->toDateString()) DESCOMENTAR ESTO
-            ->orderBy('fecha')
-            ->orderBy('hora')
+            ->orderBy('fecha_partido')
+            ->orderBy('hora_partido')
             ->with(['local', 'visitante'])
             ->first();
 
