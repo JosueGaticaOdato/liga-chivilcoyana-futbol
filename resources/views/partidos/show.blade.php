@@ -32,7 +32,7 @@
         <ul class="datos-informacion-partido">
             <li>
                 <span class="card-icon">
-                    <ion-icon name="calendar-outline"></ion-icon>
+                    <ion-icon name="calendar-outline" class="material-icons"></ion-icon>
                 </span>
                 <div>
                     <h4>Fecha</h4>
@@ -45,16 +45,16 @@
             </li>
             <li>
                 <span class="card-icon">
-                    <ion-icon name="football-outline"></ion-icon>
+                    <ion-icon name="location-outline" class="material-icons"></ion-icon>
                 </span>
                 <div>
-                    <h4>Cancha</h4>
-                    <p>{{ $partido->cancha }}</p>
+                    <h4>Estadio</h4>
+                    <p>{{ $partido->cancha ?? 'A definir' }}</p>
                 </div>
             </li>
             <li>
                 <span class="card-icon">
-                    <ion-icon name="football-outline"></ion-icon>
+                    <ion-icon name="football-outline" class="material-icons"></ion-icon>
                 </span>
                 <div>
                     <h4>Torneo</h4>
@@ -108,10 +108,5 @@
         </section>
 
     </article>
-
-
-    <p>Estado: {{ $partido->estado }}</p>
-
-    <h2>{{ $partido->goles_local }} - {{ $partido->goles_visitante }}</h2>
 
 @endsection

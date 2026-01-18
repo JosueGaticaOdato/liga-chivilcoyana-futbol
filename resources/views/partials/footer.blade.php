@@ -35,6 +35,6 @@
     </address>
 
     <small class="footer-copy">
-        <em>Copyright © 2025 – Liga Chivilcoyana de Fútbol. Todos los derechos reservados.</em>
+        <em>Copyright © 2026 – Liga Chivilcoyana de Fútbol. Todos los derechos reservados.</em>
     </small>
 </footer>

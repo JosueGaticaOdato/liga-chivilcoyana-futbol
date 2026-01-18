@@ -1,23 +1,30 @@
 /* ===== INFORMACION PARTIDO ===== */
 .informacion-partido{
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 1.5rem;
+    flex-direction: column;
+
+    gap: 1rem;
+    padding: 1rem;
 
     background-color: var(--color-blanco);
     border-radius: 0.75rem;
     border-left: 8px solid var(--color-primario);
     border-bottom: 5px solid transparent;
-    box-shadow: var(--sombra-ultra-suave);
+    box-shadow: var(--sombra-suave);
+    margin: 1rem;
+}
+
+.informacion-partido h2{
+    font-size: 1.5rem;
+    font-weight: bolder;
 }
 
 .datos-informacion-partido{
     display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
     width: 100%;
-    align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .informacion-partido li {
@@ -27,12 +34,24 @@
     gap: 1rem;
 }
 
+.informacion-partido li h4{
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--color-letras-cuaternario);
+    padding-bottom: 0.3rem;
+}
+
+.informacion-torneo li p {
+    font-size: 1rem;
+    font-weight: bolder;
+}
+
 /* ===== PARTIDO ===== */
 .partido {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
     margin: 1rem;
 
     padding: 1rem;
@@ -86,10 +105,16 @@
     justify-content: center;
 
     gap: 0.25rem;
+
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-letras-cuaternario);
+    margin: 0 1rem;
 }
 
-.partido-resultado {
-    font-size: 1.75rem;
+
+.partido-resultado, .vs-text {
+    font-size: 2.5rem;
     font-weight: 700;
 }
 
@@ -106,6 +131,7 @@
 
     .partido {
         padding: 1.25rem 1.5rem;
+        gap: 1rem;
     }
 
     .equipo-escudo {
@@ -118,8 +144,8 @@
         font-size: 1rem;
     }
 
-    .partido-resultado {
-        font-size: 2rem;
+    .partido-resultado, .vs-text {
+        font-size: 3rem;
     }
 }
 
@@ -131,7 +157,13 @@
     .informacion-partido {
         flex-direction: column;
         justify-content: space-around;
+        align-items: center;
     }
+
+    .datos-informacion-partido{
+        flex-direction: row;
+    }
+
     .partido {
         padding: 1.5rem 2rem;
     }
@@ -149,7 +181,4 @@
         gap: 0.75rem;
     }
 
-    .partido-resultado {
-        font-size: 2.25rem;
-    }
 }

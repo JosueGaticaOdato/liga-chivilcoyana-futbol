@@ -21,7 +21,7 @@
 
         <!-- RESUMEN DE PARTIDOS -->
         <section class="partidos-recientes" aria-labelledby="partidos-title">
-            <h2 id="partidos-title">Resumen de Partidos Recientes</h2>
+            <h2 id="partidos-title">Resumen de Partidos</h2>
 
             <div class="partidos-lista">
                 @forelse ($partidosRecientes as $partido)
