@@ -2,3 +2,4 @@
 - Partidos en detalle
 - API Clima
 - Admin
+- GCloud para ubicacion (API de Google Maps)
