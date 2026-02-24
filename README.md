@@ -125,7 +125,7 @@ El proyecto está pensado para crecer, permitiendo incorporar:
 1. Clonar el repositorio
 
 ```bash
-git clone <url-del-repositorio>
+git clone <https://github.com/JosueGaticaOdato/liga-chivilcoyana-futbol>
 ```
 
 2. Instalar dependencias
