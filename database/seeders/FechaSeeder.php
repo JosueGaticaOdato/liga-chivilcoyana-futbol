@@ -11,14 +11,6 @@ class FechaSeeder extends Seeder
 {
     public function run(): void
     {
-        // $torneo = Torneo::where('slug', 'primera-division-2025')->first();
-        $torneo = Torneo::first(); // o buscá por nombre/slug
-
-        if (!$torneo) {
-            $this->command->warn('No hay torneo creado');
-            return;
-        }
-
         $fechas = [
             [
                 'numero' => 1,
@@ -32,10 +24,6 @@ class FechaSeeder extends Seeder
 
         foreach ($fechas as $data) {
             Fecha::firstOrCreate(
-                [
-                    'torneo_id' => $torneo->id,
-                    'numero' => $data['numero'],
-                ],
                 $data
             );
         }

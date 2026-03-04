@@ -56,14 +56,14 @@ class TorneoSeeder extends Seeder
             ]);
             $torneo2->equipos()->syncWithoutDetaching([
                 $equipo->id => [
-                    'partidos_jugados' => 1,
-                    'ganados' => 1,
-                    'empatados' => 1,
-                    'perdidos' => 1,
-                    'goles_favor' => 1,
-                    'goles_contra' => 1,
-                    'diferencia_goles' => 1,
-                    'puntos' => 1,
+                    'partidos_jugados' => 0,
+                    'ganados' => 0,
+                    'empatados' => 0,
+                    'perdidos' => 0,
+                    'goles_favor' => 0,
+                    'goles_contra' => 0,
+                    'diferencia_goles' => 0,
+                    'puntos' => 0,
                 ]
             ]);
         }

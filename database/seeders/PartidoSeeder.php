@@ -71,12 +71,11 @@ class PartidoSeeder extends Seeder
 
         foreach ($partidos as $data) {
 
-            $fecha = Fecha::where('torneo_id', $torneo->id)
-                ->where('numero', $data['fecha_numero'])
+            $fecha = Fecha::where('numero', $data['fecha_numero'])
                 ->first();
 
-            $equipoLocal = Equipo::where('nombre_pila', $data['local'])->first();
-            $equipoVisitante = Equipo::where('nombre_pila', $data['visitante'])->first();
+            $equipoLocal = Equipo::where('nombre', $data['local'])->first();
+            $equipoVisitante = Equipo::where('nombre', $data['visitante'])->first();
 
             if (!$fecha || !$equipoLocal || !$equipoVisitante) {
                 continue;

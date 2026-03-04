@@ -14,14 +14,22 @@ return new class extends Migration
         Schema::create('equipos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 100);
+            $table->string('nombre_institucional', 100);
             $table->string('slug')->unique();
-            $table->string('nombre_pila', 100);
             $table->date('fecha_creacion')->nullable();
             $table->string('escudo')->nullable(); // Ruta del escudo
-            $table->string('estadio', 100)->nullable();
+            $table->unsignedBigInteger('estadio_id')->nullable(); // Estadio
             $table->text('descripcion')->nullable();
             $table->boolean('activo')->default(true);
             $table->timestamps();
+
+            // Foreign Key
+            $table->foreign('estadio_id')
+                  ->references('id')
+                  ->on('estadios')
+                  ->nullOnDelete()
+                  ->cascadeOnUpdate();
+
         });
     }
 

@@ -11,16 +11,10 @@ return new class extends Migration
         Schema::create('fechas', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('torneo_id')
-                ->constrained()
-                ->cascadeOnDelete();
-
             $table->integer('numero'); // Fecha 1, 2, 3, ...
             $table->string('nombre')->nullable(); // "Fecha 1", "Cuartos"
 
             $table->timestamps();
-
-            $table->unique(['torneo_id', 'numero']);
         });
     }
 
