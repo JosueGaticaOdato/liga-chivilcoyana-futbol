@@ -1,3 +1,7 @@
+@import "../components/partido-card.css";
+@import "../components/tabla-posiciones.css";
+@import "../components/noticia-card.css";
+
 /* ===== HEADER-HOME ===== */
 .header-home {
     min-height: 22rem;

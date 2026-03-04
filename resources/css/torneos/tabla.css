@@ -1,3 +1,5 @@
+@import "../components/tabla-posiciones.css";
+
 .tabla-responsive {
     width: 100%;
     overflow-x: auto; /* Scroll horizontal */

@@ -1,3 +1,5 @@
+@import "../components/partido-card.css";
+
 /* ===== HEADER ===== */
 .header-main{
     gap: 1rem;

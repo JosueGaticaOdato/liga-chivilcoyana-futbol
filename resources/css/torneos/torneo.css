@@ -1,3 +1,6 @@
+@import "../components/partido-card.css";
+@import "../components/tabla-posiciones.css";
+
 /* ===== TORNEO MAIN ===== */
 .torneo-main {
     display: flex;

@@ -1,3 +1,5 @@
+@import "../components/noticia-card.css";
+
 .noticias{
     display: flex;
     flex-wrap: wrap;
