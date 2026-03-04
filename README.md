@@ -176,7 +176,7 @@ Proyecto académico y profesional orientado a resolver una necesidad real de la 
 
 ## 📄 Licencia
 
-Este proyecto es de uso educativo y comunitario. La licencia podrá definirse en futuras versiones.
+Este proyecto es de uso educativo y comunitario.
 
 ---
 
