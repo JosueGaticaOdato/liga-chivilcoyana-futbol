@@ -20,7 +20,7 @@
                 </figure>
 
                 <h3 class="equipo-nombre">
-                    {{ $partido->local->nombre_pila }}
+                    {{ $partido->local->nombre }}
                 </h3>
             </article>
 
@@ -41,7 +41,7 @@
                 </figure>
 
                 <h3 class="equipo-nombre">
-                    {{ $partido->visitante->nombre_pila }}
+                    {{ $partido->visitante->nombre }}
                 </h3>
             </article>
 

@@ -12,7 +12,7 @@
         <figure class="header-equipo-escudo">
             <img src="{{ asset('storage/' . $equipo->escudo) }}" alt="Escudo {{ $equipo->nombre }}">
         </figure>
-        <h1>{{ $equipo->nombre }}</h1>
+        <h1>{{ $equipo->nombre_institucional }}</h1>
     </header>
 
     <section class="club-layout">
@@ -77,13 +77,13 @@
                                     {{ \Carbon\Carbon::parse($partido->fecha_partido)->format('d M') }}
                                 </time>
 
-                                <span class="team local">{{ $equipo->nombre_pila }}</span>
+                                <span class="team local">{{ $equipo->nombre }}</span>
 
                                 <strong class="score">
                                     {{ $golesEquipo }} - {{ $golesRival }}
                                 </strong>
 
-                                <span class="team">{{ $rival->nombre_pila }}</span>
+                                <span class="team">{{ $rival->nombre }}</span>
 
                                 <span class="badge">{{ $resultado }}</span>
                             </a>

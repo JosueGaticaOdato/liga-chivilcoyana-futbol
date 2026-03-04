@@ -27,8 +27,8 @@
                 <td>{{ $index + 1 }}</td>
 
                 <td class="equipo">
-                    <img src="{{ asset('storage/' . $equipo->escudo) }}" alt="Escudo {{ $equipo->nombre_pila }}">
-                    <span>{{ $equipo->nombre_pila }}</span>
+                    <img src="{{ asset('storage/' . $equipo->escudo) }}" alt="Escudo {{ $equipo->nombre }}">
+                    <span>{{ $equipo->nombre }}</span>
                 </td>
 
                 @if ($variant === 'full')

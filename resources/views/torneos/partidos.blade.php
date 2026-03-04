@@ -33,8 +33,8 @@
 
                     <div class="equipo local">
                         <img src="{{ asset('storage/' . $partido->local->escudo) }}"
-                             alt="Escudo {{ $partido->local->nombre_pila }}">
-                        <span>{{ $partido->local->nombre_pila }}</span>
+                             alt="Escudo {{ $partido->local->nombre }}">
+                        <span>{{ $partido->local->nombre }}</span>
                     </div>
 
                     <div class="resultado">
@@ -49,8 +49,8 @@
 
                     <div class="equipo visitante">
                         <img src="{{ asset('storage/' . $partido->visitante->escudo) }}"
-                             alt="Escudo {{ $partido->visitante->nombre_pila }}">
-                        <span>{{ $partido->visitante->nombre_pila }}</span>
+                             alt="Escudo {{ $partido->visitante->nombre }}">
+                        <span>{{ $partido->visitante->nombre }}</span>
                     </div>
 
                 </div>

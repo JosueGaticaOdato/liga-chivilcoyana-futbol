@@ -22,7 +22,7 @@
                         <img src="{{ asset('storage/' . $equipo->escudo) }}" alt="Escudo {{ $equipo->nombre }}">
                     </figure>
 
-                    <h2 class="equipo-nombre">{{ $equipo->nombre_pila }}</h2>
+                    <h2 class="equipo-nombre">{{ $equipo->nombre }}</h2>
 
                 </article>
 

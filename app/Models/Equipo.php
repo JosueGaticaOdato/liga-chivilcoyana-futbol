@@ -11,7 +11,7 @@ class Equipo extends Model
 
     protected $fillable = [
         'nombre',
-        'nombre_pila',
+        'nombre_institucional',
         'slug',
         'fecha_creacion',
         'escudo',
@@ -29,7 +29,7 @@ class Equipo extends Model
      *  Sirven para que después puedas escribir cosas como
      *  $equipo->torneos
      *  $torneo->equipos
-     *  $partido->local->nombre_pila
+     *  $partido->local->nombre
      */
 
     //Un equipo participa en muchos torneos

@@ -37,7 +37,8 @@ return new class extends Migration
             $table->enum('estado', ['programado', 'en_juego', 'finalizado'])
                 ->default('programado');
 
-            $table->string('cancha')->nullable();
+            $table->foreignId(column: 'estadio_id')
+                ->constrained('estadios')->nullable();
 
             $table->timestamps();
         });

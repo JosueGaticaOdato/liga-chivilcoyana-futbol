@@ -9,7 +9,7 @@
 @section('content')
 
     {{-- <header class="header-main">
-        <h1>{{ $partido->local->nombre_pila }} vs {{ $partido->visitante->nombre_pila }}</h1>
+        <h1>{{ $partido->local->nombre }} vs {{ $partido->visitante->nombre }}</h1>
     </header> --}}
 
     {{-- <section class="informacion-partido">
@@ -71,9 +71,9 @@
             <header class="equipo-header">
                 <figure class="equipo-escudo">
                     <img src="{{ asset('storage/' . $partido->local->escudo) }}"
-                        alt="Escudo {{ $partido->local->nombre_pila }}">
+                        alt="Escudo {{ $partido->local->nombre }}">
                 </figure>
-                <h2 class="equipo-nombre">{{ $partido->local->nombre_pila }}</h2>
+                <h2 class="equipo-nombre">{{ $partido->local->nombre }}</h2>
                 <p class="equipo-condicion">Local</p>
             </header>
         </section>
@@ -100,9 +100,9 @@
             <header class="equipo-header">
                 <figure class="equipo-escudo">
                     <img src="{{ asset('storage/' . $partido->visitante->escudo) }}"
-                        alt="Escudo {{ $partido->visitante->nombre_pila }}">
+                        alt="Escudo {{ $partido->visitante->nombre }}">
                 </figure>
-                <h2 class="equipo-nombre">{{ $partido->visitante->nombre_pila }}</h2>
+                <h2 class="equipo-nombre">{{ $partido->visitante->nombre }}</h2>
                 <p class="equipo-condicion">Visitante</p>
             </header>
         </section>
