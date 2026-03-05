@@ -37,10 +37,12 @@
                         <span class="label">Fundación</span>
                         <strong>{{ $equipo->fecha_creacion->translatedFormat('d \\d\\e F \\d\\e Y') }}</strong>
                     </li>
+                    @if ($estadio)
                     <li>
                         <span class="label">Estadio</span>
-                        <strong>{{ $equipo->estadio }}</strong>
+                        <strong>{{ $estadio->nombre }}</strong>
                     </li>
+                    @endif
                 </ul>
             </section>
 

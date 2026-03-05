@@ -8,24 +8,10 @@
 
 @section('content')
 
-    {{-- <header class="header-main">
-        <h1>{{ $partido->local->nombre }} vs {{ $partido->visitante->nombre }}</h1>
-    </header> --}}
-
-    {{-- <section class="informacion-partido">
-        <h2>Datos del partido</h2>
-        <ul class="data-game">
-            <li><ion-icon name="calendar-outline"></ion-icon>
-                {{ $partido->fecha_partido?->translatedFormat('d \d\e F, Y') }}
-                -
-                {{ \Carbon\Carbon::parse($partido->hora_partido)->format('H:i') }} Hs.
-            </li>
-            <li><ion-icon name="football-outline"></ion-icon>
-                {{ $partido->cancha }}</li>
-            <li>{{ $partido->torneo->nombre }} - {{ $partido->fecha->nombre }}</li>
-            <li>Clima API</li>
-        </ul>
-    </section> --}}
+    <header class="header-main">
+        <h1>{{ $fecha->nombre }}</h1>
+        <p>{{ $torneo->nombre }}</p>
+    </header>
 
     <section class="informacion-partido">
         <h2>Datos del partido</h2>
@@ -64,6 +50,55 @@
         </ul>
     </section>
 
+    @if ($partido->fechaPartido && $partido->horaPartido)
+        <section class="informacion-clima">
+            <h2>Clima del partido</h2>
+            <ul class="datos-informacion-partido">
+                @if ($clima)
+                    <li>
+                        <span class="card-icon weather">
+                            <img src="https://openweathermap.org/img/wn/{{ data_get($clima, 'weather.0.icon') }}@4x.png"
+                                alt="Clima" style="width: 72px; height: 72px; object-fit: contain;">
+                        </span>
+                        <div>
+                            <h4>Estado</h4>
+                            <p>{{ ucfirst(data_get($clima, 'weather.0.description')) }}</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="card-icon weather">
+                            <ion-icon name="thermometer-outline" class="material-icons"></ion-icon>
+                        </span>
+                        <div>
+                            <h4>Temperatura</h4>
+                            <p>{{ round(data_get($clima, 'temp.day'), 1) }}°C</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="card-icon weather">
+                            <ion-icon name="water-outline" class="material-icons"></ion-icon>
+                        </span>
+                        <div>
+                            <h4>Humedad</h4>
+                            <p>{{ data_get($clima, 'humidity') }}%</p>
+                        </div>
+                    </li>
+                @else
+                    <li>
+                        <span class="card-icon weather">
+                            <ion-icon name="help-circle-outline" class="material-icons"></ion-icon>
+                        </span>
+                        <div>
+                            <h4>Aviso</h4>
+                            <p>No disponible</p>
+                        </div>
+                    </li>
+                @endif
+            </ul>
+        </section>
+    @endif
+
+
     <article class="partido">
 
         <!-- Equipo Local -->
@@ -80,6 +115,10 @@
 
         <!-- Resultado y estado -->
         <section class="partido-info">
+                <span class="barra-estado {{ $partido->estado }}">
+                    {{ ucfirst(str_replace('_', ' ', $partido->estado)) }}
+                </span>
+
             @if ($partido->estado === 'programado')
                 <span class="vs-text">VS</span>
             @else
@@ -89,10 +128,6 @@
                     <span class="goles-visitante">{{ $partido->goles_visitante ?? 0 }}</span>
                 </p>
             @endif
-
-            <span class="barra-estado {{ $partido->estado }}">
-                {{ ucfirst(str_replace('_', ' ', $partido->estado)) }}
-            </span>
         </section>
 
         <!-- Equipo Visitante -->

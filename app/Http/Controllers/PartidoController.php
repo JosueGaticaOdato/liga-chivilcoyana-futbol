@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fecha;
 use App\Models\Partido;
 use App\Models\Torneo;
 use App\Services\TablaPosicionesService;
@@ -64,6 +65,9 @@ class PartidoController extends Controller
     {
         $partido->load(['torneo', 'fecha']);
 
-        return view('partidos.show', compact('partido'));
+        $fecha = Fecha::find($partido->fecha_id);
+        $torneo = Torneo::find($partido->torneo_id);
+
+        return view('partidos.show', compact('partido', 'fecha', 'torneo'));
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Equipo;
+use App\Models\Estadio;
 use App\Models\Partido;
 use App\Models\Torneo;
 use Illuminate\Http\Request;
@@ -73,6 +74,10 @@ class EquipoController extends Controller
             ->with(['local', 'visitante'])
             ->first();
 
+        // - ESTADIO -
+        $estadio = Estadio::where('id', $equipo->estadio_id)->first();
+        //var_dump($estadio);
+
 
         return view('equipos.show', compact(
             'equipo',
@@ -81,7 +86,8 @@ class EquipoController extends Controller
             'posicion',
             'totalEquipos',
             'equipoTabla',
-            'proximoPartido'
+            'proximoPartido',
+            'estadio'
         ));
     }
 

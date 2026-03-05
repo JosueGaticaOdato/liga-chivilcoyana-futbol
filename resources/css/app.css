@@ -95,6 +95,12 @@ body{
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    color: var(--color-blanco);
+    background: linear-gradient(
+        135deg,
+        var(--color-degradado-1),
+        var(--color-degradado-2)
+    );
 }
 
 .card-icon .material-icons {

@@ -11,6 +11,10 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $cant_equipos_tabla = 8;
+        $cant_partidos = 3;
+        $cant_noticias = 4;
+
         // Torneo principal
         $torneo = Torneo::orderBy('estado', 'asc')->first();
 
@@ -20,7 +24,7 @@ class HomeController extends Controller
                 ->orderByDesc('pivot_puntos')
                 ->orderByDesc('pivot_diferencia_goles')
                 ->orderByDesc('pivot_goles_favor')
-                ->take(8)
+                ->take($cant_equipos_tabla)
                 ->get()
             : collect();
 
@@ -35,11 +39,11 @@ class HomeController extends Controller
             ->with(['local', 'visitante'])
             ->orderBy('fecha_partido') //Orden cronologico
             ->orderBy('hora_partido')
-            ->limit(3)
+            ->limit($cant_partidos)
             ->get();
         // // Noticias
         $noticias = Noticia::orderByDesc('created_at')
-            ->take(3)
+            ->take($cant_noticias)
             ->get();
 
         return view('home.index', compact(
