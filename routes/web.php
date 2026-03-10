@@ -84,17 +84,3 @@ Route::post('/register', [RegisterController::class, 'store'])
     ->name('register.store');
 
 /* ===== ADMIN ===== */
-
-Route::middleware(['auth', 'admin'])
-    ->prefix('admin')
-    ->name('admin.')
-    ->group(function () {
-
-        // Route::get('/', [AdminDashboardController::class, 'index'])
-        //     ->name('dashboard');
-
-        Route::resource('noticias', AdminNoticiaController::class);
-        // Route::resource('equipos', AdminEquipoController::class);
-        // Route::resource('torneos', AdminTorneoController::class);
-        // Route::resource('partidos', AdminPartidoController::class);
-});
