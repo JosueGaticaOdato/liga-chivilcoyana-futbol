@@ -12,13 +12,13 @@ class Fecha extends Model
         'nombre'
     ];
 
-    public function torneo()
-    {
-        return $this->belongsTo(Torneo::class);
-    }
-
     public function partidos()
     {
         return $this->hasMany(Partido::class);
+    }
+
+    public function fase()
+    {
+        return $this->belongsTo(Fase::class);
     }
 }

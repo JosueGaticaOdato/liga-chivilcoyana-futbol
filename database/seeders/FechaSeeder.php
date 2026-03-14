@@ -14,11 +14,18 @@ class FechaSeeder extends Seeder
         $fechas = [
             [
                 'numero' => 1,
+                'fase_id' => 1,
                 'nombre' => 'Fecha 1'
             ],
             [
                 'numero' => 2,
+                'fase_id' => 1,
                 'nombre' => 'Fecha 2'
+            ],
+            [
+                'numero' => 1,
+                'fase_id' => 2,
+                'nombre' => 'Semifinal'
             ],
         ];
 

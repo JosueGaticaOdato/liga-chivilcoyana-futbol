@@ -17,9 +17,9 @@
         <h2>Fechas: </h2>
         <nav class="fechas">
             @foreach ($fechas as $fecha)
-                <a href="{{ route('torneos.fixture', [$torneo->slug, $fecha->numero]) }}"
+                <a href="{{ route('torneos.fixture', [$torneo->slug, $fecha->id]) }}"
                     class="{{ $fecha->id === $fechaActual->id ? 'activa' : '' }}">
-                    {{ $fecha->numero }}
+                    {{ $fecha->nombre }}
                 </a>
             @endforeach
         </nav>

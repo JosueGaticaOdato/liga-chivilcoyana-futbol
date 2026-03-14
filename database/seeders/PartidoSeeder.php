@@ -67,6 +67,28 @@ class PartidoSeeder extends Seeder
                 'goles_visitante' => null,
                 'estado' => 'programado',
             ],
+
+            // Semifinal
+            [
+                'fecha_numero' => 3,
+                'local' => 'Gimnasia',
+                'visitante' => 'Alsina',
+                'fecha_partido' => '2026-03-17',
+                'hora_partido' => '16:00',
+                'goles_local' => null,
+                'goles_visitante' => null,
+                'estado' => 'programado',
+            ],
+            [
+                'fecha_numero' => 3,
+                'local' => '22 de Octubre',
+                'visitante' => 'Independiente',
+                'fecha_partido' => '2026-03-17',
+                'hora_partido' => '18:00',
+                'goles_local' => null,
+                'goles_visitante' => null,
+                'estado' => 'programado',
+            ],
         ];
 
         foreach ($partidos as $data) {
@@ -91,6 +113,7 @@ class PartidoSeeder extends Seeder
                 'goles_local' => $data['goles_local'],
                 'goles_visitante' => $data['goles_visitante'],
                 'estado' => $data['estado'],
+                //'estadio_id' => null, // o asigná un estadio
             ]);
         }
 

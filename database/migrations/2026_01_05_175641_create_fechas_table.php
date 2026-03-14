@@ -11,8 +11,13 @@ return new class extends Migration
         Schema::create('fechas', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('numero'); // Fecha 1, 2, 3, ...
-            $table->string('nombre')->nullable(); // "Fecha 1", "Cuartos"
+            // Fechas es una jornada dentro de una fase
+            $table->foreignId('fase_id')
+                ->constrained()
+                ->cascadeOnDelete();
+
+            $table->integer('numero'); // Numero de jornada dentro de la fase
+            $table->string('nombre')->nullable();  // "Fecha 1", "Cuartos", "Semifinal"
 
             $table->timestamps();
         });

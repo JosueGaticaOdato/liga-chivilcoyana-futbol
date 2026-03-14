@@ -38,7 +38,8 @@ return new class extends Migration
                 ->default('programado');
 
             $table->foreignId(column: 'estadio_id')
-                ->constrained('estadios')->nullable();
+                ->nullable()
+                ->constrained('estadios');
 
             $table->timestamps();
         });

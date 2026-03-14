@@ -64,27 +64,29 @@ class TorneoController extends Controller
 
     public function fixture(Torneo $torneo, ?int $fecha = null)
     {
+
+        //die();
         if ($fecha === null) {
-            $fecha = Fecha::where('torneo_id', $torneo->id)
+            $fecha = $torneo->fechas()
                 ->whereHas('partidos', function ($q) {
                     $q->where('estado', '!=', 'finalizado');
                 })
                 ->orderBy('numero')
                 ->value('numero')
-                ?? Fecha::where('torneo_id', $torneo->id)
-                ->max('numero');
+                ?? $torneo->fechas()->max('numero');
         }
 
-        $fechaActual = Fecha::where('torneo_id', $torneo->id)
-            ->where('numero', $fecha)
+        $fechaActual = $torneo->fechas()
+            ->where('id', $fecha)
             ->with([
                 'partidos.local',
                 'partidos.visitante'
             ])
             ->firstOrFail();
+        var_dump($fechaActual);
 
-        $fechas = Fecha::where('torneo_id', $torneo->id)
-            ->orderBy('numero')
+        $fechas = $torneo->fechas()
+            ->orderBy('id')
             ->get();
 
         return view('torneos.fixture', compact(
