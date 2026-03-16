@@ -11,3 +11,4 @@ Nuevo Update:
 - Admin para manejo de partidos
 - Carga de partidos por excel
 - Equipos A y B (categorias inferiores)
+- Imagen personalizada de la tabla (para IF)
