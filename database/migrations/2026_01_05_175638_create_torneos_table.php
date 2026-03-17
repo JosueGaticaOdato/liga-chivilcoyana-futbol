@@ -18,7 +18,13 @@ return new class extends Migration
             $table->string('categoria');
             $table->string('temporada');
             $table->text('descripcion')->nullable();
-            $table->enum('estado', ['activo', 'finalizado'])->default('activo'); 
+            $table->enum('estado', ['activo', 'finalizado'])->default('activo');
+            $table->enum('formato', [
+                'liga',
+                'zonas_playoffs',
+                'liga_playoffs',
+                'eliminacion'
+            ]);
             $table->date('fecha_inicio');
             $table->date('fecha_fin')->nullable();
             $table->timestamps();

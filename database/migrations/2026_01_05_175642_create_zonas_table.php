@@ -6,25 +6,28 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
-        Schema::create('fechas', function (Blueprint $table) {
+        Schema::create('zonas', function (Blueprint $table) {
             $table->id();
 
-            // Fechas es una jornada dentro de una fase
             $table->foreignId('fase_id')
                 ->constrained()
                 ->cascadeOnDelete();
 
-            $table->integer('numero'); // Numero de jornada dentro de la fase
-            $table->string('nombre')->nullable(); // Ej: Fecha 1, Fecha 2, Semifinal Ida, etc.
-
+            $table->string('nombre'); // Zona A, Zona B
             $table->timestamps();
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('fechas');
+        Schema::dropIfExists('zonas');
     }
 };

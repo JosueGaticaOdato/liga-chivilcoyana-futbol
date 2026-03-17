@@ -18,8 +18,7 @@ return new class extends Migration
             ->constrained()
             ->cascadeOnDelete();
 
-            $table->string('nombre');
-            // Ej: Liga, Playoffs, Eliminación, Fase de grupos
+            $table->string('nombre'); // Liga, Cuartos, Semifinal, Final
 
             $table->enum('tipo', ['liga', 'eliminacion']);
             // liga → usa tabla de posiciones

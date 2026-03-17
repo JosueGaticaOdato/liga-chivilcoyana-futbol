@@ -22,6 +22,16 @@ return new class extends Migration
                 ->constrained('fechas')
                 ->cascadeOnDelete();
 
+            $table->foreignId('fase_id')
+                ->constrained()
+                ->cascadeOnDelete();
+
+            //En caso de fases de grupos, puede ser necesario asignar el partido a una zona específica
+            $table->foreignId('zona_id')
+                ->nullable()
+                ->constrained('zonas')
+                ->nullOnDelete();
+
             $table->date('fecha_partido');
             $table->time('hora_partido')->nullable();
 

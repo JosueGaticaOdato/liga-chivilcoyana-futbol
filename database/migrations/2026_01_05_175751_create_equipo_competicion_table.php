@@ -11,16 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('equipo_torneo', function (Blueprint $table) {
+        Schema::create('equipo_competicion', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('equipo_id')
                 ->constrained()
                 ->cascadeOnDelete();
 
-            $table->foreignId('torneo_id')
+            $table->foreignId('fase_id')
                 ->constrained()
                 ->cascadeOnDelete();
+
+            $table->foreignId('zona_id')
+                ->constrained()
+                ->cascadeOnDelete();
+
+            // $table->foreignId('torneo_id')
+            //     ->constrained()
+            //     ->cascadeOnDelete();
 
             $table->integer('partidos_jugados')->default(0);
             $table->integer('ganados')->default(0);
@@ -33,7 +41,8 @@ return new class extends Migration
 
             $table->timestamps();
 
-            $table->unique(['equipo_id', 'torneo_id']);
+            // evita duplicados
+            $table->unique(['equipo_id', 'fase_id', 'zona_id']);
         });
     }
 
@@ -42,6 +51,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('equipo_torneo');
+        Schema::dropIfExists('equipo_competicion');
     }
 };
