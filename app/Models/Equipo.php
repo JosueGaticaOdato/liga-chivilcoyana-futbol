@@ -32,24 +32,30 @@ class Equipo extends Model
      *  $partido->local->nombre
      */
 
-    //Un equipo participa en muchos torneos
-    public function torneos()
+    // Relaciones
+    public function fases()
     {
-        return $this->belongsToMany(Torneo::class)
-            //Cuando traigas los torneos de un equipo, traeme también estas columnas de la tabla pivote
-            ->withPivot([
-                'partidos_jugados',
-                'ganados',
-                'empatados',
-                'perdidos',
-                'goles_favor',
-                'goles_contra',
-                'diferencia_goles',
-                'puntos',
-            ])
-            ->withTimestamps();
-        //pivot = fila de equipo_torneo
+        return $this->hasMany(EquipoCompeticion::class);
     }
+
+    // //Un equipo participa en muchos torneos
+    // public function torneos()
+    // {
+    //     return $this->belongsToMany(Torneo::class)
+    //         //Cuando traigas los torneos de un equipo, traeme también estas columnas de la tabla pivote
+    //         ->withPivot([
+    //             'partidos_jugados',
+    //             'ganados',
+    //             'empatados',
+    //             'perdidos',
+    //             'goles_favor',
+    //             'goles_contra',
+    //             'diferencia_goles',
+    //             'puntos',
+    //         ])
+    //         ->withTimestamps();
+    //     //pivot = fila de equipo_torneo
+    // }
 
     //Un equipo juega muchos partidos como local
     // hasMany: Un partido tiene UN SOLO equipo local, un equipo puede ser local muchas veces
@@ -65,17 +71,17 @@ class Equipo extends Model
         return $this->hasMany(Partido::class, 'equipo_visitante_id');
     }
 
-    public function proximoPartido(Torneo $torneo)
-    {
-        return Partido::where('torneo_id', $torneo->id)
-            ->where('estado', 'programado')
-            ->where(function ($query) {
-                $query->where('equipo_local_id', $this->id)
-                    ->orWhere('equipo_visitante_id', $this->id);
-            })
-            ->whereDate('fecha', '>=', now()->toDateString())
-            ->orderBy('fecha')
-            ->orderBy('hora')
-            ->first();
-    }
+    // public function proximoPartido(Torneo $torneo)
+    // {
+    //     return Partido::where('torneo_id', $torneo->id)
+    //         ->where('estado', 'programado')
+    //         ->where(function ($query) {
+    //             $query->where('equipo_local_id', $this->id)
+    //                 ->orWhere('equipo_visitante_id', $this->id);
+    //         })
+    //         ->whereDate('fecha', '>=', now()->toDateString())
+    //         ->orderBy('fecha')
+    //         ->orderBy('hora')
+    //         ->first();
+    // }
 }

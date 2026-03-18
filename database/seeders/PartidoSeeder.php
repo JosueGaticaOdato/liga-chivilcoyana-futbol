@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Fase;
 use App\Models\Fecha;
+use App\Models\Zona;
 use App\Services\TablaPosicionesService;
 use Illuminate\Database\Seeder;
 use App\Models\Partido;
@@ -14,19 +16,37 @@ class PartidoSeeder extends Seeder
 {
     public function run(): void
     {
-        $torneo = Torneo::first(); // o buscá por nombre/slug
+        $torneo = Torneo::where('slug', 'primera-division-2025')->first();
 
-        if (!$torneo) {
-            $this->command->warn('No hay torneo creado');
-            return;
-        }
+        $faseGrupos = Fase::where('torneo_id', $torneo->id)
+            ->where('nombre', 'Fase de Grupos')
+            ->first();
 
-        $equipos = Equipo::pluck('id')->toArray();
+        $fasePlayoffs = Fase::where('torneo_id', $torneo->id)
+            ->where('nombre', 'Playoffs')
+            ->first();
 
+        $zonaA = Zona::where('fase_id', $faseGrupos->id)
+            ->where('nombre', 'Zona A')
+            ->first();
+
+        $zonaB = Zona::where('fase_id', $faseGrupos->id)
+            ->where('nombre', 'Zona B')
+            ->first();
+
+        // Fechas
+        $fecha1 = Fecha::where('fase_id', $faseGrupos->id)->where('numero', 1)->first();
+        $fecha2 = Fecha::where('fase_id', $faseGrupos->id)->where('numero', 2)->first();
+        $fechaFinal = Fecha::where('fase_id', $fasePlayoffs->id)->first();
+
+        // Partidos
         $partidos = [
-            // FECHA 1
+
+            // ZONA A - FECHA 1
             [
-                'fecha_numero' => 1,
+                'fase_id' => $faseGrupos->id,
+                'fecha_id' => $fecha1->id,
+                'zona_id' => $zonaA->id,
                 'local' => 'Independiente',
                 'visitante' => 'Gimnasia',
                 'fecha_partido' => '2026-03-10',
@@ -35,8 +55,12 @@ class PartidoSeeder extends Seeder
                 'goles_visitante' => 1,
                 'estado' => 'finalizado',
             ],
+
+            // ZONA B - FECHA 1
             [
-                'fecha_numero' => 1,
+                'fase_id' => $faseGrupos->id,
+                'fecha_id' => $fecha1->id,
+                'zona_id' => $zonaB->id,
                 'local' => 'Alsina',
                 'visitante' => '22 de Octubre',
                 'fecha_partido' => '2026-03-10',
@@ -46,21 +70,27 @@ class PartidoSeeder extends Seeder
                 'estado' => 'finalizado',
             ],
 
-            // FECHA 2
+            // ZONA A - FECHA 2
             [
-                'fecha_numero' => 2,
+                'fase_id' => $faseGrupos->id,
+                'fecha_id' => $fecha2->id,
+                'zona_id' => $zonaA->id,
                 'local' => 'Gimnasia',
-                'visitante' => 'Alsina',
+                'visitante' => 'Independiente',
                 'fecha_partido' => '2026-03-17',
                 'hora_partido' => '16:00',
                 'goles_local' => null,
                 'goles_visitante' => null,
                 'estado' => 'programado',
             ],
+
+            // ZONA B - FECHA 2
             [
-                'fecha_numero' => 2,
+                'fase_id' => $faseGrupos->id,
+                'fecha_id' => $fecha2->id,
+                'zona_id' => $zonaB->id,
                 'local' => '22 de Octubre',
-                'visitante' => 'Independiente',
+                'visitante' => 'Alsina',
                 'fecha_partido' => '2026-03-17',
                 'hora_partido' => '18:00',
                 'goles_local' => null,
@@ -68,44 +98,36 @@ class PartidoSeeder extends Seeder
                 'estado' => 'programado',
             ],
 
-            // Semifinal
+            // FINAL (PLAYOFF)
             [
-                'fecha_numero' => 3,
-                'local' => 'Gimnasia',
-                'visitante' => 'Alsina',
-                'fecha_partido' => '2026-03-17',
-                'hora_partido' => '16:00',
-                'goles_local' => null,
-                'goles_visitante' => null,
-                'estado' => 'programado',
-            ],
-            [
-                'fecha_numero' => 3,
-                'local' => '22 de Octubre',
-                'visitante' => 'Independiente',
-                'fecha_partido' => '2026-03-17',
+                'fase_id' => $fasePlayoffs->id,
+                'fecha_id' => $fechaFinal->id,
+                'zona_id' => null, // 🔥 en playoffs no hay zona
+                'local' => 'Independiente',
+                'visitante' => '22 de Octubre',
+                'fecha_partido' => '2026-03-25',
                 'hora_partido' => '18:00',
                 'goles_local' => null,
                 'goles_visitante' => null,
                 'estado' => 'programado',
+                //'numero_llave' => 1
             ],
         ];
 
         foreach ($partidos as $data) {
 
-            $fecha = Fecha::where('numero', $data['fecha_numero'])
-                ->first();
-
             $equipoLocal = Equipo::where('nombre', $data['local'])->first();
             $equipoVisitante = Equipo::where('nombre', $data['visitante'])->first();
 
-            if (!$fecha || !$equipoLocal || !$equipoVisitante) {
+            if (!$equipoLocal || !$equipoVisitante) {
                 continue;
             }
 
             Partido::create([
                 'torneo_id' => $torneo->id,
-                'fecha_id' => $fecha->id,
+                'fase_id' => $data['fase_id'],
+                'fecha_id' => $data['fecha_id'],
+                'zona_id' => $data['zona_id'],
                 'equipo_local_id' => $equipoLocal->id,
                 'equipo_visitante_id' => $equipoVisitante->id,
                 'fecha_partido' => $data['fecha_partido'],
@@ -113,11 +135,17 @@ class PartidoSeeder extends Seeder
                 'goles_local' => $data['goles_local'],
                 'goles_visitante' => $data['goles_visitante'],
                 'estado' => $data['estado'],
-                //'estadio_id' => null, // o asigná un estadio
+                //'numero_llave' => $data['numero_llave'] ?? null,
             ]);
         }
 
-        // Recalcula puntos (solo sirve para la semilla)
-        app(TablaPosicionesService::class)->recalcular($torneo);
+        $fases = Fase::where('torneo_id', $torneo->id)->get();
+        foreach ($fases as $fase) {
+
+            // Solo si es fase de grupos (tabla de posiciones)
+            if ($fase->tipo === 'grupos') {
+                app(TablaPosicionesService::class)->recalcular($fase);
+            }
+        }
     }
 }

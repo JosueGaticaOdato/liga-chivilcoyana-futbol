@@ -12,9 +12,10 @@ class Torneo extends Model
         'categoria',
         'temporada',
         'descripcion',
+        'formato',
         'estado',
         'fecha_inicio',
-        'fecha_fin',
+        'fecha_fin'
     ];
 
     protected $casts = [
@@ -22,38 +23,14 @@ class Torneo extends Model
         'fecha_fin' => 'date',
     ];
 
-    public function equipos()
-    {
-        return $this->belongsToMany(Equipo::class)
-            ->withPivot([
-                'partidos_jugados',
-                'ganados',
-                'empatados',
-                'perdidos',
-                'goles_favor',
-                'goles_contra',
-                'diferencia_goles',
-                'puntos',
-            ])
-            ->withTimestamps();
-    }
-
-    //Un torneo tiene muchos partidos
-    public function partidos()
-    {
-        return $this->hasMany(Partido::class);
-    }
-
+    // Relaciones
     public function fases()
     {
         return $this->hasMany(Fase::class);
     }
 
-    public function fechas()
+    public function partidos()
     {
-        return $this->hasManyThrough(
-            Fecha::class,
-            Fase::class
-        );
+        return $this->hasMany(Partido::class);
     }
 }

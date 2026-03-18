@@ -9,21 +9,39 @@ class Partido extends Model
 {
     protected $fillable = [
         'torneo_id',
+        'fase_id',
         'fecha_id',
-        'equipo_local_id',
-        'equipo_visitante_id',
+        'zona_id',
         'fecha_partido',
         'hora_partido',
+        'equipo_local_id',
+        'equipo_visitante_id',
         'goles_local',
         'goles_visitante',
         'estado',
-        'cancha',
+        'estadio_id',
     ];
+
+    // Relaciones
 
     //Un partido pertenece a un torneo
     public function torneo()
     {
         return $this->belongsTo(Torneo::class);
+    }
+
+    public function fase()
+    {
+        return $this->belongsTo(Fase::class);
+    }
+    public function fecha()
+    {
+        return $this->belongsTo(Fecha::class);
+    }
+
+    public function zona()
+    {
+        return $this->belongsTo(Zona::class);
     }
 
     //Este partido tiene un equipo local
@@ -36,6 +54,11 @@ class Partido extends Model
     public function visitante()
     {
         return $this->belongsTo(Equipo::class, 'equipo_visitante_id');
+    }
+
+    public function estadio()
+    {
+        return $this->belongsTo(Estadio::class);
     }
 
     // Casteo fecha y hora
@@ -62,8 +85,4 @@ class Partido extends Model
         );
     }
 
-    public function fecha()
-    {
-        return $this->belongsTo(Fecha::class);
-    }
 }

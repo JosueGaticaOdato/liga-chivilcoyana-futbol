@@ -22,8 +22,10 @@ class DatabaseSeeder extends Seeder
             EquipoSeeder::class,
             TorneoSeeder::class,
             FasesSeeder::class,
+            ZonaSeeder::class,
+            EquipoCompeticionSeeder::class,
             FechaSeeder::class,
-            PartidoSeeder::class
+            PartidoSeeder::class,
         ]);
     }
 }
