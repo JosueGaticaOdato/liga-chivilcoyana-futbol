@@ -20,7 +20,7 @@
     <section class="home">
 
         <!-- RESUMEN DE PARTIDOS -->
-        <section class="partidos-recientes" aria-labelledby="partidos-title">
+        {{-- <section class="partidos-recientes" aria-labelledby="partidos-title">
             <h2 id="partidos-title">Resumen de Partidos</h2>
 
             <div class="partidos-lista">
@@ -45,7 +45,7 @@
             <a href="{{ route('torneos.torneo', $torneo->slug) }}" class="link-mas">
                 Ver tabla completa
             </a>
-        </aside>
+        </aside> --}}
 
     </section>
 

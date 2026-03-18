@@ -63,7 +63,24 @@
                 <a href="{{ route('torneos.tabla', $torneo) }}" class="tabla-completa">Ver tabla completa <ion-icon
                         name="arrow-forward-outline"></ion-icon></a>
             </div>
-            <x-tabla-posiciones :equipos="$tabla" limit="5" variant="simple" />
+
+            @if ($tablas->isEmpty())
+                <p>No hay datos de tabla disponibles.</p>
+            @endif
+
+            @foreach ($tablas as $item)
+                <article>
+                    {{-- Si hay zonas, mostrar nombre --}}
+                    @if ($item['zona'])
+                        <h3 class="zona-titulo">
+                            {{ $item['zona']->nombre }}
+                        </h3>
+                    @endif
+                    
+                    <x-tabla-posiciones :equipos="$item['tabla']" limit="4" variant="simple" />
+                </article>
+            @endforeach
+            {{-- <x-tabla-posiciones :equipos="$tabla" limit="5" variant="simple" /> --}}
         </section>
 
         <section class="sobre-torneo">
@@ -74,8 +91,8 @@
         <section class="partidos-torneo">
             <div class="data">
                 <h2> <ion-icon name="football-outline" class="icon"></ion-icon> Partidos</h2>
-                <a href="{{ route('torneos.fixture', $torneo->slug) }}" class="fixture-completo">Ver fixture completo <ion-icon
-                        name="arrow-forward-outline"></ion-icon></a>
+                <a href="{{ route('torneos.fixture', $torneo->slug) }}" class="fixture-completo">Ver fixture completo
+                    <ion-icon name="arrow-forward-outline"></ion-icon></a>
             </div>
 
             <section class="lista-partidos-torneo">

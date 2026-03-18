@@ -22,28 +22,28 @@
     </thead>
 
     <tbody>
-        @foreach ($equipos as $index => $equipo)
+        @foreach ($equipos as $index => $equipoFase)
             <tr>
                 <td>{{ $index + 1 }}</td>
 
                 <td class="equipo">
-                    <img src="{{ asset('storage/' . $equipo->escudo) }}" alt="Escudo {{ $equipo->nombre }}">
-                    <span>{{ $equipo->nombre }}</span>
+                    <img src="{{ asset('storage/' . $equipoFase->equipo->escudo) }}" alt="Escudo {{ $equipoFase->equipo->nombre }}">
+                    <span>{{ $equipoFase->equipo->nombre }}</span>
                 </td>
 
                 @if ($variant === 'full')
-                    <td class="pts">{{ $equipo->pivot->puntos }}</td>
-                    <td>{{ $equipo->pivot->partidos_jugados }}</td>
-                    <td>{{ $equipo->pivot->ganados }}</td>
-                    <td>{{ $equipo->pivot->empatados }}</td>
-                    <td>{{ $equipo->pivot->perdidos }}</td>
-                    <td>{{ $equipo->pivot->goles_favor }}</td>
-                    <td>{{ $equipo->pivot->goles_contra }}</td>
-                    <td>{{ $equipo->pivot->diferencia_goles }}</td>
+                    <td class="pts">{{ $equipoFase->puntos }}</td>
+                    <td>{{ $equipoFase->partidos_jugados }}</td>
+                    <td>{{ $equipoFase->ganados }}</td>
+                    <td>{{ $equipoFase->empatados }}</td>
+                    <td>{{ $equipoFase->perdidos }}</td>
+                    <td>{{ $equipoFase->goles_favor }}</td>
+                    <td>{{ $equipoFase->goles_contra }}</td>
+                    <td>{{ $equipoFase->diferencia_goles }}</td>
                 @else
-                    <td class="pts">{{ $equipo->pivot->puntos }}</td>
-                    <td>{{ $equipo->pivot->partidos_jugados }}</td>
-                    <td>{{ $equipo->pivot->diferencia_goles }}</td>
+                    <td class="pts">{{ $equipoFase->puntos }}</td>
+                    <td>{{ $equipoFase->partidos_jugados }}</td>
+                    <td>{{ $equipoFase->diferencia_goles }}</td>
                 @endif
             </tr>
         @endforeach

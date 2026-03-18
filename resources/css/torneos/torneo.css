@@ -9,6 +9,10 @@
     margin: 0 1rem;
 }
 
+.tabla-wrapper{
+    padding: 2rem;
+}
+
 /* ===== INFORMACION TORNEO ===== */
 .informacion-torneo {
     display: flex;
@@ -99,6 +103,13 @@
     display: flex;
     gap: 0.5rem;
     align-items: center;
+}
+
+.zona-titulo{
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 1.7rem;
+    font-weight: bolder;
 }
 
 .tabla-posiciones {

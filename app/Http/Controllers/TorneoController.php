@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EquipoCompeticion;
 use App\Models\Fecha;
+use App\Models\Partido;
 use App\Models\Torneo;
 use Illuminate\Http\Request;
 
@@ -19,26 +21,68 @@ class TorneoController extends Controller
 
     public function torneo(Torneo $torneo)
     {
-        // Tabla de posiciones (Top 5)
-        $tabla = $torneo->equipos()
-            ->orderByDesc('pivot_puntos')
-            ->orderByDesc('pivot_diferencia_goles')
-            ->orderByDesc('pivot_goles_favor')
-            ->limit(5)
-            ->get();
+        // Fases del torneo
+        $fases = $torneo->fases()->with('zonas')->get();
 
-        $proximosPartidos = $torneo->partidos()
+        // Fase de grupos (si tiene)
+        $faseGrupos = $fases->firstWhere('tipo', 'liga');
+
+        $tablas = collect();
+
+        if ($faseGrupos) {
+            // Caso con zonas
+            if ($faseGrupos->zonas->count() > 0) {
+
+                foreach ($faseGrupos->zonas as $zona) {
+
+                    $tabla = EquipoCompeticion::where('fase_id', $faseGrupos->id)
+                        ->where('zona_id', $zona->id)
+                        ->orderByDesc('puntos')
+                        ->orderByDesc('diferencia_goles')
+                        ->orderByDesc('goles_favor')
+                        ->with('equipo')
+                        ->get();
+
+                    $tablas->push([
+                        'zona' => $zona,
+                        'tabla' => $tabla
+                    ]);
+                }
+            } else {
+                // Liga simple (sin zonas)
+                $tabla = EquipoCompeticion::where('fase_id', $faseGrupos->id)
+                    ->whereNull('zona_id')
+                    ->orderByDesc('puntos')
+                    ->orderByDesc('diferencia_goles')
+                    ->orderByDesc('goles_favor')
+                    ->with('equipo')
+                    ->get();
+
+                $tablas->push([
+                    'zona' => null,
+                    'tabla' => $tabla
+                ]);
+            }
+        }
+
+        // Próximos partidos (de TODO el torneo)
+        $proximosPartidos = Partido::where('torneo_id', $torneo->id)
+            ->where('estado', 'programado')
             ->with(['local', 'visitante'])
-            ->orderBy('fecha_partido') //Orden cronologico
+            ->orderBy('fecha_partido')
             ->orderBy('hora_partido')
             ->limit(3)
             ->get();
 
-        $cantidadEquipos = $torneo->equipos()->count();
+        //$cantidadEquipos = $torneo->equipos()->count();
+        $cantidadEquipos = 2;
+
+        //var_dump($tablas);
 
         return view('torneos.torneo', compact(
             'torneo',
-            'tabla',
+            'fases',
+            'tablas',
             'proximosPartidos',
             'cantidadEquipos'
         ));

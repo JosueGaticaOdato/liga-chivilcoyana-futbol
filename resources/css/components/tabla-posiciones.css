@@ -5,7 +5,6 @@
     min-width: 80%;
     white-space: nowrap;
     margin: 0 auto;
-    padding: 2rem;
     font-family: var(--fuente-primaria);
 }
 
@@ -86,12 +85,16 @@
     background-color: var(--color-primario);
 }
 
-/* Colores segun fila */
+/* Colores segun fila
 .tabla-posiciones tbody tr:nth-child(odd) td.equipo {
     background-color: var(--color-blanco);
 }
 
 .tabla-posiciones tbody tr:nth-child(even) td.equipo {
+    background-color: var(--color-impares);
+}*/
+
+.tabla-posiciones tbody tr:nth-child(even) {
     background-color: var(--color-impares);
 }
 
