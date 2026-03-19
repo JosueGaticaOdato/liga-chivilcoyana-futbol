@@ -6,6 +6,7 @@
     white-space: nowrap;
     margin: 0 auto;
     font-family: var(--fuente-primaria);
+    table-layout: fixed;
 }
 
 /* --- HEADER --- */
@@ -22,12 +23,20 @@
 }
 
 .tabla-posiciones th:nth-child(1) {
+    width: 8rem;
     border-left: 4px solid var(--color-primario);
 }
 
 .tabla-posiciones th:nth-child(2) {
+    /* width: auto; */
+    width: 18rem;
     text-align: left;
     padding-left: 1rem;
+}
+
+/* Columnas de estadísticas */
+.tabla-posiciones th:nth-child(n+3) {
+    width: 6.9rem;
 }
 
 /* --- CUERPO --- */
@@ -85,14 +94,14 @@
     background-color: var(--color-primario);
 }
 
-/* Colores segun fila
+/* Colores segun fila*/
 .tabla-posiciones tbody tr:nth-child(odd) td.equipo {
     background-color: var(--color-blanco);
 }
 
 .tabla-posiciones tbody tr:nth-child(even) td.equipo {
     background-color: var(--color-impares);
-}*/
+}
 
 .tabla-posiciones tbody tr:nth-child(even) {
     background-color: var(--color-impares);
@@ -149,5 +158,9 @@
     .tabla-posiciones td.equipo,
     .tabla-posiciones th:nth-child(2) {
         position: static;
+    }
+
+    .tabla-posiciones th:nth-child(2) {
+        width: auto;
     }
 }

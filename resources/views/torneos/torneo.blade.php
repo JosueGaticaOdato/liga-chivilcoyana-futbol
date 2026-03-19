@@ -78,7 +78,9 @@
                         </h3>
                     @endif
 
-                    <x-tabla-posiciones :equipos="$item['tabla']" :limit="$limite" variant="simple" />
+                    <div class="tabla-scroll">
+                        <x-tabla-posiciones :equipos="$item['tabla']" :limit="$limite" variant="simple" />
+                    </div>
                 </article>
             @endforeach
             {{-- <x-tabla-posiciones :equipos="$tabla" limit="5" variant="simple" /> --}}

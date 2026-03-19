@@ -30,7 +30,9 @@
                     </h3>
                 @endif
 
-                <x-tabla-posiciones :equipos="$item['tabla']" limit="4"/>
+                <div class="tabla-scroll">
+                    <x-tabla-posiciones :equipos="$item['tabla']"/>
+                </div>
             </article>
         @endforeach
 
