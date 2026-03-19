@@ -71,13 +71,14 @@
             @foreach ($tablas as $item)
                 <article>
                     {{-- Si hay zonas, mostrar nombre --}}
-                    @if ($item['zona'])
+                    @if ($item['zona'] &&  $item['zona']->nombre != "General")
+                        {{-- TO-DO manejar la tabla general desde el front o hacer algo en como viene de la BD --}}
                         <h3 class="zona-titulo">
                             {{ $item['zona']->nombre }}
                         </h3>
                     @endif
-                    
-                    <x-tabla-posiciones :equipos="$item['tabla']" limit="4" variant="simple" />
+
+                    <x-tabla-posiciones :equipos="$item['tabla']" :limit="$limite" variant="simple" />
                 </article>
             @endforeach
             {{-- <x-tabla-posiciones :equipos="$tabla" limit="5" variant="simple" /> --}}

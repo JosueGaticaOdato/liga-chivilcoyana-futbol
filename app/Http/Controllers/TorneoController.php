@@ -24,6 +24,91 @@ class TorneoController extends Controller
         // Fases del torneo
         $fases = $torneo->fases()->with('zonas')->get();
 
+        $tablas = $this->getTabla($torneo, $fases);
+
+        // Próximos partidos (de TODO el torneo)
+        $proximosPartidos = Partido::where('torneo_id', $torneo->id)
+            ->where('estado', 'programado')
+            ->with(['local', 'visitante'])
+            ->orderBy('fecha_partido')
+            ->orderBy('hora_partido')
+            ->limit(3)
+            ->get();
+
+        // $cantidadEquipos = EquipoCompeticion::whereHas('fase', function ($q) use ($torneo) {
+        //     $q->where('torneo_id', $torneo->id);
+        // })->count();
+
+        $cantidadEquipos = 2;
+        $limite = 4;
+
+        //dump($tablas);
+
+        //var_dump($tablas);
+
+        return view('torneos.torneo', compact(
+            'torneo',
+            'fases',
+            'tablas',
+            'proximosPartidos',
+            'limite',
+            'cantidadEquipos'
+        ));
+    }
+
+    public function tabla(Torneo $torneo)
+    {
+        // Fases del torneo
+        $fases = $torneo->fases()->with('zonas')->get();
+
+        $tablas = $this->getTabla($torneo, $fases);
+
+        /**
+         * Orden por:
+         * 1. Puntos
+         * 2. Diferencia de gol
+         * 3. Goles a favor
+         */
+
+        return view('torneos.tabla', compact('torneo', 'tablas'));
+    }
+
+    public function fixture(Torneo $torneo, ?int $fecha = null)
+    {
+        //die();
+        if ($fecha === null) {
+            $fecha = $torneo->fechas()
+                ->whereHas('partidos', function ($q) {
+                    $q->where('estado', '!=', 'finalizado');
+                })
+                ->orderBy('numero')
+                ->value('numero')
+                ?? $torneo->fechas()->max('numero');
+        }
+
+        $fechaActual = $torneo->fechas()
+            ->where('id', $fecha)
+            ->with([
+                'partidos.local',
+                'partidos.visitante'
+            ])
+            ->firstOrFail();
+        var_dump($fechaActual);
+
+        $fechas = $torneo->fechas()
+            ->orderBy('id')
+            ->get();
+
+        return view('torneos.fixture', compact(
+            'torneo',
+            'fechaActual',
+            'fechas'
+        ));
+    }
+
+    private function getTabla(Torneo $torneo, $fases)
+    {
+
         // Fase de grupos (si tiene)
         $faseGrupos = $fases->firstWhere('tipo', 'liga');
 
@@ -65,78 +150,6 @@ class TorneoController extends Controller
             }
         }
 
-        // Próximos partidos (de TODO el torneo)
-        $proximosPartidos = Partido::where('torneo_id', $torneo->id)
-            ->where('estado', 'programado')
-            ->with(['local', 'visitante'])
-            ->orderBy('fecha_partido')
-            ->orderBy('hora_partido')
-            ->limit(3)
-            ->get();
-
-        //$cantidadEquipos = $torneo->equipos()->count();
-        $cantidadEquipos = 2;
-
-        //var_dump($tablas);
-
-        return view('torneos.torneo', compact(
-            'torneo',
-            'fases',
-            'tablas',
-            'proximosPartidos',
-            'cantidadEquipos'
-        ));
-    }
-
-    public function tabla(Torneo $torneo)
-    {
-        $equipos = $torneo->equipos()
-            ->orderByDesc('pivot_puntos')
-            ->orderByDesc('pivot_diferencia_goles')
-            ->orderByDesc('pivot_goles_favor')
-            ->get();
-
-        /**
-         * Orden por:
-         * 1. Puntos
-         * 2. Diferencia de gol
-         * 3. Goles a favor
-         */
-
-        return view('torneos.tabla', compact('torneo', 'equipos'));
-    }
-
-    public function fixture(Torneo $torneo, ?int $fecha = null)
-    {
-
-        //die();
-        if ($fecha === null) {
-            $fecha = $torneo->fechas()
-                ->whereHas('partidos', function ($q) {
-                    $q->where('estado', '!=', 'finalizado');
-                })
-                ->orderBy('numero')
-                ->value('numero')
-                ?? $torneo->fechas()->max('numero');
-        }
-
-        $fechaActual = $torneo->fechas()
-            ->where('id', $fecha)
-            ->with([
-                'partidos.local',
-                'partidos.visitante'
-            ])
-            ->firstOrFail();
-        var_dump($fechaActual);
-
-        $fechas = $torneo->fechas()
-            ->orderBy('id')
-            ->get();
-
-        return view('torneos.fixture', compact(
-            'torneo',
-            'fechaActual',
-            'fechas'
-        ));
+        return $tablas;
     }
 }
