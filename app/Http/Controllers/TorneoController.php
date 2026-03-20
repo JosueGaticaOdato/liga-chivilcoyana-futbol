@@ -6,6 +6,7 @@ use App\Models\EquipoCompeticion;
 use App\Models\Fecha;
 use App\Models\Partido;
 use App\Models\Torneo;
+use App\Models\Zona;
 use Illuminate\Http\Request;
 
 class TorneoController extends Controller
@@ -35,11 +36,10 @@ class TorneoController extends Controller
             ->limit(3)
             ->get();
 
-        // $cantidadEquipos = EquipoCompeticion::whereHas('fase', function ($q) use ($torneo) {
-        //     $q->where('torneo_id', $torneo->id);
-        // })->count();
+        $cantidadEquipos = EquipoCompeticion::whereHas('fase', function ($q) use ($torneo) {
+            $q->where('torneo_id', $torneo->id);
+        })->count();
 
-        $cantidadEquipos = 2;
         $limite = 4;
 
         //dump($tablas);
@@ -104,6 +104,26 @@ class TorneoController extends Controller
             'fechaActual',
             'fechas'
         ));
+    }
+
+    public function tablaRedes(Torneo $torneo, Zona $zona)
+    {
+        // Fases del torneo
+        $fases = $torneo->fases()->with('zonas')->get();
+
+        $zonaTorneo = $fases->flatMap(fn ($fase) => $fase->zonas)
+            ->firstWhere('id', $zona->id);
+        //var_dump($zonaTorneo);
+
+        $tablas = $this->getTabla($torneo, $fases);
+
+        // TO-DO: Filtrar la tabla para mostrar solo la zona seleccionada
+        $tablaZona = $tablas->firstWhere('zona.id', $zona->id);
+
+        $tabla = $tablaZona['tabla'] ?? collect();
+        //var_dump($tabla);
+
+        return view('redes.tabla', compact('torneo', 'tabla', 'zonaTorneo'));
     }
 
     private function getTabla(Torneo $torneo, $fases)

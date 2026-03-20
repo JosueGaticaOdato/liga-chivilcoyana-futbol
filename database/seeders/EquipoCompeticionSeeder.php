@@ -21,15 +21,87 @@ class EquipoCompeticionSeeder extends Seeder
 
         $equipos = Equipo::all();
 
-        foreach ($equipos as $index => $equipo) {
+        // Zona actual liga chivilcoyana
 
-            $zona = $index % 2 === 0 ? $zonaA : $zonaB;
+        // Zona A: Indeependiente, Gimnasia, Varela, San Lorenzo, Moquehua, Ceramica
+        EquipoCompeticion::firstOrCreate([
+            'equipo_id' => Equipo::where('nombre', 'Independiente')->first()->id,
+            'fase_id' => $faseGrupos->id,
+            'zona_id' => $zonaA->id,
+        ]);
+        EquipoCompeticion::firstOrCreate([
+            'equipo_id' => Equipo::where('nombre', 'Gimnasia')->first()->id,
+            'fase_id' => $faseGrupos->id,
+            'zona_id' => $zonaA->id,
+        ]);
+        EquipoCompeticion::firstOrCreate([
+            'equipo_id' => Equipo::where('nombre', 'Varela')->first()->id,
+            'fase_id' => $faseGrupos->id,
+            'zona_id' => $zonaA->id,
+        ]);
+        EquipoCompeticion::firstOrCreate([
+            'equipo_id' => Equipo::where('nombre', 'San Lorenzo')->first()->id,
+            'fase_id' => $faseGrupos->id,
+            'zona_id' => $zonaA->id,
+        ]);
+        EquipoCompeticion::firstOrCreate([
+            'equipo_id' => Equipo::where('nombre', 'Moquehua')->first()->id,
+            'fase_id' => $faseGrupos->id,
+            'zona_id' => $zonaA->id,
+        ]);
+        EquipoCompeticion::firstOrCreate([
+            'equipo_id' => Equipo::where('nombre', 'Ceramica')->first()->id,
+            'fase_id' => $faseGrupos->id,
+            'zona_id' => $zonaA->id,
+        ]);
 
-            EquipoCompeticion::firstOrCreate([
-                'equipo_id' => $equipo->id,
-                'fase_id' => $faseGrupos->id,
-                'zona_id' => $zona->id,
-            ]);
-        }
+
+        // Zona B: Villarino, Huracan, Once Tigres, Alsina, Pellegrini, Colon, 22 de octubre
+        EquipoCompeticion::firstOrCreate([
+            'equipo_id' => Equipo::where('nombre', 'Villarino')->first()->id,
+            'fase_id' => $faseGrupos->id,
+            'zona_id' => $zonaB->id,
+        ]);
+        EquipoCompeticion::firstOrCreate([
+            'equipo_id' => Equipo::where('nombre', 'Huracan')->first()->id,
+            'fase_id' => $faseGrupos->id,
+            'zona_id' => $zonaB->id,
+        ]);
+        EquipoCompeticion::firstOrCreate([
+            'equipo_id' => Equipo::where('nombre', 'Once Tigres')->first()->id,
+            'fase_id' => $faseGrupos->id,
+            'zona_id' => $zonaB->id,
+        ]);
+        EquipoCompeticion::firstOrCreate([
+            'equipo_id' => Equipo::where('nombre', 'Alsina')->first()->id,
+            'fase_id' => $faseGrupos->id,
+            'zona_id' => $zonaB->id,
+        ]);
+        EquipoCompeticion::firstOrCreate([
+            'equipo_id' => Equipo::where('nombre', 'Pellegrini')->first()->id,
+            'fase_id' => $faseGrupos->id,
+            'zona_id' => $zonaB->id,
+        ]);
+        EquipoCompeticion::firstOrCreate([
+            'equipo_id' => Equipo::where('nombre', 'Colon')->first()->id,
+            'fase_id' => $faseGrupos->id,
+            'zona_id' => $zonaB->id,
+        ]);
+        EquipoCompeticion::firstOrCreate([
+            'equipo_id' => Equipo::where('nombre', '22 de Octubre')->first()->id,
+            'fase_id' => $faseGrupos->id,
+            'zona_id' => $zonaB->id,
+        ]);
+
+        // foreach ($equipos as $index => $equipo) {
+
+        //     $zona = $index % 2 === 0 ? $zonaA : $zonaB;
+
+        //     EquipoCompeticion::firstOrCreate([
+        //         'equipo_id' => $equipo->id,
+        //         'fase_id' => $faseGrupos->id,
+        //         'zona_id' => $zona->id,
+        //     ]);
+        // }
     }
 }

@@ -33,6 +33,12 @@
                 <div class="tabla-scroll">
                     <x-tabla-posiciones :equipos="$item['tabla']"/>
                 </div>
+
+                @if ($item['zona'] &&  $item['zona']->nombre != "General")
+                    <a href="{{ route('redes.tabla', [$torneo, $item['zona']]) }}">
+                        Descargar tabla redes sociales
+                    </a>
+                @endif
             </article>
         @endforeach
 

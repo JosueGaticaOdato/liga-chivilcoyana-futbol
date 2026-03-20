@@ -84,3 +84,11 @@ Route::post('/register', [RegisterController::class, 'store'])
     ->name('register.store');
 
 /* ===== ADMIN ===== */
+
+
+
+/* ===== REDES ===== */
+
+Route::get('/redes/{torneo:slug}/{zona:id}/tabla', [TorneoController::class, 'tablaRedes'])
+    ->name('redes.tabla')
+    ->withoutScopedBindings();

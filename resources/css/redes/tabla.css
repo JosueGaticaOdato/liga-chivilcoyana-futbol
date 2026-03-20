@@ -1,0 +1,221 @@
+.main-captura {
+    width: 1000px;
+    height: 1000px;
+    margin: 0 auto;
+    position: relative;
+    background-image: url("../../../../public/images/bg-redes.png");
+    background-position: center;
+    background-size: cover;
+}
+
+/* Header */
+.header-captura {
+    height: 280px;
+    position: relative;
+}
+
+/* Logos */
+.logo-if-captura {
+    width: 134px;
+    height: 134px;
+    position: absolute;
+    right: 31px;
+    bottom: 106px;
+}
+
+.logo-liga-captura {
+    width: 145px;
+    height: 145px;
+    position: absolute;
+    left: 31px;
+    top: 36px;
+}
+
+/* Titulo */
+.titulo-tabla-captura {
+    position: absolute;
+    top: 33%;
+    left: 50%;
+    width: 100%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    letter-spacing: -1px;
+    font-size: 49px;
+    font-family: var(--fuente-primaria);
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-style: italic;
+    color: #ffffff;
+}
+
+/* Sub titulo */
+.liga-zona-captura {
+    position: absolute;
+    top: 49%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 38px;
+    font-family: var(--fuente-primaria);
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-style: italic;
+    color: #ffffff;
+}
+
+/* Zona (si existe) */
+.zona-titulo-captura {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 80px;
+    letter-spacing: -5px;
+    font-family: var(--fuente-tercearia);
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-style: italic;
+    color: #ffffff;
+}
+
+.zona-titulo-captura-general {
+    display: none;
+}
+
+/* Tabla */
+.tabla-captura {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 530px;
+    width: 920px;
+    margin: 0 auto;
+    white-space: nowrap;
+}
+
+.tabla-captura th,
+.tabla-captura td {
+    vertical-align: middle;
+    background-clip: padding-box;
+}
+
+.tabla-captura thead tr th:first-child {
+    border-top-left-radius: 10px;
+    /* border-bottom-left-radius: 10px; */
+}
+
+.tabla-captura thead tr th:last-child {
+    border-top-right-radius: 10px;
+    /* border-bottom-right-radius: 10px; */
+}
+
+.tabla-captura thead tr {
+    vertical-align: middle;
+    margin: 0 auto;
+    background-color: var(--color-header-tabla);
+
+    width: 950px;
+    height: 70px;
+    color: var(--color-letras-secundario);
+    font-size: 30px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.tabla-captura tbody tr {
+    height: 50px;
+    font-weight: bolder;
+}
+
+.tabla-captura th {
+    text-align: center;
+    font-size: 30px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.tabla-captura th:nth-child(1) {
+    width: 90px;
+}
+
+.tabla-captura th:nth-child(2) {
+    /* width: auto; */
+    width: 300px;
+}
+
+/* Columnas de estadísticas */
+.tabla-captura th:nth-child(n + 3) {
+    width: 70px;
+}
+
+/* --- CUERPO --- */
+.tabla-captura tbody tr:first-child {
+    border-top: 5px solid var(--color-linea-tabla);
+}
+
+.tabla-captura tbody tr {
+    color: var(--color-blanco);
+    border-bottom: 5px solid var(--color-linea-tabla);
+}
+
+.tabla-captura tbody tr:last-child {
+    border-bottom: none;
+}
+
+/* --- CELDAS --- */
+.tabla-captura td {
+    text-align: center;
+    font-size: 30px;
+    text-transform: uppercase;
+    font-weight: 700;
+    vertical-align: middle;
+}
+
+.tabla-captura td:nth-child(n + 2){
+    border-right: 5px solid var(--color-linea-tabla);
+}
+
+.tabla-captura td:nth-child(1){
+    margin-right: 15px;
+}
+
+.tabla-captura td:last-child{
+    border-right: none;
+}
+
+/* Equipo */
+.tabla-captura td.equipo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+    height: 100%;
+    padding-left: 10px;
+    border-left: 5px solid var(--color-linea-tabla);
+}
+
+.tabla-captura td.equipo span {
+    letter-spacing: -1px;
+    font-size: 27px;
+    text-align: center;
+}
+
+.tabla-captura td.pts {
+    background-color: var(--color-header-tabla);
+}
+
+.tabla-captura td.equipo img {
+    width: 43px;
+    height: 43px;
+    object-fit: contain;
+}
+
+.ejemplo {
+    position: absolute;
+    top: 0;
+    left: 23%;
+    opacity: 0;
+    /* display: none; */
+}
