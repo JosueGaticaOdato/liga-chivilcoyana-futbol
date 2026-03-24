@@ -76,8 +76,8 @@
     --color-links: rgb(97, 174, 218);
 
     /* Imagenes para redes */
-    --color-header-tabla: #132652;
-    --color-linea-tabla: #48699e;
+    --color-header-tabla: #360049;
+    --color-linea-tabla: #ffffff;
     --trazo-exterior:
         -2px -2px 0 #000000, 2px -2px 0 #000000,
         -2px 2px 0 #000000, 2px 2px 0 #000000;

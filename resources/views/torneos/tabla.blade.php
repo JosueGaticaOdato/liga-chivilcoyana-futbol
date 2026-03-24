@@ -35,8 +35,8 @@
                 </div>
 
                 @if ($item['zona'] &&  $item['zona']->nombre != "General")
-                    <a href="{{ route('redes.tabla', [$torneo, $item['zona']]) }}">
-                        Descargar tabla redes sociales
+                    <a href="{{ route('redes.tabla', [$torneo, $item['zona']]) }}" class="tabla-redes btn">
+                        Descargar Tabla para Redes Sociales
                     </a>
                 @endif
             </article>

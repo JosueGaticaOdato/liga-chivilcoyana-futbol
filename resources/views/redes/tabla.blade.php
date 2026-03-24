@@ -11,7 +11,7 @@
     <main id="captura" class="main-captura">
         <header class="header-captura">
             <h1 class="titulo-tabla-captura">Tabla de posiciones</h1>
-            <h2 class="liga-zona-captura">{{ $torneo->nombre }}</h2>
+            <h2 class="liga-zona-captura">{{ $torneo->nombre }} {{ $torneo->temporada }}</h2>
 
             @if ($zonaTorneo && $zonaTorneo->nombre != "General")
                 <h3 class="zona-titulo-captura{{ $zonaTorneo->nombre == "General" ? "-general" : "" }}">
@@ -69,30 +69,8 @@
     </main>
     {{-- <img class="ejemplo" src="{{ asset('images/ejemplo.png') }}"> --}}
 
-    <button id="btn-descargar" style="margin-bottom: 20px; padding: 10px 20px;">
+    <button id="btn-descargar" class="btn">
         Descargar Imagen para Redes
     </button>
-
-
-    {{-- <header class="header-main">
-        <h1>{{ $torneo->nombre }} {{ $torneo->temporada }}</h1>
-        <p>Tabla de posiciones</p>
-    </header>
-
-    <section class="tabla-section">
-
-        @foreach ($tablas as $item)
-            <article>
-                @if ($item['zona'] &&  $item['zona']->nombre != "General")
-                    <h3 class="zona-titulo">
-                        {{ $item['zona']->nombre }}
-                    </h3>
-                @endif
-
-                <div class="tabla-scroll" id="captura-tabla">
-                    <x-tabla-posiciones :equipos="$item['tabla']"/>
-                </div>
-            </article>
-        @endforeach --}}
 
 @endsection

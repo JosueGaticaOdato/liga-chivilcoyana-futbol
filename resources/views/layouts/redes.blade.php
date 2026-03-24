@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="{{ asset('images/icono.ico') }}" type="image/x-icon">
     <title>@yield('title', 'Liga Chivilcoyana de Futbol')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 

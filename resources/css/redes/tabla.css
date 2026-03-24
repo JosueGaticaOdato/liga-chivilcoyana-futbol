@@ -3,7 +3,8 @@
     height: 1000px;
     margin: 0 auto;
     position: relative;
-    background-image: url("../../../../public/images/bg-redes.png");
+    /* background-image: url("../../../../public/images/bg-redes.png"); */
+    background-image: url("../../../../public/images/bg-redes2.jpg");
     background-position: center;
     background-size: cover;
 }
@@ -48,6 +49,15 @@
     color: #ffffff;
 }
 
+.titulo-tabla-captura::after{
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 550px;
+    height: 3px;
+    background-color: white;
+}
+
 /* Sub titulo */
 .liga-zona-captura {
     position: absolute;
@@ -61,6 +71,7 @@
     text-transform: uppercase;
     font-style: italic;
     color: #ffffff;
+    margin-top: 5px;
 }
 
 /* Zona (si existe) */
@@ -86,10 +97,10 @@
 /* Tabla */
 .tabla-captura {
     position: absolute;
-    top: 60%;
+    top: 58%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 530px;
+    height: 450px;
     width: 920px;
     margin: 0 auto;
     white-space: nowrap;
@@ -133,7 +144,9 @@
     text-align: center;
     font-size: 30px;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: bolder;
+    color: white;
+    -webkit-text-stroke: 1px black;
 }
 
 .tabla-captura th:nth-child(1) {
@@ -152,12 +165,12 @@
 
 /* --- CUERPO --- */
 .tabla-captura tbody tr:first-child {
-    border-top: 5px solid var(--color-linea-tabla);
+    border-top: 2px solid var(--color-linea-tabla);
 }
 
 .tabla-captura tbody tr {
     color: var(--color-blanco);
-    border-bottom: 5px solid var(--color-linea-tabla);
+    border-bottom: 2px solid var(--color-linea-tabla);
 }
 
 .tabla-captura tbody tr:last-child {
@@ -169,12 +182,14 @@
     text-align: center;
     font-size: 30px;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: bolder;
     vertical-align: middle;
+    color: white;
+    -webkit-text-stroke: 0.5px black;
 }
 
 .tabla-captura td:nth-child(n + 2){
-    border-right: 5px solid var(--color-linea-tabla);
+    border-right: 2px solid var(--color-linea-tabla);
 }
 
 .tabla-captura td:nth-child(1){
@@ -193,7 +208,7 @@
     gap: 0.75rem;
     height: 100%;
     padding-left: 10px;
-    border-left: 5px solid var(--color-linea-tabla);
+    border-left: 2px solid var(--color-linea-tabla);
 }
 
 .tabla-captura td.equipo span {
@@ -204,6 +219,7 @@
 
 .tabla-captura td.pts {
     background-color: var(--color-header-tabla);
+    order: 0;
 }
 
 .tabla-captura td.equipo img {
@@ -218,4 +234,8 @@
     left: 23%;
     opacity: 0;
     /* display: none; */
+}
+
+#btn-descargar{
+    margin: 2rem auto;
 }

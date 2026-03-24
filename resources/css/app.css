@@ -107,6 +107,28 @@ body{
     font-size: 2rem;
 }
 
+/* Botones */
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 2rem;
+
+    background-color: var(--color-blanco);
+    color: var(--color-letras-primario);
+    border-radius: 10px;
+    border: 1px solid var(--color-letras-cuaternario);
+
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: var(--sombra-ultra-suave);
+}
+
 /*====================================================
    RESPONSIVE
 ======================================================
@@ -124,6 +146,23 @@ body{
 @media (min-width: 1024px) {
     .header-main{
         align-items: flex-start;
+    }
+
+    .btn {
+        width: fit-content;
+        min-width: 250px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+    }
+
+    .btn:hover{
+        background-color: var(--color-primario);
+        color: var(--color-blanco);
+        border-color: var(--color-primario);
+        transform: translateY(-3px);
+        box-shadow: var(--sombra-header);
+        cursor: pointer;
     }
 }
 
