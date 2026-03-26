@@ -48,7 +48,8 @@
         </main>
 
         <footer class="partido-footer">
-            <p>{{ $partido->cancha ?? 'Estadio: A definir' }}</p>
+            <h4>{{ $partido->cancha ?? 'Estadio: A definir' }}</h4>
+            <p>{{ $partido->torneo->nombre }} - {{ $partido->fecha->nombre }}{{ $partido->zona ? " - " . $partido->zona->nombre : "" }}</p>
         </footer>
     </a>
 

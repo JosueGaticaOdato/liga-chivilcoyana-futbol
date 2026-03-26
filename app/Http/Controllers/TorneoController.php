@@ -75,34 +75,45 @@ class TorneoController extends Controller
 
     public function fixture(Torneo $torneo, ?int $fecha = null)
     {
-        //die();
-        if ($fecha === null) {
-            $fecha = $torneo->fechas()
-                ->whereHas('partidos', function ($q) {
-                    $q->where('estado', '!=', 'finalizado');
-                })
-                ->orderBy('numero')
-                ->value('numero')
-                ?? $torneo->fechas()->max('numero');
+
+        // Si no se proporciona una fecha, buscamos la primera fecha que tenga partidos no finalizados
+        if ($fecha === null){
+            $fecha = $torneo->fases()
+                ->with('fechas')
+                ->get()
+                ->flatMap(fn($fase) => $fase->fechas)
+                ->where('partidos', '!=', null)
+                ->firstWhere('partidos.*.estado', '!=', 'finalizado')
+                ->id ?? $torneo->fases()
+                    ->with('fechas')
+                    ->get()
+                    ->flatMap(fn($fase) => $fase->fechas)
+                    ->max('id');
         }
 
-        $fechaActual = $torneo->fechas()
-            ->where('id', $fecha)
-            ->with([
-                'partidos.local',
-                'partidos.visitante'
-            ])
-            ->firstOrFail();
-        var_dump($fechaActual);
-
-        $fechas = $torneo->fechas()
-            ->orderBy('id')
+        $partidos = Partido::where('torneo_id', $torneo->id)
+            ->where('fecha_id', $fecha)
+            ->with(['local', 'visitante'])
+            ->orderBy('fecha_partido')
+            ->orderBy('hora_partido')
             ->get();
+
+        $fases = $torneo->fases()->with('zonas')->get();
+
+        // Traigo todas las fechas (sin importar zona o fase)
+        $fechas = collect();
+        foreach ($fases as $fase) {
+            $fechas = $fechas->merge($fase->fechas()->orderBy('id')->get());
+        }
+
+        // Necesitamos obtener los datos de la fecha proporcionada por el usuario
+        $fechaActual = $fechas->firstWhere('id', $fecha);
 
         return view('torneos.fixture', compact(
             'torneo',
-            'fechaActual',
-            'fechas'
+            'partidos',
+            'fechas',
+            'fechaActual'
         ));
     }
 
@@ -111,7 +122,7 @@ class TorneoController extends Controller
         // Fases del torneo
         $fases = $torneo->fases()->with('zonas')->get();
 
-        $zonaTorneo = $fases->flatMap(fn ($fase) => $fase->zonas)
+        $zonaTorneo = $fases->flatMap(fn($fase) => $fase->zonas)
             ->firstWhere('id', $zona->id);
         //var_dump($zonaTorneo);
 
@@ -128,7 +139,6 @@ class TorneoController extends Controller
 
     private function getTabla(Torneo $torneo, $fases)
     {
-
         // Fase de grupos (si tiene)
         $faseGrupos = $fases->firstWhere('tipo', 'liga');
 

@@ -29,10 +29,10 @@
     <section class="fixture-partidos">
         <h3>{{ $fechaActual->nombre }}</h3>
         <div class="lista-fixture-partidos">
-            @forelse ($fechaActual->partidos as $partido)
-            <x-partido-card :partido="$partido" />
+            @forelse ($partidos as $partido)
+                <x-partido-card :partido="$partido" />
             @empty
-            <p>No hay partidos aun para esta fecha.</p>
+                <p>No hay partidos aun para esta fecha.</p>
             @endforelse
         </div>
     </section>

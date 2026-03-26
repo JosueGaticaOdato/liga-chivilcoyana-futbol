@@ -90,11 +90,23 @@
 .partido-footer{
     text-align: center;
     border-top: 1px solid transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.2rem;
 }
 
-.partido-footer{
-    margin: 0;
+.partido-footer h4{
     font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-letras-cuaternario);
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+}
+
+.partido-footer p{
+    font-size: 0.7rem;
     font-weight: 600;
     color: var(--color-letras-cuaternario);
     text-transform: uppercase;
