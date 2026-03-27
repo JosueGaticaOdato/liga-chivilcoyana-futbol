@@ -30,7 +30,10 @@ class EquipoController extends Controller
     public function show(Equipo $equipo)
     {
         // Torneo principal
-        $torneo = Torneo::orderBy('estado', 'asc')->first();
+        $torneo = Torneo::orderBy('estado', 'asc')
+                    ->orderByDesc('temporada')
+                    ->where('categoria', 'Primera')
+                    ->first();
 
         $tabla = EquipoCompeticion::where('equipo_id', $equipo->id)
             ->whereHas('fase', function ($q) use ($torneo) {

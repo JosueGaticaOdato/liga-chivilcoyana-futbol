@@ -7,10 +7,17 @@ use App\Models\Fecha;
 use App\Models\Partido;
 use App\Models\Torneo;
 use App\Models\Zona;
+use App\Services\TablaService;
 use Illuminate\Http\Request;
 
 class TorneoController extends Controller
 {
+    protected $tablaService;
+
+    public function __construct(TablaService $tablaService)
+    {
+        $this->tablaService = $tablaService;
+    }
 
     public function index()
     {
@@ -25,7 +32,7 @@ class TorneoController extends Controller
         // Fases del torneo
         $fases = $torneo->fases()->with('zonas')->get();
 
-        $tablas = $this->getTabla($torneo, $fases);
+        $tablas = $this->tablaService->getTabla($torneo, $fases);
 
         // Próximos partidos (de TODO el torneo)
         $proximosPartidos = Partido::where('torneo_id', $torneo->id)
@@ -61,7 +68,7 @@ class TorneoController extends Controller
         // Fases del torneo
         $fases = $torneo->fases()->with('zonas')->get();
 
-        $tablas = $this->getTabla($torneo, $fases);
+        $tablas = $this->tablaService->getTabla($torneo, $fases);
 
         /**
          * Orden por:
@@ -126,7 +133,7 @@ class TorneoController extends Controller
             ->firstWhere('id', $zona->id);
         //var_dump($zonaTorneo);
 
-        $tablas = $this->getTabla($torneo, $fases);
+        $tablas = $this->tablaService->getTabla($torneo, $fases);
 
         // TO-DO: Filtrar la tabla para mostrar solo la zona seleccionada
         $tablaZona = $tablas->firstWhere('zona.id', $zona->id);
@@ -135,51 +142,5 @@ class TorneoController extends Controller
         //var_dump($tabla);
 
         return view('redes.tabla', compact('torneo', 'tabla', 'zonaTorneo'));
-    }
-
-    private function getTabla(Torneo $torneo, $fases)
-    {
-        // Fase de grupos (si tiene)
-        $faseGrupos = $fases->firstWhere('tipo', 'liga');
-
-        $tablas = collect();
-
-        if ($faseGrupos) {
-            // Caso con zonas
-            if ($faseGrupos->zonas->count() > 0) {
-
-                foreach ($faseGrupos->zonas as $zona) {
-
-                    $tabla = EquipoCompeticion::where('fase_id', $faseGrupos->id)
-                        ->where('zona_id', $zona->id)
-                        ->orderByDesc('puntos')
-                        ->orderByDesc('diferencia_goles')
-                        ->orderByDesc('goles_favor')
-                        ->with('equipo')
-                        ->get();
-
-                    $tablas->push([
-                        'zona' => $zona,
-                        'tabla' => $tabla
-                    ]);
-                }
-            } else {
-                // Liga simple (sin zonas)
-                $tabla = EquipoCompeticion::where('fase_id', $faseGrupos->id)
-                    ->whereNull('zona_id')
-                    ->orderByDesc('puntos')
-                    ->orderByDesc('diferencia_goles')
-                    ->orderByDesc('goles_favor')
-                    ->with('equipo')
-                    ->get();
-
-                $tablas->push([
-                    'zona' => null,
-                    'tabla' => $tabla
-                ]);
-            }
-        }
-
-        return $tablas;
     }
 }

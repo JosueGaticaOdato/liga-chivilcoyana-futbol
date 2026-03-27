@@ -20,7 +20,7 @@
     <section class="home">
 
         <!-- RESUMEN DE PARTIDOS -->
-        {{-- <section class="partidos-recientes" aria-labelledby="partidos-title">
+        <section class="partidos-recientes" aria-labelledby="partidos-title">
             <h2 id="partidos-title">Resumen de Partidos</h2>
 
             <div class="partidos-lista">
@@ -38,14 +38,30 @@
 
         <!-- TABLAS DE POSICIONES -->
         <aside class="tablas-posiciones">
-            <h2>Primera Division - Tabla</h2>
+            <h2>{{ $torneo->nombre }} - Tabla</h2>
+            @foreach ($tablas as $item)
+                <article>
+                    {{-- Si hay zonas, mostrar nombre --}}
+                    @if ($item['zona'] &&  $item['zona']->nombre != "General")
+                        {{-- TO-DO manejar la tabla general desde el front o hacer algo en como viene de la BD --}}
+                        <h3 class="zona-titulo">
+                            {{ $item['zona']->nombre }}
+                        </h3>
+                    @endif
 
-            <x-tabla-posiciones :equipos="$tabla" limit="8" variant="simple" />
+                    <div class="tabla-scroll">
+                        <x-tabla-posiciones :equipos="$item['tabla']" :limit="$cant_equipos_tabla" variant="simple" />
+                    </div>
+                </article>
+            @endforeach
+
+
+            {{-- <x-tabla-posiciones :equipos="$tabla" limit="8" variant="simple" /> --}}
 
             <a href="{{ route('torneos.torneo', $torneo->slug) }}" class="link-mas">
                 Ver tabla completa
             </a>
-        </aside> --}}
+        </aside>
 
     </section>
 

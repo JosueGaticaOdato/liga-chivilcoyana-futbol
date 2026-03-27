@@ -107,6 +107,13 @@
     margin-bottom: 1rem;
 }
 
+.zona-titulo{
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 1.7rem;
+    font-weight: bolder;
+}
+
 /* ===== NOTICIAS ===== */
 .noticias-recientes {
     max-width: 75rem;
