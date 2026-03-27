@@ -19,7 +19,7 @@ class TorneoSeeder extends Seeder
             [
                 'nombre' => 'Liga Playofss',
                 'categoria' => 'Primera',
-                'temporada' => '2025',
+                'temporada' => '2026',
                 'descripcion' => 'Torneo oficial de la Liga Chivilcoyana de Fútbol',
                 'estado' => 'activo',
                 'formato' => 'liga_playoffs',
@@ -32,7 +32,7 @@ class TorneoSeeder extends Seeder
             [
                 'nombre' => 'Liga',
                 'categoria' => 'Segunda',
-                'temporada' => '2025',
+                'temporada' => '2026',
                 'descripcion' => 'Torneo oficial de la Liga Chivilcoyana de Fútbol',
                 'estado' => 'activo',
                 'formato' => 'liga',

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Equipo;
+use App\Models\EquipoCompeticion;
 use App\Models\Estadio;
+use App\Models\Fase;
 use App\Models\Partido;
 use App\Models\Torneo;
 use Illuminate\Http\Request;
@@ -30,6 +32,15 @@ class EquipoController extends Controller
         // Torneo principal
         $torneo = Torneo::orderBy('estado', 'asc')->first();
 
+        $tabla = EquipoCompeticion::where('equipo_id', $equipo->id)
+            ->whereHas('fase', function ($q) use ($torneo) {
+                $q->where('torneo_id', $torneo->id);
+            })
+            ->with('equipo')
+            ->get()
+            ->groupBy('fase_id');
+
+
         // - ULTIMOS PARTIDOS DEL EQUIPO -
         $ultimosPartidos = Partido::where('torneo_id', $torneo->id)
             ->where('estado', 'finalizado')
@@ -41,25 +52,32 @@ class EquipoController extends Controller
             ->take(3)
             ->get();
 
-        // - DATOS DE EQUIPOS EN EL TORNEO -
-        // Obtengo la tabla y luego los datos de ese equipo en el tonroe
-        $tabla = $torneo->equipos()
-            ->orderByDesc('pivot_puntos')
-            ->orderByDesc('pivot_diferencia_goles')
-            ->orderByDesc('pivot_goles_favor')
+        // - TOTAL DE EQUIPOS QUE PARTICIPAN EN SU ZONA -
+        $idFase = $tabla->first()->first()->fase_id;
+        $idZona = $tabla->first()->first()->zona_id;
+
+        $totalEquipos = EquipoCompeticion::where('fase_id', $idFase)
+            ->where('zona_id', $idZona)
+            ->count();
+
+        // - POSICION EN LA ZONA -
+        $tablaCompleta = EquipoCompeticion::where('fase_id', $idFase)
+            ->where('zona_id', $idZona)
+            ->orderByDesc('puntos')
+            ->orderByDesc('diferencia_goles')
+            ->orderByDesc('goles_favor')
             ->get();
 
-        // Total de equipos
-        $totalEquipos = $tabla->count();
-
-        // Posición del equipo actual (index + 1)
-        $posicion = $tabla->search(function ($item) use ($equipo) {
-            return $item->id === $equipo->id;
+        //var_dump($tablaCompleta);
+        $posicion = $tablaCompleta->search(function ($item) use ($equipo) {
+            return $item->equipo_id === $equipo->id;
         });
         $posicion = $posicion !== false ? $posicion + 1 : null;
+        //var_dump($posicion);
+        //die();
 
-        // Stats del equipo
-        $equipoTabla = $tabla->firstWhere('id', $equipo->id);
+        // - STATS DEL EQUIPO -
+        $equipoTabla = $tabla->first()->first();
 
         // - PROXIMO PARTIDO -
         $proximoPartido = Partido::where('torneo_id', $torneo->id)
@@ -76,8 +94,6 @@ class EquipoController extends Controller
 
         // - ESTADIO -
         $estadio = Estadio::where('id', $equipo->estadio_id)->first();
-        //var_dump($estadio);
-
 
         return view('equipos.show', compact(
             'equipo',

@@ -97,24 +97,24 @@
 
         <div>
             <section class="posicion-club">
-                <h2>Posición Actual</h2>
-
+                <h2>Posición Actual - {{ $torneo->nombre }}</h2>
+                
                 <p class="posicion-rank">
                     <strong>{{ $posicion }}°</strong> / {{ $totalEquipos }} Equipos
                 </p>
 
                 <ul class="posicion-stats">
                     <li>
-                        <strong>{{ $equipoTabla->pivot->puntos }}</strong>
+                        <strong>{{ $equipoTabla->puntos }}</strong>
                         <span>Puntos</span>
                     </li>
                     <li>
-                        <strong>{{ $equipoTabla->pivot->partidos_jugados }}</strong>
+                        <strong>{{ $equipoTabla->partidos_jugados }}</strong>
                         <span>Jugados</span>
                     </li>
                     <li>
                         <strong>
-                            {{ $equipoTabla->pivot->diferencia_goles > 0 ? '+' : '' }}{{ $equipoTabla->pivot->diferencia_goles }}</strong>
+                            {{ $equipoTabla->diferencia_goles > 0 ? '+' : '' }}{{ $equipoTabla->diferencia_goles }}</strong>
                         <span>Diferencia</span>
                     </li>
                 </ul>
