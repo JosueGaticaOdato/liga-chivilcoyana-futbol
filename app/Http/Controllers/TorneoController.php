@@ -36,7 +36,7 @@ class TorneoController extends Controller
 
         // Próximos partidos (de TODO el torneo)
         $proximosPartidos = Partido::where('torneo_id', $torneo->id)
-            ->where('estado', 'programado')
+            // ->where('estado', 'programado')
             ->with(['local', 'visitante'])
             ->orderBy('fecha_partido')
             ->orderBy('hora_partido')

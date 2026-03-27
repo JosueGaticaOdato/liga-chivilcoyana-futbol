@@ -15,9 +15,9 @@ class TorneoSeeder extends Seeder
     public function run(): void
     {
         $torneo = Torneo::firstOrCreate(
-            ['slug' => 'primera-division-2025'],
+            ['slug' => 'apertura-2026'],
             [
-                'nombre' => 'Liga Playofss',
+                'nombre' => 'Torneo Apertura',
                 'categoria' => 'Primera',
                 'temporada' => '2026',
                 'descripcion' => 'Torneo oficial de la Liga Chivilcoyana de Fútbol',

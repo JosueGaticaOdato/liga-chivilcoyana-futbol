@@ -59,7 +59,7 @@
                         <td>{{ $equipoFase->perdidos }}</td>
                         <td>{{ $equipoFase->goles_favor }}</td>
                         <td>{{ $equipoFase->goles_contra }}</td>
-                        <td>{{ $equipoFase->diferencia_goles }}</td>
+                        <td>{{ $equipoFase->diferencia_goles > 0 ? '+' : '' }}{{ $equipoFase->diferencia_goles }}</td>
                     </tr>
                 @endforeach
             </tbody>

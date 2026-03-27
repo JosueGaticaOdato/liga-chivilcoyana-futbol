@@ -12,7 +12,7 @@ class FasesSeeder extends Seeder
     public function run(): void
     {
         //
-        $torneo1 = Torneo::where('slug', 'primera-division-2025')->first();
+        $torneo1 = Torneo::where('slug', 'apertura-2026')->first();
         $torneo2 = Torneo::where('slug', 'segunda-division-2025')->first();
 
         $fases = [

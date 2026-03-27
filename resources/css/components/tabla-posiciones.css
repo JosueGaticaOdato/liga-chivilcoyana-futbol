@@ -56,9 +56,9 @@
 }
 
 /* Top posiciones */
-.tabla-posiciones tbody tr:nth-child(-n+8) td:nth-child(1) {
+/* .tabla-posiciones tbody tr:nth-child(-n+8) td:nth-child(1) {
     border-left: 4px solid var(--color-success);
-}
+} */
 
 /* Posición */
 .tabla-posiciones td:first-child {

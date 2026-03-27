@@ -58,7 +58,7 @@
 
             {{-- <x-tabla-posiciones :equipos="$tabla" limit="8" variant="simple" /> --}}
 
-            <a href="{{ route('torneos.torneo', $torneo->slug) }}" class="link-mas">
+            <a href="{{ route('torneos.tabla', $torneo->slug) }}" class="link-mas">
                 Ver tabla completa
             </a>
         </aside>

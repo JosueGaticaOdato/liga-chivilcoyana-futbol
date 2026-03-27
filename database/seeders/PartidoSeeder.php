@@ -10,13 +10,14 @@ use Illuminate\Database\Seeder;
 use App\Models\Partido;
 use App\Models\Equipo;
 use App\Models\Torneo;
+use App\Services\TablaService;
 use Carbon\Carbon;
 
 class PartidoSeeder extends Seeder
 {
     public function run(): void
     {
-        $torneo = Torneo::where('slug', 'primera-division-2025')->first();
+        $torneo = Torneo::where('slug', 'apertura-2026')->first();
 
         $faseGrupos = Fase::where('torneo_id', $torneo->id)
             ->where('nombre', 'Fase de Grupos')
@@ -47,12 +48,36 @@ class PartidoSeeder extends Seeder
                 'fase_id' => $faseGrupos->id,
                 'fecha_id' => $fecha1->id,
                 'zona_id' => $zonaA->id,
-                'local' => 'Independiente',
-                'visitante' => 'Gimnasia',
+                'local' => 'Gimnasia',
+                'visitante' => 'Moquehua',
                 'fecha_partido' => '2026-03-10',
                 'hora_partido' => '16:00',
                 'goles_local' => 2,
                 'goles_visitante' => 1,
+                'estado' => 'finalizado',
+            ],
+            [
+                'fase_id' => $faseGrupos->id,
+                'fecha_id' => $fecha1->id,
+                'zona_id' => $zonaA->id,
+                'local' => 'San Lorenzo',
+                'visitante' => 'Varela',
+                'fecha_partido' => '2026-03-10',
+                'hora_partido' => '16:00',
+                'goles_local' => 1,
+                'goles_visitante' => 2,
+                'estado' => 'finalizado',
+            ],
+            [
+                'fase_id' => $faseGrupos->id,
+                'fecha_id' => $fecha1->id,
+                'zona_id' => $zonaA->id,
+                'local' => 'Ceramica',
+                'visitante' => 'Independiente',
+                'fecha_partido' => '2026-03-10',
+                'hora_partido' => '16:00',
+                'goles_local' => 0,
+                'goles_visitante' => 2,
                 'estado' => 'finalizado',
             ],
 
@@ -61,57 +86,142 @@ class PartidoSeeder extends Seeder
                 'fase_id' => $faseGrupos->id,
                 'fecha_id' => $fecha1->id,
                 'zona_id' => $zonaB->id,
-                'local' => 'Alsina',
-                'visitante' => '22 de Octubre',
+                'local' => 'Colon',
+                'visitante' => 'Villarino',
                 'fecha_partido' => '2026-03-10',
-                'hora_partido' => '18:00',
+                'hora_partido' => '16:00',
                 'goles_local' => 0,
-                'goles_visitante' => 0,
+                'goles_visitante' => 2,
                 'estado' => 'finalizado',
             ],
+            [
+                'fase_id' => $faseGrupos->id,
+                'fecha_id' => $fecha1->id,
+                'zona_id' => $zonaB->id,
+                'local' => 'Huracan',
+                'visitante' => 'Pellegrini',
+                'fecha_partido' => '2026-03-10',
+                'hora_partido' => '16:00',
+                'goles_local' => 2,
+                'goles_visitante' => 1,
+                'estado' => 'finalizado',
+            ],
+            [
+                'fase_id' => $faseGrupos->id,
+                'fecha_id' => $fecha1->id,
+                'zona_id' => $zonaB->id,
+                'local' => 'Alsina',
+                'visitante' => 'Once Tigres',
+                'fecha_partido' => '2026-03-10',
+                'hora_partido' => '16:00',
+                'goles_local' => 1,
+                'goles_visitante' => 2,
+                'estado' => 'finalizado',
+            ],
+            // [
+            //     'fase_id' => $faseGrupos->id,
+            //     'fecha_id' => $fecha1->id,
+            //     'zona_id' => $zonaB->id,
+            //     'local' => 'Colon',
+            //     'visitante' => '22 de Octubre',
+            //     'fecha_partido' => '2026-03-10',
+            //     'hora_partido' => '18:00',
+            //     'goles_local' => 0,
+            //     'goles_visitante' => 0,
+            //     'estado' => 'finalizado',
+            // ],
+
+            // ZONA A - FECHA 2
+            // [
+            //     'fase_id' => $faseGrupos->id,
+            //     'fecha_id' => $fecha2->id,
+            //     'zona_id' => $zonaA->id,
+            //     'local' => 'Gimnasia',
+            //     'visitante' => 'Independiente',
+            //     'fecha_partido' => '2026-03-17',
+            //     'hora_partido' => '16:00',
+            //     'goles_local' => null,
+            //     'goles_visitante' => null,
+            //     'estado' => 'programado',
+            // ],
 
             // ZONA A - FECHA 2
             [
                 'fase_id' => $faseGrupos->id,
                 'fecha_id' => $fecha2->id,
                 'zona_id' => $zonaA->id,
-                'local' => 'Gimnasia',
-                'visitante' => 'Independiente',
-                'fecha_partido' => '2026-03-17',
+                'local' => 'Independiente',
+                'visitante' => 'San Lorenzo',
+                'fecha_partido' => '2026-03-10',
                 'hora_partido' => '16:00',
-                'goles_local' => null,
-                'goles_visitante' => null,
-                'estado' => 'programado',
+                'goles_local' => 3,
+                'goles_visitante' => 1,
+                'estado' => 'finalizado',
             ],
-
+            [
+                'fase_id' => $faseGrupos->id,
+                'fecha_id' => $fecha2->id,
+                'zona_id' => $zonaA->id,
+                'local' => 'Varela',
+                'visitante' => 'Gimnasia',
+                'fecha_partido' => '2026-03-10',
+                'hora_partido' => '16:00',
+                'goles_local' => 0,
+                'goles_visitante' => 2,
+                'estado' => 'finalizado',
+            ],
             // ZONA B - FECHA 2
             [
                 'fase_id' => $faseGrupos->id,
                 'fecha_id' => $fecha2->id,
                 'zona_id' => $zonaB->id,
-                'local' => '22 de Octubre',
+                'local' => 'Villarino',
+                'visitante' => 'Huracan',
+                'fecha_partido' => '2026-03-10',
+                'hora_partido' => '16:00',
+                'goles_local' => 1,
+                'goles_visitante' => 2,
+                'estado' => 'finalizado',
+            ],
+            [
+                'fase_id' => $faseGrupos->id,
+                'fecha_id' => $fecha2->id,
+                'zona_id' => $zonaB->id,
+                'local' => 'Pellegrini',
                 'visitante' => 'Alsina',
-                'fecha_partido' => '2026-03-17',
-                'hora_partido' => '18:00',
-                'goles_local' => null,
-                'goles_visitante' => null,
-                'estado' => 'programado',
+                'fecha_partido' => '2026-03-10',
+                'hora_partido' => '16:00',
+                'goles_local' => 1,
+                'goles_visitante' => 4,
+                'estado' => 'finalizado',
+            ],
+            [
+                'fase_id' => $faseGrupos->id,
+                'fecha_id' => $fecha2->id,
+                'zona_id' => $zonaB->id,
+                'local' => 'Once Tigres',
+                'visitante' => '22 de Octubre',
+                'fecha_partido' => '2026-03-10',
+                'hora_partido' => '16:00',
+                'goles_local' => 2,
+                'goles_visitante' => 1,
+                'estado' => 'finalizado',
             ],
 
             // FINAL (PLAYOFF)
-            [
-                'fase_id' => $fasePlayoffs->id,
-                'fecha_id' => $fechaFinal->id,
-                'zona_id' => null, // 🔥 en playoffs no hay zona
-                'local' => 'Independiente',
-                'visitante' => '22 de Octubre',
-                'fecha_partido' => '2026-03-25',
-                'hora_partido' => '18:00',
-                'goles_local' => null,
-                'goles_visitante' => null,
-                'estado' => 'programado',
-                //'numero_llave' => 1
-            ],
+            // [
+            //     'fase_id' => $fasePlayoffs->id,
+            //     'fecha_id' => $fechaFinal->id,
+            //     'zona_id' => null, // 🔥 en playoffs no hay zona
+            //     'local' => 'Independiente',
+            //     'visitante' => '22 de Octubre',
+            //     'fecha_partido' => '2026-03-25',
+            //     'hora_partido' => '18:00',
+            //     'goles_local' => null,
+            //     'goles_visitante' => null,
+            //     'estado' => 'programado',
+            //     //'numero_llave' => 1
+            // ],
         ];
 
         foreach ($partidos as $data) {
@@ -143,8 +253,8 @@ class PartidoSeeder extends Seeder
         foreach ($fases as $fase) {
 
             // Solo si es fase de grupos (tabla de posiciones)
-            if ($fase->tipo === 'grupos') {
-                app(TablaPosicionesService::class)->recalcular($fase);
+            if ($fase->tipo === 'liga') {
+                app(TablaService::class)->recalcular($fase);
             }
         }
     }
