@@ -17,7 +17,7 @@ class TorneoSeeder extends Seeder
         $torneo = Torneo::firstOrCreate(
             ['slug' => 'apertura-2026'],
             [
-                'nombre' => 'Torneo Apertura',
+                'nombre' => 'Copa Centenario',
                 'categoria' => 'Primera',
                 'temporada' => '2026',
                 'descripcion' => 'Torneo oficial de la Liga Chivilcoyana de Fútbol',

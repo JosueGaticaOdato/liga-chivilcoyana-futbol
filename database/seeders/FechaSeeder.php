@@ -27,6 +27,11 @@ class FechaSeeder extends Seeder
                 'nombre' => 'Fecha 2'
             ],
             [
+                'numero' => 3,
+                'fase_id' => $faseGrupos->id,
+                'nombre' => 'Fecha 3'
+            ],
+            [
                 'numero' => 1,
                 'fase_id' => $fasePlayoffs->id,
                 'nombre' => 'Final'
