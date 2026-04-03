@@ -18,5 +18,11 @@
         <button type="submit">Salir de la pagina</button>
     </form>
 
+    @auth
+        @if(auth()->user()->isAdmin())
+            <h1>Soy Admin JAJAJJA</h1>
+        @endif
+    @endauth
+
 </section>
 @endsection

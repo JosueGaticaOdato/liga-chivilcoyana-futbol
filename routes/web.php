@@ -83,9 +83,19 @@ Route::get('/register', [RegisterController::class, 'show'])
 Route::post('/register', [RegisterController::class, 'store'])
     ->name('register.store');
 
+/* ===== USUARIOS LOGEADOS ===== */
+
+// Route::middleware(['auth'])->group(function () {
+
+//     Route::get('/perfil', [PerfilController::class, 'show'])->name('perfil');
+//     Route::put('/perfil', [PerfilController::class, 'update'])->name('perfil.update');
+
+// });
+
 /* ===== ADMIN ===== */
 
-
+Route::middleware('web')
+    ->group(base_path('routes/admin.php'));
 
 /* ===== REDES ===== */
 

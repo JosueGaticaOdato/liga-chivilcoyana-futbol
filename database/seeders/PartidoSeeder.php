@@ -267,9 +267,9 @@ class PartidoSeeder extends Seeder
                 'visitante' => 'Pellegrini',
                 'fecha_partido' => '2026-03-10',
                 'hora_partido' => '16:00',
-                'goles_local' => null,
-                'goles_visitante' => null,
-                'estado' => 'programado',
+                'goles_local' => 2,
+                'goles_visitante' => 2,
+                'estado' => 'finalizado',
             ],
 
             // FINAL (PLAYOFF)
