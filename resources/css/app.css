@@ -6,6 +6,8 @@
 
 /* Componentes */
 @import "./header.css";
+@import "./aside.css";
+@import "./adminHeader.css";
 @import "./footer.css";
 
 /* ===== HEADER GENERAL ===== */
@@ -17,6 +19,18 @@ body{
 .main{
     background-color: var(--color-bg-muted);
     font-family: var(--fuente-primaria);
+}
+
+.admin-layout{
+    display: flex;
+    padding: 1rem 10rem;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 2rem;
+}
+
+.admin-main{
+    flex: 0 0 70%;
 }
 
 .header-main {

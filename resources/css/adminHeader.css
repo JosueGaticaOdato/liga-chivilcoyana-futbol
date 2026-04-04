@@ -1,0 +1,84 @@
+.header-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-text{
+}
+
+.header-text h1{
+    font-family: var(--fuente-secundaria);
+    font-size: 1.4rem;
+    font-weight: bolder;
+    text-transform: uppercase;
+    letter-spacing: -0.10rem;
+}
+
+.header-text p{
+    color: var(--color-primario);
+    font-weight: bolder;
+}
+
+.sidebar-footer {
+    padding: 1rem;
+}
+
+.theme-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    border: none;
+    background: transparent;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    color: var(--color-letras-cuaternario);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin-top: 1rem;
+}
+
+.avatar {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #e5e7eb;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-text {
+    flex: 1;
+    overflow: hidden;
+}
+
+.user-name {
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.logout {
+    font-size: 0.625rem;
+    color: var(--color-letras-cuaternario);
+    margin: 0;
+}
+
+.logout-icon {
+    font-size: 1rem;
+    color: var(--color-letras-cuaternario);
+}
