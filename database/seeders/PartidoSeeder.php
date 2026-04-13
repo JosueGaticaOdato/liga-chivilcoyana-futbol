@@ -40,6 +40,7 @@ class PartidoSeeder extends Seeder
         $fecha2 = Fecha::where('fase_id', $faseGrupos->id)->where('numero', 2)->first();
         $fecha3 = Fecha::where('fase_id', $faseGrupos->id)->where('numero', 3)->first();
         $fecha4 = Fecha::where('fase_id', $faseGrupos->id)->where('numero', 4)->first();
+        $fecha5 = Fecha::where('fase_id', $faseGrupos->id)->where('numero', 5)->first();
         $fechaFinal = Fecha::where('fase_id', $fasePlayoffs->id)->first();
 
         // Partidos
@@ -332,6 +333,70 @@ class PartidoSeeder extends Seeder
                 'hora_partido' => '16:00',
                 'goles_local' => 0,
                 'goles_visitante' => 4,
+                'estado' => 'finalizado',
+            ],
+
+
+            // ZONA A - FECHA 5
+            [
+                'fase_id' => $faseGrupos->id,
+                'fecha_id' => $fecha5->id,
+                'zona_id' => $zonaA->id,
+                'local' => 'Gimnasia',
+                'visitante' => 'San Lorenzo',
+                'fecha_partido' => '2026-03-10',
+                'hora_partido' => '16:00',
+                'goles_local' => 1,
+                'goles_visitante' => 1,
+                'estado' => 'finalizado',
+            ],
+            [
+                'fase_id' => $faseGrupos->id,
+                'fecha_id' => $fecha5->id,
+                'zona_id' => $zonaA->id,
+                'local' => 'Moquehua',
+                'visitante' => 'Independiente',
+                'fecha_partido' => '2026-03-10',
+                'hora_partido' => '16:00',
+                'goles_local' => 2,
+                'goles_visitante' => 2,
+                'estado' => 'finalizado',
+            ],
+            // ZONA B - FECHA 5
+            [
+                'fase_id' => $faseGrupos->id,
+                'fecha_id' => $fecha5->id,
+                'zona_id' => $zonaB->id,
+                'local' => 'Once Tigres',
+                'visitante' => 'Villarino',
+                'fecha_partido' => '2026-03-10',
+                'hora_partido' => '16:00',
+                'goles_local' => 0,
+                'goles_visitante' => 0,
+                'estado' => 'finalizado',
+            ],
+            [
+                'fase_id' => $faseGrupos->id,
+                'fecha_id' => $fecha5->id,
+                'zona_id' => $zonaB->id,
+                'local' => 'Alsina',
+                'visitante' => 'Huracan',
+                'fecha_partido' => '2026-03-10',
+                'hora_partido' => '16:00',
+                'goles_local' => 2,
+                'goles_visitante' => 1,
+                'estado' => 'finalizado',
+            ],
+            [
+                'fase_id' => $faseGrupos->id,
+                'fecha_id' => $fecha5->id,
+                'zona_id' => $zonaB->id,
+                'local' => '22 de Octubre',
+                'visitante' => 'Colon',
+                'fecha_partido' => '2026-03-10',
+                'hora_partido' => '16:00',
+                'goles_local' => 1,
+                'goles_visitante' => 3,
                 'estado' => 'finalizado',
             ],
 
