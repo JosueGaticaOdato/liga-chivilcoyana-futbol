@@ -373,7 +373,7 @@ class PartidoSeeder extends Seeder
                 'fecha_partido' => '2026-03-10',
                 'hora_partido' => '16:00',
                 'goles_local' => 0,
-                'goles_visitante' => 0,
+                'goles_visitante' => 1,
                 'estado' => 'finalizado',
             ],
             [
