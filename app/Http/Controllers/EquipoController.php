@@ -52,7 +52,7 @@ class EquipoController extends Controller
                     ->orWhere('equipo_visitante_id', $equipo->id);
             })
             ->orderBy('fecha_partido', 'desc')
-            ->take(3)
+            ->take(7)
             ->get();
 
         // - TOTAL DE EQUIPOS QUE PARTICIPAN EN SU ZONA -
