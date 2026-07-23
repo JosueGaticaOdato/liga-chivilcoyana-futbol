@@ -163,20 +163,12 @@ php artisan serve
 
 🚧 **En desarrollo**
 
-El proyecto se encuentra en constante evolución, agregando mejoras visuales, optimizaciones de código y nuevas funcionalidades.
-
 ---
 
 ## 👤 Autor
 
 **Josue Gatica Odato**
 Proyecto académico y profesional orientado a resolver una necesidad real de la comunidad deportiva local.
-
----
-
-## 📄 Licencia
-
-Este proyecto es de uso educativo y comunitario.
 
 ---
 
