@@ -24,7 +24,6 @@ El sistema contempla todas las categorías, desde **Primera División hasta las 
 ## 👤 Autor
 
 **Josue Gatica Odato**
-Proyecto académico y profesional orientado a resolver una necesidad real de la comunidad deportiva local.
 
 ---
 
