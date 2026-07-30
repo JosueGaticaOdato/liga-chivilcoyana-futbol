@@ -9,7 +9,6 @@ El objetivo principal es centralizar y digitalizar toda la información relevant
 * Partidos y resultados
 * Tablas de posiciones
 * Información de equipos
-* Noticias oficiales de la liga
 
 El sistema contempla todas las categorías, desde **Primera División hasta las divisiones inferiores**.
 
@@ -24,7 +23,3 @@ El sistema contempla todas las categorías, desde **Primera División hasta las 
 ## 👤 Autor
 
 **Josue Gatica Odato**
-
----
-
-⚽ *Liga Chivilcoyana de Fútbol*
