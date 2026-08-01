@@ -14,12 +14,6 @@ El sistema contempla todas las categorías, desde **Primera División hasta las 
 
 ---
 
-## 🧪 Estado del proyecto
-
-🚧 **En desarrollo**
-
----
-
 ## 👤 Autor
 
 **Josue Gatica Odato**
