@@ -296,4 +296,22 @@ php artisan help migrate
 
 ---
 
+## Orden de construccion
+
+1. Migrations
+        
+2. Models + relaciones
+        
+3. Factories / Seeders
+        
+4. Form Requests / validaciones
+        
+5. Controllers
+        
+6. Routes
+        
+7. Views / Frontend
+        
+8. Tests
+
 ✍️ **Pensado para tenerlo siempre abierto mientras programás en Laravel**

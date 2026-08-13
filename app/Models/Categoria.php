@@ -5,18 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Estadio extends Model
+class Categoria extends Model
 {
   protected $fillable = [
     'nombre',
-    'direccion',
-    'latitud',
-    'longitud',
-    'capacidad'
+    'orden'
   ];
 
-  public function clubes(): HasMany
+  // Un categoria tiene muchos equipos
+  public function Equipos(): HasMany
   {
-    return $this->hasMany(Club::class);
+    return $this->hasMany(Equipo::class);
   }
 }
