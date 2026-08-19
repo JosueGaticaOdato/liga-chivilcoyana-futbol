@@ -18,4 +18,14 @@ class Jugador extends Model
   protected $casts = [
     'fecha_nacimiento' => 'date'
   ];
+
+  public function plantel()
+  {
+    return $this->hasMany(Plantel::class);
+  }
+
+  public function eventosPartido()
+  {
+    return $this->hasMany(EventoPartido::class);
+  }
 }

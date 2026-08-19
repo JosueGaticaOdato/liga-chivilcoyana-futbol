@@ -189,6 +189,28 @@ $torneo->equipos
 $partido->local->nombre_pila
 ```
 
+## Relaciones para modelos
+
+- belongsTo: N a 1
+
+```
+  // Cada club tiene su estadio (pertenece a un estadio)
+  public function estadio(): BelongsTo
+  {
+    return $this->belongsTo(Estadio::class);
+  }
+```
+
+- hasMany: 1 a N
+
+```
+  // Un club tiene muchos equipos
+  public function Equipos(): HasMany
+  {
+    return $this->hasMany(Equipo::class);
+  }
+```
+
 ---
 
 ## 🎮 Controllers

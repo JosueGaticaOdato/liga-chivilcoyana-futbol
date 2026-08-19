@@ -18,4 +18,19 @@ class Plantel extends Model
     'fecha_baja' => 'date',
     'activo' => 'boolean'
   ];
+
+  public function jugador()
+  {
+    return $this->belongsTo(Jugador::class);
+  }
+
+  public function equipo()
+  {
+    return $this->belongsTo(Equipo::class);
+  }
+
+  public function temporada()
+  {
+    return $this->belongsTo(Temporada::class);
+  }
 }

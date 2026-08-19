@@ -20,4 +20,39 @@ class Partido extends Model
   protected $casts = [
     'fecha_hora' => 'datetime',
   ];
+
+  public function fase()
+  {
+    return $this->belongsTo(Fase::class);
+  }
+
+  public function zona()
+  {
+    return $this->belongsTo(Zona::class);
+  }
+
+  public function equipoLocal()
+  {
+    return $this->belongsTo(Equipo::class, 'equipo_local_id');
+  }
+
+  public function equipoVisitante()
+  {
+    return $this->belongsTo(Equipo::class, 'equipo_visitante_id');
+  }
+
+  public function torneo()
+  {
+    return $this->belongsTo(Torneo::class);
+  }
+
+  public function estadio()
+  {
+    return $this->belongsTo(Estadio::class);
+  }
+
+  public function eventoPartidos()
+  {
+    return $this->hasMany(EventoPartido::class);
+  }
 }

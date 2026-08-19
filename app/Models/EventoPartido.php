@@ -14,4 +14,19 @@ class EventoPartido extends Model
     'minuto',
     'detalle',
   ];
+
+  public function partido()
+  {
+    return $this->belongsTo(Partido::class);
+  }
+
+  public function equipo()
+  {
+    return $this->belongsTo(Equipo::class);
+  }
+
+  public function jugador()
+  {
+    return $this->belongsTo(Jugador::class);
+  }
 }

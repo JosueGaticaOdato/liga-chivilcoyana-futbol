@@ -29,4 +29,31 @@ class Equipo extends Model
   {
     return $this->belongsTo(Club::class);
   }
+
+  public function partidosLocal()
+  {
+    return $this->belongsTo(Partido::class, 'equipo_local_id');
+  }
+
+  public function partidosVisitante()
+  {
+    return $this->belongsTo(Partido::class, 'equipo_visitante_id');
+  }
+
+  public function plantel()
+  {
+    return $this->hasMany(Plantel::class);
+  }
+
+  public function equiposTorneos()
+  {
+    return $this->hasMany(EquipoCompeticion::class);
+  }
+
+  public function eventoPartido()
+  {
+    return $this->belongsTo(EventoPartido::class);
+  }
+
+
 }

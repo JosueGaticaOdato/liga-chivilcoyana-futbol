@@ -11,4 +11,19 @@ class Fase extends Model
     'orden',
     'tipo',
   ];
+
+  public function torneos()
+  {
+    return $this->belongsTo(Torneo::class);
+  }
+
+  public function partidos()
+  {
+    return $this->hasMany(Partido::class);
+  }
+
+  public function zonas()
+  {
+    return $this->hasMany(Zona::class);
+  }
 }

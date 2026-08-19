@@ -17,4 +17,24 @@ class Torneo extends Model
     'fecha_inicio' => 'date',
     'fecha_fin' => 'date'
   ];
+
+  public function temporadas()
+  {
+    return $this->belongsTo(Temporada::class);
+  }
+
+  public function partidos()
+  {
+    return $this->hasMany(Partido::class);
+  }
+
+  public function categorias()
+  {
+    return $this->belongsTo(Categoria::class);
+  }
+
+  public function fases()
+  {
+    return $this->hasMany(Fase::class);
+  }
 }

@@ -18,4 +18,14 @@ class Temporada extends Model
     'fecha_fin' => 'date',
     'activa' => 'boolean',
   ];
+
+  public function torneos()
+  {
+    return $this->hasMany(Torneo::class);
+  }
+
+  public function planteles()
+  {
+    return $this->hasMany(Plantel::class);
+  }
 }

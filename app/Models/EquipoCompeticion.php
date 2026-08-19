@@ -20,4 +20,14 @@ class EquipoCompeticion extends Model
     'puntos_deducidos',
   ];
 
+  public function zona()
+  {
+    return $this->belongsTo(Zona::class);
+  }
+
+  public function equipo()
+  {
+    return $this->belongsTo(Equipo::class);
+  }
+
 }

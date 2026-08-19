@@ -19,4 +19,9 @@ class Estadio extends Model
   {
     return $this->hasMany(Club::class);
   }
+
+  public function partidos(): HasMany
+  {
+    return $this->hasMany(Partido::class);
+  }
 }

@@ -17,4 +17,9 @@ class Categoria extends Model
   {
     return $this->hasMany(Equipo::class);
   }
+
+  public function Torneos(): HasMany
+  {
+    return $this->hasMany(Torneo::class);
+  }
 }
