@@ -20,6 +20,8 @@ class Club extends Model
     'activo'
   ];
 
+  protected $table = 'clubes';
+
   protected $casts = [
     'fecha_fundacion' => 'date',
     'activo' => 'boolean',

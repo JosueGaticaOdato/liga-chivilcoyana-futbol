@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminNoticiaController;
+use App\Http\Controllers\ClubController;
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NoticiaController;
@@ -18,9 +19,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 /* ===== EQUIPOS ===== */
 
-Route::get('/equipos', [EquipoController::class, 'index'])->name('equipos.index');
-Route::get('/equipos/{equipo:slug}', [EquipoController::class, 'show'])
-    ->name('equipos.show');
+Route::get('/clubes', [ClubController::class, 'index'])->name('clubes.index');
+Route::get('/clubes/{club:slug}', [ClubController::class, 'show'])
+    ->name('clubes.show');
 
 /* ===== TABLAS ===== */
 
