@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Equipos')
+@section('title', 'Clubes')
 
 @push('styles')
     @vite('resources/css/equipos/index.css')
