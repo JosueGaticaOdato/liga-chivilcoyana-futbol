@@ -2,40 +2,40 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="{{ asset('images/icono.ico') }}" type="image/x-icon">
-    <title>@yield('title', 'Liga Chivilcoyana de Futbol')</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+  <meta charset="UTF-8">
+  <link rel="icon" href="{{ asset('images/icono.ico') }}" type="image/x-icon">
+  <title>@yield('title', 'Liga Chivilcoyana de Futbol')</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    {{-- CSS especifico por vista --}}
-    @stack('styles')
+  {{-- CSS especifico por vista --}}
+  @stack('styles')
 
-    {{-- Ionicons --}}
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  {{-- Ionicons --}}
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body>
 
-    @include('partials.header')
+  @include('partials.header')
 
-    <main class="bg-(--color-bg-muted) pt-28">
-        @yield('content')
-    </main>
+  <main class="bg-(--color-bg-muted) pt-28">
+    @yield('content')
+  </main>
 
-    @include('partials.footer')
+  @include('partials.footer')
 
-    <script>
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const btnMenu = document.getElementById('btnMenu');
-        const menu = document.getElementById('menu');
+      const btnMenu = document.getElementById('btnMenu');
+      const menu = document.getElementById('menu');
 
-        btnMenu.addEventListener('click', () => {
-            menu.classList.toggle('active');
-        });
+      btnMenu.addEventListener('click', () => {
+        menu.classList.toggle('active');
+      });
     });
-    </script>
+  </script>
 </body>
 
 </html>

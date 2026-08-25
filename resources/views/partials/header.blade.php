@@ -1,5 +1,5 @@
 <header
-    class="
+  class="
         fixed
         top-0
         left-0
@@ -12,35 +12,32 @@
         bg-[var(--color-header)]
         font-[var(--fuente-primaria)]
         lg:justify-around
-    "
->
-    {{-- LOGO --}}
-    <h1 class="flex h-full items-center justify-center">
+    ">
+  {{-- LOGO --}}
+  <h1 class="flex h-full items-center justify-center">
 
-        <a
-            href="{{ route('home') }}"
-            class="flex h-full items-center px-4"
-        >
-            <img
-                src="{{ asset('images/logo.png') }}"
-                alt="Logo Liga Chivilcoyana de Futbol"
-                class="
+    <a
+      href="{{ route('home') }}"
+      class="flex h-full items-center px-4">
+      <img
+        src="{{ asset('images/logo.png') }}"
+        alt="Logo Liga Chivilcoyana de Futbol"
+        class="
                     h-20
                     w-auto
                     transition-all
                     duration-[350ms]
 
                     lg:hover:scale-110
-                "
-            >
-        </a>
+                ">
+    </a>
 
-    </h1>
+  </h1>
 
 
-    {{-- BOTÓN HAMBURGUESA --}}
-    <button
-        class="
+  {{-- BOTÓN HAMBURGUESA --}}
+  <button
+    class="
             z-[3]
             mr-6
             cursor-pointer
@@ -49,18 +46,17 @@
 
             lg:hidden
         "
-        id="btnMenu"
-        type="button"
-        aria-label="Abrir menú"
-    >
-        ☰
-    </button>
+    id="btnMenu"
+    type="button"
+    aria-label="Abrir menú">
+    ☰
+  </button>
 
 
-    {{-- NAVEGACIÓN --}}
-    <nav
-        id="menu"
-        class="
+  {{-- NAVEGACIÓN --}}
+  <nav
+    id="menu"
+    class="
             absolute
             left-0
             top-28
@@ -75,11 +71,10 @@
             lg:flex
             lg:w-[40%]
             lg:justify-center
-        "
-    >
+        ">
 
-        <ul
-            class="
+    <ul
+      class="
                 flex
                 flex-col
                 items-center
@@ -90,12 +85,11 @@
                 lg:justify-around
                 lg:items-center
                 lg:gap-8
-            "
-        >
+            ">
 
-            {{-- PARTIDOS --}}
-            <li
-                class="
+      {{-- PARTIDOS --}}
+      <li
+        class="
                     text-[1.1rem]
                     font-bold
                     uppercase
@@ -106,22 +100,20 @@
                     lg:hover:text-[var(--color-primario)]
                     lg:hover:border-b-[3px]
                     lg:hover:border-[var(--color-primario)]
-                "
-            >
-                <a
-                    href="{{ route('partidos.index') }}"
-                    class="
+                ">
+        <a
+          href="{{ route('partidos.index') }}"
+          class="
                         {{ request()->routeIs('partidos') ? 'text-[var(--color-primario)] border-b-[3px] border-[var(--color-primario)]' : '' }}
-                    "
-                >
-                    Partidos
-                </a>
-            </li>
+                    ">
+          Partidos
+        </a>
+      </li>
 
 
-            {{-- TORNEOS --}}
-            <li
-                class="
+      {{-- TORNEOS --}}
+      <li
+        class="
                     text-[1.1rem]
                     font-bold
                     uppercase
@@ -132,22 +124,20 @@
                     lg:hover:text-[var(--color-primario)]
                     lg:hover:border-b-[3px]
                     lg:hover:border-[var(--color-primario)]
-                "
-            >
-                <a
-                    href="{{ route('torneos.index') }}"
-                    class="
+                ">
+        <a
+          href="{{ route('torneos.index') }}"
+          class="
                         {{ request()->routeIs('torneos.*') ? 'text-[var(--color-primario)] border-b-[3px] border-[var(--color-primario)]' : '' }}
-                    "
-                >
-                    Torneos
-                </a>
-            </li>
+                    ">
+          Torneos
+        </a>
+      </li>
 
 
-            {{-- CLUBES --}}
-            <li
-                class="
+      {{-- CLUBES --}}
+      <li
+        class="
                     text-[1.1rem]
                     font-bold
                     uppercase
@@ -158,22 +148,20 @@
                     lg:hover:text-[var(--color-primario)]
                     lg:hover:border-b-[3px]
                     lg:hover:border-[var(--color-primario)]
-                "
-            >
-                <a
-                    href="{{ route('clubes.index') }}"
-                    class="
+                ">
+        <a
+          href="{{ route('clubes.index') }}"
+          class="
                         {{ request()->routeIs('clubes.*') ? 'text-[var(--color-primario)] border-b-[3px] border-[var(--color-primario)]' : '' }}
-                    "
-                >
-                    Clubes
-                </a>
-            </li>
+                    ">
+          Clubes
+        </a>
+      </li>
 
 
-            {{-- NOTICIAS --}}
-            <li
-                class="
+      {{-- NOTICIAS --}}
+      <li
+        class="
                     text-[1.1rem]
                     font-bold
                     uppercase
@@ -184,62 +172,58 @@
                     lg:hover:text-[var(--color-primario)]
                     lg:hover:border-b-[3px]
                     lg:hover:border-[var(--color-primario)]
-                "
-            >
-                <a
-                    href="{{ route('noticias.index') }}"
-                    class="
+                ">
+        <a
+          href="{{ route('noticias.index') }}"
+          class="
                         {{ request()->routeIs('noticias.*') ? 'text-[var(--color-primario)] border-b-[3px] border-[var(--color-primario)]' : '' }}
-                    "
-                >
-                    Noticias
-                </a>
-            </li>
+                    ">
+          Noticias
+        </a>
+      </li>
 
 
-            {{-- LOGIN MOBILE --}}
-            <li class="lg:hidden">
+      {{-- LOGIN MOBILE --}}
+      <li class="lg:hidden">
 
-                @auth
-                    <a
-                        class="
-                            rounded-lg
-                            bg-[var(--color-primario)]
-                            p-2
-                            font-bold
-                            text-[var(--color-letras-secundario)]
-                        "
-                        href="{{ route('perfil') }}"
-                    >
-                        Mi Perfil
-                    </a>
-                @else
-                    <a
-                        class="
-                            rounded-lg
-                            bg-[var(--color-primario)]
-                            p-2
-                            font-bold
-                            text-[var(--color-letras-secundario)]
-                        "
-                        href="{{ route('login') }}"
-                    >
-                        Iniciar sesión
-                    </a>
-                @endauth
-
-            </li>
-
-        </ul>
-
-    </nav>
-
-
-    {{-- LOGIN DESKTOP --}}
-    @auth
-
+        @auth
         <a
-            class="
+          class="
+                            rounded-lg
+                            bg-[var(--color-primario)]
+                            p-2
+                            font-bold
+                            text-[var(--color-letras-secundario)]
+                        "
+          href="{{ route('perfil') }}">
+          Mi Perfil
+        </a>
+        @else
+        <a
+          class="
+                            rounded-lg
+                            bg-[var(--color-primario)]
+                            p-2
+                            font-bold
+                            text-[var(--color-letras-secundario)]
+                        "
+          href="{{ route('login') }}">
+          Iniciar sesión
+        </a>
+        @endauth
+
+      </li>
+
+    </ul>
+
+  </nav>
+
+
+  {{-- LOGIN DESKTOP --}}
+  @auth
+
+  <a
+    class="
                 mr-12
                 hidden
                 rounded-lg
@@ -258,16 +242,15 @@
                 lg:hover:bg-[var(--color-letras-secundario)]
                 lg:hover:text-[var(--color-primario)]
             "
-            href="{{ route('perfil') }}"
-            id="login"
-        >
-            Mi Perfil
-        </a>
+    href="{{ route('perfil') }}"
+    id="login">
+    Mi Perfil
+  </a>
 
-    @else
+  @else
 
-        <a
-            class="
+  <a
+    class="
                 mr-12
                 hidden
                 rounded-lg
@@ -286,12 +269,11 @@
                 lg:hover:bg-[var(--color-letras-secundario)]
                 lg:hover:text-[var(--color-primario)]
             "
-            href="{{ route('login') }}"
-            id="login"
-        >
-            Iniciar sesión
-        </a>
+    href="{{ route('login') }}"
+    id="login">
+    Iniciar sesión
+  </a>
 
-    @endauth
+  @endauth
 
 </header>

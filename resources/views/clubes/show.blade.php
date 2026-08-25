@@ -4,138 +4,127 @@
 
 @section('content')
 
-    <x-header-main 
-        title="{{ $club->nombre_institucional }}" 
-        image="{{ asset('storage/' . $club->escudo) }}" 
-        imageAlt="Escudo {{ $club->nombre }}"
-    />
+<x-header-main
+  title="{{ $club->nombre_institucional }}"
+  image="{{ asset('storage/' . $club->escudo) }}"
+  imageAlt="Escudo {{ $club->nombre }}" />
 
-    <section class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 mx-4 lg:p-8">
+<section class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 mx-4 lg:p-8">
 
-    <div>
+  <div>
 
-        {{-- SOBRE EL CLUB --}}
-        <section
-            class="bg-[var(--color-blanco)] rounded-2xl p-6 shadow-[var(--sombra-suave)] mb-4"
-        >
+    {{-- SOBRE EL CLUB --}}
+    <section
+      class="bg-[var(--color-blanco)] rounded-2xl p-6 shadow-[var(--sombra-suave)] mb-4">
 
-            <header class="mb-4">
-                <h2 class="text-[1.4rem] font-extrabold flex items-center gap-2">
-                    <ion-icon
-                        name="alert-circle-outline"
-                        class="text-[1.5rem] font-extrabold text-[var(--color-primario)]"
-                    ></ion-icon>
+      <header class="mb-4">
+        <h2 class="text-[1.4rem] font-extrabold flex items-center gap-2">
+          <ion-icon
+            name="alert-circle-outline"
+            class="text-[1.5rem] font-extrabold text-[var(--color-primario)]"></ion-icon>
 
-                    Sobre el Club
-                </h2>
-            </header>
+          Sobre el Club
+        </h2>
+      </header>
 
-            <article class="mb-6">
-                <p>
-                    {{ $club->descripcion }}
-                </p>
-            </article>
+      <article class="mb-6">
+        <p>
+          {{ $club->descripcion }}
+        </p>
+      </article>
 
-            <ul class="flex flex-col lg:flex-row gap-4 lg:justify-evenly">
+      <ul class="flex flex-col lg:flex-row gap-4 lg:justify-evenly">
 
-                <li
-                    class="bg-[var(--color-bg-muted)] rounded-xl w-full p-4 text-center"
-                >
-                    <span
-                        class="block text-xs uppercase text-[var(--color-letras-cuaternario)] mb-1"
-                    >
-                        Fundación
-                    </span>
+        <li
+          class="bg-[var(--color-bg-muted)] rounded-xl w-full p-4 text-center">
+          <span
+            class="block text-xs uppercase text-[var(--color-letras-cuaternario)] mb-1">
+            Fundación
+          </span>
 
-                    <strong
-                        class="text-base text-[var(--color-letras-primario)]"
-                    >
-                        {{ $club->fecha_fundacion }}
-                    </strong>
-                </li>
+          <strong
+            class="text-base text-[var(--color-letras-primario)]">
+            {{ $club->fecha_fundacion }}
+          </strong>
+        </li>
 
-                @if (isset($club->estadio))
-                    <li
-                        class="bg-[var(--color-bg-muted)] rounded-xl w-full p-4 text-center"
-                    >
-                        <span
-                            class="block text-xs uppercase text-[var(--color-letras-cuaternario)] mb-1"
-                        >
-                            Estadio
-                        </span>
+        @if (isset($club->estadio))
+        <li
+          class="bg-[var(--color-bg-muted)] rounded-xl w-full p-4 text-center">
+          <span
+            class="block text-xs uppercase text-[var(--color-letras-cuaternario)] mb-1">
+            Estadio
+          </span>
 
-                        <strong
-                            class="text-base text-[var(--color-letras-primario)]"
-                        >
-                            {{ $club->estadio->nombre }}
-                        </strong>
-                    </li>
-                @endif
+          <strong
+            class="text-base text-[var(--color-letras-primario)]">
+            {{ $club->estadio->nombre }}
+          </strong>
+        </li>
+        @endif
 
-            </ul>
+      </ul>
 
-        </section>
+    </section>
 
 
-        {{-- ULTIMOS RESULTADOS --}}
-        @if (isset($ultimosPartidos) && count($ultimosPartidos) > 0)
+    {{-- ULTIMOS RESULTADOS --}}
+    @if (isset($ultimosPartidos) && count($ultimosPartidos) > 0)
 
-            <section
-                class="bg-[var(--color-blanco)] rounded-2xl p-6 shadow-[var(--sombra-suave)]"
-            >
+    <section
+      class="bg-[var(--color-blanco)] rounded-2xl p-6 shadow-[var(--sombra-suave)]">
 
-                <header class="mb-4">
-                    <h2 class="text-[1.4rem] font-extrabold flex items-center gap-2">
-                        <ion-icon
-                            name="football-outline"
-                            class="text-[1.5rem] font-extrabold text-[var(--color-primario)]"
-                        ></ion-icon>
+      <header class="mb-4">
+        <h2 class="text-[1.4rem] font-extrabold flex items-center gap-2">
+          <ion-icon
+            name="football-outline"
+            class="text-[1.5rem] font-extrabold text-[var(--color-primario)]"></ion-icon>
 
-                        Últimos Resultados
-                    </h2>
-                </header>
+          Últimos Resultados
+        </h2>
+      </header>
 
 
-                <ul class="grid gap-3">
+      <ul class="grid gap-3">
 
-                    @foreach ($ultimosPartidos as $partido)
+        @foreach ($ultimosPartidos as $partido)
 
-                        @php
-                            $esLocal = $partido->equipo_local_id === $club->id;
+        @php
+        $esLocal = $partido->equipo_local_id === $club->id;
 
-                            $golesEquipo = $esLocal
-                                ? $partido->goles_local
-                                : $partido->goles_visitante;
+        $golesEquipo = $esLocal
+        ? $partido->goles_local
+        : $partido->goles_visitante;
 
-                            $golesRival = $esLocal
-                                ? $partido->goles_visitante
-                                : $partido->goles_local;
+        $golesRival = $esLocal
+        ? $partido->goles_visitante
+        : $partido->goles_local;
 
-                            if ($golesEquipo > $golesRival) {
-                                $resultado = 'Victoria';
-                                $clase = 'border-l-4 border-[var(--color-success)]';
-                                $colorResultado = 'text-[var(--color-success)]';
-                            } elseif ($golesEquipo < $golesRival) {
-                                $resultado = 'Derrota';
-                                $clase = 'border-l-4 border-[var(--color-error)]';
-                                $colorResultado = 'text-[var(--color-error)]';
-                            } else {
-                                $resultado = 'Empate';
-                                $clase = 'border-l-4 border-[var(--color-warning)]';
-                                $colorResultado = 'text-[var(--color-warning)]';
-                            }
+        if ($golesEquipo > $golesRival) {
+        $resultado = 'Victoria';
+        $clase = 'border-l-4 border-[var(--color-success)]';
+        $colorResultado = 'text-[var(--color-success)]';
+        } elseif ($golesEquipo < $golesRival) {
+          $resultado='Derrota' ;
+          $clase='border-l-4 border-[var(--color-error)]' ;
+          $colorResultado='text-[var(--color-error)]' ;
+          } else {
+          $resultado='Empate' ;
+          $clase='border-l-4 border-[var(--color-warning)]' ;
+          $colorResultado='text-[var(--color-warning)]' ;
+          }
 
-                            $rival = $esLocal
-                                ? $partido->visitante
-                                : $partido->local;
-                        @endphp
+          $rival=$esLocal
+          ? $partido->visitante
+          : $partido->local;
+          @endphp
 
 
-                        <li>
+          <li>
 
-                            <a
-                                href="{{ route('partidos.show', $partido) }}"
-                                class="
+            <a
+              href="{{ route('partidos.show', $partido) }}"
+              class="
                                     flex flex-col items-center gap-3
                                     bg-[var(--color-bg-muted)]
                                     px-4 py-3
@@ -145,72 +134,67 @@
 
                                     md:grid
                                     md:grid-cols-[4rem_1fr_auto_1fr_auto]
-                                "
-                            >
+                                ">
 
-                                <time
-                                    datetime="{{ $partido->fecha_partido }}"
-                                    class="text-xs text-[var(--color-letras-cuaternario)]"
-                                >
-                                    {{ \Carbon\Carbon::parse($partido->fecha_partido)->format('d M') }}
-                                </time>
+              <time
+                datetime="{{ $partido->fecha_partido }}"
+                class="text-xs text-[var(--color-letras-cuaternario)]">
+                {{ \Carbon\Carbon::parse($partido->fecha_partido)->format('d M') }}
+              </time>
 
 
-                                <span
-                                    class="text-[var(--color-letras-primario)] md:text-right"
-                                >
-                                    {{ $club->nombre }}
-                                </span>
+              <span
+                class="text-[var(--color-letras-primario)] md:text-right">
+                {{ $club->nombre }}
+              </span>
 
 
-                                <strong class="font-semibold">
-                                    {{ $golesEquipo }} - {{ $golesRival }}
-                                </strong>
+              <strong class="font-semibold">
+                {{ $golesEquipo }} - {{ $golesRival }}
+              </strong>
 
 
-                                <span
-                                    class="text-[var(--color-letras-primario)]"
-                                >
-                                    {{ $rival->nombre }}
-                                </span>
+              <span
+                class="text-[var(--color-letras-primario)]">
+                {{ $rival->nombre }}
+              </span>
 
 
-                                <span
-                                    class="
+              <span
+                class="
                                         text-[0.7rem]
                                         px-2 py-1
                                         rounded-full
                                         font-semibold
                                         uppercase
                                         {{ $colorResultado }}
-                                    "
-                                >
-                                    {{ $resultado }}
-                                </span>
+                                    ">
+                {{ $resultado }}
+              </span>
 
-                            </a>
+            </a>
 
-                        </li>
+          </li>
 
-                    @endforeach
+          @endforeach
 
-                </ul>
+      </ul>
 
-            </section>
+    </section>
 
-        @endif
+    @endif
 
-    </div>
+  </div>
 
 
-    {{-- COLUMNA DERECHA --}}
-    @if (isset($torneo))
+  {{-- COLUMNA DERECHA --}}
+  @if (isset($torneo))
 
-        <div>
+  <div>
 
-            {{-- POSICIÓN --}}
-            <section
-                class="
+    {{-- POSICIÓN --}}
+    <section
+      class="
                     text-left
                     bg-[var(--color-primario)]
                     text-[var(--color-letras-secundario)]
@@ -218,86 +202,82 @@
                     p-6
                     shadow-[var(--sombra-suave)]
                     mb-4
-                "
-            >
+                ">
 
-                <h2 class="text-[1.4rem] font-extrabold">
-                    Posición Actual - {{ $torneo->nombre }}
-                </h2>
+      <h2 class="text-[1.4rem] font-extrabold">
+        Posición Actual - {{ $torneo->nombre }}
+      </h2>
 
 
-                <p
-                    class="
+      <p
+        class="
                         text-base
                         text-[var(--color-letras-secundario)]
                         py-[1.4rem]
-                    "
-                >
-                    <strong
-                        class="
+                    ">
+        <strong
+          class="
                             text-5xl
                             font-extrabold
                             text-[var(--color-letras-secundario)]
-                        "
-                    >
-                        {{ $posicion }}°
-                    </strong>
+                        ">
+          {{ $posicion }}°
+        </strong>
 
-                    / {{ $totalEquipos }} Equipos
-                </p>
+        / {{ $totalEquipos }} Equipos
+      </p>
 
 
-                <ul
-                    class="
+      <ul
+        class="
                         grid
                         grid-cols-3
                         gap-3
                         border-t
                         border-[var(--color-blanco)]
                         pt-4
-                    "
-                >
+                    ">
 
-                    <li class="p-3">
-                        <strong class="block text-3xl font-extrabold">
-                            {{ $equipoTabla->puntos }}
-                        </strong>
+        <li class="p-3">
+          <strong class="block text-3xl font-extrabold">
+            {{ $equipoTabla->puntos }}
+          </strong>
 
-                        <span class="text-base uppercase">
-                            Puntos
-                        </span>
-                    </li>
-
-
-                    <li class="p-3">
-                        <strong class="block text-3xl font-extrabold">
-                            {{ $equipoTabla->partidos_jugados }}
-                        </strong>
-
-                        <span class="text-base uppercase">
-                            Jugados
-                        </span>
-                    </li>
+          <span class="text-base uppercase">
+            Puntos
+          </span>
+        </li>
 
 
-                    <li class="p-3">
-                        <strong class="block text-3xl font-extrabold">
-                            {{ $equipoTabla->diferencia_goles > 0 ? '+' : '' }}{{ $equipoTabla->diferencia_goles }}
-                        </strong>
+        <li class="p-3">
+          <strong class="block text-3xl font-extrabold">
+            {{ $equipoTabla->partidos_jugados }}
+          </strong>
 
-                        <span class="text-base uppercase">
-                            Diferencia
-                        </span>
-                    </li>
-
-                </ul>
-
-            </section>
+          <span class="text-base uppercase">
+            Jugados
+          </span>
+        </li>
 
 
-            {{-- PRÓXIMO PARTIDO --}}
-            <section
-                class="
+        <li class="p-3">
+          <strong class="block text-3xl font-extrabold">
+            {{ $equipoTabla->diferencia_goles > 0 ? '+' : '' }}{{ $equipoTabla->diferencia_goles }}
+          </strong>
+
+          <span class="text-base uppercase">
+            Diferencia
+          </span>
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    {{-- PRÓXIMO PARTIDO --}}
+    <section
+      class="
                     bg-[var(--color-blanco)]
                     rounded-2xl
                     p-6
@@ -306,38 +286,36 @@
                     grid-cols-1
                     justify-items-center
                     mb-4
-                "
-            >
+                ">
 
-                <h2
-                    class="
+      <h2
+        class="
                         text-[1.4rem]
                         font-extrabold
                         text-left
                         w-full
-                    "
-                >
-                    Próximo Partido
-                </h2>
+                    ">
+        Próximo Partido
+      </h2>
 
 
-                @if ($proximoPartido)
+      @if ($proximoPartido)
 
-                    <x-partido-card :partido="$proximoPartido" />
+      <x-partido-card :partido="$proximoPartido" />
 
-                @else
+      @else
 
-                    <p class="pt-4">
-                        No hay partidos programados.
-                    </p>
+      <p class="pt-4">
+        No hay partidos programados.
+      </p>
 
-                @endif
+      @endif
 
-            </section>
+    </section>
 
-        </div>
+  </div>
 
-    @endif
+  @endif
 
 </section>
 @endsection
