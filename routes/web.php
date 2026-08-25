@@ -20,6 +20,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 /* ===== EQUIPOS ===== */
 
 Route::get('/clubes', [ClubController::class, 'index'])->name('clubes.index');
+Route::get('/clubes2', [ClubController::class, 'index2'])->name('clubes.index2');
 Route::get('/clubes/{club:slug}', [ClubController::class, 'show'])
     ->name('clubes.show');
 

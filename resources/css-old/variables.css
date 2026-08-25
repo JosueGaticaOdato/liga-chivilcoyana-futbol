@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400..700&family=Handlee&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Share+Tech+Mono&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Staatliches&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("../font/Montserrat-VariableFont_wght.ttf") format("truetype");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Montserrat-Italic";
+    src: url("../font/Montserrat-Italic-VariableFont_wght.ttf")
+        format("truetype");
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+:root {
+    /* ======================================================
+       COLORES
+    ====================================================== */
+
+    /* Base */
+    --color-blanco: #ffffff;
+    --color-negro: #000000;
+    --color-header: #ecf7ff;
+    --color-footer: #1a2c4e;
+
+    /* Letras */
+    --color-letras-primario: #000000;
+    --color-letras-secundario: #ffffff;
+    --color-letras-terceario: #64748b; /* Gris azulado */
+    --color-letras-cuaternario: #94a3b8; /* Gris claro */
+
+    /* Marca */
+    --color-primario: #59acda;
+    --color-secundario: #aaaaaa;
+    --color-tercerario: #aaaaaa;
+    --color-cuaternario: #aaaaaa;
+
+    /* Inputs */
+    --color-inputs: #bbbbbb;
+
+    /* Estados */
+    --color-success: #16a34a;
+    --color-warning: #f59e0b;
+    --color-error: #dc2626;
+    --color-stay: #aaaaaa;
+
+    /* Fondos */
+    --color-bg-body: #ffffff;
+    --color-bg-muted: #f4f4f5;
+
+    /* Degradado */
+    --color-degradado-1: rgb(59, 124, 164);
+    --color-degradado-2: rgb(110, 176, 210);
+
+    /* Fondo iconos*/
+    --color-fondo-iconos: #14b8a51c;
+
+    /* Sombras */
+    --sombra-ultra-suave: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --sombra-suave: 0 6px 15px rgba(0, 0, 0, 0.1);
+    --sombra-header: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.25));
+
+    /* Tabla de posiciones */
+    --color-body: #e5e7eb;
+    --color-impares: #f9fafb;
+    --color-hover: #eff6ff;
+
+    /* Color links*/
+    --color-links: rgb(97, 174, 218);
+
+    /* Imagenes para redes */
+    --color-header-tabla: #360049;
+    --color-linea-tabla: #ffffff;
+    --trazo-exterior:
+        -2px -2px 0 #000000, 2px -2px 0 #000000,
+        -2px 2px 0 #000000, 2px 2px 0 #000000;
+
+    /* ======================================================
+       TIPOGRAFÍA
+    ====================================================== */
+
+    /* Fuentes */
+    --fuente-primaria: "Poppins", sans-serif;
+    --fuente-secundaria: "Roboto", sans-serif;
+    --fuente-tercearia: "Montserrat", system-ui, Arial, sans-serif;
+    --fuente-cuaternaria: "Montserrat-Italic", system-ui, Arial, sans-serif;
+
+    font-size: 16px;
+}
+
+/* Media queries (Como trabaja tailwind)
+
+(Sin prefijo)	Estilos base (fuera de media query)	Aplica a todos, empezando por el móvil.
+
+@media (min-width: 640px) { ... }
+Aplica de tablets pequeñas hacia arriba.
+
+@media (min-width: 768px) { ... }
+Aplica de tablets/laptops hacia arriba.
+
+@media (min-width: 1024px) { ... }
+Aplica de monitores de escritorio hacia arriba.
+
+@media (min-width: 1280px) { ... }
+Aplica de monitores grandes hacia arriba.
+
+*/

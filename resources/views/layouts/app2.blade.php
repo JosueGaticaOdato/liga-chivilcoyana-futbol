@@ -6,7 +6,7 @@
     <link rel="icon" href="{{ asset('images/icono.ico') }}" type="image/x-icon">
     <title>@yield('title', 'Liga Chivilcoyana de Futbol')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css-old/app.css', 'resources/js/app.js'])
 
     {{-- CSS especifico por vista --}}
     @stack('styles')
@@ -18,7 +18,9 @@
 
 <body>
 
-    <main class="bg-(--color-bg-muted) ">
+    
+
+    <main class="main">
         @yield('content')
     </main>
 
