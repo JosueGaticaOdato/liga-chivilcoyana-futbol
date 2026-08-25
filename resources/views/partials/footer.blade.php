@@ -1,40 +1,285 @@
-<footer class="footer">
+<footer
+    class="
+        grid
+        grid-cols-1
+        gap-12
+        bg-[var(--color-footer)]
+        px-6
+        py-8
+        pb-4
+        text-center
+        font-[var(--fuente-secundaria)]
+        text-[var(--color-letras-secundario)]
 
-    <section class="footer-brand">
-        <img class="footer-logo" src="{{ asset('images/logo.png') }}" alt="Logo Liga Chivilcoyana de Fútbol">
+        lg:grid-cols-[3fr_1fr_1fr]
+        lg:p-12
+        lg:text-left
+    "
+>
 
-        <p class="footer-description">
+    {{-- BRAND --}}
+    <section
+        class="
+            flex
+            flex-col
+            items-center
+            justify-center
+
+            lg:items-start
+            lg:justify-start
+        "
+    >
+
+        <img
+            class="
+                mb-4
+                h-auto
+                max-h-32
+                w-auto
+            "
+            src="{{ asset('images/logo.png') }}"
+            alt="Logo Liga Chivilcoyana de Fútbol"
+        >
+
+        <p class="mb-4">
             Liga Chivilcoyana de Futbol
         </p>
 
-        <ul class="footer-social">
-            <li><a href="#">F</a></li>
-            <li><a href="#">T</a></li>
-            <li><a href="#">in</a></li>
+
+        {{-- REDES SOCIALES --}}
+        <ul
+            class="
+                flex
+                justify-center
+                gap-4
+
+                lg:justify-start
+            "
+        >
+
+            <li>
+                <a
+                    href="#"
+                    class="
+                        flex
+                        h-10
+                        w-10
+                        items-center
+                        justify-center
+                        rounded-full
+                        bg-[var(--color-primario)]
+                        text-[var(--color-blanco)]
+                        transition-all
+                        duration-300
+
+                        hover:-translate-y-1
+                        hover:scale-105
+                        hover:bg-[var(--color-secundario)]
+                        hover:shadow-[0_8px_20px_rgba(0,0,0,0.25)]
+                    "
+                >
+                    F
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="#"
+                    class="
+                        flex
+                        h-10
+                        w-10
+                        items-center
+                        justify-center
+                        rounded-full
+                        bg-[var(--color-primario)]
+                        text-[var(--color-blanco)]
+                        transition-all
+                        duration-300
+
+                        hover:-translate-y-1
+                        hover:scale-105
+                        hover:bg-[var(--color-secundario)]
+                        hover:shadow-[0_8px_20px_rgba(0,0,0,0.25)]
+                    "
+                >
+                    T
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="#"
+                    class="
+                        flex
+                        h-10
+                        w-10
+                        items-center
+                        justify-center
+                        rounded-full
+                        bg-[var(--color-primario)]
+                        text-[var(--color-blanco)]
+                        transition-all
+                        duration-300
+
+                        hover:-translate-y-1
+                        hover:scale-105
+                        hover:bg-[var(--color-secundario)]
+                        hover:shadow-[0_8px_20px_rgba(0,0,0,0.25)]
+                    "
+                >
+                    in
+                </a>
+            </li>
+
         </ul>
+
     </section>
 
-    <nav class="footer-nav" aria-label="Navegación del sitio">
-        <h2>Navegación</h2>
-        <ul>
-            <li><a href="{{ route('partidos.index') }}">Partidos</a></li>
-            <li><a href="{{ route('torneos.index') }}">Torneos</a></li>
-            <li><a href="{{ route('clubes.index') }}">Clubes</a></li>
-            <li><a href="{{ route('noticias.index') }}">Noticias</a></li>
-            {{-- <li><a href="{{ route('reglamento') }}">Reglamento</a></li> --}}
+
+    {{-- NAVEGACIÓN --}}
+    <nav
+        aria-label="Navegación del sitio"
+    >
+
+        <h2
+            class="
+                mb-4
+                border-b
+                border-[var(--color-blanco)]
+                pb-3
+                text-center
+                text-[1.2rem]
+                font-extrabold
+
+                lg:text-left
+            "
+        >
+            Navegación
+        </h2>
+
+        <ul
+            class="
+                flex
+                flex-col
+                items-center
+                gap-4
+
+                lg:items-start
+                lg:pl-1
+            "
+        >
+
+            <li class="text-base">
+                <a
+                    href="{{ route('partidos.index') }}"
+                    class="text-[var(--color-letras-secundario)]"
+                >
+                    Partidos
+                </a>
+            </li>
+
+            <li class="text-base">
+                <a
+                    href="{{ route('torneos.index') }}"
+                    class="text-[var(--color-letras-secundario)]"
+                >
+                    Torneos
+                </a>
+            </li>
+
+            <li class="text-base">
+                <a
+                    href="{{ route('clubes.index') }}"
+                    class="text-[var(--color-letras-secundario)]"
+                >
+                    Clubes
+                </a>
+            </li>
+
+            <li class="text-base">
+                <a
+                    href="{{ route('noticias.index') }}"
+                    class="text-[var(--color-letras-secundario)]"
+                >
+                    Noticias
+                </a>
+            </li>
+
+            {{-- <li>
+                <a href="{{ route('reglamento') }}">
+                    Reglamento
+                </a>
+            </li> --}}
+
         </ul>
+
     </nav>
 
-    <address class="footer-contact">
-        <h2>Contacto</h2>
-        <ul>
-            <li>contacto@gmail.com</li>
-            <li>+54 11 1111 1111</li>
-            <li>Dirección: av asad 123</li>
+
+    {{-- CONTACTO --}}
+    <address class="not-italic">
+
+        <h2
+            class="
+                mb-4
+                border-b
+                border-[var(--color-blanco)]
+                pb-3
+                text-center
+                text-[1.2rem]
+                font-extrabold
+
+                lg:text-left
+            "
+        >
+            Contacto
+        </h2>
+
+        <ul
+            class="
+                flex
+                flex-col
+                items-center
+                gap-4
+
+                lg:items-start
+                lg:pl-1
+            "
+        >
+
+            <li class="text-base">
+                contacto@gmail.com
+            </li>
+
+            <li class="text-base">
+                +54 11 1111 1111
+            </li>
+
+            <li class="text-base">
+                Dirección: av asad 123
+            </li>
+
         </ul>
+
     </address>
 
-    <small class="footer-copy">
-        <em>Copyright © 2026 – Liga Chivilcoyana de Fútbol. Todos los derechos reservados.</em>
+
+    {{-- COPYRIGHT --}}
+    <small
+        class="
+            col-span-full
+            border-t
+            border-[var(--color-letras-secundario)]
+            pt-4
+            text-center
+            text-[0.8rem]
+            text-[var(--color-letras-secundario)]
+        "
+    >
+        <em class="p-2 font-normal">
+            Copyright © 2026 – Liga Chivilcoyana de Fútbol. Todos los derechos reservados.
+        </em>
     </small>
+
 </footer>

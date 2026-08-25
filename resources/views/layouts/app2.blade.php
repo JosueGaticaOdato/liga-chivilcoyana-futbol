@@ -18,13 +18,13 @@
 
 <body>
 
-    
+    @include('partials.header2')
 
     <main class="main">
         @yield('content')
     </main>
 
-    @include('partials.footer')
+    @include('partials.footer2')
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
