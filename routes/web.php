@@ -31,6 +31,8 @@ Route::get('/clubes2/{club:slug}', [ClubController::class, 'show2'])
 
 Route::get('/torneos', [TorneoController::class, 'index'])
     ->name('torneos.index');
+Route::get('/torneos2', [TorneoController::class, 'index2'])
+    ->name('torneos.index2');
 
 Route::get('/torneos/{torneo:slug}', [TorneoController::class, 'torneo'])
     ->name('torneos.torneo');

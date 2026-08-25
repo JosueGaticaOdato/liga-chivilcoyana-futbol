@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nombre'); // "Apertura", "Clausura"
             $table->foreignId('temporada_id')->constrained('temporadas')->cascadeOnDelete();
             $table->foreignId('categoria_id')->constrained('categorias')->cascadeOnDelete();
+            $table->string('slug')->unique();
             $table->date('fecha_inicio')->nullable();
             $table->date('fecha_fin')->nullable();
             $table->enum('estado', ['planificado', 'en_curso', 'finalizado'])->default('planificado');

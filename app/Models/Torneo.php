@@ -10,6 +10,7 @@ class Torneo extends Model
     'nombre',
     'temporada_id',
     'categoria_id',
+    'slug',
     'fecha_inicio',
     'fecha_fin',
     'estado'
@@ -20,7 +21,7 @@ class Torneo extends Model
     'fecha_fin' => 'date'
   ];
 
-  public function temporadas()
+  public function temporada()
   {
     return $this->belongsTo(Temporada::class);
   }
@@ -30,7 +31,7 @@ class Torneo extends Model
     return $this->hasMany(Partido::class);
   }
 
-  public function categorias()
+  public function categoria()
   {
     return $this->belongsTo(Categoria::class);
   }

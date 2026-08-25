@@ -10,9 +10,6 @@ use Illuminate\Database\Seeder;
 
 class TorneoSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         $temporada2026 = Temporada::where('nombre', '2026')->first();
@@ -43,6 +40,8 @@ class TorneoSeeder extends Seeder
         ];
 
         foreach ($torneos as $torneo) {
+            $slug = "{$categoriaPrimera->nombre}-{$torneo['nombre']}-{$temporada2026->nombre}";
+
             Torneo::updateOrCreate(
                 [
                     'nombre' => $torneo['nombre'],
@@ -50,6 +49,7 @@ class TorneoSeeder extends Seeder
                     'categoria_id' => $torneo['categoria_id'],
                 ],
                 [
+                    'slug' => $slug,
                     'fecha_inicio' => $torneo['fecha_inicio'],
                     'fecha_fin' => $torneo['fecha_fin'],
                     'estado' => $torneo['estado'],
@@ -58,4 +58,5 @@ class TorneoSeeder extends Seeder
         }
     }
 }
+
 
