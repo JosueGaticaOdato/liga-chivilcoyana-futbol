@@ -19,7 +19,7 @@
 
   <!-- Gradient Overlay Layer -->
   <div
-    class="absolute inset-0 z-[1] bg-[linear-gradient(to_right,color-mix(in_srgb,var(--color-degradado-1)_90%,transparent)_0%,color-mix(in_srgb,var(--color-degradado-2)_60%,transparent)_50%,transparent_100%)]"></div>
+    class="absolute inset-0 z-1 bg-[linear-gradient(to_right,color-mix(in_srgb,var(--color-degradado-1)_90%,transparent)_0%,color-mix(in_srgb,var(--color-degradado-2)_60%,transparent)_50%,transparent_100%)]"></div>
 
   @if ($image)
   <figure class="relative z-10 w-20 h-20">
@@ -34,8 +34,8 @@
             {{ $image ? 'text-[1.5rem] md:text-[2.5rem]' : 'text-[2.5rem] md:text-[3.5rem]' }}
             font-bold
             tracking-[-0.025em]
-            text-[var(--color-letras-secundario)]
-            [filter:var(--sombra-header)]
+            text-(--color-letras-secundario)
+            filter-(--sombra-header)
             [font-family:var(--fuente-primaria)]
         ">
     {{ $title }}
@@ -48,8 +48,8 @@
                 text-[1.5rem] md:text-[2.5rem]
                 font-bold
                 tracking-[-0.025em]
-                text-[var(--color-letras-secundario)]
-                [filter:var(--sombra-header)]
+                text-(--color-letras-secundario)
+                filter-(--sombra-header)
             ">
     {{ $subtitle }}
   </p>

@@ -15,13 +15,13 @@
 
     {{-- SOBRE EL CLUB --}}
     <section
-      class="bg-[var(--color-blanco)] rounded-2xl p-6 shadow-[var(--sombra-suave)] mb-4">
+      class="bg-(--color-blanco) rounded-2xl p-6 shadow-(--sombra-suave)">
 
       <header class="mb-4">
         <h2 class="text-[1.4rem] font-extrabold flex items-center gap-2">
           <ion-icon
             name="alert-circle-outline"
-            class="text-[1.5rem] font-extrabold text-[var(--color-primario)]"></ion-icon>
+            class="text-[1.5rem] font-extrabold text-(--color-primario)"></ion-icon>
 
           Sobre el Club
         </h2>
@@ -36,28 +36,28 @@
       <ul class="flex flex-col lg:flex-row gap-4 lg:justify-evenly">
 
         <li
-          class="bg-[var(--color-bg-muted)] rounded-xl w-full p-4 text-center">
+          class="bg-(--color-bg-muted) rounded-xl w-full p-4 text-center">
           <span
-            class="block text-xs uppercase text-[var(--color-letras-cuaternario)] mb-1">
+            class="block text-xs uppercase text-(--color-letras-cuaternario)">
             Fundación
           </span>
 
           <strong
-            class="text-base text-[var(--color-letras-primario)]">
+            class="text-base text-(--color-letras-primario)">
             {{ $club->fecha_fundacion }}
           </strong>
         </li>
 
         @if (isset($club->estadio))
         <li
-          class="bg-[var(--color-bg-muted)] rounded-xl w-full p-4 text-center">
+          class="bg-(--color-bg-muted) rounded-xl w-full p-4 text-center">
           <span
-            class="block text-xs uppercase text-[var(--color-letras-cuaternario)] mb-1">
+            class="block text-xs uppercase text-(--color-letras-cuaternario)">
             Estadio
           </span>
 
           <strong
-            class="text-base text-[var(--color-letras-primario)]">
+            class="text-base text-(--color-letras-primario)">
             {{ $club->estadio->nombre }}
           </strong>
         </li>
@@ -72,13 +72,13 @@
     @if (isset($ultimosPartidos) && count($ultimosPartidos) > 0)
 
     <section
-      class="bg-[var(--color-blanco)] rounded-2xl p-6 shadow-[var(--sombra-suave)]">
+      class="bg-(--color-blanco)ded-2xl p-6 shadoshadow-(--sombra-suave)
 
       <header class="mb-4">
         <h2 class="text-[1.4rem] font-extrabold flex items-center gap-2">
           <ion-icon
             name="football-outline"
-            class="text-[1.5rem] font-extrabold text-[var(--color-primario)]"></ion-icon>
+            class="text-[1.5rem] font-extrabold text-(--color-primario)"></ion-icon>
 
           Últimos Resultados
         </h2>
@@ -126,7 +126,7 @@
               href="{{ route('partidos.show', $partido) }}"
               class="
                                     flex flex-col items-center gap-3
-                                    bg-[var(--color-bg-muted)]
+                                    bg-(--color-bg-muted)
                                     px-4 py-3
                                     rounded-xl
                                     text-sm
@@ -138,13 +138,13 @@
 
               <time
                 datetime="{{ $partido->fecha_partido }}"
-                class="text-xs text-[var(--color-letras-cuaternario)]">
+                class="text-xs text-(--color-letras-cuaternario)
                 {{ \Carbon\Carbon::parse($partido->fecha_partido)->format('d M') }}
               </time>
 
 
               <span
-                class="text-[var(--color-letras-primario)] md:text-right">
+                class="text-(--color-letras-primario) md:text-right">
                 {{ $club->nombre }}
               </span>
 
@@ -155,7 +155,7 @@
 
 
               <span
-                class="text-[var(--color-letras-primario)]">
+                class="text-(--color-letras-primario)">
                 {{ $rival->nombre }}
               </span>
 
@@ -196,11 +196,11 @@
     <section
       class="
                     text-left
-                    bg-[var(--color-primario)]
-                    text-[var(--color-letras-secundario)]
+                    bg-(--color-primario)
+                    text-(--color-letras-secundario)
                     rounded-2xl
                     p-6
-                    shadow-[var(--sombra-suave)]
+                    shadow-(--sombra-suave)
                     mb-4
                 ">
 
@@ -212,14 +212,14 @@
       <p
         class="
                         text-base
-                        text-[var(--color-letras-secundario)]
+                        text-(--color-letras-secundario)
                         py-[1.4rem]
                     ">
         <strong
           class="
                             text-5xl
                             font-extrabold
-                            text-[var(--color-letras-secundario)]
+                            text-(--color-letras-secundario)
                         ">
           {{ $posicion }}°
         </strong>
@@ -234,7 +234,7 @@
                         grid-cols-3
                         gap-3
                         border-t
-                        border-[var(--color-blanco)]
+                        border-(--color-blanco)
                         pt-4
                     ">
 
@@ -278,10 +278,10 @@
     {{-- PRÓXIMO PARTIDO --}}
     <section
       class="
-                    bg-[var(--color-blanco)]
+                    bg-(--color-blanco)
                     rounded-2xl
                     p-6
-                    shadow-[var(--sombra-suave)]
+                    shadow-(--sombra-suave)
                     grid
                     grid-cols-1
                     justify-items-center

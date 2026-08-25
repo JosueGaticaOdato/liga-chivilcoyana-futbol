@@ -3,13 +3,13 @@
         grid
         grid-cols-1
         gap-12
-        bg-[var(--color-footer)]
+        bg-(--color-footer)
         px-6
         py-8
         pb-4
         text-center
-        font-[var(--fuente-secundaria)]
-        text-[var(--color-letras-secundario)]
+        font-(--fuente-secundaria)
+        text-(--color-letras-secundario)
 
         lg:grid-cols-[3fr_1fr_1fr]
         lg:p-12
@@ -63,14 +63,14 @@
                         items-center
                         justify-center
                         rounded-full
-                        bg-[var(--color-primario)]
-                        text-[var(--color-blanco)]
+                        bg-(--color-primario)
+                        text-(--color-blanco)
                         transition-all
                         duration-300
 
                         hover:-translate-y-1
                         hover:scale-105
-                        hover:bg-[var(--color-secundario)]
+                        hover:bg-(--color-secundario)
                         hover:shadow-[0_8px_20px_rgba(0,0,0,0.25)]
                     ">
           F
@@ -87,14 +87,14 @@
                         items-center
                         justify-center
                         rounded-full
-                        bg-[var(--color-primario)]
-                        text-[var(--color-blanco)]
+                        bg-(--color-primario)
+                        text-(--color-blanco)
                         transition-all
                         duration-300
 
                         hover:-translate-y-1
                         hover:scale-105
-                        hover:bg-[var(--color-secundario)]
+                        hover:bg-(--color-secundario)
                         hover:shadow-[0_8px_20px_rgba(0,0,0,0.25)]
                     ">
           T
@@ -111,14 +111,14 @@
                         items-center
                         justify-center
                         rounded-full
-                        bg-[var(--color-primario)]
-                        text-[var(--color-blanco)]
+                        bg-(--color-primario)
+                        text-(--color-blanco)
                         transition-all
                         duration-300
 
                         hover:-translate-y-1
                         hover:scale-105
-                        hover:bg-[var(--color-secundario)]
+                        hover:bg-(--color-secundario)
                         hover:shadow-[0_8px_20px_rgba(0,0,0,0.25)]
                     ">
           in
@@ -138,7 +138,7 @@
       class="
                 mb-4
                 border-b
-                border-[var(--color-blanco)]
+                border-(--color-blanco)
                 pb-3
                 text-center
                 text-[1.2rem]
@@ -163,7 +163,7 @@
       <li class="text-base">
         <a
           href="{{ route('partidos.index') }}"
-          class="text-[var(--color-letras-secundario)]">
+          class="text-(--color-letras-secundario)">
           Partidos
         </a>
       </li>
@@ -171,7 +171,7 @@
       <li class="text-base">
         <a
           href="{{ route('torneos.index') }}"
-          class="text-[var(--color-letras-secundario)]">
+          class="text-(--color-letras-secundario)">
           Torneos
         </a>
       </li>
@@ -179,7 +179,7 @@
       <li class="text-base">
         <a
           href="{{ route('clubes.index') }}"
-          class="text-[var(--color-letras-secundario)]">
+          class="text-(--color-letras-secundario)">
           Clubes
         </a>
       </li>
@@ -187,7 +187,7 @@
       <li class="text-base">
         <a
           href="{{ route('noticias.index') }}"
-          class="text-[var(--color-letras-secundario)]">
+          class="text-(--color-letras-secundario)">
           Noticias
         </a>
       </li>
@@ -210,7 +210,7 @@
       class="
                 mb-4
                 border-b
-                border-[var(--color-blanco)]
+                border-(--color-blanco)
                 pb-3
                 text-center
                 text-[1.2rem]
@@ -254,11 +254,11 @@
     class="
             col-span-full
             border-t
-            border-[var(--color-letras-secundario)]
+            border-(--color-letras-secundario)
             pt-4
             text-center
             text-[0.8rem]
-            text-[var(--color-letras-secundario)]
+            text-(--color-letras-secundario)
         ">
     <em class="p-2 font-normal">
       Copyright © 2026 – Liga Chivilcoyana de Fútbol. Todos los derechos reservados.
