@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Zona extends Model
 {
   protected $fillable = [
-    'nombre'
+    'nombre',
+    'fase_id',
   ];
 
   public function fase()

@@ -8,6 +8,7 @@ class Fase extends Model
 {
   protected $fillable = [
     'nombre',
+    'torneo_id',
     'orden',
     'tipo',
   ];

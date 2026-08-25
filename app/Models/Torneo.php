@@ -8,6 +8,8 @@ class Torneo extends Model
 {
   protected $fillable = [
     'nombre',
+    'temporada_id',
+    'categoria_id',
     'fecha_inicio',
     'fecha_fin',
     'estado'

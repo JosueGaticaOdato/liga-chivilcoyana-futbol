@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('club_id')->constrained('clubes')->cascadeOnDelete();
             $table->foreignId('categoria_id')->constrained('categorias')->cascadeOnDelete();
-            $table->string('nombre'); // "Colón A", "Colón B"
+            $table->string('nombre')->nullable(); // "Colón A", "Colón B"
             $table->boolean('activo')->default(true);
             $table->timestamps();
         });

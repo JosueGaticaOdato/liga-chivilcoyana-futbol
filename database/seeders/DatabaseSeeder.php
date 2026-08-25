@@ -18,6 +18,13 @@ class DatabaseSeeder extends Seeder
         $this->call([
             EstadioSeeder::class,
             ClubSeeder::class,
+            CategoriaSeeder::class,
+            EquipoPrimeraSeeder::class,
+            TemporadaSeeder::class,
+            TorneoSeeder::class,
+            FaseSeeder::class,
+            ZonaSeeder::class,
+            EquipoCompeticionPrimeraSeeder::class,
         ]);
     }
 }

@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class EquipoCompeticion extends Model
 {
+  protected $table = 'equipo_competicion';
+
   protected $fillable = [
+    'zona_id',
+    'equipo_id',
     'estado',
     'sembrado',
     'partidos_jugados',
