@@ -23,6 +23,9 @@ Route::get('/clubes', [ClubController::class, 'index'])->name('clubes.index');
 Route::get('/clubes2', [ClubController::class, 'index2'])->name('clubes.index2');
 Route::get('/clubes/{club:slug}', [ClubController::class, 'show'])
     ->name('clubes.show');
+Route::get('/clubes2/{club:slug}', [ClubController::class, 'show2'])
+->name('clubes.show2');
+
 
 /* ===== TABLAS ===== */
 

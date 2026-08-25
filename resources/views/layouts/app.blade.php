@@ -18,7 +18,9 @@
 
 <body>
 
-    <main class="bg-(--color-bg-muted) ">
+    @include('partials.header')
+
+    <main class="bg-(--color-bg-muted) pt-28">
         @yield('content')
     </main>
 
