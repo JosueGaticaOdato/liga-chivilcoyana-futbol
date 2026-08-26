@@ -17,22 +17,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-/* ===== EQUIPOS ===== */
+/* ===== CLUBES ===== */
 
 Route::get('/clubes', [ClubController::class, 'index'])->name('clubes.index');
-Route::get('/clubes2', [ClubController::class, 'index2'])->name('clubes.index2');
 Route::get('/clubes/{club:slug}', [ClubController::class, 'show'])
     ->name('clubes.show');
-Route::get('/clubes2/{club:slug}', [ClubController::class, 'show2'])
-->name('clubes.show2');
 
-
-/* ===== TABLAS ===== */
+/* ===== TORNEOS ===== */
 
 Route::get('/torneos', [TorneoController::class, 'index'])
     ->name('torneos.index');
-Route::get('/torneos2', [TorneoController::class, 'index2'])
-    ->name('torneos.index2');
 
 Route::get('/torneos/{torneo:slug}', [TorneoController::class, 'torneo'])
     ->name('torneos.torneo');

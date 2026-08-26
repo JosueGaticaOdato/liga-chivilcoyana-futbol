@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->date('fecha_inicio')->nullable();
             $table->date('fecha_fin')->nullable();
+            $table->text('descripcion')->nullable();
             $table->enum('estado', ['planificado', 'en_curso', 'finalizado'])->default('planificado');
             $table->timestamps();
         });

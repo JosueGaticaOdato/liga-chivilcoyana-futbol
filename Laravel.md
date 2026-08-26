@@ -130,6 +130,12 @@ php artisan migrate:rollback
 php artisan migrate:fresh
 ```
 
+### Refrescar base de datos (borra todo) y ejecuta seeders
+
+```bash
+php artisan migrate:fresh --seed
+```
+
 ### Migrar + seeders
 
 ```bash

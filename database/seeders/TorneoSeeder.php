@@ -28,6 +28,7 @@ class TorneoSeeder extends Seeder
                 'fecha_inicio' => '2026-03-01',
                 'fecha_fin' => '2026-07-31',
                 'estado' => 'finalizado',
+                'descripcion' => 'Torneo Apertura 2026 de Primera Categoría'
             ],
             [
                 'nombre' => 'Clausura',
@@ -36,11 +37,12 @@ class TorneoSeeder extends Seeder
                 'fecha_inicio' => '2026-08-01',
                 'fecha_fin' => '2026-12-15',
                 'estado' => 'en_curso',
+                'descripcion' => 'Torneo Clausura 2026 de Primera Categoría'
             ],
         ];
 
         foreach ($torneos as $torneo) {
-            $slug = "{$categoriaPrimera->nombre}-{$torneo['nombre']}-{$temporada2026->nombre}";
+            $slug = strtolower("{$categoriaPrimera->nombre}-{$torneo['nombre']}-{$temporada2026->nombre}");
 
             Torneo::updateOrCreate(
                 [
@@ -53,6 +55,7 @@ class TorneoSeeder extends Seeder
                     'fecha_inicio' => $torneo['fecha_inicio'],
                     'fecha_fin' => $torneo['fecha_fin'],
                     'estado' => $torneo['estado'],
+                    'descripcion' => $torneo['descripcion'],
                 ]
             );
         }

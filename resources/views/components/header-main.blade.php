@@ -27,7 +27,9 @@
   </figure>
   @endif
 
-  <h1
+  <div class="flex flex-col gap-0 items-center md:items-start" >
+
+    <h1
     class="
             relative z-2
             pb-2
@@ -51,9 +53,10 @@
                 text-(--color-letras-secundario)
                 filter-(--sombra-header)
             ">
-    {{ $subtitle }}
-  </p>
+            {{ $subtitle }}
+          </p>
   @endif
+  </div>
 
   {{ $slot }}
 </header>

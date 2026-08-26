@@ -22,6 +22,7 @@ class TablaPosiciones extends Component
 
         $this->limit = $limit;
         $this->variant = $variant;
+        #dd($equipos);
     }
 
     public function render()
