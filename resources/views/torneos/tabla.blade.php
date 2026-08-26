@@ -22,36 +22,36 @@
 
         <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 md:w-[90%] lg:w-[80%] mx-auto">
 
-            <article class="bg-[var(--color-blanco)] rounded-xl p-4 px-5">
+            <article class="bg-(--color-blanco) rounded-xl p-4 px-5">
                 <h3 class="text-[1.1rem] md:text-[1.2rem] font-black pb-2 text-left">
                     Criterio de clasificacion
                 </h3>
 
                 <ul class="flex flex-col gap-3 py-2">
-                    <li class="flex gap-2 items-center text-[var(--color-letras-primario)] text-[0.95rem] md:text-base">
-                        <ion-icon name="checkmark-circle-outline" class="text-[0.9rem] text-[var(--color-blanco)] bg-[var(--color-primario)] rounded-full"></ion-icon>
+                    <li class="flex gap-2 items-center text-(--color-letras-primario) text-[0.95rem] md:text-base">
+                        <ion-icon name="checkmark-circle-outline" class="text-[0.9rem] text-(--color-blanco) bg-(--color-primario) rounded-full"></ion-icon>
                         Mayor cantidad de puntos obtenidos
                     </li>
 
-                    <li class="flex gap-2 items-center text-[var(--color-letras-primario)] text-[0.95rem] md:text-base">
-                        <ion-icon name="checkmark-circle-outline" class="text-[0.9rem] text-[var(--color-blanco)] bg-[var(--color-primario)] rounded-full"></ion-icon>
+                    <li class="flex gap-2 items-center text-(--color-letras-primario) text-[0.95rem] md:text-base">
+                        <ion-icon name="checkmark-circle-outline" class="text-[0.9rem] text-(--color-blanco) bg-(--color-primario) rounded-full"></ion-icon>
                         Mejor diferencia de gol
                     </li>
 
-                    <li class="flex gap-2 items-center text-[var(--color-letras-primario)] text-[0.95rem] md:text-base">
-                        <ion-icon name="checkmark-circle-outline" class="text-[0.9rem] text-[var(--color-blanco)] bg-[var(--color-primario)] rounded-full"></ion-icon>
+                    <li class="flex gap-2 items-center text-(--color-letras-primario) text-[0.95rem] md:text-base">
+                        <ion-icon name="checkmark-circle-outline" class="text-[0.9rem] text-(--color-blanco) bg-(--color-primario) rounded-full"></ion-icon>
                         Mayor cantidad de goles a favor
                     </li>
                 </ul>
             </article>
 
-            <article class="bg-[var(--color-blanco)] rounded-xl p-4 px-5">
+            <article class="bg-(--color-blanco) rounded-xl p-4 px-5">
                 <h3 class="text-[1.1rem] md:text-[1.2rem] font-black pb-2 text-left">
                     Referencias
                 </h3>
 
                 <ul class="flex flex-col gap-3 py-2">
-                    <li class="clasificado flex gap-2 items-center text-[var(--color-letras-primario)] text-[0.95rem] md:text-base before:content-[''] before:w-3 before:h-3 before:bg-[var(--color-success)] before:rounded-full lg:before:w-4 lg:before:h-4">
+                    <li class="clasificado flex gap-2 items-center text-(--color-letras-primario) text-[0.95rem] md:text-base before:content-[''] before:w-3 before:h-3 before:bg-(--color-success) before:rounded-full lg:before:w-4 lg:before:h-4">
                         Clasificado a PlayOff
                     </li>
                 </ul>
