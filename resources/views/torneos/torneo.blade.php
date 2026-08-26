@@ -172,15 +172,11 @@
     <div class="flex flex-col items-center justify-between gap-4 p-4 md:flex-row md:gap-0">
 
       <h2 class="flex items-center gap-3 text-[1.4rem] font-extrabold md:text-[1.6rem]">
-        <ion-icon name="football-outline" class="text-[1.5rem] text-(--color-primario)"></ion-icon>
-
-        Partidos
+        <ion-icon name="football-outline" class="text-[1.5rem] text-(--color-primario)"></ion-icon>Partidos
       </h2>
-
 
       <a href="{{ route('torneos.fixture', $torneo->slug) }}" class="flex items-center gap-2 text-base text-(--color-links) transition-all duration-300 lg:hover:border-b lg:hover:border-(--color-links) lg:hover:text-[1.1rem]">
         Ver fixture completo
-
         <ion-icon name="arrow-forward-outline"></ion-icon>
       </a>
 
@@ -188,6 +184,12 @@
 
 
     <section class="grid grid-cols-1 justify-items-center gap-[1.2rem] pb-8 md:grid-cols-2 lg:grid-cols-3">
+
+      @forelse ($partidos as $partido)
+        <x-partido-card :partido="$partido" />
+      @empty
+        <p>No hay partidos para este torneo.</p>
+      @endforelse
 
     </section>
 

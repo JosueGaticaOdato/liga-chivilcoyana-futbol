@@ -33,7 +33,10 @@ class TorneoController
 
         $cantidadEquipos = $tabla->count();
 
-        // $partidos = Partido::where('torneo_id', $torneo->id)->get();
+        $partidos = Partido::where('torneo_id', $torneo->id)
+            ->orderBy('fecha_hora')
+            ->limit(3)
+            ->get();
 
         $limite = 4;
 
@@ -43,6 +46,7 @@ class TorneoController
             'tabla',
             'zona',
             'limite',
+            'partidos',
             'cantidadEquipos'
         ));
     }

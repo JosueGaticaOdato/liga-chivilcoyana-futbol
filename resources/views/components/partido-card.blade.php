@@ -1,0 +1,64 @@
+<article class="w-full max-w-120 p-6 bg-(--color-blanco) rounded-2xl font-(--fuente-primaria) shadow-(--sombra-suave) transition-transform duration-300 ease-in-out lg:hover:-translate-y-1">
+    <a href="{{ route('partidos.show', $partido) }}" class="flex flex-col gap-6">
+
+        <header class="flex justify-between items-center">
+            <time datetime="{{ $partido->fecha_hora->format('Y-m-d H:i') }}" class="text-[0.85rem] font-black text-(--color-letras-terceario) uppercase tracking-[0.02rem]">
+                {{ $partido->fecha_hora->translatedFormat('j \d\e F - H:i') }}
+            </time>
+
+            <span class="text-xs font-bold py-1 px-3 rounded uppercase text-(--color-letras-secundario) {{ match($partido->estado) {
+                'en_vivo' => 'bg-(--color-error) shadow-[0_0_5px_rgba(239,68,68,0.5)]',
+                'programado' => 'bg-(--color-stay)',
+                'finalizado' => 'bg-(--color-primario)',
+                default => ''
+            } }}">
+                {{ ucfirst(str_replace('_', ' ', $partido->estado)) }}
+            </span>
+        </header>
+
+        <main class="flex justify-between items-center">
+
+            <article class="flex flex-col items-center gap-3 flex-1">
+                <figure class="w-15 h-17.5">
+                    <img class="w-full h-full object-contain" src="{{ asset('storage/' . $partido->local->club->escudo) }}" alt="Escudo {{ $partido->local->nombre }}">
+                </figure>
+
+                <h3 class="m-0 text-[0.9rem] font-bold text-(--color-letras-primario) text-center">
+                    {{ $partido->local->club->nombre }}
+                </h3>
+            </article>
+
+            <span class="text-2xl font-extrabold text-(--color-letras-cuaternario) mx-4">
+                @if ($partido->estado === 'programado')
+                    <span>VS</span>
+                @else
+                    {{ $partido->goles_local ?? 0 }}
+                    -
+                    {{ $partido->goles_visitante ?? 0 }}
+                @endif
+            </span>
+
+            <article class="flex flex-col items-center gap-3 flex-1">
+                <figure class="w-15 h-17.5">
+                    <img class="w-full h-full object-contain" src="{{ asset('storage/' . $partido->visitante->club->escudo) }}" alt="Escudo {{ $partido->visitante->nombre }}">
+                </figure>
+
+                <h3 class="m-0 text-[0.9rem] font-bold text-(--color-letras-primario) text-center">
+                    {{ $partido->visitante->club->nombre }}
+                </h3>
+            </article>
+
+        </main>
+
+        <footer class="text-center flex justify-center items-center flex-col gap-[0.2rem]">
+            <h4 class="text-[0.8rem] font-semibold text-(--color-letras-cuaternario) uppercase tracking-[0.05rem]">
+                {{ $partido->estadio->nombre ?? 'Estadio: A definir' }}
+            </h4>
+
+            <p class="text-[0.7rem] font-semibold text-(--color-letras-cuaternario) uppercase tracking-[0.05rem]">
+                Torneo {{ $partido->torneo->nombre }} {{ $partido->torneo->temporada->nombre }}- Fecha {{ $partido->jornada}}
+            </p>
+        </footer>
+
+    </a>
+</article>

@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             FaseSeeder::class,
             ZonaSeeder::class,
             EquipoCompeticionPrimeraSeeder::class,
+            PartidoPrimeraSeeder::class,
         ]);
     }
 }

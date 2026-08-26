@@ -31,12 +31,12 @@ class Partido extends Model
     return $this->belongsTo(Zona::class);
   }
 
-  public function equipoLocal()
+  public function local()
   {
     return $this->belongsTo(Equipo::class, 'equipo_local_id');
   }
 
-  public function equipoVisitante()
+  public function visitante()
   {
     return $this->belongsTo(Equipo::class, 'equipo_visitante_id');
   }
