@@ -38,7 +38,7 @@ class TorneoController
             ->limit(3)
             ->get();
 
-        $limite = 4;
+        $limite = 8;
 
         return view('torneos.torneo', compact(
             'torneo',
