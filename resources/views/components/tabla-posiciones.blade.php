@@ -26,7 +26,7 @@
             <tr class="border-b border-(--color-body) even:bg-(--color-impares)">
                 <td class="py-3 px-4 text-center align-middle font-bold">{{ $index + 1 }}</td>
 
-                <td class="equipo flex flex-row items-center gap-3 text-left pl-4 py-3 px-4 text-[0.9rem] md:text-base lg:text-[1.1rem] sticky left-0 z-2 odd:bg-(--color-blanco) even:bg-(--color-impares) lg:static">
+                <td class="equipo flex flex-row items-center gap-3 text-left pl-4 py-3 px-4 text-[0.9rem] md:text-base lg:text-[1.1rem] sticky left-0 z-2 odd:bg-(--color-blanco) lg:static">
                     <img class="w-6 h-6 lg:w-7 lg:h-7 object-contain" src="{{ asset('storage/' . $equipoFase->equipo->club->escudo) }}" alt="Escudo {{ $equipoFase->equipo->club->nombre }}">
                     <span>{{ $equipoFase->equipo->club->nombre }}</span>
                 </td>
