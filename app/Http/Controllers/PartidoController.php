@@ -12,4 +12,9 @@ class PartidoController
         $partidos = Partido::orderBy('fecha_hora')->get();
         return view('partidos.index', compact('partidos'));
     }
+
+    public function show(Partido $partido)
+    {
+        return view('partidos.show', compact('partido'));
+    }
 }
