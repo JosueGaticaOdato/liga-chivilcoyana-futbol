@@ -6,7 +6,7 @@
 
 <x-header-main title="Liga Chivilcoyana de Futbol" subtitle="Seguí los resultados, tablas y noticias del fútbol local." />
 
-<section class="max-w-[75rem] my-12 mx-auto px-6 flex flex-col lg:grid lg:grid-cols-[2fr_1fr] lg:gap-8">
+<section class="max-w-300 my-12 mx-auto px-6 flex flex-col lg:grid lg:grid-cols-[2fr_1fr] lg:gap-8">
 
     <!-- RESUMEN DE PARTIDOS -->
     <section aria-labelledby="partidos-title">
@@ -53,7 +53,7 @@
 
 <!-- NOTICIAS -->
 @isset($noticias)
-<section class="max-w-[75rem] my-12 mx-auto px-6">
+<section class="max-w-300 my-12 mx-auto px-6">
     <h2 class="text-xl font-extrabold mb-5">
         Noticias Recientes
     </h2>
