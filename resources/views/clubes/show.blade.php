@@ -9,16 +9,19 @@
   image="{{ asset('storage/' . $club->escudo) }}"
   imageAlt="Escudo {{ $club->nombre }}" />
 
-<section class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 mx-4 lg:p-8">
+<section class="grid grid-cols-1 gap-8 mx-4 lg:grid-cols-[2fr_1fr] lg:p-8">
 
+  {{-- =========================================
+      COLUMNA IZQUIERDA
+  ========================================== --}}
   <div>
 
     {{-- SOBRE EL CLUB --}}
     <section
-      class="bg-(--color-blanco) rounded-2xl p-6 shadow-(--sombra-suave)">
+      class="bg-(--color-blanco) rounded-2xl p-6 shadow-(--sombra-suave) mb-4">
 
       <header class="mb-4">
-        <h2 class="text-[1.4rem] font-extrabold flex items-center gap-2">
+        <h2 class="flex items-center gap-2 text-[1.4rem] font-extrabold">
           <ion-icon
             name="alert-circle-outline"
             class="text-[1.5rem] font-extrabold text-(--color-primario)"></ion-icon>
@@ -33,12 +36,12 @@
         </p>
       </article>
 
-      <ul class="flex flex-col lg:flex-row gap-4 lg:justify-evenly">
+      <ul class="flex flex-col gap-4 lg:flex-row lg:justify-evenly">
 
         <li
           class="bg-(--color-bg-muted) rounded-xl w-full p-4 text-center">
           <span
-            class="block text-xs uppercase text-(--color-letras-cuaternario)">
+            class="block mb-1 text-xs uppercase text-(--color-letras-cuaternario)">
             Fundación
           </span>
 
@@ -52,7 +55,7 @@
         <li
           class="bg-(--color-bg-muted) rounded-xl w-full p-4 text-center">
           <span
-            class="block text-xs uppercase text-(--color-letras-cuaternario)">
+            class="block mb-1 text-xs uppercase text-(--color-letras-cuaternario)">
             Estadio
           </span>
 
@@ -72,7 +75,7 @@
     @if (isset($ultimosPartidos) && count($ultimosPartidos) > 0)
 
     <section
-      class="bg-(--color-blanco)ded-2xl p-6 shadoshadow-(--sombra-suave)
+      class="bg-(--color-blanco) rounded-2xl p-6 shadow-(--sombra-suave)">
 
       <header class="mb-4">
         <h2 class="text-[1.4rem] font-extrabold flex items-center gap-2">
@@ -90,7 +93,7 @@
         @foreach ($ultimosPartidos as $partido)
 
         @php
-        $esLocal = $partido->equipo_local_id === $club->id;
+        $esLocal = $partido->local->id === $club->id;
 
         $golesEquipo = $esLocal
         ? $partido->goles_local
@@ -137,31 +140,31 @@
                                 ">
 
               <time
-                datetime="{{ $partido->fecha_partido }}"
-                class="text-xs text-(--color-letras-cuaternario)
-                {{ \Carbon\Carbon::parse($partido->fecha_partido)->format('d M') }}
-              </time>
+                datetime="{{ $partido->fecha_hora->format('Y-m-d H:i') }}"
+                class="text-xs text-(--color-letras-cuaternario)"
+                {{ $partido->fecha_hora->translatedFormat('d/m/Y') }}
+                </time>
 
 
-              <span
-                class="text-(--color-letras-primario) md:text-right">
-                {{ $club->nombre }}
-              </span>
+                <span
+                  class=" text-(--color-letras-primario) md:text-right">
+                  {{ $club->nombre }}
+                </span>
 
 
-              <strong class="font-semibold">
-                {{ $golesEquipo }} - {{ $golesRival }}
-              </strong>
+                <strong class="font-semibold">
+                  {{ $golesEquipo }} - {{ $golesRival }}
+                </strong>
 
 
-              <span
-                class="text-(--color-letras-primario)">
-                {{ $rival->nombre }}
-              </span>
+                <span
+                  class="text-(--color-letras-primario)">
+                  {{ $partido->visitante->club->nombre }}
+                </span>
 
 
-              <span
-                class="
+                <span
+                  class="
                                         text-[0.7rem]
                                         px-2 py-1
                                         rounded-full
@@ -169,8 +172,8 @@
                                         uppercase
                                         {{ $colorResultado }}
                                     ">
-                {{ $resultado }}
-              </span>
+                  {{ $resultado }}
+                </span>
 
             </a>
 
