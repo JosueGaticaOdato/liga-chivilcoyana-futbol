@@ -117,11 +117,13 @@
               required
               class="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 focus:border-[#59acda] focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all @error('equipo_local_id') border-rose-400 @enderror">
               <option value="">Seleccionar local</option>
-              @foreach ($equiposFiltrados as $eq)
+              @forelse ($equipos as $eq)
                 <option value="{{ $eq->id }}" {{ old('equipo_local_id') == $eq->id ? 'selected' : '' }}>
-                  {{ $eq->club->nombre ?? $eq->nombre }} ({{ $eq->categoria->nombre ?? '' }})
+                  {{ $eq->nombre ?? $eq->club->nombre }}
                 </option>
-              @endforeach
+              @empty
+                <option value="" disabled>No hay equipos participantes en este torneo</option>
+              @endforelse
             </select>
             @error('equipo_local_id')
               <p class="mt-1 text-xs text-rose-500">{{ $message }}</p>
@@ -139,11 +141,13 @@
               required
               class="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 focus:border-[#59acda] focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all @error('equipo_visitante_id') border-rose-400 @enderror">
               <option value="">Seleccionar visitante</option>
-              @foreach ($equiposFiltrados as $eq)
+              @forelse ($equipos as $eq)
                 <option value="{{ $eq->id }}" {{ old('equipo_visitante_id') == $eq->id ? 'selected' : '' }}>
-                  {{ $eq->club->nombre ?? $eq->nombre }} ({{ $eq->categoria->nombre ?? '' }})
+                  {{ $eq->nombre ?? $eq->club->nombre }}
                 </option>
-              @endforeach
+              @empty
+                <option value="" disabled>No hay equipos participantes en este torneo</option>
+              @endforelse
             </select>
             @error('equipo_visitante_id')
               <p class="mt-1 text-xs text-rose-500">{{ $message }}</p>

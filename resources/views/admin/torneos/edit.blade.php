@@ -17,7 +17,7 @@
   <div class="flex items-center justify-between">
     <div>
       <h2 class="text-xl font-bold text-slate-900">Editar Torneo: {{ $torneo->nombre }}</h2>
-      <p class="text-xs text-slate-500">Actualiza las fechas, categoría, estado y equipos participantes.</p>
+      <p class="text-xs text-slate-500">Actualiza las fechas, categoría, estado y clubes participantes.</p>
     </div>
     <a
       href="{{ route('admin.torneos.index') }}"
@@ -206,9 +206,9 @@
           <div>
             <h3 class="text-xs font-bold uppercase tracking-wider text-[#59acda] flex items-center gap-1.5">
               <ion-icon name="people-outline" class="text-base"></ion-icon>
-              3. Equipos Participantes
+              3. Clubes y Equipos Participantes
             </h3>
-            <p class="text-xs text-slate-500">Selecciona o desmarca los equipos que integran este torneo.</p>
+            <p class="text-xs text-slate-500">Selecciona o desmarca los clubes que integran este torneo en esta categoría.</p>
           </div>
           <div class="flex items-center gap-2">
             <button
@@ -238,11 +238,11 @@
             class="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3.5 py-2 text-xs text-slate-800 focus:border-[#59acda] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all">
         </div>
 
-        {{-- Grid de Equipos/Clubes --}}
+        {{-- Grid de Clubes --}}
         <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 max-h-96 overflow-y-auto p-1" id="equipos-grid">
           @foreach ($clubes as $club)
             @php
-              $equiposClub = $equipos->where('club_id', $club->id);
+              $participa = in_array($club->id, old('club_ids', $participantesClubIds ?? []));
             @endphp
 
             <div
@@ -266,33 +266,17 @@
 
               {{-- Lista de Equipos del Club --}}
               <div class="mt-3 space-y-2 border-t border-slate-100 pt-2.5" id="equipos-container-{{ $club->id }}">
-                @if ($equiposClub->count() > 0)
-                  @foreach ($equiposClub as $eq)
-                    <label class="flex items-center justify-between gap-2 rounded-xl bg-slate-50/70 p-2 cursor-pointer hover:bg-slate-100 transition-colors equipo-option" data-cat-id="{{ $eq->categoria_id }}">
-                      <span class="text-xs font-semibold text-slate-800 truncate">
-                        {{ $eq->nombre }} <span class="text-[10px] text-slate-400">({{ $eq->categoria->nombre ?? '' }})</span>
-                      </span>
-                      <input
-                        type="checkbox"
-                        name="equipos[]"
-                        value="{{ $eq->id }}"
-                        class="team-checkbox h-4 w-4 rounded border-slate-300 text-[#59acda] focus:ring-[#59acda]"
-                        {{ in_array($eq->id, old('equipos', $participantesIds)) ? 'checked' : '' }}>
-                    </label>
-                  @endforeach
-                @else
-                  <label class="flex items-center justify-between gap-2 rounded-xl bg-slate-50/70 p-2 cursor-pointer hover:bg-slate-100 transition-colors">
-                    <span class="text-xs font-semibold text-slate-800 truncate">
-                      Equipo Principal
-                    </span>
-                    <input
-                      type="checkbox"
-                      name="nuevos_equipos[{{ $club->id }}][club_id]"
-                      value="{{ $club->id }}"
-                      class="team-checkbox h-4 w-4 rounded border-slate-300 text-[#59acda] focus:ring-[#59acda]">
-                    <input type="hidden" name="nuevos_equipos[{{ $club->id }}][nombre]" value="{{ $club->nombre }}">
-                  </label>
-                @endif
+                <label class="flex items-center justify-between gap-2 rounded-xl bg-slate-50/70 p-2 cursor-pointer hover:bg-slate-100 transition-colors">
+                  <span class="text-xs font-semibold text-slate-800 truncate">
+                    Equipo Oficial ({{ $club->nombre }})
+                  </span>
+                  <input
+                    type="checkbox"
+                    name="club_ids[]"
+                    value="{{ $club->id }}"
+                    class="team-checkbox h-4 w-4 rounded border-slate-300 text-[#59acda] focus:ring-[#59acda]"
+                    {{ $participa ? 'checked' : '' }}>
+                </label>
               </div>
 
               {{-- Botón para añadir Equipo B --}}
@@ -334,7 +318,6 @@
 @push('scripts')
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const checkboxes = document.querySelectorAll('.team-checkbox');
     const counter = document.getElementById('selected-counter');
     const searchInput = document.getElementById('search-clubes-input');
     const cards = document.querySelectorAll('.club-card');

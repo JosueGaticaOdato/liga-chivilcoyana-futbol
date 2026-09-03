@@ -17,7 +17,7 @@
   <div class="flex items-center justify-between">
     <div>
       <h2 class="text-xl font-bold text-slate-900">Registrar Nuevo Torneo</h2>
-      <p class="text-xs text-slate-500">Configura la competencia oficial, su formato y los equipos participantes.</p>
+      <p class="text-xs text-slate-500">Configura la competencia oficial, su categoría y los clubes participantes.</p>
     </div>
     <a
       href="{{ route('admin.torneos.index') }}"
@@ -135,7 +135,7 @@
               required
               class="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3.5 py-2.5 text-sm text-slate-900 focus:border-[#59acda] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all">
               <option value="planificado" {{ old('estado', 'planificado') === 'planificado' ? 'selected' : '' }}>Planificado (Próximo)</option>
-              <option value="en_curso" {{ old('estado') === 'en_curso' ? 'selected' : '' }}>En Curso (Activo)</option>
+              <option value="en_curso" {{ old('estado', 'en_curso') === 'en_curso' ? 'selected' : '' }}>En Curso (Activo)</option>
               <option value="finalizado" {{ old('estado') === 'finalizado' ? 'selected' : '' }}>Finalizado</option>
             </select>
           </div>
@@ -218,9 +218,9 @@
           <div>
             <h3 class="text-xs font-bold uppercase tracking-wider text-[#59acda] flex items-center gap-1.5">
               <ion-icon name="people-outline" class="text-base"></ion-icon>
-              3. Equipos Participantes
+              3. Clubes y Equipos Participantes
             </h3>
-            <p class="text-xs text-slate-500">Marca los equipos que disputarán este torneo o agrega planteles adicionales (ej. Equipo B).</p>
+            <p class="text-xs text-slate-500">Selecciona los clubes que participarán en esta categoría o agrega equipos adicionales (ej. Colón B).</p>
           </div>
           <div class="flex items-center gap-2">
             <button
@@ -250,14 +250,9 @@
             class="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3.5 py-2 text-xs text-slate-800 focus:border-[#59acda] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all">
         </div>
 
-        {{-- Grid de Equipos/Clubes --}}
+        {{-- Grid de Clubes --}}
         <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 max-h-96 overflow-y-auto p-1" id="equipos-grid">
           @foreach ($clubes as $club)
-            @php
-              // Buscar si el club ya tiene equipos registrados en esta o en general
-              $equiposClub = $equipos->where('club_id', $club->id);
-            @endphp
-
             <div
               class="club-card rounded-2xl border border-slate-200 bg-white p-3.5 shadow-xs transition-all hover:border-[#59acda]/60"
               data-club-name="{{ strtolower($club->nombre) }}"
@@ -279,37 +274,20 @@
 
               {{-- Lista de Equipos del Club --}}
               <div class="mt-3 space-y-2 border-t border-slate-100 pt-2.5" id="equipos-container-{{ $club->id }}">
-                @if ($equiposClub->count() > 0)
-                  @foreach ($equiposClub as $eq)
-                    <label class="flex items-center justify-between gap-2 rounded-xl bg-slate-50/70 p-2 cursor-pointer hover:bg-slate-100 transition-colors equipo-option" data-cat-id="{{ $eq->categoria_id }}">
-                      <span class="text-xs font-semibold text-slate-800 truncate">
-                        {{ $eq->nombre }} <span class="text-[10px] text-slate-400">({{ $eq->categoria->nombre ?? '' }})</span>
-                      </span>
-                      <input
-                        type="checkbox"
-                        name="equipos[]"
-                        value="{{ $eq->id }}"
-                        class="team-checkbox h-4 w-4 rounded border-slate-300 text-[#59acda] focus:ring-[#59acda]"
-                        {{ in_array($eq->id, old('equipos', [])) ? 'checked' : '' }}>
-                    </label>
-                  @endforeach
-                @else
-                  {{-- Si el club no tiene equipo creado aún para la categoría, permitir registrar su equipo principal --}}
-                  <label class="flex items-center justify-between gap-2 rounded-xl bg-slate-50/70 p-2 cursor-pointer hover:bg-slate-100 transition-colors">
-                    <span class="text-xs font-semibold text-slate-800 truncate">
-                      Equipo Principal
-                    </span>
-                    <input
-                      type="checkbox"
-                      name="nuevos_equipos[{{ $club->id }}][club_id]"
-                      value="{{ $club->id }}"
-                      class="team-checkbox h-4 w-4 rounded border-slate-300 text-[#59acda] focus:ring-[#59acda]">
-                    <input type="hidden" name="nuevos_equipos[{{ $club->id }}][nombre]" value="{{ $club->nombre }}">
-                  </label>
-                @endif
+                <label class="flex items-center justify-between gap-2 rounded-xl bg-slate-50/70 p-2 cursor-pointer hover:bg-slate-100 transition-colors">
+                  <span class="text-xs font-semibold text-slate-800 truncate">
+                    Equipo Oficial ({{ $club->nombre }})
+                  </span>
+                  <input
+                    type="checkbox"
+                    name="club_ids[]"
+                    value="{{ $club->id }}"
+                    class="team-checkbox h-4 w-4 rounded border-slate-300 text-[#59acda] focus:ring-[#59acda]"
+                    {{ in_array($club->id, old('club_ids', [])) ? 'checked' : '' }}>
+                </label>
               </div>
 
-              {{-- Botón para añadir Equipo B (Segundo Equipo del Club) --}}
+              {{-- Botón para añadir Equipo B --}}
               <div class="mt-2 text-right">
                 <button
                   type="button"
@@ -348,37 +326,31 @@
 @push('scripts')
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const categoriaSelect = document.getElementById('categoria_select');
-    const checkboxes = document.querySelectorAll('.team-checkbox');
     const counter = document.getElementById('selected-counter');
     const searchInput = document.getElementById('search-clubes-input');
     const cards = document.querySelectorAll('.club-card');
 
     function updateCounter() {
       const selected = document.querySelectorAll('.team-checkbox:checked').length;
-      counter.textContent = `${selected} seleccionados`;
+      if (counter) counter.textContent = `${selected} seleccionados`;
     }
 
-    // Actualizar contador al cambiar checks
     document.addEventListener('change', (e) => {
       if (e.target.classList.contains('team-checkbox')) {
         updateCounter();
       }
     });
 
-    // Seleccionar todos los visibles
     document.getElementById('btn-select-all')?.addEventListener('click', () => {
       document.querySelectorAll('.club-card:not(.hidden) .team-checkbox').forEach(cb => cb.checked = true);
       updateCounter();
     });
 
-    // Deseleccionar todos
     document.getElementById('btn-deselect-all')?.addEventListener('click', () => {
       document.querySelectorAll('.team-checkbox').forEach(cb => cb.checked = false);
       updateCounter();
     });
 
-    // Filtrar por texto
     searchInput?.addEventListener('input', (e) => {
       const term = e.target.value.toLowerCase().trim();
       cards.forEach(card => {

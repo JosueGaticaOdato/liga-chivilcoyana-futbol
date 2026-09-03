@@ -54,9 +54,8 @@ class AdminPartidoController
 
     public function create(Request $request)
     {
-        $torneos = Torneo::with(['fases.zonas', 'categoria'])->orderByDesc('id')->get();
+        $torneos = Torneo::with(['fases.zonas', 'categoria', 'temporada'])->orderByDesc('id')->get();
         $estadios = Estadio::orderBy('nombre')->get();
-        $equipos = Equipo::with('club', 'categoria')->where('activo', true)->get();
 
         $selectedTorneoId = $request->query('torneo_id', $torneos->first()?->id);
         $selectedTorneo = $torneos->firstWhere('id', $selectedTorneoId);
@@ -64,20 +63,33 @@ class AdminPartidoController
         $fases = $selectedTorneo ? $selectedTorneo->fases : collect();
         $zonas = $fases->first() ? $fases->first()->zonas : collect();
 
-        // Filtrar equipos por categoría del torneo seleccionado si existe
-        $equiposFiltrados = $equipos;
-        if ($selectedTorneo) {
-            $equiposFiltrados = $equipos->where('categoria_id', $selectedTorneo->categoria_id);
-            if ($equiposFiltrados->isEmpty()) {
-                $equiposFiltrados = $equipos; // Fallback si no hay específicos
-            }
+        // Obtener IDs de las zonas del torneo seleccionado
+        $zonaIds = $selectedTorneo
+            ? $selectedTorneo->fases->flatMap->zonas->pluck('id')->toArray()
+            : [];
+
+        // Traer únicamente los equipos que participan en las zonas de este torneo
+        $equipos = Equipo::with('club', 'categoria')
+            ->where('activo', true)
+            ->whereHas('equiposTorneos', function ($query) use ($zonaIds) {
+                $query->whereIn('zona_id', $zonaIds);
+            })
+            ->orderBy('nombre')
+            ->get();
+
+        // Fallback a los equipos de la categoría si el torneo aún no tiene equipos en equipo_competicion
+        if ($equipos->isEmpty() && $selectedTorneo) {
+            $equipos = Equipo::with('club', 'categoria')
+                ->where('activo', true)
+                ->where('categoria_id', $selectedTorneo->categoria_id)
+                ->orderBy('nombre')
+                ->get();
         }
 
         return view('admin.partidos.create', compact(
             'torneos',
             'estadios',
             'equipos',
-            'equiposFiltrados',
             'selectedTorneoId',
             'fases',
             'zonas'
@@ -107,13 +119,36 @@ class AdminPartidoController
 
     public function edit(Partido $partido)
     {
-        $torneos = Torneo::with(['fases.zonas', 'categoria'])->orderByDesc('id')->get();
+        $torneos = Torneo::with(['fases.zonas', 'categoria', 'temporada'])->orderByDesc('id')->get();
         $estadios = Estadio::orderBy('nombre')->get();
-        $equipos = Equipo::with('club', 'categoria')->where('activo', true)->get();
 
         $partido->load(['torneo.fases.zonas', 'local.club', 'visitante.club']);
         $fases = $partido->torneo ? $partido->torneo->fases : collect();
         $zonas = $partido->fase ? $partido->fase->zonas : ($fases->first() ? $fases->first()->zonas : collect());
+
+        $zonaIds = $partido->torneo
+            ? $partido->torneo->fases->flatMap->zonas->pluck('id')->toArray()
+            : [];
+
+        // Traer únicamente los equipos que participan en el torneo
+        $equipos = Equipo::with('club', 'categoria')
+            ->where('activo', true)
+            ->where(function ($query) use ($zonaIds, $partido) {
+                $query->whereHas('equiposTorneos', function ($q) use ($zonaIds) {
+                    $q->whereIn('zona_id', $zonaIds);
+                })
+                ->orWhereIn('id', [$partido->equipo_local_id, $partido->equipo_visitante_id]);
+            })
+            ->orderBy('nombre')
+            ->get();
+
+        if ($equipos->isEmpty() && $partido->torneo) {
+            $equipos = Equipo::with('club', 'categoria')
+                ->where('activo', true)
+                ->where('categoria_id', $partido->torneo->categoria_id)
+                ->orderBy('nombre')
+                ->get();
+        }
 
         return view('admin.partidos.edit', compact(
             'partido',

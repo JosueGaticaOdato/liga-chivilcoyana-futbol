@@ -129,7 +129,7 @@
                   {{-- Local --}}
                   <div class="flex items-center gap-2 w-36 justify-end text-right">
                     <span class="font-bold text-slate-900 text-sm truncate">
-                      {{ $partido->local->club->nombre ?? 'Local' }}
+                      {{ $partido->local->nombre ?? $partido->local->club->nombre ?? 'Local' }}
                     </span>
                     <div class="h-8 w-8 shrink-0 rounded-lg bg-slate-100 p-0.5 border border-slate-200 flex items-center justify-center overflow-hidden">
                       @if ($partido->local && $partido->local->club && $partido->local->club->escudo)
@@ -176,7 +176,7 @@
                       @endif
                     </div>
                     <span class="font-bold text-slate-900 text-sm truncate">
-                      {{ $partido->visitante->club->nombre ?? 'Visitante' }}
+                      {{ $partido->visitante->nombre ?? $partido->visitante->club->nombre ?? 'Visitante' }}
                     </span>
                   </div>
 

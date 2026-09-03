@@ -34,6 +34,8 @@ class TorneoRequest extends FormRequest
             'nombre_fase' => ['nullable', 'string', 'max:100'],
             'equipos' => ['nullable', 'array'],
             'equipos.*' => ['exists:equipos,id'],
+            'club_ids' => ['nullable', 'array'],
+            'club_ids.*' => ['exists:clubes,id'],
             'nuevos_equipos' => ['nullable', 'array'],
             'nuevos_equipos.*.club_id' => ['required_with:nuevos_equipos', 'exists:clubes,id'],
             'nuevos_equipos.*.nombre' => ['required_with:nuevos_equipos', 'string', 'max:100'],

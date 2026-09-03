@@ -180,7 +180,7 @@
       </figure>
 
       <h2 class="text-sm font-semibold md:text-base lg:text-[1.2rem]">
-        {{ $partido->local->club->nombre }}
+        {{ $partido->local->nombre ?? $partido->local->club->nombre ?? 'Local' }}
       </h2>
 
       <p class="text-xs text-(--color-letras-cuaternario)">
@@ -232,7 +232,7 @@
       </figure>
 
       <h2 class="text-sm font-semibold md:text-base lg:text-[1.2rem]">
-        {{ $partido->visitante->club->nombre }}
+        {{ $partido->visitante->nombre ?? $partido->visitante->club->nombre ?? 'Visitante' }}
       </h2>
 
       <p class="text-xs text-(--color-letras-cuaternario)">

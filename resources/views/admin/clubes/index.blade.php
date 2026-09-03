@@ -121,10 +121,6 @@
                 <span class="truncate">Pres: {{ $club->presidente }}</span>
               </div>
             @endif
-            <div class="flex items-center gap-1.5">
-              <ion-icon name="people-outline" class="text-slate-400"></ion-icon>
-              <span>{{ $club->equipos_count }} equipos federados</span>
-            </div>
           </div>
         </div>
 
