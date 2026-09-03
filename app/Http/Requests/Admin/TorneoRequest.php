@@ -32,6 +32,11 @@ class TorneoRequest extends FormRequest
             'estado' => ['required', 'in:planificado,en_curso,finalizado'],
             'tipo_fase' => ['nullable', 'in:round_robin,eliminacion_simple,eliminacion_ida_vuelta'],
             'nombre_fase' => ['nullable', 'string', 'max:100'],
+            'equipos' => ['nullable', 'array'],
+            'equipos.*' => ['exists:equipos,id'],
+            'nuevos_equipos' => ['nullable', 'array'],
+            'nuevos_equipos.*.club_id' => ['required_with:nuevos_equipos', 'exists:clubes,id'],
+            'nuevos_equipos.*.nombre' => ['required_with:nuevos_equipos', 'string', 'max:100'],
         ];
     }
 

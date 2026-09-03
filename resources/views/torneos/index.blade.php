@@ -97,7 +97,7 @@
 
                                     md:text-xl
                                 ">
-              {{ $torneo->nombre }} {{ $torneo->temporada->nombre }}
+              {{ $torneo->categoria->nombre }} {{ $torneo->nombre }} {{ $torneo->temporada->nombre }}
             </h3>
 
 
