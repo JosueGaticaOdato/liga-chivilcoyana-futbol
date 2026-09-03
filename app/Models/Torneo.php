@@ -13,6 +13,7 @@ class Torneo extends Model
     'slug',
     'fecha_inicio',
     'fecha_fin',
+    'descripcion',
     'estado'
   ];
 

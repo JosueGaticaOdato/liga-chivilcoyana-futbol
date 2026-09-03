@@ -10,23 +10,18 @@ class TablaService
 {
     public function getTabla($torneo, $fases)
     {
-        // Fase de grupos (si tiene)
-        $faseGrupos = $fases->firstWhere('tipo', 'liga');
+        $faseGrupos = $fases->firstWhere('tipo', 'round_robin');
 
         $tablas = collect();
 
         if ($faseGrupos) {
-            // Caso con zonas
             if ($faseGrupos->zonas->count() > 0) {
-
                 foreach ($faseGrupos->zonas as $zona) {
-
-                    $tabla = EquipoCompeticion::where('fase_id', $faseGrupos->id)
-                        ->where('zona_id', $zona->id)
+                    $tabla = EquipoCompeticion::where('zona_id', $zona->id)
                         ->orderByDesc('puntos')
                         ->orderByDesc('diferencia_goles')
                         ->orderByDesc('goles_favor')
-                        ->with('equipo')
+                        ->with('equipo.club')
                         ->get();
 
                     $tablas->push([
@@ -35,13 +30,11 @@ class TablaService
                     ]);
                 }
             } else {
-                // Liga simple (sin zonas)
-                $tabla = EquipoCompeticion::where('fase_id', $faseGrupos->id)
-                    ->whereNull('zona_id')
+                $tabla = EquipoCompeticion::whereNull('zona_id')
                     ->orderByDesc('puntos')
                     ->orderByDesc('diferencia_goles')
                     ->orderByDesc('goles_favor')
-                    ->with('equipo')
+                    ->with('equipo.club')
                     ->get();
 
                 $tablas->push([
@@ -56,8 +49,15 @@ class TablaService
 
     public function recalcular(Fase $fase): void
     {
-        // Resetear stats
-        EquipoCompeticion::where('fase_id', $fase->id)->update([
+        // Solo recalcular tabla en fases tipo round_robin (liga/grupos)
+        if ($fase->tipo !== 'round_robin') {
+            return;
+        }
+
+        $zonaIds = $fase->zonas->pluck('id')->toArray();
+
+        // Resetear estadísticas para las zonas de esta fase
+        EquipoCompeticion::whereIn('zona_id', $zonaIds)->update([
             'partidos_jugados' => 0,
             'ganados' => 0,
             'empatados' => 0,
@@ -68,44 +68,52 @@ class TablaService
             'puntos' => 0,
         ]);
 
-        // Obtener partidos finalizados
+        // Obtener todos los partidos finalizados de esta fase
         $partidos = Partido::where('fase_id', $fase->id)
             ->where('estado', 'finalizado')
             ->get();
 
-
         foreach ($partidos as $partido) {
-
-            // LOCAL
+            // Procesar equipo LOCAL
             $this->procesarEquipo(
-                $fase->id,
                 $partido->zona_id,
                 $partido->equipo_local_id,
-                $partido->goles_local,
-                $partido->goles_visitante
+                (int) $partido->goles_local,
+                (int) $partido->goles_visitante
             );
 
-            // VISITANTE
+            // Procesar equipo VISITANTE
             $this->procesarEquipo(
-                $fase->id,
                 $partido->zona_id,
                 $partido->equipo_visitante_id,
-                $partido->goles_visitante,
-                $partido->goles_local
+                (int) $partido->goles_visitante,
+                (int) $partido->goles_local
             );
         }
     }
 
-    private function procesarEquipo(int $faseId,?int $zonaId,int $equipoId,int $golesFavor,int $golesContra): void
+    private function procesarEquipo(?int $zonaId, int $equipoId, int $golesFavor, int $golesContra): void
     {
-        $equipoFase = EquipoCompeticion::where('fase_id', $faseId)
-            ->where('equipo_id', $equipoId)
-            ->where('zona_id', $zonaId)
-            ->first();
-
-        if (!$equipoFase) {
+        if (!$zonaId) {
             return;
         }
+
+        $equipoFase = EquipoCompeticion::firstOrCreate(
+            [
+                'zona_id' => $zonaId,
+                'equipo_id' => $equipoId,
+            ],
+            [
+                'partidos_jugados' => 0,
+                'ganados' => 0,
+                'empatados' => 0,
+                'perdidos' => 0,
+                'goles_favor' => 0,
+                'goles_contra' => 0,
+                'diferencia_goles' => 0,
+                'puntos' => 0,
+            ]
+        );
 
         $ganado = $golesFavor > $golesContra;
         $empatado = $golesFavor === $golesContra;
@@ -113,8 +121,7 @@ class TablaService
         $equipoFase->partidos_jugados += 1;
         $equipoFase->goles_favor += $golesFavor;
         $equipoFase->goles_contra += $golesContra;
-        $equipoFase->diferencia_goles =
-            $equipoFase->goles_favor - $equipoFase->goles_contra;
+        $equipoFase->diferencia_goles = $equipoFase->goles_favor - $equipoFase->goles_contra;
 
         if ($ganado) {
             $equipoFase->ganados += 1;

@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Partido extends Model
 {
   protected $fillable = [
+    'torneo_id',
+    'fase_id',
+    'zona_id',
+    'equipo_local_id',
+    'equipo_visitante_id',
+    'estadio_id',
+    'partido_vuelta_id',
     'jornada',
     'llave',
     'fecha_hora',

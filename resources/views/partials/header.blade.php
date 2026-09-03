@@ -183,35 +183,19 @@
       </li>
 
 
-      {{-- LOGIN MOBILE --}}
+      {{-- PANEL ADMIN MOBILE --}}
       <li class="lg:hidden">
-
-        @auth
         <a
           class="
-                            rounded-lg
-                            bg-(--color-primario)
-                            p-2
-                            font-bold
-                            text-(--color-letras-secundario)
-                        "
-          href="{{ route('perfil') }}">
-          Mi Perfil
+            rounded-lg
+            bg-(--color-primario)
+            p-2
+            font-bold
+            text-(--color-letras-secundario)
+          "
+          href="{{ route('admin.dashboard') }}">
+          Panel Admin
         </a>
-        @else
-        <a
-          class="
-                            rounded-lg
-                            bg-(--color-primario)
-                            p-2
-                            font-bold
-                            text-(--color-letras-secundario)
-                        "
-          href="{{ route('login') }}">
-          Iniciar sesión
-        </a>
-        @endauth
-
       </li>
 
     </ul>
@@ -219,61 +203,30 @@
   </nav>
 
 
-  {{-- LOGIN DESKTOP --}}
-  @auth
-
+  {{-- PANEL ADMIN DESKTOP --}}
   <a
     class="
-                mr-12
-                hidden
-                rounded-lg
-                border
-                border-transparent
-                bg-(--color-primario)
-                p-2
-                font-extrabold
-                text-(--color-letras-secundario)
+      mr-12
+      hidden
+      rounded-lg
+      border
+      border-transparent
+      bg-(--color-primario)
+      p-2
+      font-extrabold
+      text-(--color-letras-secundario)
 
-                lg:block
-                lg:transition-all
-                lg:duration-350
-                lg:ease-in-out
-                lg:hover:border-(--color-primario)
-                lg:hover:bg-(--color-letras-secundario)
-                lg:hover:text-(--color-primario)
-            "
-    href="{{ route('perfil') }}"
-    id="login">
-    Mi Perfil
+      lg:block
+      lg:transition-all
+      lg:duration-350
+      lg:ease-in-out
+      lg:hover:border-(--color-primario)
+      lg:hover:bg-(--color-letras-secundario)
+      lg:hover:text-(--color-primario)
+    "
+    href="{{ route('admin.dashboard') }}"
+    id="admin-btn">
+    Panel Admin
   </a>
-
-  @else
-
-  <a
-    class="
-                mr-12
-                hidden
-                rounded-lg
-                border
-                border-transparent
-                bg-(--color-primario)
-                p-2
-                font-extrabold
-                text-(--color-letras-secundario)
-
-                lg:block
-                lg:transition-all
-                lg:duration-350
-                lg:ease-in-out
-                lg:hover:border-(--color-primario)
-                lg:hover:bg-(--color-letras-secundario)
-                lg:hover:text-(--color-primario)
-            "
-    href="{{ route('login') }}"
-    id="login">
-    Iniciar sesión
-  </a>
-
-  @endauth
 
 </header>

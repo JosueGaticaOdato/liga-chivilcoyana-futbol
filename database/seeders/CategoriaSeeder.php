@@ -19,6 +19,7 @@ class CategoriaSeeder extends Seeder
             ['nombre' => 'Sub-18', 'orden' => 3],
             ['nombre' => 'Sub-15', 'orden' => 4],
             ['nombre' => 'Sub-13', 'orden' => 5],
+            ['nombre' => 'Senior', 'orden' => 6],
         ];
 
         foreach ($categorias as $categoria) {

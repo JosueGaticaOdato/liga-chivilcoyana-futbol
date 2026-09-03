@@ -1,29 +1,29 @@
 <?php
 
-use App\Http\Controllers\admin\AdminController;
-use App\Http\Controllers\admin\AdminPartidoController;
-use App\Http\Controllers\admin\AdminTorneoController;
-use App\Http\Controllers\admin\AdminNoticiaController;
+use App\Http\Controllers\Admin\AdminClubController;
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminEquipoController;
+use App\Http\Controllers\Admin\AdminPartidoController;
+use App\Http\Controllers\Admin\AdminTorneoController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth', 'admin'])
-    ->prefix('admin')
+Route::prefix('admin')
     ->name('admin.')
     ->group(function () {
 
-        // INDEX
-        Route::get('/', [AdminController::class, 'index'])->name('index');
-
-        // PARTIDOS
-        Route::resource('partidos', AdminPartidoController::class)->except(['show']);
+        // DASHBOARD
+        Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
+        Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('index');
 
         // TORNEOS
         Route::resource('torneos', AdminTorneoController::class)->except(['show']);
 
-        // NOTICIAS
-        Route::resource('noticias', AdminNoticiaController::class)->except(['show']);
+        // PARTIDOS
+        Route::resource('partidos', AdminPartidoController::class)->except(['show']);
 
+        // CLUBES
+        Route::resource('clubes', AdminClubController::class)->except(['show']);
 
-
-
+        // EQUIPOS
+        Route::resource('equipos', AdminEquipoController::class)->except(['show']);
     });

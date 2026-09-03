@@ -118,30 +118,34 @@
       </h2>
 
 
+      @if (!$tabla->isEmpty())
       <a href="{{ route('torneos.tabla', $torneo) }}" class="flex items-center gap-2 text-base text-(--color-links) transition-all duration-300 lg:hover:border-b lg:hover:border-(--color-links) lg:hover:text-[1.1rem]">
         Ver tabla completa
 
         <ion-icon name="arrow-forward-outline"></ion-icon>
       </a>
+      @endif
 
     </div>
 
 
     @if ($tabla->isEmpty())
 
-    <p>
+    <p class="flex items-center justify-center py-6 text-(--color-letras-terceario)">
       No hay datos de tabla disponibles.
     </p>
 
-    @endif
-
+    @else
+    
     <article>
-
+      
       <div class="w-full overflow-x-auto [webkit-overflow-scrolling:touch]">
         <x-tabla-posiciones :equipos="$tabla" :limit="$limite" variant="simple" />
       </div>
-
+      
     </article>
+
+    @endif
 
   </section>
 
@@ -175,23 +179,33 @@
         <ion-icon name="football-outline" class="text-[1.5rem] text-(--color-primario)"></ion-icon>Partidos
       </h2>
 
+      @if (!$tabla->isEmpty())
       <a href="{{ route('torneos.fixture', $torneo->slug) }}" class="flex items-center gap-2 text-base text-(--color-links) transition-all duration-300 lg:hover:border-b lg:hover:border-(--color-links) lg:hover:text-[1.1rem]">
         Ver fixture completo
         <ion-icon name="arrow-forward-outline"></ion-icon>
       </a>
+      @endif
 
     </div>
 
 
+    @if ($partidos->isEmpty())
+
+    <p class="flex items-center justify-center py-6 text-(--color-letras-terceario)">
+      No hay partidos para este torneo.
+    </p>
+
+    @else
+
     <section class="grid grid-cols-1 justify-items-center gap-[1.2rem] pb-8 md:grid-cols-2 lg:grid-cols-3">
 
-      @forelse ($partidos as $partido)
+      @foreach ($partidos as $partido)
         <x-partido-card :partido="$partido" />
-      @empty
-        <p>No hay partidos para este torneo.</p>
-      @endforelse
+      @endforeach
 
     </section>
+
+    @endif
 
   </section>
 

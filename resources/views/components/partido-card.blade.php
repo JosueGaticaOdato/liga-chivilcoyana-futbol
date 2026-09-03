@@ -6,14 +6,23 @@
                 {{ $partido->fecha_hora->translatedFormat('j \d\e F - H:i') }}
             </time>
 
+            @if ($partido->estado === 'en_vivo')
+            <span class="inline-flex items-center gap-1.5 text-xs font-bold rounded text-(--color-letras-secundario) px-3 uppercase py-1 bg-(--color-error)">
+                <span class="h-1.5 w-1.5 rounded-full bg-(--color-blanco) animate-ping"></span>
+                En Vivo
+            </span>
+            
+            @else
             <span class="text-xs font-bold py-1 px-3 rounded uppercase text-(--color-letras-secundario) {{ match($partido->estado) {
-                'en_vivo' => 'bg-(--color-error) shadow-[0_0_5px_rgba(239,68,68,0.5)]',
                 'programado' => 'bg-(--color-stay)',
                 'finalizado' => 'bg-(--color-primario)',
                 default => ''
             } }}">
                 {{ ucfirst(str_replace('_', ' ', $partido->estado)) }}
             </span>
+
+            @endif
+            
         </header>
 
         <main class="flex justify-between items-center">
