@@ -50,7 +50,7 @@
               id="torneo_id"
               required
               onchange="window.location.href='{{ route('admin.partidos.create') }}?torneo_id=' + this.value"
-              class="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3.5 py-2.5 text-sm text-slate-900 focus:border-[#59acda] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all @error('torneo_id') border-rose-400 @enderror">
+              class="w-full rounded-xl border {{ $errors->has('torneo_id') ? 'border-rose-400' : 'border-slate-200' }} bg-slate-50/50 px-3.5 py-2.5 text-sm text-slate-900 focus:border-[#59acda] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all">
               @foreach ($torneos as $t)
                 <option value="{{ $t->id }}" {{ (old('torneo_id', $selectedTorneoId) == $t->id) ? 'selected' : '' }}>
                   {{ $t->nombre }} ({{ $t->categoria->nombre ?? '' }})
@@ -108,14 +108,14 @@
           
           {{-- Equipo Local --}}
           <div class="rounded-2xl border border-slate-200/90 bg-slate-50/40 p-4">
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-800 mb-2 flex items-center gap-1.5">
+            <label class="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-800 mb-2">
               Equipo Local <span class="text-rose-500">*</span>
             </label>
             <select
               name="equipo_local_id"
               id="equipo_local_id"
               required
-              class="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 focus:border-[#59acda] focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all @error('equipo_local_id') border-rose-400 @enderror">
+              class="w-full rounded-xl border {{ $errors->has('equipo_local_id') ? 'border-rose-400' : 'border-slate-200' }} bg-white px-3.5 py-2.5 text-sm text-slate-900 focus:border-[#59acda] focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all">
               <option value="">Seleccionar local</option>
               @forelse ($equipos as $eq)
                 <option value="{{ $eq->id }}" {{ old('equipo_local_id') == $eq->id ? 'selected' : '' }}>
@@ -132,14 +132,14 @@
 
           {{-- Equipo Visitante --}}
           <div class="rounded-2xl border border-slate-200/90 bg-slate-50/40 p-4">
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-800 mb-2 flex items-center gap-1.5">
+            <label class="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-800 mb-2">
               Equipo Visitante <span class="text-rose-500">*</span>
             </label>
             <select
               name="equipo_visitante_id"
               id="equipo_visitante_id"
               required
-              class="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 focus:border-[#59acda] focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all @error('equipo_visitante_id') border-rose-400 @enderror">
+              class="w-full rounded-xl border {{ $errors->has('equipo_visitante_id') ? 'border-rose-400' : 'border-slate-200' }} bg-white px-3.5 py-2.5 text-sm text-slate-900 focus:border-[#59acda] focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all">
               <option value="">Seleccionar visitante</option>
               @forelse ($equipos as $eq)
                 <option value="{{ $eq->id }}" {{ old('equipo_visitante_id') == $eq->id ? 'selected' : '' }}>

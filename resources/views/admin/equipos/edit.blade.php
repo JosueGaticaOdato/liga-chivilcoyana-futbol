@@ -43,7 +43,7 @@
           <select
             name="club_id"
             required
-            class="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3.5 py-2.5 text-sm text-slate-900 focus:border-[#59acda] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all @error('club_id') border-rose-400 @enderror">
+            class="w-full rounded-xl border {{ $errors->has('club_id') ? 'border-rose-400' : 'border-slate-200' }} bg-slate-50/50 px-3.5 py-2.5 text-sm text-slate-900 focus:border-[#59acda] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all">
             @foreach ($clubes as $club)
               <option value="{{ $club->id }}" {{ old('club_id', $equipo->club_id) == $club->id ? 'selected' : '' }}>
                 {{ $club->nombre }} ({{ $club->nombre_institucional }})
@@ -63,7 +63,7 @@
           <select
             name="categoria_id"
             required
-            class="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3.5 py-2.5 text-sm text-slate-900 focus:border-[#59acda] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all @error('categoria_id') border-rose-400 @enderror">
+            class="w-full rounded-xl border {{ $errors->has('categoria_id') ? 'border-rose-400' : 'border-slate-200' }} bg-slate-50/50 px-3.5 py-2.5 text-sm text-slate-900 focus:border-[#59acda] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all">
             @foreach ($categorias as $cat)
               <option value="{{ $cat->id }}" {{ old('categoria_id', $equipo->categoria_id) == $cat->id ? 'selected' : '' }}>
                 {{ $cat->nombre }}

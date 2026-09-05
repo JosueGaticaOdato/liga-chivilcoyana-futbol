@@ -33,17 +33,17 @@
                 </figure>
 
                 <h3 class="m-0 text-[0.9rem] font-bold text-(--color-letras-primario) text-center">
-                    {{ $partido->local->club->nombre }}
+                    {{ $partido->local->nombre ?? $partido->local->club->nombre ?? 'Local' }}
                 </h3>
             </article>
 
-            <span class="text-2xl font-extrabold text-(--color-letras-cuaternario) mx-4">
+            <span class="text-2xl font-extrabold {{ $partido->estado === 'en_vivo' ? 'text-red-500' : 'text-(--color-letras-cuaternario)' }} mx-4">
                 @if ($partido->estado === 'programado')
                     <span>VS</span>
                 @else
-                    {{ $partido->goles_local ?? 0 }}
+                    <span>{{ $partido->goles_local ?? 0 }}</span>
                     -
-                    {{ $partido->goles_visitante ?? 0 }}
+                    <span>{{ $partido->goles_visitante ?? 0 }}</span>
                 @endif
             </span>
 
@@ -53,7 +53,7 @@
                 </figure>
 
                 <h3 class="m-0 text-[0.9rem] font-bold text-(--color-letras-primario) text-center">
-                    {{ $partido->visitante->club->nombre }}
+                    {{ $partido->visitante->nombre ?? $partido->visitante->club->nombre ?? 'Visitante' }}
                 </h3>
             </article>
 

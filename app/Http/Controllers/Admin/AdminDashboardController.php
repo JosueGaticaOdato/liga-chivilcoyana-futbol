@@ -15,11 +15,13 @@ class AdminDashboardController
     {
         $stats = [
             'torneos_total' => Torneo::count(),
+            'torneos_activos' => Torneo::where('estado', 'en_curso')->count(),
             'torneos_en_curso' => Torneo::where('estado', 'en_curso')->count(),
             'partidos_total' => Partido::count(),
             'partidos_programados' => Partido::where('estado', 'programado')->count(),
             'partidos_finalizados' => Partido::where('estado', 'finalizado')->count(),
             'clubes_total' => Club::count(),
+            'clubes_activos' => Club::where('activo', true)->count(),
             'equipos_total' => Equipo::count(),
         ];
 

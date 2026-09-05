@@ -52,7 +52,7 @@
               name="nombre"
               value="{{ old('nombre', $torneo->nombre) }}"
               required
-              class="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-2.5 text-sm text-slate-900 focus:border-[#59acda] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all @error('nombre') border-rose-400 @enderror">
+              class="w-full rounded-xl border {{ $errors->has('nombre') ? 'border-rose-400' : 'border-slate-200' }} bg-slate-50/50 px-4 py-2.5 text-sm text-slate-900 focus:border-[#59acda] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all">
             @error('nombre')
               <p class="mt-1 text-xs text-rose-500">{{ $message }}</p>
             @enderror
@@ -66,7 +66,7 @@
             <select
               name="temporada_id"
               required
-              class="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3.5 py-2.5 text-sm text-slate-900 focus:border-[#59acda] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all @error('temporada_id') border-rose-400 @enderror">
+              class="w-full rounded-xl border {{ $errors->has('temporada_id') ? 'border-rose-400' : 'border-slate-200' }} bg-slate-50/50 px-3.5 py-2.5 text-sm text-slate-900 focus:border-[#59acda] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all">
               @foreach ($temporadas as $temp)
                 <option value="{{ $temp->id }}" {{ old('temporada_id', $torneo->temporada_id) == $temp->id ? 'selected' : '' }}>
                   {{ $temp->nombre }} {{ $temp->activa ? '(Activa)' : '' }}
@@ -84,7 +84,7 @@
               name="categoria_id"
               id="categoria_select"
               required
-              class="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3.5 py-2.5 text-sm text-slate-900 focus:border-[#59acda] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all @error('categoria_id') border-rose-400 @enderror">
+              class="w-full rounded-xl border {{ $errors->has('categoria_id') ? 'border-rose-400' : 'border-slate-200' }} bg-slate-50/50 px-3.5 py-2.5 text-sm text-slate-900 focus:border-[#59acda] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all">
               @foreach ($categorias as $cat)
                 <option value="{{ $cat->id }}" {{ old('categoria_id', $torneo->categoria_id) == $cat->id ? 'selected' : '' }}>
                   {{ $cat->nombre }}

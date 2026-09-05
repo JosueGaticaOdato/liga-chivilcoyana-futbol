@@ -45,7 +45,7 @@
             name="nombre"
             value="{{ old('nombre', $club->nombre) }}"
             required
-            class="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-2.5 text-sm text-slate-900 focus:border-[#59acda] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all @error('nombre') border-rose-400 @enderror">
+            class="w-full rounded-xl border {{ $errors->has('nombre') ? 'border-rose-400' : 'border-slate-200' }} bg-slate-50/50 px-4 py-2.5 text-sm text-slate-900 focus:border-[#59acda] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all">
           @error('nombre')
             <p class="mt-1 text-xs text-rose-500">{{ $message }}</p>
           @enderror
@@ -61,7 +61,7 @@
             name="nombre_institucional"
             value="{{ old('nombre_institucional', $club->nombre_institucional) }}"
             required
-            class="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-2.5 text-sm text-slate-900 focus:border-[#59acda] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all @error('nombre_institucional') border-rose-400 @enderror">
+            class="w-full rounded-xl border {{ $errors->has('nombre_institucional') ? 'border-rose-400' : 'border-slate-200' }} bg-slate-50/50 px-4 py-2.5 text-sm text-slate-900 focus:border-[#59acda] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all">
           @error('nombre_institucional')
             <p class="mt-1 text-xs text-rose-500">{{ $message }}</p>
           @enderror

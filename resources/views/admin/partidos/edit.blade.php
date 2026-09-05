@@ -38,7 +38,7 @@
       @method('PUT')
 
       {{-- Section 1: Marcador Rápido (Enfocado para cargar resultados) --}}
-      <div class="rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-6 shadow-xs space-y-4">
+      <div class="rounded-2xl border border-slate-200 bg-linear-to-br from-slate-50 to-white p-6 shadow-xs space-y-4">
         <div class="flex items-center justify-between border-b border-slate-200/80 pb-3">
           <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800 flex items-center gap-2">
             <ion-icon name="football" class="text-base text-[#59acda]"></ion-icon>

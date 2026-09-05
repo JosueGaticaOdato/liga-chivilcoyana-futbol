@@ -169,7 +169,7 @@
   </div>
 
   @if ($clubes->hasPages())
-    <div class="rounded-2xl border border-slate-200/80 bg-white px-5 py-4 shadow-xs">
+    <div class="rounded-2xl border border-slate-200/80 bg-white px-5 py-4 shadow-xs ">
       {{ $clubes->links() }}
     </div>
   @endif
