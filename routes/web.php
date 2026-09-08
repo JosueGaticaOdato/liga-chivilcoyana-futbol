@@ -90,9 +90,3 @@ Route::get('/noticias', [NoticiaController::class, 'index'])
 /* ===== ADMIN ===== */
 
 require base_path('routes/admin.php');
-
-/* ===== REDES ===== */
-
-// Route::get('/redes/{torneo:slug}/{zona:id}/tabla', [TorneoController::class, 'tablaRedes'])
-//     ->name('redes.tabla')
-//     ->withoutScopedBindings();
