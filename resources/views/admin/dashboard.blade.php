@@ -14,10 +14,6 @@
   {{-- Welcome Banner --}}
   <div class="relative overflow-hidden rounded-2xl bg-linear-to-r from-[#121e36] via-[#1a2c4e] to-[#25457a] p-6 sm:p-8 text-white shadow-lg">
     <div class="relative z-10 max-w-2xl space-y-2">
-      <div class="inline-flex items-center gap-2 rounded-full bg-[#59acda]/20 px-3 py-1 text-xs font-semibold text-[#8ed3f8] border border-[#59acda]/30">
-        <ion-icon name="sparkles"></ion-icon>
-        Temporada Oficial 2026
-      </div>
       <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">
         Panel de Control de la Liga
       </h2>
@@ -302,11 +298,6 @@
               <h4 class="mt-2 font-bold text-slate-900 text-base">{{ $torneo->nombre }}</h4>
               <p class="text-xs text-slate-500">{{ $torneo->categoria->nombre ?? 'Cat' }} • Temporada {{ $torneo->temporada->nombre ?? '2026' }}</p>
             </div>
-            <a
-              href="{{ route('admin.torneos.edit', $torneo) }}"
-              class="rounded-lg p-1.5 text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition-colors">
-              <ion-icon name="ellipsis-vertical" class="text-lg"></ion-icon>
-            </a>
           </div>
 
           <div class="mt-4 flex items-center justify-between pt-3 border-t border-slate-100 text-xs text-slate-500">

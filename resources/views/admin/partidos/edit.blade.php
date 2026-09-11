@@ -233,7 +233,7 @@
               class="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3.5 py-2.5 text-sm text-slate-900 focus:border-[#59acda] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#59acda]/20 transition-all">
               @foreach ($torneos as $t)
                 <option value="{{ $t->id }}" {{ old('torneo_id', $partido->torneo_id) == $t->id ? 'selected' : '' }}>
-                  {{ $t->nombre }}
+                  {{ $t->categoria->nombre }} {{ $t->nombre }} {{ $t->temporada->nombre }}
                 </option>
               @endforeach
             </select>

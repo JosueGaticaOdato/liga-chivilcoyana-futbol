@@ -28,13 +28,8 @@ Route::get('/torneos/{torneo:slug}', [TorneoController::class, 'torneo'])
 Route::get('/torneos/{torneo:slug}/tabla', [TorneoController::class, 'tabla'])
     ->name('torneos.tabla');
 
-// Route::get('/torneos/{torneo:slug}/partidos', [TorneoController::class, 'partidos'])
-//     ->name('torneos.partidos');
-
-Route::get(
-    '/torneos/{torneo:slug}/fixture/{fecha?}',
-    [TorneoController::class, 'fixture']
-)->name('torneos.fixture');
+Route::get('/torneos/{torneo:slug}/fixture/{fecha?}', [TorneoController::class, 'fixture'])
+    ->name('torneos.fixture');
 
 /* ===== PARTIDOS ===== */
 
@@ -46,8 +41,8 @@ Route::get('/partidos/{partido}', [PartidoController::class, 'show'])
 
 /* ===== NOTICIAS ===== */
 
-Route::get('/noticias', [NoticiaController::class, 'index'])
-    ->name('noticias.index');
+// Route::get('/noticias', [NoticiaController::class, 'index'])
+//     ->name('noticias.index');
 
 // Route::get('/noticias/{noticia:slug}', [NoticiaController::class, 'show'])
 //     ->name('noticias.show');

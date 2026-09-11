@@ -16,14 +16,22 @@ Route::prefix('admin')
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('index');
 
         // TORNEOS
-        Route::resource('torneos', AdminTorneoController::class)->except(['show']);
+        Route::resource('torneos', AdminTorneoController::class)
+            ->parameters(['torneos' => 'torneo'])
+            ->except(['show']);
 
         // PARTIDOS
-        Route::resource('partidos', AdminPartidoController::class)->except(['show']);
+        Route::resource('partidos', AdminPartidoController::class)
+            ->parameters(['partidos' => 'partido'])
+            ->except(['show']);
 
         // CLUBES
-        Route::resource('clubes', AdminClubController::class)->except(['show']);
+        Route::resource('clubes', AdminClubController::class)
+            ->parameters(['clubes' => 'club'])
+            ->except(['show']);
 
         // EQUIPOS
-        Route::resource('equipos', AdminEquipoController::class)->except(['show']);
+        Route::resource('equipos', AdminEquipoController::class)
+            ->parameters(['equipos' => 'equipo'])
+            ->except(['show']);
     });

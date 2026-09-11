@@ -160,7 +160,7 @@
 
 
       {{-- NOTICIAS --}}
-      <li
+      {{-- <li
         class="
                     text-[1.1rem]
                     font-bold
@@ -180,7 +180,7 @@
                     ">
           Noticias
         </a>
-      </li>
+      </li> --}}
 
 
       {{-- PANEL ADMIN MOBILE --}}

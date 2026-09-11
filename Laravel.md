@@ -243,6 +243,12 @@ php artisan make:controller PostController --resource
 php artisan route:list
 ```
 
+### Lista de rutas admin
+
+```bash
+php artisan route:list --path=admin
+```
+
 ---
 
 ## 🧩 Requests (validaciones)

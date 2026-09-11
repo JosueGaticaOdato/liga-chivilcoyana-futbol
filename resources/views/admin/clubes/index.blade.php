@@ -118,7 +118,7 @@
             @if ($club->presidente)
               <div class="flex items-center gap-1.5">
                 <ion-icon name="person-outline" class="text-slate-400"></ion-icon>
-                <span class="truncate">Pres: {{ $club->presidente }}</span>
+                <span class="truncate">Presidente: {{ $club->presidente }}</span>
               </div>
             @endif
           </div>
@@ -152,7 +152,7 @@
               <button
                 type="submit"
                 title="Eliminar club"
-                class="rounded-lg p-1.5 text-slate-400 hover:bg-rose-50 hover:text-rose-600 transition-colors">
+                class="rounded-lg p-1.5 text-slate-400 hover:bg-rose-50 hover:text-rose-600 lg:cursor-pointer transition-colors">
                 <ion-icon name="trash-outline" class="text-base"></ion-icon>
               </button>
             </form>

@@ -98,13 +98,13 @@
         </a>
       </li>
 
-      <li class="text-base">
+      {{-- <li class="text-base">
         <a
           href="{{ route('noticias.index') }}"
           class="text-(--color-letras-secundario)">
           Noticias
         </a>
-      </li>
+      </li> --}}
 
       {{-- <li>
                 <a href="{{ route('reglamento') }}">
