@@ -3,7 +3,7 @@
 
         <header class="flex justify-between items-center">
             <time datetime="{{ $partido->fecha_hora->format('Y-m-d H:i') }}" class="text-[0.85rem] font-black text-(--color-letras-terceario) uppercase tracking-[0.02rem]">
-                {{ $partido->fecha_hora->translatedFormat('j \d\e F - H:i') }}
+                {{ $partido->fecha_hora->translatedFormat('l j \d\e F - H:i') }}
             </time>
 
             @if ($partido->estado === 'en_vivo')
