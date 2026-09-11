@@ -8,25 +8,7 @@
 <x-header-main title="Torneo {{ $torneo->nombre }} {{ $torneo->temporada->nombre }}" />
 
 {{-- NAVEGACIÓN DE SECCIONES DEL TORNEO --}}
-<nav class="flex flex-wrap items-center justify-center gap-3 pb-4">
-  <a href="{{ route('torneos.torneo', $torneo->slug) }}"
-      class="flex items-center gap-2 rounded-xl bg-(--color-primario) px-5 py-2.5 text-sm font-bold text-(--color-blanco) shadow-(--sombra-suave)">
-    <ion-icon name="information-circle-outline" class="text-lg"></ion-icon>
-    Resumen
-  </a>
-
-  <a href="{{ route('torneos.tabla', $torneo->slug) }}"
-      class="flex items-center gap-2 rounded-xl bg-(--color-blanco) px-5 py-2.5 text-sm font-bold text-(--color-letras-primario) shadow-(--sombra-ultra-suave) transition-all duration-300 hover:bg-(--color-primario) hover:text-(--color-blanco) hover:shadow-(--sombra-suave)">
-    <ion-icon name="stats-chart-outline" class="text-lg"></ion-icon>
-    Tabla de Posiciones
-  </a>
-
-  <a href="{{ route('torneos.fixture', $torneo->slug) }}"
-      class="flex items-center gap-2 rounded-xl bg-(--color-blanco) px-5 py-2.5 text-sm font-bold text-(--color-letras-primario) shadow-(--sombra-ultra-suave) transition-all duration-300 hover:bg-(--color-primario) hover:text-(--color-blanco) hover:shadow-(--sombra-suave)">
-    <ion-icon name="calendar-outline" class="text-lg"></ion-icon>
-    Fixture
-  </a>
-</nav>
+<x-torneo-navegacion :torneo="$torneo" />
 
 <main class="mx-4 flex flex-col gap-8 lg:mx-40 lg:grid lg:grid-cols-5">
 
