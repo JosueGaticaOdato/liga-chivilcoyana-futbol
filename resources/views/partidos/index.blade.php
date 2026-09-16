@@ -3,16 +3,16 @@
 @section('title', 'Partidos')
 
 @push('styles')
-@vite('resources/css/partidos/index.css')
+    @vite('resources/css/partidos/index.css')
 @endpush
 
 @section('content')
 
-  <x-header-main title="Partidos" />
+    <x-header-main title="Partidos" />
 
-  {{-- Filtros --}}
+    {{-- Filtros --}}
 
-  {{-- <form method="GET" class="grid grid-cols-1 lg:grid-cols-[1fr_1fr_1fr_0.5fr] items-center gap-6 md:gap-8 w-full p-4 md:px-8 lg:px-16 rounded-2xl">
+    {{-- <form method="GET" class="grid grid-cols-1 lg:grid-cols-[1fr_1fr_1fr_0.5fr] items-center gap-6 md:gap-8 w-full p-4 md:px-8 lg:px-16 rounded-2xl">
 
       <label for="categoria" class="flex flex-col gap-2 w-full text-base font-bold">
           Categoria
@@ -53,16 +53,16 @@
 
   </form> --}}
 
-  {{-- Lista de partidos --}}
+    {{-- Lista de partidos --}}
 
-  <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-[1.2rem] p-8">
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-[1.2rem] p-8">
 
-    @forelse ($partidos as $partido)
-    <x-partido-card :partido="$partido" />
-    @empty
-    <p>No hay partidos para los filtros seleccionados.</p>
-    @endforelse
+        @forelse ($partidos as $partido)
+            <x-partido-card :partido="$partido" />
+        @empty
+            <p>No hay partidos para los filtros seleccionados.</p>
+        @endforelse
 
-  </section>
+    </section>
 
 @endsection
