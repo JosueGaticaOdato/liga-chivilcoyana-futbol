@@ -8,7 +8,7 @@ Nuevo Update:
 - Fases de un torneo (grupos, eliminacion)
 - Jugadores
 - Situaciones en un partido (goles, amarillas, etc.)
-- Admin para manejo de partidos
+X Admin para manejo de partidos
 - Carga de partidos por excel
-- Equipos A y B (categorias inferiores)
+X Equipos A y B (categorias inferiores)
 - Imagen personalizada de la tabla (para IF)
