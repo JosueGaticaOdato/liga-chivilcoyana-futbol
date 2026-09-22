@@ -1,10 +1,9 @@
+Nuevo Update:
 - Paginacion
 - Partidos en detalle
 - API Clima
 - Admin
 - GCloud para ubicacion (API de Google Maps)
-
-Nuevo Update:
 - Fases de un torneo (grupos, eliminacion)
 - Jugadores
 - Situaciones en un partido (goles, amarillas, etc.)
