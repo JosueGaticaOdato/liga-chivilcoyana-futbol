@@ -52,7 +52,11 @@ class TorneoController
 
         $zona = Zona::where('fase_id', $fases->first()->id)->first();
 
-        $tabla = EquipoCompeticion::where('zona_id', $zona->id)->orderByDesc('puntos')->get();
+        $tabla = EquipoCompeticion::where('zona_id', $zona->id)
+                    ->orderByDesc('puntos')
+                    ->orderByDesc('diferencia_goles')
+                    ->orderByDesc('goles_favor')
+                    ->get();
 
         /**
          * Orden por:
