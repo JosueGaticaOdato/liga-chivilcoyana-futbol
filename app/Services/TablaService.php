@@ -64,7 +64,6 @@ class TablaService
             'perdidos' => 0,
             'goles_favor' => 0,
             'goles_contra' => 0,
-            'diferencia_goles' => 0,
             'puntos' => 0,
         ]);
 
@@ -110,7 +109,6 @@ class TablaService
                 'perdidos' => 0,
                 'goles_favor' => 0,
                 'goles_contra' => 0,
-                'diferencia_goles' => 0,
                 'puntos' => 0,
             ]
         );
@@ -121,7 +119,6 @@ class TablaService
         $equipoFase->partidos_jugados += 1;
         $equipoFase->goles_favor += $golesFavor;
         $equipoFase->goles_contra += $golesContra;
-        $equipoFase->diferencia_goles = $equipoFase->goles_favor - $equipoFase->goles_contra;
 
         if ($ganado) {
             $equipoFase->ganados += 1;
